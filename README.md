@@ -1,8 +1,10 @@
-# Ruby Styleguide
+# Ruby Style Guide
 
-If you're visiting from the internet, feel free to learn from our style. This is a guide we use for our own ruby apps internally at GitHub.  We encourage you to set up one that works for your own team.
+These are standards and conventions we use for ruby code at Airbnb. Please take what is useful to you.
 
-Much of this was taken from <https://github.com/bbatsov/ruby-style-guide>. Please add to this guide if you find any particular patterns or styles that we've adopted internally. Submit a pull request to ask for feedback (if you're an employee).
+We based our ruby style on the excellent [Github Ruby Styleguide](https://github.com/styleguide/ruby), which in turn was inspired by [Bozhidar Batsov's guide](https://github.com/bbatsov/ruby-style-guide).
+
+We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript).
 
 ## Coding Style
 
