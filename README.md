@@ -74,7 +74,8 @@ We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript
 
 ## Documentation
 
-Use [TomDoc](http://tomdoc.org) to the best of your ability. It's pretty sweet:
+Document methods with leading comments. 
+Although no specific format has been adopted, [TomDoc](http://tomdoc.org) is a great choice:
 
 ``` ruby
 # Public: Duplicate some text an arbitrary number of times.
