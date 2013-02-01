@@ -6,6 +6,20 @@ We based our ruby style on the excellent [Github Ruby Styleguide](https://github
 
 We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript).
 
+## <a name='TOC'>Table of Contents</a>
+  1. [Coding Style](#coding-style)
+  2. [Documentation](#documentation)
+  3. [Syntax](#syntax)
+  4. [Naming](#naming)
+  5. [Classes](#classes)
+  6. [Exceptions](#exceptions)
+  7. [Collections](#collections)
+  8. [Strings](#strings)
+  9. [Regular Expressions](#regular-expressions)
+  10. [Percent Literals](#percent-literals)
+  11. [Go Forth](#above-all-else)
+
+
 ## Coding Style
 
 * Use soft-tabs with a two space indent.
