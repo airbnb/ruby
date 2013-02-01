@@ -10,7 +10,7 @@ We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript
 
 * Use soft-tabs with a two space indent.
 
-* Keep lines fewer than 80 characters.
+* No hard limit on characters per line (limits are still being evaluated). Many individuals use limits of 80, 90, or 100 characters per line.
 
 * Never leave trailing whitespace.
 
