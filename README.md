@@ -1,6 +1,6 @@
 # Ruby Style Guide
 
-These are standards and conventions we use for ruby code at Airbnb. Please take what is useful to you.
+These are standards and conventions we use for Ruby code at Airbnb. Please take what is useful to you.
 
 We based our ruby style on the excellent [Github Ruby Styleguide](https://github.com/styleguide/ruby), which in turn was inspired by [Bozhidar Batsov's guide](https://github.com/bbatsov/ruby-style-guide).
 
