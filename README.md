@@ -24,7 +24,40 @@ We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript
 
 * Use soft-tabs with a two space indent.
 
-* Keep lines fewer than 100 characters.
+* Keep lines fewer than 100 characters. Long complex lines of code are hard to quickly understand. 
+
+    Here are examples from our codebase showing several techniques for breaking complex statements into multiple lines that are all < 100 characters. Notice techniques like
+    * liberal use of linebreaks inside unclosed ( { [
+    * chaining methods, ending unfinished chains with a "."
+    * composing long strings by adding together two strings, ending unfinished strings with a "+"
+    
+    ```ruby
+    scope = Air18n::Phrase.includes(:phrase_translations).
+      joins(:phrase_screenshots).
+      where(
+        :phrase_screenshots => {
+          :controller => TranslationPriority::PHRASE_COLLECTION_PSEUDO_CONTROLLER,
+          :action => PHRASE_COLLECTION_NAME
+      })
+    ```
+
+    ```ruby
+    translation = FactoryGirl.create(
+      :phrase_translation,
+      :locale => :zh,
+      :phrase => phrase,
+      :key => 'phone_number_not_revealed_time_zone',
+      :value => '您的電話號碼將不會被透露。他們只能在上' +
+                '午9時至晚上9時%{time_zone}這段時間給您致電'
+    )
+    ```
+
+    These code snippets are very much more readable than the alternative:
+
+    ```ruby
+    scope = Air18n::Phrase.includes(:phrase_translations).joins(:phrase_screenshots).where(:phrase_screenshots => { :controller => TranslationPriority::PHRASE_COLLECTION_PSEUDO_CONTROLLER, :action => PHRASE_COLLECTION_NAME })
+    translation = FactoryGirl.create(:phrase_translation, :locale => :zh, :phrase => phrase, :key => 'phone_number_not_revealed_time_zone', :value => '您的電話號碼將不會被透露。他們只能在上午9時至晚上9時%{time_zone}這段時間給您致電')
+    ```
 
 * Never leave trailing whitespace.
 
@@ -85,43 +118,6 @@ We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript
       result
     end
     ```
-
-## Line Length
-
-Long complex lines of code are hard to quickly understand. Keep lines fewer than 100 characters.
-
-Here are examples from our codebase showing several techniques for breaking complex statements into multiple lines that are all < 100 characters. Notice techniques like
-* liberal use of linebreaks inside unclosed ( { [
-* chaining methods, ending unfinished chains with a "."
-* composing long strings by adding together two strings, ending unfinished strings with a "+"
-
-```ruby
-scope = Air18n::Phrase.includes(:phrase_translations).
-  joins(:phrase_screenshots).
-  where(
-    :phrase_screenshots => {
-      :controller => TranslationPriority::PHRASE_COLLECTION_PSEUDO_CONTROLLER,
-      :action => PHRASE_COLLECTION_NAME
-  })
-```
-
-```ruby
-translation = FactoryGirl.create(
-  :phrase_translation,
-  :locale => :zh,
-  :phrase => phrase,
-  :key => 'phone_number_not_revealed_time_zone',
-  :value => '您的電話號碼將不會被透露。他們只能在上' +
-            '午9時至晚上9時%{time_zone}這段時間給您致電'
-)
-```
-
-These code snippets are very much more readable than the alternative:
-
-```ruby
-scope = Air18n::Phrase.includes(:phrase_translations).joins(:phrase_screenshots).where(:phrase_screenshots => { :controller => TranslationPriority::PHRASE_COLLECTION_PSEUDO_CONTROLLER, :action => PHRASE_COLLECTION_NAME })
-translation = FactoryGirl.create(:phrase_translation, :locale => :zh, :phrase => phrase, :key => 'phone_number_not_revealed_time_zone', :value => '您的電話號碼將不會被透露。他們只能在上午9時至晚上9時%{time_zone}這段時間給您致電')
-```
 
 ## Documentation
 
