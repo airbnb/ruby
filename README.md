@@ -132,7 +132,7 @@ Portions of this section borrow heavily from the Google [C++](http://google-styl
 
 Every class definition should have an accompanying comment that describes what it is for and how it should be used.
 
-A file that contain zero classes or more than one class should have a comment at the top describing its contents.
+A file that contains zero classes or more than one class should have a comment at the top describing its contents.
 
 ```ruby
 # Automatic conversion of one locale to another where it is possible, like
