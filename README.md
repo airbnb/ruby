@@ -638,14 +638,21 @@ in inheritance.
     # bad
     begin
       # an exception occurs here
-    rescue
+    rescue Exception
       # exception handling
     end
-
-    # still bad
+    
+    # good
     begin
       # an exception occurs here
-    rescue Exception
+    rescue StandardError
+      # exception handling
+    end
+    
+    # acceptable
+    begin
+      # an exception occurs here
+    rescue
       # exception handling
     end
     ```
