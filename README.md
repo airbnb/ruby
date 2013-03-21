@@ -66,7 +66,7 @@ We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript
                                :default => "Visa for foreign Travelers"),
                         :beveled_big_icon => "stamp" do %>
         <%= I18n.t("email.reservation_confirmed_guest.visa.russia.details_copy",
-                   :default => "Foreign guests travelling to Russia may need to obtain a visa prior to...") %>
+                   :default => "Foreign guests travelling to Russia may need to obtain a visa...") %>
       <% end %>
       <%= space_line %>
     <% end %>
