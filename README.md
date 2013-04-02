@@ -559,6 +559,12 @@ TODOs should include the string TODO in all caps, followed by the name, e-mail a
   arguments, `exit!`, etc.) should end with an exclamation mark. Bang methods
   should only exist if a non-bang method exists. ([More on this](http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist)).
 
+* Name throwaway variables "_".
+    ```Ruby
+    payment, _ = Payment2.complete_paypal_payment!(
+        params[:token], native_currency, created_at)
+    ```
+
 ## Classes
 
 * Avoid the usage of class (`@@`) variables due to their "nasty" behavior
@@ -853,7 +859,3 @@ strings.
     # good
     %r(^/blog/2011/(.*)$)
     ```
-
-## Above all else
-
-Follow your :heart:
