@@ -289,6 +289,9 @@ TODOs should include the string TODO in all caps, followed by the name, e-mail a
 # TODO(max): Fix this by mocking Trebuchet.
 ```
 
+## Commented-out code
+
+Never leave commented-out code in our codebase.
 
 ## Syntax
 
