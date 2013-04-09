@@ -28,7 +28,7 @@ We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript
     Here are examples from our codebase showing several techniques for breaking complex statements into multiple lines that are all < 100 characters. Notice techniques like
     * liberal use of linebreaks inside unclosed ( { [
     * chaining methods, ending unfinished chains with a "."
-    * composing long strings by adding together two strings, ending unfinished strings with a "+"
+    * composing long strings by putting strings next to each other, separated by a backslash.
     * breaking long logical statements with linebreaks after operators like "&&" and "||"
 
     ```ruby
@@ -47,7 +47,7 @@ We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript
       :locale => :zh,
       :phrase => phrase,
       :key => 'phone_number_not_revealed_time_zone',
-      :value => '您的電話號碼將不會被透露。他們只能在上' +
+      :value => '您的電話號碼將不會被透露。他們只能在上'\
                 '午9時至晚上9時%{time_zone}這段時間給您致電'
     )
     ```
@@ -753,17 +753,10 @@ strings.
     cache.write(CACHE_KEY % @user.id)
     ```
 
-* Prefer double-quoted strings. Interpolation and escaped characters
-  will always work without a delimiter change, and `'` is a lot more
-  common than `"` in string literals.
-
-    ```Ruby
-    # bad
-    name = 'Bozhidar'
-
-    # good
-    name = "Bozhidar"
-    ```
+* You can use either single-quoted or double-quoted strings. Prefer to
+  keep the quotes of a given file or project as consistent as possible.
+  If all other code in a file uses single quotes, prefer to use single
+  quotes in code you add to that file.
 
 * Avoid using `String#+` when you need to construct large data chunks.
   Instead, use `String#<<`. Concatenation mutates the string instance in-place
