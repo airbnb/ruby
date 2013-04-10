@@ -17,7 +17,7 @@ We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript
   8. [Strings](#strings)
   9. [Regular Expressions](#regular-expressions)
   10. [Percent Literals](#percent-literals)
-  11. [Go Forth](#above-all-else)
+  11. [Be consistent](#be-consistent)
 
 ## Coding Style
 
@@ -28,7 +28,7 @@ We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript
     Here are examples from our codebase showing several techniques for breaking complex statements into multiple lines that are all < 100 characters. Notice techniques like
     * liberal use of linebreaks inside unclosed ( { [
     * chaining methods, ending unfinished chains with a "."
-    * composing long strings by adding together two strings, ending unfinished strings with a "+"
+    * composing long strings by putting strings next to each other, separated by a backslash-then-newline.
     * breaking long logical statements with linebreaks after operators like "&&" and "||"
 
     ```ruby
@@ -47,7 +47,7 @@ We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript
       :locale => :zh,
       :phrase => phrase,
       :key => 'phone_number_not_revealed_time_zone',
-      :value => '您的電話號碼將不會被透露。他們只能在上' +
+      :value => '您的電話號碼將不會被透露。他們只能在上' \
                 '午9時至晚上9時%{time_zone}這段時間給您致電'
     )
     ```
@@ -289,6 +289,9 @@ TODOs should include the string TODO in all caps, followed by the name, e-mail a
 # TODO(max): Fix this by mocking Trebuchet.
 ```
 
+## Commented-out code
+
+Never leave commented-out code in our codebase.
 
 ## Syntax
 
@@ -753,17 +756,10 @@ strings.
     cache.write(CACHE_KEY % @user.id)
     ```
 
-* Prefer double-quoted strings. Interpolation and escaped characters
-  will always work without a delimiter change, and `'` is a lot more
-  common than `"` in string literals.
-
-    ```Ruby
-    # bad
-    name = 'Bozhidar'
-
-    # good
-    name = "Bozhidar"
-    ```
+* You can use either single-quoted or double-quoted strings. Prefer to
+  keep the quotes of a given file or project as consistent as possible.
+  If all other code in a file uses single quotes, prefer to use single
+  quotes in code you add to that file.
 
 * Avoid using `String#+` when you need to construct large data chunks.
   Instead, use `String#<<`. Concatenation mutates the string instance in-place
@@ -859,3 +855,11 @@ strings.
     # good
     %r(^/blog/2011/(.*)$)
     ```
+
+## Be Consistent
+
+> If you're editing code, take a few minutes to look at the code around you and determine its style. If they use spaces around all their arithmetic operators, you should too. If their comments have little boxes of hash marks around them, make your comments have little boxes of hash marks around them too.
+
+> The point of having style guidelines is to have a common vocabulary of coding so people can concentrate on what you're saying rather than on how you're saying it. We present global style rules here so people know the vocabulary, but local style is also important. If code you add to a file looks drastically different from the existing code around it, it throws readers out of their rhythm when they go to read it. Avoid this.
+
+&mdash;[Google C++ Style Guide](http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml)
