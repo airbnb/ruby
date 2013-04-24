@@ -756,11 +756,6 @@ strings.
     cache.write(CACHE_KEY % @user.id)
     ```
 
-* You can use either single-quoted or double-quoted strings. Prefer to
-  keep the quotes of a given file or project as consistent as possible.
-  If all other code in a file uses single quotes, prefer to use single
-  quotes in code you add to that file.
-
 * Avoid using `String#+` when you need to construct large data chunks.
   Instead, use `String#<<`. Concatenation mutates the string instance in-place
   and is always faster than `String#+`, which creates a bunch of new string objects.
