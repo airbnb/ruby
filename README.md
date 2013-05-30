@@ -17,7 +17,7 @@ We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript
   8. [Strings](#strings)
   9. [Regular Expressions](#regular-expressions)
   10. [Percent Literals](#percent-literals)
-  11. [Be consistent](#be-consistent)
+  11. [Be Consistent](#be-consistent)
 
 ## Coding Style
 
