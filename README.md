@@ -196,7 +196,7 @@ module Air18n
   # In addition to general Colonial English variations, changes "apartment"
   # to "flat".
   class AmericanToBritish < AmericanToColonial
-    ...  
+    ...
   end
 ```
 
@@ -701,17 +701,6 @@ in inheritance.
     ```
 
 ## Collections
-
-* Prefer `%w` to the literal array syntax when you need an array of
-strings.
-
-    ```Ruby
-    # bad
-    STATES = ['draft', 'open', 'closed']
-
-    # good
-    STATES = %w(draft open closed)
-    ```
 
 * Use `Set` instead of `Array` when dealing with unique elements. `Set`
   implements a collection of unordered values with no duplicates. This
