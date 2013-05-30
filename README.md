@@ -32,31 +32,29 @@ We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript
     * breaking long logical statements with linebreaks after operators like "&&" and "||"
 
     ```ruby
-    scope = Air18n::Phrase.includes(:phrase_translations).
+    scope = Translation::Phrase.includes(:phrase_translations).
       joins(:phrase_screenshots).
-      where(
-        :phrase_screenshots => {
-          :controller => TranslationPriority::PHRASE_COLLECTION_PSEUDO_CONTROLLER,
-          :action => PHRASE_COLLECTION_NAME
+      where(:phrase_screenshots => {
+        :controller => controller_name,
+        :action => JAROMIR_JAGR_SALUTE
       })
     ```
 
     ```ruby
     translation = FactoryGirl.create(
       :phrase_translation,
-      :locale => :zh,
+      :locale => :is,
       :phrase => phrase,
       :key => 'phone_number_not_revealed_time_zone',
-      :value => '您的電話號碼將不會被透露。他們只能在上' \
-                '午9時至晚上9時%{time_zone}這段時間給您致電'
+      :value => 'Símanúmerið þitt verður ekki birt. Það er aðeins hægt að hringja á '\
+                'milli 9:00 og 21:00 %{time_zone}.'
     )
     ```
 
     ```ruby
     if @reservation_alteration.checkin == @reservation.start_date &&
        @reservation_alteration.checkout == (@reservation.start_date + @reservation.nights)
-      flash[:notice] = t('shared.no_changes_made', :default => "No changes made.")
-      redirect_to_ra @reservation_alteration
+      redirect_to_alteration @reservation_alteration
     end
     ```
 
@@ -68,27 +66,24 @@ We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript
         <%= I18n.t("email.reservation_confirmed_guest.visa.russia.details_copy",
                    :default => "Foreign guests travelling to Russia may need to obtain a visa...") %>
       <% end %>
-      <%= space_line %>
     <% end %>
     ```
 
     These code snippets are very much more readable than the alternative:
 
     ```ruby
-    scope = Air18n::Phrase.includes(:phrase_translations).joins(:phrase_screenshots).where(:phrase_screenshots => { :controller => TranslationPriority::PHRASE_COLLECTION_PSEUDO_CONTROLLER, :action => PHRASE_COLLECTION_NAME })
+    scope = Translation::Phrase.includes(:phrase_translations).joins(:phrase_screenshots).where(:phrase_screenshots => { :controller => controller_name, :action => JAROMIR_JAGR_SALUTE })
 
-    translation = FactoryGirl.create(:phrase_translation, :locale => :zh, :phrase => phrase, :key => 'phone_number_not_revealed_time_zone', :value => '您的電話號碼將不會被透露。他們只能在上午9時至晚上9時%{time_zone}這段時間給您致電')
+    translation = FactoryGirl.create(:phrase_translation, :locale => :is, :phrase => phrase, :key => 'phone_number_not_revealed_time_zone', :value => 'Símanúmerið þitt verður ekki birt. Það er aðeins hægt að hringja á milli 9:00 og 21:00 %{time_zone}.')
 
     if @reservation_alteration.checkin == @reservation.start_date && @reservation_alteration.checkout == (@reservation.start_date + @reservation.nights)
-      flash[:notice] = t('shared.no_changes_made', :default => "No changes made.")
-      redirect_to_ra @reservation_alteration
+      redirect_to_alteration @reservation_alteration
     end
 
     <% if @presenter.guest_visa_russia? %>
       <%= icon_tile_for(I18n.t("email.reservation_confirmed_guest.visa.details_header", :default => "Visa for foreign Travelers"), :beveled_big_icon => "stamp" do %>
         <%= I18n.t("email.reservation_confirmed_guest.visa.russia.details_copy", :default => "Foreign guests travelling to Russia may need to obtain a visa prior to...") %>
       <% end %>
-      <%= space_line %>
     <% end %>
     ```
 
@@ -171,7 +166,7 @@ A file that contains zero classes or more than one class should have a comment a
 ```ruby
 # Automatic conversion of one locale to another where it is possible, like
 # American to British English.
-module Air18n
+module Translation
   # Class for converting between text between similar locales.
   # Right now only conversion between American English -> British, Canadian,
   # Australian, New Zealand variations is provided.
@@ -200,7 +195,7 @@ module Air18n
   end
 ```
 
-All files, including data and config files, should have file-level comments. From ```air18n/config/colonial_spelling_variants.yml```:
+All files, including data and config files, should have file-level comments. From ```translation/config/colonial_spelling_variants.yml```:
 
 ```ruby
 # List of American-to-British spelling variants.
@@ -564,8 +559,7 @@ Never leave commented-out code in our codebase.
 
 * Name throwaway variables "_".
     ```Ruby
-    payment, _ = Payment2.complete_paypal_payment!(
-        params[:token], native_currency, created_at)
+    payment, _ = Payment.complete_paypal_payment!(params[:token], native_currency, created_at)
     ```
 
 ## Classes
