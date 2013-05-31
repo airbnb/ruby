@@ -308,7 +308,7 @@ Never leave commented-out code in our codebase.
      end
      ```
 
-* Always use an options hash instead of optional arguments.
+* Do not use default arguments. Use an options hash instead.
 
     ```Ruby
     # bad
