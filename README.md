@@ -303,6 +303,27 @@ Never leave commented-out code in our codebase.
      end
      ```
 
+* Do not use default arguments. Use an options hash instead.
+
+    ```Ruby
+    # bad
+    def obliterate(things, gently = true, except = [], at = Time.now) 
+      # implementation omitted
+    end
+
+    # good
+    def obliterate(things, options = {})
+      default_options = {
+        :gently => true, # obliterate with soft-delete
+        :except => [], # skip obliterating these things
+        :at => Time.now # don't obliterate them until later
+      }
+      options.reverse_merge!(default_options)
+
+      # implementation omitted
+    end
+    ```
+
 * Never use `for`, unless you know exactly why. Most of the time iterators
   should be used instead. `for` is implemented in terms of `each` (so
   you're adding a level of indirection), but with a twist - `for`
