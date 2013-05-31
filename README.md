@@ -319,9 +319,9 @@ Never leave commented-out code in our codebase.
     # good
     def obliterate(things, options = {})
       default_options = {
-        :gently => true,
-        :except => [],
-        :at => Time.now
+        :gently => true, # obliterate with soft-delete
+        :except => [], # skip obliterating these things
+        :at => Time.now # don't obliterate them until later
       }
       options.reverse_merge!(default_options)
 
