@@ -324,6 +324,23 @@ Never leave commented-out code in our codebase.
     end
     ```
 
+* Use spaces around the `=` operator when assigning default values:
+
+    ```Ruby
+    # bad
+    def some_method(options={})
+      # do something...
+    end
+
+    # good
+    def some_method(options = {})
+      # do something...
+    end
+    ```
+
+    While several Ruby books suggest the first style, the second is much more prominent
+    in practice (and arguably a bit more readable).
+
 * Never use `for`, unless you know exactly why. Most of the time iterators
   should be used instead. `for` is implemented in terms of `each` (so
   you're adding a level of indirection), but with a twist - `for`
@@ -483,23 +500,6 @@ Never leave commented-out code in our codebase.
       some_arr.size
     end
     ```
-
-* Use spaces around the `=` operator when assigning default values to method parameters:
-
-    ```Ruby
-    # bad
-    def some_method(arg1=:default, arg2=nil, arg3=[])
-      # do something...
-    end
-
-    # good
-    def some_method(arg1 = :default, arg2 = nil, arg3 = [])
-      # do something...
-    end
-    ```
-
-    While several Ruby books suggest the first style, the second is much more prominent
-    in practice (and arguably a bit more readable).
 
 * Using the return value of `=` (an assignment) is ok, but surround the
   assignment with parenthesis.
