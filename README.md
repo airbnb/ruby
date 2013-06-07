@@ -30,6 +30,8 @@ We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript
     * chaining methods, ending unfinished chains with a "."
     * composing long strings by putting strings next to each other, separated by a backslash-then-newline.
     * breaking long logical statements with linebreaks after operators like "&&" and "||"
+    * add a new line after `if` conditions span multiple lines to help differentiate between the conditions and the body.
+
 
     ```ruby
     scope = Translation::Phrase.includes(:phrase_translations).
@@ -54,6 +56,7 @@ We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript
     ```ruby
     if @reservation_alteration.checkin == @reservation.start_date &&
        @reservation_alteration.checkout == (@reservation.start_date + @reservation.nights)
+
       redirect_to_alteration @reservation_alteration
     end
     ```
