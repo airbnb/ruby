@@ -36,7 +36,7 @@ We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript
       joins(:phrase_screenshots).
       where(:phrase_screenshots => {
         :controller => controller_name,
-        :action => JAROMIR_JAGR_SALUTE
+        :action => JAROMIR_JAGR_SALUTE,
       })
     ```
 
@@ -316,7 +316,7 @@ Never leave commented-out code in our codebase.
       default_options = {
         :gently => true, # obliterate with soft-delete
         :except => [], # skip obliterating these things
-        :at => Time.now # don't obliterate them until later
+        :at => Time.now, # don't obliterate them until later
       }
       options.reverse_merge!(default_options)
 
@@ -730,6 +730,21 @@ in inheritance.
 
     # good
     hash = { one: 1, two: 2, three: 3 }
+    ```
+
+* Use multi-line hashes when it makes the code more readable, and use
+  trailing commas to ensure that parameter changes don't cause
+  extraneous diff lines when the logic has not otherwise changed.
+
+    ```
+    hash = {
+      :protocol => 'https',
+      :only_path => false,
+      :controller => :users,
+      :action => :set_password,
+      :redirect => @redirect_url,
+      :secret => @secret,
+    }
     ```
 
 ## Strings
