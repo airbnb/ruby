@@ -235,15 +235,24 @@ neutralization: neutralisation
 
 ### Function comments
 
-Every function declaration should have comments immediately preceding it that describe what the function does and how to use it. These comments should be descriptive ("Opens the file") rather than imperative ("Open the file"); the comment describes the function, it does not tell the function what to do. In general, these comments do not describe how the function performs its task. Instead, that should be left to comments interspersed in the function's code.
+Every function declaration should have comments immediately preceding it that
+describe what the function does and how to use it. These comments should be
+descriptive ("Opens the file") rather than imperative ("Open the file"); the
+comment describes the function, it does not tell the function what to do. In
+general, these comments do not describe how the function performs its task.
+Instead, that should be left to comments interspersed in the function's code.
 
-Every function should mention what the inputs and outputs are, unless it meets all of the following criteria:
+Every function should mention what the inputs and outputs are, unless it meets
+all of the following criteria:
 
 * not externally visible
 * very short
 * obvious
 
-You may use whatever format you wish. In Ruby, two popular function documentation schemes are [TomDoc](http://tomdoc.org/) and [YARD](http://rubydoc.info/docs/yard/file/docs/GettingStarted.md). You can also just write things out concisely:
+You may use whatever format you wish. In Ruby, two popular function
+documentation schemes are [TomDoc](http://tomdoc.org/) and
+[YARD](http://rubydoc.info/docs/yard/file/docs/GettingStarted.md). You can also
+just write things out concisely:
 
 ```ruby
 # Return the fallback locales for the_locale.
@@ -262,7 +271,10 @@ end
 
 ### Block and inline comments
 
-The final place to have comments is in tricky parts of the code. If you're going to have to explain it at the next code review, you should comment it now. Complicated operations get a few lines of comments before the operations commence. Non-obvious ones get comments at the end of the line.
+The final place to have comments is in tricky parts of the code. If you're
+going to have to explain it at the next code review, you should comment it now.
+Complicated operations get a few lines of comments before the operations
+commence. Non-obvious ones get comments at the end of the line.
 
 ```ruby
 def fallbacks_for(the_locale, opts = {})
@@ -283,21 +295,38 @@ def fallbacks_for(the_locale, opts = {})
 end
 ```
 
-On the other hand, never describe the code. Assume the person reading the code knows the language (though not what you're trying to do) better than you do.
+On the other hand, never describe the code. Assume the person reading the code
+knows the language (though not what you're trying to do) better than you do.
 
 ### Punctuation, Spelling and Grammar
 
-Pay attention to punctuation, spelling, and grammar; it is easier to read well-written comments than badly written ones.
+Pay attention to punctuation, spelling, and grammar; it is easier to read
+well-written comments than badly written ones.
 
-Comments should be as readable as narrative text, with proper capitalization and punctuation. In many cases, complete sentences are more readable than sentence fragments. Shorter comments, such as comments at the end of a line of code, can sometimes be less formal, but you should be consistent with your style.
+Comments should be as readable as narrative text, with proper capitalization
+and punctuation. In many cases, complete sentences are more readable than
+sentence fragments. Shorter comments, such as comments at the end of a line of
+code, can sometimes be less formal, but you should be consistent with your
+style.
 
-Although it can be frustrating to have a code reviewer point out that you are using a comma when you should be using a semicolon, it is very important that source code maintain a high level of clarity and readability. Proper punctuation, spelling, and grammar help with that goal.
+Although it can be frustrating to have a code reviewer point out that you are
+using a comma when you should be using a semicolon, it is very important that
+source code maintain a high level of clarity and readability. Proper
+punctuation, spelling, and grammar help with that goal.
 
 ### TODO comments
 
-Use TODO comments for code that is temporary, a short-term solution, or good-enough but not perfect.
+Use TODO comments for code that is temporary, a short-term solution, or
+good-enough but not perfect.
 
-TODOs should include the string TODO in all caps, followed by the name, e-mail address, or other identifier of the person who can best provide context about the problem referenced by the TODO, in parentheses. A colon is optional. A comment explaining what there is to do is required. The main purpose is to have a consistent TODO format that can be searched to find the person who can provide more details upon request. A TODO is not a commitment that the person referenced will fix the problem. Thus when you create a TODO, it is almost always your name that is given.
+TODOs should include the string TODO in all caps, followed by the name, e-mail
+address, or other identifier of the person who can best provide context about
+the problem referenced by the TODO, in parentheses. A colon is optional. A
+comment explaining what there is to do is required. The main purpose is to have
+a consistent TODO format that can be searched to find the person who can
+provide more details upon request. A TODO is not a commitment that the person
+referenced will fix the problem. Thus when you create a TODO, it is almost
+always your name that is given.
 
 ```ruby
 # TODO(JKB) Make this play nicely with country-specific locales.
@@ -358,8 +387,8 @@ Never leave commented-out code in our codebase.
     end
     ```
 
-    While several Ruby books suggest the first style, the second is much more prominent
-    in practice (and arguably a bit more readable).
+    While several Ruby books suggest the first style, the second is much more
+    prominent in practice (and arguably a bit more readable).
 
 * Never use `for`, unless you know exactly why. Most of the time iterators
   should be used instead. `for` is implemented in terms of `each` (so
@@ -393,9 +422,9 @@ Never leave commented-out code in our codebase.
     end
     ```
 
-* Avoid the ternary operator (`?:`) except in cases where all expressions are extremely
-  trivial. However, do use the ternary operator(`?:`) over `if/then/else/end` constructs
-  for single line conditionals.
+* Avoid the ternary operator (`?:`) except in cases where all expressions are
+  extremely trivial. However, do use the ternary operator(`?:`) over
+  `if/then/else/end` constructs for single line conditionals.
 
     ```Ruby
     # bad
@@ -503,9 +532,9 @@ Never leave commented-out code in our codebase.
     end.map { |name| name.upcase }
     ```
 
-    Some will argue that multiline chaining would look OK with the use of {...}, but they should
-    ask themselves - it this code really readable and can't the blocks contents be extracted into
-    nifty methods.
+    Some will argue that multiline chaining would look OK with the use of
+    {...}, but they should ask themselves - it this code really readable and
+    can't the blocks contents be extracted into nifty methods.
 
 * Avoid `return` where not required.
 
