@@ -183,11 +183,13 @@ Portions of this section borrow heavily from the Google
 [google-c++-comments]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Comments
 [google-python-comments]: http://google-styleguide.googlecode.com/svn/trunk/pyguide.html#Comments
 
-## File/class-level comments
+### File/class-level comments
 
-Every class definition should have an accompanying comment that describes what it is for and how it should be used.
+Every class definition should have an accompanying comment that describes what
+it is for and how it should be used.
 
-A file that contains zero classes or more than one class should have a comment at the top describing its contents.
+A file that contains zero classes or more than one class should have a comment
+at the top describing its contents.
 
 ```ruby
 # Automatic conversion of one locale to another where it is possible, like
@@ -239,7 +241,7 @@ neutralization: neutralisation
 ...
 ```
 
-## Function comments
+### Function comments
 
 Every function declaration should have comments immediately preceding it that describe what the function does and how to use it. These comments should be descriptive ("Opens the file") rather than imperative ("Open the file"); the comment describes the function, it does not tell the function what to do. In general, these comments do not describe how the function performs its task. Instead, that should be left to comments interspersed in the function's code.
 
@@ -266,7 +268,7 @@ def fallbacks_for(the_locale, opts = {})
 end
 ```
 
-## Block and inline comments
+### Block and inline comments
 
 The final place to have comments is in tricky parts of the code. If you're going to have to explain it at the next code review, you should comment it now. Complicated operations get a few lines of comments before the operations commence. Non-obvious ones get comments at the end of the line.
 
@@ -291,7 +293,7 @@ end
 
 On the other hand, never describe the code. Assume the person reading the code knows the language (though not what you're trying to do) better than you do.
 
-## Punctuation, Spelling and Grammar
+### Punctuation, Spelling and Grammar
 
 Pay attention to punctuation, spelling, and grammar; it is easier to read well-written comments than badly written ones.
 
@@ -299,7 +301,7 @@ Comments should be as readable as narrative text, with proper capitalization and
 
 Although it can be frustrating to have a code reviewer point out that you are using a comma when you should be using a semicolon, it is very important that source code maintain a high level of clarity and readability. Proper punctuation, spelling, and grammar help with that goal.
 
-## TODO comments
+### TODO comments
 
 Use TODO comments for code that is temporary, a short-term solution, or good-enough but not perfect.
 
@@ -310,7 +312,7 @@ TODOs should include the string TODO in all caps, followed by the name, e-mail a
 # TODO(max): Fix this by mocking Trebuchet.
 ```
 
-## Commented-out code
+### Commented-out code
 
 Never leave commented-out code in our codebase.
 
