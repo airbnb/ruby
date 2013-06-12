@@ -1,10 +1,16 @@
 # Ruby Style Guide
 
-These are standards and conventions we use for Ruby code at Airbnb. Please take what is useful to you.
+These are standards and conventions we use for Ruby code at Airbnb. Please take
+what is useful to you.
 
-We based our Ruby style on the excellent [Github Ruby Styleguide](https://github.com/styleguide/ruby), which in turn was inspired by [Bozhidar Batsov's guide](https://github.com/bbatsov/ruby-style-guide).
+We based our Ruby style on the excellent [Github Ruby Styleguide](github-ruby),
+which in turn was inspired by [Bozhidar Batsov's guide](bbatsov).
 
-We also maintain a [JavaScript Style Guide](https://github.com/airbnb/javascript).
+We also maintain a [JavaScript Style Guide](airbnb-javascript).
+
+[github-ruby]: https://github.com/styleguide/ruby
+[bbatsov-ruby]: https://github.com/bbatsov/ruby-style-guide
+[airbnb-javascript]: https://github.com/airbnb/javascript
 
 ## <a name='TOC'>Table of Contents</a>
   1. [Coding Style](#coding-style)
