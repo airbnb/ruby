@@ -3,10 +3,10 @@
 These are standards and conventions we use for Ruby code at Airbnb. Please take
 what is useful to you.
 
-We based our Ruby style on the excellent [Github Ruby Styleguide](github-ruby),
-which in turn was inspired by [Bozhidar Batsov's guide](bbatsov).
+We based our Ruby style on the excellent [Github Ruby Styleguide][github-ruby],
+which in turn was inspired by [Bozhidar Batsov's guide][bbatsov].
 
-We also maintain a [JavaScript Style Guide](airbnb-javascript).
+We also maintain a [JavaScript Style Guide][airbnb-javascript].
 
 [github-ruby]: https://github.com/styleguide/ruby
 [bbatsov-ruby]: https://github.com/bbatsov/ruby-style-guide
