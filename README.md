@@ -8,10 +8,6 @@ which in turn was inspired by [Bozhidar Batsov's guide][bbatsov-ruby].
 
 We also maintain a [JavaScript Style Guide][airbnb-javascript].
 
-[github-ruby]: https://github.com/styleguide/ruby
-[bbatsov-ruby]: https://github.com/bbatsov/ruby-style-guide
-[airbnb-javascript]: https://github.com/airbnb/javascript
-
 ## <a name='TOC'>Table of Contents</a>
   1. [Coding Style](#coding-style)
   2. [Commenting](#commenting)
@@ -178,10 +174,6 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
 
 Portions of this section borrow heavily from the Google
 [C++][google-c++-comments] and [Python][google-python-comments] style guides.
-
-[google-c++]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml
-[google-c++-comments]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Comments
-[google-python-comments]: http://google-styleguide.googlecode.com/svn/trunk/pyguide.html#Comments
 
 ### File/class-level comments
 
@@ -604,7 +596,7 @@ Never leave commented-out code in our codebase.
 
 * The names of potentially "dangerous" methods (i.e. methods that modify `self` or the
   arguments, `exit!`, etc.) should end with an exclamation mark. Bang methods
-  should only exist if a non-bang method exists. ([More on this](http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist)).
+  should only exist if a non-bang method exists. ([More on this][ruby-naming-bang]).
 
 * Name throwaway variables "_".
     ```Ruby
@@ -787,7 +779,8 @@ in inheritance.
     email_with_name = "#{user.name} <#{user.email}>"
     ```
     
-    Furthermore, keep in mind Ruby 1.9-style interpolation. Let's say you have are composing cache keys like this:
+    Furthermore, keep in mind Ruby 1.9-style interpolation. Let's say you have
+    are composing cache keys like this:
 
     ```ruby
     CACHE_KEY = '_store'
@@ -834,8 +827,8 @@ in inheritance.
     process meaningful_var
     ```
 
-* Be careful with `^` and `$` as they match start/end of line, not string endings.
-  If you want to match the whole string use: `\A` and `\Z`.
+* Be careful with `^` and `$` as they match start/end of line, not string
+  endings.  If you want to match the whole string use: `\A` and `\Z`.
 
     ```Ruby
     string = "some injection\nusername"
@@ -900,8 +893,25 @@ in inheritance.
 
 ## Be Consistent
 
-> If you're editing code, take a few minutes to look at the code around you and determine its style. If they use spaces around all their arithmetic operators, you should too. If their comments have little boxes of hash marks around them, make your comments have little boxes of hash marks around them too.
+> If you're editing code, take a few minutes to look at the code around you and
+> determine its style. If they use spaces around all their arithmetic
+> operators, you should too. If their comments have little boxes of hash marks
+> around them, make your comments have little boxes of hash marks around them
+> too.
 
-> The point of having style guidelines is to have a common vocabulary of coding so people can concentrate on what you're saying rather than on how you're saying it. We present global style rules here so people know the vocabulary, but local style is also important. If code you add to a file looks drastically different from the existing code around it, it throws readers out of their rhythm when they go to read it. Avoid this.
+> The point of having style guidelines is to have a common vocabulary of coding
+> so people can concentrate on what you're saying rather than on how you're
+> saying it. We present global style rules here so people know the vocabulary,
+> but local style is also important. If code you add to a file looks
+> drastically different from the existing code around it, it throws readers out
+> of their rhythm when they go to read it. Avoid this.
 
-&mdash;[Google C++ Style Guide](http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml)
+&mdash;[Google C++ Style Guide][google-c++]
+
+[airbnb-javascript]: https://github.com/airbnb/javascript
+[bbatsov-ruby]: https://github.com/bbatsov/ruby-style-guide
+[github-ruby]: https://github.com/styleguide/ruby
+[google-c++]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml
+[google-c++-comments]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Comments
+[google-python-comments]: http://google-styleguide.googlecode.com/svn/trunk/pyguide.html#Comments
+[ruby-naming-bang]: http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist
