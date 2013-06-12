@@ -29,14 +29,21 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
 
 * Use soft-tabs with a two space indent.
 
-* Keep lines fewer than 100 characters. Long complex lines of code are hard to quickly understand. 
+* Keep lines fewer than 100 characters. Long complex lines of code are hard to
+  quickly understand.
 
-    Here are examples from our codebase showing several techniques for breaking complex statements into multiple lines that are all < 100 characters. Notice techniques like
+    Here are examples from our codebase showing several techniques for breaking
+    complex statements into multiple lines that are all < 100 characters.
+    Notice techniques like:
+
     * liberal use of linebreaks inside unclosed ( { [
     * chaining methods, ending unfinished chains with a "."
-    * composing long strings by putting strings next to each other, separated by a backslash-then-newline.
-    * breaking long logical statements with linebreaks after operators like "&&" and "||"
-    * add a new line after `if` conditions span multiple lines to help differentiate between the conditions and the body.
+    * composing long strings by putting strings next to each other, separated
+      by a backslash-then-newline.
+    * breaking long logical statements with linebreaks after operators like
+      "&&" and "||"
+    * add a new line after `if` conditions span multiple lines to help
+      differentiate between the conditions and the body.
 
 
     ```ruby
@@ -158,13 +165,23 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
 
 ## Commenting
 
-> Though a pain to write, comments are absolutely vital to keeping our code readable. The following rules describe what you should comment and where. But remember: while comments are very important, the best code is self-documenting. Giving sensible names to types and variables is much better than using obscure names that you must then explain through comments.
+> Though a pain to write, comments are absolutely vital to keeping our code
+> readable. The following rules describe what you should comment and where. But
+> remember: while comments are very important, the best code is
+> self-documenting. Giving sensible names to types and variables is much better
+> than using obscure names that you must then explain through comments.
 
-> When writing your comments, write for your audience: the next contributor who will need to understand your code. Be generous — the next one may be you!
+> When writing your comments, write for your audience: the next contributor who
+> will need to understand your code. Be generous — the next one may be you!
 
-&mdash;[Google C++ Style Guide](http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml)
+&mdash;[Google C++ Style Guide][google-c++]
 
-Portions of this section borrow heavily from the Google [C++](http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Comments) and [Python](http://google-styleguide.googlecode.com/svn/trunk/pyguide.html#Comments) style guides.
+Portions of this section borrow heavily from the Google
+[C++][google-c++-comments] and [Python][google-python-comments] style guides.
+
+[google-c++]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml
+[google-c++-comments]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Comments
+[google-python-comments]: http://google-styleguide.googlecode.com/svn/trunk/pyguide.html#Comments
 
 ## File/class-level comments
 
