@@ -645,6 +645,20 @@ Never leave commented-out code in our codebase.
     result = hash.map { |_, v| v + 1 }
     ```
 
+* When a method block takes only one argument, and the body consists solely of
+  reading an attribute or calling one method with no arguments, use the `&:`
+  shorthand.
+
+    ```ruby
+    # bad
+    bluths.map { |bluth| bluth.occupation }
+    bluths.select { |bluth| bluth.blue_self? }
+
+    # good
+    bluths.map(&:occupation)
+    bluths.select(&:blue_self?)
+    ```
+
 ## Naming
 
 * Use `snake_case` for methods and variables.
