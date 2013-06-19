@@ -9,21 +9,91 @@ which in turn was inspired by [Bozhidar Batsov's guide][bbatsov-ruby].
 We also maintain a [JavaScript Style Guide][airbnb-javascript].
 
 ## <a name='TOC'>Table of Contents</a>
-  1. [Coding Style](#coding-style)
-  2. [Commenting](#commenting)
-  3. [Syntax](#syntax)
-  4. [Naming](#naming)
-  5. [Classes](#classes)
-  6. [Exceptions](#exceptions)
-  7. [Collections](#collections)
-  8. [Strings](#strings)
-  9. [Regular Expressions](#regular-expressions)
-  10. [Percent Literals](#percent-literals)
-  11. [Be Consistent](#be-consistent)
+  1.  [Whitespace](#whitespace)
+  2.  [Coding Style](#coding-style)
+  3.  [Commenting](#commenting)
+  4.  [Syntax](#syntax)
+  5.  [Naming](#naming)
+  6.  [Classes](#classes)
+  7.  [Exceptions](#exceptions)
+  8.  [Collections](#collections)
+  9.  [Strings](#strings)
+  10. [Regular Expressions](#regular-expressions)
+  11. [Percent Literals](#percent-literals)
+  12. [Be Consistent](#be-consistent)
+
+## Whitespace
+
+### Inline
+
+* Never leave trailing whitespace.
+
+* Use spaces around operators, after commas, colons and semicolons, around `{`
+  and before `}`.
+
+    ```Ruby
+    sum = 1 + 2
+    a, b = 1, 2
+    1 > 2 ? true : false; puts 'Hi'
+    [1, 2, 3].each { |e| puts e }
+    ```
+
+* No spaces after `(`, `[` or before `]`, `)`.
+
+    ```Ruby
+    some(arg).other
+    [1, 2, 3].length
+    ```
+
+### Indentation
+
+* Use soft-tabs with a two space-indent.
+
+* Indent `when` as deep as `case`.
+
+    ```Ruby
+    case
+    when song.name == 'Misty'
+      puts 'Not again!'
+    when song.duration > 120
+      puts 'Too long!'
+    when Time.now.hour > 21
+      puts "It's too late"
+    else
+      song.play
+    end
+
+    kind = case year
+           when 1850..1889 then 'Blues'
+           when 1890..1909 then 'Ragtime'
+           when 1910..1929 then 'New Orleans Jazz'
+           when 1930..1939 then 'Swing'
+           when 1940..1950 then 'Bebop'
+           else 'Jazz'
+           end
+    ```
+
+### Newlines
+
+* Use empty lines between `def`s and to break up a method into logical
+  paragraphs.
+
+    ```Ruby
+    def some_method
+      data = initialize(options)
+
+      data.manipulate!
+
+      data.result
+    end
+
+    def some_method
+      result
+    end
+    ```
+
 
 ## Coding Style
-
-* Use soft-tabs with a two space indent.
 
 * Keep lines fewer than 100 characters. Long complex lines of code are hard to
   quickly understand.
@@ -97,66 +167,6 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
         <%= I18n.t("email.reservation_confirmed_guest.visa.russia.details_copy", :default => "Foreign guests travelling to Russia may need to obtain a visa prior to...") %>
       <% end %>
     <% end %>
-    ```
-
-* Never leave trailing whitespace.
-
-* Use spaces around operators, after commas, colons and semicolons, around `{`
-  and before `}`.
-
-    ```Ruby
-    sum = 1 + 2
-    a, b = 1, 2
-    1 > 2 ? true : false; puts 'Hi'
-    [1, 2, 3].each { |e| puts e }
-    ```
-
-* No spaces after `(`, `[` or before `]`, `)`.
-
-    ```Ruby
-    some(arg).other
-    [1, 2, 3].length
-    ```
-
-* Indent `when` as deep as `case`.
-
-    ```Ruby
-    case
-    when song.name == 'Misty'
-      puts 'Not again!'
-    when song.duration > 120
-      puts 'Too long!'
-    when Time.now.hour > 21
-      puts "It's too late"
-    else
-      song.play
-    end
-
-    kind = case year
-           when 1850..1889 then 'Blues'
-           when 1890..1909 then 'Ragtime'
-           when 1910..1929 then 'New Orleans Jazz'
-           when 1930..1939 then 'Swing'
-           when 1940..1950 then 'Bebop'
-           else 'Jazz'
-           end
-    ```
-
-* Use empty lines between `def`s and to break up a method into logical
-  paragraphs.
-
-    ```Ruby
-    def some_method
-      data = initialize(options)
-
-      data.manipulate!
-
-      data.result
-    end
-
-    def some_method
-      result
-    end
     ```
 
 ## Commenting
