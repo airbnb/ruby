@@ -13,7 +13,7 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
       1. [Inline](#inline)
       2. [Indentation](#indentation)
       3. [Newlines](#newlines)
-  2.  [Coding Style](#coding-style)
+  2.  [Line Length](#line-length)
   3.  [Commenting](#commenting)
   4.  [Method Definitions](#method-definitions)
   5.  [Conditional Expressions](#conditional-expressions)
@@ -109,7 +109,7 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
     end
     ```
 
-## Coding Style
+## Line Length
 
 * Keep lines fewer than 100 characters. Long complex lines of code are hard to
   quickly understand.
