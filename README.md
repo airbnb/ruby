@@ -10,18 +10,23 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
 
 ## <a name='TOC'>Table of Contents</a>
   1.  [Whitespace](#whitespace)
+      1. [Inline](#inline)
+      2. [Indentation](#indentation)
+      3. [Newlines](#newlines)
   2.  [Coding Style](#coding-style)
   3.  [Commenting](#commenting)
   4.  [Method Definitions](#method-definitions)
-  5.  [Syntax](#syntax)
-  6.  [Naming](#naming)
-  7.  [Classes](#classes)
-  8.  [Exceptions](#exceptions)
-  9.  [Collections](#collections)
-  10. [Strings](#strings)
-  11. [Regular Expressions](#regular-expressions)
-  12. [Percent Literals](#percent-literals)
-  13. [Be Consistent](#be-consistent)
+  5.  [Conditional Expressions](#conditional-expressions)
+      1. [Ternary Operator Usage](#ternary-operator-usage)
+  6.  [Syntax](#syntax)
+  7.  [Naming](#naming)
+  8.  [Classes](#classes)
+  9.  [Exceptions](#exceptions)
+  10. [Collections](#collections)
+  11. [Strings](#strings)
+  12. [Regular Expressions](#regular-expressions)
+  13. [Percent Literals](#percent-literals)
+  14. [Be Consistent](#be-consistent)
 
 ## Whitespace
 
@@ -411,25 +416,7 @@ Never leave commented-out code in our codebase.
     prominent in practice (and arguably a bit more readable).
 
 
-## Syntax
-
-* Never use `for`, unless you know exactly why. Most of the time iterators
-  should be used instead. `for` is implemented in terms of `each` (so
-  you're adding a level of indirection), but with a twist - `for`
-  doesn't introduce a new scope (unlike `each`) and variables defined
-  in its block will be visible outside it.
-
-    ```Ruby
-    arr = [1, 2, 3]
-
-    # bad
-    for elem in arr do
-      puts elem
-    end
-
-    # good
-    arr.each { |elem| puts elem }
-    ```
+## Conditional Expressions
 
 * Never use `then` for multi-line `if/unless`.
 
@@ -445,37 +432,7 @@ Never leave commented-out code in our codebase.
     end
     ```
 
-* Avoid the ternary operator (`?:`) except in cases where all expressions are
-  extremely trivial. However, do use the ternary operator(`?:`) over
-  `if/then/else/end` constructs for single line conditionals.
-
-    ```Ruby
-    # bad
-    result = if some_condition then something else something_else end
-
-    # good
-    result = some_condition ? something : something_else
-    ```
-
-* Use one expression per branch in a ternary operator. This
-  also means that ternary operators must not be nested. Prefer
-  `if/else` constructs in these cases.
-
-    ```Ruby
-    # bad
-    some_condition ? (nested_condition ? nested_something : nested_something_else) : something_else
-
-    # good
-    if some_condition
-      nested_condition ? nested_something : nested_something_else
-    else
-      something_else
-    end
-    ```
-
 * The `and` and `or` keywords are banned. It's just not worth it. Always use `&&` and `||` instead.
-
-* Avoid multi-line `?:` (the ternary operator), use `if/unless` instead.
 
 * Favor modifier `if/unless` usage when you have a single-line
   body.
@@ -528,6 +485,60 @@ Never leave commented-out code in our codebase.
       # body omitted
     end
     ```
+
+### Ternary Operator Usage
+
+* Avoid the ternary operator (`?:`) except in cases where all expressions are
+  extremely trivial. However, do use the ternary operator(`?:`) over
+  `if/then/else/end` constructs for single line conditionals.
+
+    ```Ruby
+    # bad
+    result = if some_condition then something else something_else end
+
+    # good
+    result = some_condition ? something : something_else
+    ```
+
+* Use one expression per branch in a ternary operator. This
+  also means that ternary operators must not be nested. Prefer
+  `if/else` constructs in these cases.
+
+    ```Ruby
+    # bad
+    some_condition ? (nested_condition ? nested_something : nested_something_else) : something_else
+
+    # good
+    if some_condition
+      nested_condition ? nested_something : nested_something_else
+    else
+      something_else
+    end
+    ```
+
+* Avoid multi-line `?:` (the ternary operator), use `if/unless` instead.
+
+
+## Syntax
+
+* Never use `for`, unless you know exactly why. Most of the time iterators
+  should be used instead. `for` is implemented in terms of `each` (so
+  you're adding a level of indirection), but with a twist - `for`
+  doesn't introduce a new scope (unlike `each`) and variables defined
+  in its block will be visible outside it.
+
+    ```Ruby
+    arr = [1, 2, 3]
+
+    # bad
+    for elem in arr do
+      puts elem
+    end
+
+    # good
+    arr.each { |elem| puts elem }
+    ```
+
 
 * Prefer `{...}` over `do...end` for single-line blocks.  Avoid using
   `{...}` for multi-line blocks (multiline chaining is always
