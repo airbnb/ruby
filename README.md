@@ -12,15 +12,16 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
   1.  [Whitespace](#whitespace)
   2.  [Coding Style](#coding-style)
   3.  [Commenting](#commenting)
-  4.  [Syntax](#syntax)
-  5.  [Naming](#naming)
-  6.  [Classes](#classes)
-  7.  [Exceptions](#exceptions)
-  8.  [Collections](#collections)
-  9.  [Strings](#strings)
-  10. [Regular Expressions](#regular-expressions)
-  11. [Percent Literals](#percent-literals)
-  12. [Be Consistent](#be-consistent)
+  4.  [Method Definitions](#method-definitions)
+  5.  [Syntax](#syntax)
+  6.  [Naming](#naming)
+  7.  [Classes](#classes)
+  8.  [Exceptions](#exceptions)
+  9.  [Collections](#collections)
+  10. [Strings](#strings)
+  11. [Regular Expressions](#regular-expressions)
+  12. [Percent Literals](#percent-literals)
+  13. [Be Consistent](#be-consistent)
 
 ## Whitespace
 
@@ -355,7 +356,8 @@ always your name that is given.
 
 Never leave commented-out code in our codebase.
 
-## Syntax
+
+## Method Definitions
 
 * Use `def` with parentheses when there are arguments. Omit the
   parentheses when the method doesn't accept any arguments.
@@ -407,6 +409,9 @@ Never leave commented-out code in our codebase.
 
     While several Ruby books suggest the first style, the second is much more
     prominent in practice (and arguably a bit more readable).
+
+
+## Syntax
 
 * Never use `for`, unless you know exactly why. Most of the time iterators
   should be used instead. `for` is implemented in terms of `each` (so
