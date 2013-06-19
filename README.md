@@ -28,8 +28,8 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
 
 * Never leave trailing whitespace.
 
-* Use spaces around operators, after commas, colons and semicolons, around `{`
-  and before `}`.
+* Use spaces around operators; after commas, colons, and semicolons; and around
+  `{` and before `}`.
 
     ```Ruby
     sum = 1 + 2
