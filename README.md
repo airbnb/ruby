@@ -971,7 +971,8 @@ in inheritance.
 
 ## Rails
 
-  * When using multiple `render` calls in an ActionController, always put the `return` on the next line.
+  * When immediately returning after calling `render` or `redirect_to`, put `return` on the next line,
+    not the same line.
 
     ```Ruby
       # bad
