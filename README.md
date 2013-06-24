@@ -81,24 +81,6 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
 
 ### Newlines
 
-<<<<<<< Updated upstream
-* Use empty lines between `def`s and to break up a method into logical
-  paragraphs.
-
-    ```ruby
-    def some_method
-      data = initialize(options)
-
-      data.manipulate!
-
-      data.result
-    end
-
-    def some_method
-      result
-    end
-    ```
-
 * Add a new line after `if` conditions span multiple lines to help
   differentiate between the conditions and the body.
 
@@ -118,9 +100,6 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
     Here are examples from our codebase showing several techniques for breaking
     complex statements into multiple lines that are all < 100 characters.
     Notice techniques like:
-=======
-* Keep lines fewer than 100 characters. Long complex lines of code are hard to quickly understand.
->>>>>>> Stashed changes
 
     * liberal use of linebreaks inside unclosed ( { [
     * chaining methods, ending unfinished chains with a "."
