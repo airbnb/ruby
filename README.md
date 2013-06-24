@@ -81,6 +81,7 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
 
 ### Newlines
 
+<<<<<<< Updated upstream
 * Use empty lines between `def`s and to break up a method into logical
   paragraphs.
 
@@ -117,6 +118,9 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
     Here are examples from our codebase showing several techniques for breaking
     complex statements into multiple lines that are all < 100 characters.
     Notice techniques like:
+=======
+* Keep lines fewer than 100 characters. Long complex lines of code are hard to quickly understand.
+>>>>>>> Stashed changes
 
     * liberal use of linebreaks inside unclosed ( { [
     * chaining methods, ending unfinished chains with a "."
@@ -434,17 +438,26 @@ Never leave commented-out code in our codebase.
 
 * The `and` and `or` keywords are banned. It's just not worth it. Always use `&&` and `||` instead.
 
-* Favor modifier `if/unless` usage when you have a single-line
-  body.
+* Modifier `if/unless` usage is okay when the body is simple, the
+  condition is simple, and the whole thing fits on one line. Otherwise,
+  avoid modifier `if/unless`.
 
     ```Ruby
-    # bad
-    if some_condition
-      do_something
+    # Bad -- this doesn't fit on one line.
+    add_trebuchet_experiments_on_page(request_opts[:trebuchet_experiments_on_page]) if request_opts[:trebuchet_experiments_on_page] && !request_opts[:trebuchet_experiments_on_page].empty?
+
+    # okay
+    if request_opts[:trebuchet_experiments_on_page] &&
+         !request_opts[:trebuchet_experiments_on_page].empty?
+
+      add_trebuchet_experiments_on_page(request_opts[:trebuchet_experiments_on_page])
     end
 
-    # good
-    do_something if some_condition
+    # Bad -- this is complex and deserves multiple lines and a comment.
+    parts[i] = part.to_i(INTEGER_BASE) if !part.nil? && [0, 2, 3].include?(i)
+
+    # okay
+    return if self.reconciled?
     ```
 
 * Never use `unless` with `else`. Rewrite these with the positive case first.
@@ -463,6 +476,20 @@ Never leave commented-out code in our codebase.
     else
       puts 'failure'
     end
+    ```
+
+* Never use `unless` with multiple conditions.
+
+    ```Ruby
+      # bad
+      unless foo? && bar?
+        puts "baz"
+      end
+
+      # okay
+      if !foo? || !bar?
+        puts "baz"
+      end
     ```
 
 * Don't use parentheses around the condition of an `if/unless/while`,
