@@ -466,7 +466,7 @@ Never leave commented-out code in our codebase.
       end
 
       # okay
-      if !foo? || !bar?
+      if !(foo? && bar?)
         puts "baz"
       end
     ```
