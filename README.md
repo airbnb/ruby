@@ -457,7 +457,7 @@ Never leave commented-out code in our codebase.
     end
     ```
 
-* Never use `unless` with multiple conditions.
+* Avoid `unless` with multiple conditions.
 
     ```Ruby
       # bad
