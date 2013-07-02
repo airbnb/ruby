@@ -58,6 +58,38 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
            end
     ```
 
+* Align function arguments either all on the same line or one per line.
+
+    ```ruby
+      # good
+      def self.create_translation(phrase_id,
+                                  phrase_key,
+                                  target_locale,
+                                  value,
+                                  user_id,
+                                  do_xss_check,
+                                  allow_verification)
+        ...
+      end
+
+      # good
+      def self.create_translation(
+          phrase_id,
+          phrase_key,
+          target_locale,
+          value, user_id,
+          do_xss_check,
+          allow_verification)
+        ...
+      end
+
+      # bad
+      def self.create_translation(phrase_id, phrase_key, target_locale,
+                                  value, user_id, do_xss_check, allow_verification)
+        ...
+      end
+    ```
+
 ### Inline
 
 * Never leave trailing whitespace.
@@ -365,7 +397,7 @@ Never leave commented-out code in our codebase.
     ```Ruby
     # bad
     def obliterate(things, gently = true, except = [], at = Time.now) 
-      # implementation omitted
+      ...
     end
 
     # good
@@ -377,7 +409,7 @@ Never leave commented-out code in our codebase.
       }
       options.reverse_merge!(default_options)
 
-      # implementation omitted
+      ...
     end
     ```
 
@@ -386,12 +418,12 @@ Never leave commented-out code in our codebase.
     ```Ruby
     # bad
     def some_method(options={})
-      # do something...
+      ...
     end
 
     # good
     def some_method(options = {})
-      # do something...
+      ...
     end
     ```
 
@@ -406,12 +438,12 @@ Never leave commented-out code in our codebase.
     ```Ruby
     # bad
     if some_condition then
-      # body omitted
+      ...
     end
 
     # good
     if some_condition
-      # body omitted
+      ...
     end
     ```
 
@@ -462,12 +494,12 @@ Never leave commented-out code in our codebase.
     ```Ruby
       # bad
       unless foo? && bar?
-        puts "baz"
+        ...
       end
 
       # okay
       if !(foo? && bar?)
-        puts "baz"
+        ...
       end
     ```
 
@@ -478,17 +510,17 @@ Never leave commented-out code in our codebase.
     ```Ruby
     # bad
     if (x > 10)
-      # body omitted
+      ...
     end
 
     # good
     if x > 10
-      # body omitted
+      ...
     end
 
     # ok
     if (x = self.next_value)
-      # body omitted
+      ...
     end
     ```
 
@@ -718,12 +750,12 @@ in inheritance.
     class TestClass
       # bad
       def TestClass.some_method
-        # body omitted
+        ...
       end
 
       # good
       def self.some_other_method
-        # body omitted
+        ...
       end
     ```
 * Avoid `class << self` except when necessary, e.g. single accessors and aliased
@@ -734,11 +766,11 @@ in inheritance.
       # bad
       class << self
         def first_method
-          # body omitted
+          ...
         end
 
         def second_method_etc
-          # body omitted
+          ...
         end
       end
 
@@ -749,11 +781,11 @@ in inheritance.
       end
 
       def self.first_method
-        # body omitted
+        ...
       end
 
       def self.second_method_etc
-        # body omitted
+        ...
       end
     end
     ```
@@ -802,14 +834,14 @@ in inheritance.
     rescue Exception
       # exception handling
     end
-    
+
     # good
     begin
       # an exception occurs here
     rescue StandardError
       # exception handling
     end
-    
+
     # acceptable
     begin
       # an exception occurs here
@@ -861,13 +893,13 @@ in inheritance.
     # good
     email_with_name = "#{user.name} <#{user.email}>"
     ```
-    
+
     Furthermore, keep in mind Ruby 1.9-style interpolation. Let's say you have
     are composing cache keys like this:
 
     ```ruby
     CACHE_KEY = '_store'
-    
+
     cache.write(@user.id + CACHE_KEY)
     ```
 
