@@ -26,6 +26,7 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
   11. [Strings](#strings)
   12. [Regular Expressions](#regular-expressions)
   13. [Percent Literals](#percent-literals)
+  14. [Rails Specific](#rails)
   14. [Be Consistent](#be-consistent)
 
 ## Whitespace
@@ -205,7 +206,7 @@ module Translation
                                :"en-NZ" => AmericanToKiwi.new,
                              } }
     end
-  
+
   ...
 
   # Applies transforms to American English that are common to
@@ -213,7 +214,7 @@ module Translation
   class AmericanToColonial
     ...
   end
-  
+
   # Converts American to British English.
   # In addition to general Colonial English variations, changes "apartment"
   # to "flat".
@@ -364,7 +365,7 @@ Never leave commented-out code in our codebase.
 
     ```Ruby
     # bad
-    def obliterate(things, gently = true, except = [], at = Time.now) 
+    def obliterate(things, gently = true, except = [], at = Time.now)
       # implementation omitted
     end
 
@@ -802,14 +803,14 @@ in inheritance.
     rescue Exception
       # exception handling
     end
-    
+
     # good
     begin
       # an exception occurs here
     rescue StandardError
       # exception handling
     end
-    
+
     # acceptable
     begin
       # an exception occurs here
@@ -861,13 +862,13 @@ in inheritance.
     # good
     email_with_name = "#{user.name} <#{user.email}>"
     ```
-    
+
     Furthermore, keep in mind Ruby 1.9-style interpolation. Let's say you have
     are composing cache keys like this:
 
     ```ruby
     CACHE_KEY = '_store'
-    
+
     cache.write(@user.id + CACHE_KEY)
     ```
 
@@ -972,6 +973,29 @@ in inheritance.
 
     # good
     %r(^/blog/2011/(.*)$)
+    ```
+
+## Rails
+
+  * When immediately returning after calling `render` or `redirect_to`, put `return` on the next line,
+    not the same line.
+
+    ```Ruby
+      # bad
+      render :text => 'Howdy' and return
+
+      # good
+      render :text => 'Howdy'
+      return
+
+      # still bad
+      render :text => 'Howdy' and return if foo.present?
+
+      # good
+      if foo.present?
+        render :text => 'Howdy'
+        return
+      end
     ```
 
 ## Be Consistent
