@@ -10,8 +10,8 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
 
 ## <a name='TOC'>Table of Contents</a>
   1.  [Whitespace](#whitespace)
-      1. [Inline](#inline)
-      2. [Indentation](#indentation)
+      1. [Indentation](#indentation)
+      2. [Inline](#inline)
       3. [Newlines](#newlines)
   2.  [Line Length](#line-length)
   3.  [Commenting](#commenting)
@@ -29,27 +29,6 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
   14. [Be Consistent](#be-consistent)
 
 ## Whitespace
-
-### Inline
-
-* Never leave trailing whitespace.
-
-* Use spaces around operators; after commas, colons, and semicolons; and around
-  `{` and before `}`.
-
-    ```Ruby
-    sum = 1 + 2
-    a, b = 1, 2
-    1 > 2 ? true : false; puts 'Hi'
-    [1, 2, 3].each { |e| puts e }
-    ```
-
-* No spaces after `(`, `[` or before `]`, `)`.
-
-    ```Ruby
-    some(arg).other
-    [1, 2, 3].length
-    ```
 
 ### Indentation
 
@@ -77,6 +56,27 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
            when 1940..1950 then 'Bebop'
            else 'Jazz'
            end
+    ```
+
+### Inline
+
+* Never leave trailing whitespace.
+
+* Use spaces around operators; after commas, colons, and semicolons; and around
+  `{` and before `}`.
+
+    ```Ruby
+    sum = 1 + 2
+    a, b = 1, 2
+    1 > 2 ? true : false; puts 'Hi'
+    [1, 2, 3].each { |e| puts e }
+    ```
+
+* No spaces after `(`, `[` or before `]`, `)`.
+
+    ```Ruby
+    some(arg).other
+    [1, 2, 3].length
     ```
 
 ### Newlines
