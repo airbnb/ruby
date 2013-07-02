@@ -800,9 +800,11 @@ in inheritance.
 
 ## Collections
 
-* When creating a new Array based on the contents of another Array, use `map`
-  and `select` instead of declaring a new Array and using `each` to add elements
-  to it one by one.
+* When creating a new Array based on the contents of another Array, prefer
+  using `map` and `select` instead of declaring a new Array and using `each` to
+  add elements to it one by one.  One exception to this guideline is when you
+  are working with a large Array in a hot path where this style would have a
+  non-trivial impact on performance.
 
     ```ruby
     rebels = ['luke (jedi)', 'leia', 'yoda (jedi)', 'han']
