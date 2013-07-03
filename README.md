@@ -65,13 +65,13 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
     ```ruby
     # good
     if @reservation_alteration.checkin == @reservation.start_date &&
-         @reservation_alteration.checkout == (@reservation.start_date + @reservation.nights)
+        @reservation_alteration.checkout == (@reservation.start_date + @reservation.nights)
       redirect_to_alteration @reservation_alteration
     end
 
     # good
     if @reservation_alteration.checkin == @reservation.start_date &&
-       @reservation_alteration.checkout == (@reservation.start_date + @reservation.nights)
+        @reservation_alteration.checkout == (@reservation.start_date + @reservation.nights)
 
       redirect_to_alteration @reservation_alteration
     end
