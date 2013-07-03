@@ -27,7 +27,8 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
   12. [Regular Expressions](#regular-expressions)
   13. [Percent Literals](#percent-literals)
   14. [Rails Specific](#rails)
-  14. [Be Consistent](#be-consistent)
+  15. [TODOs](#todos)
+  16. [Be Consistent](#be-consistent)
 
 ## Whitespace
 
@@ -996,6 +997,20 @@ in inheritance.
         render :text => 'Howdy'
         return
       end
+    ```
+
+## TODOs
+
+  * When you leave code in the repository which will need eventual cleaning, it is appropriate to
+    leave a TODO for yourself.
+
+  * Use your full name in the TODO parentheses to disambiguate the owner of the TODO.
+
+    ```# bad
+      TODO(RS): Use proper namespacing for this constant.
+
+      # good
+      TODO(Ringo Starr): Use proper namespacing for this constant.
     ```
 
 ## Be Consistent
