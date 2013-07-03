@@ -1006,11 +1006,12 @@ in inheritance.
 
   * Use your full name in the TODO parentheses to disambiguate the owner of the TODO.
 
-    ```# bad
-      TODO(RS): Use proper namespacing for this constant.
+    ```Ruby
+      # bad
+      # TODO(RS): Use proper namespacing for this constant.
 
       # good
-      TODO(Ringo Starr): Use proper namespacing for this constant.
+      # TODO(Ringo Starr): Use proper namespacing for this constant.
     ```
 
 ## Be Consistent
