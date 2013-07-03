@@ -27,8 +27,7 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
   12. [Regular Expressions](#regular-expressions)
   13. [Percent Literals](#percent-literals)
   14. [Rails Specific](#rails)
-  15. [TODOs](#todos)
-  16. [Be Consistent](#be-consistent)
+  15. [Be Consistent](#be-consistent)
 
 ## Whitespace
 
@@ -328,18 +327,23 @@ punctuation, spelling, and grammar help with that goal.
 Use TODO comments for code that is temporary, a short-term solution, or
 good-enough but not perfect.
 
-TODOs should include the string TODO in all caps, followed by the name, e-mail
-address, or other identifier of the person who can best provide context about
-the problem referenced by the TODO, in parentheses. A colon is optional. A
-comment explaining what there is to do is required. The main purpose is to have
-a consistent TODO format that can be searched to find the person who can
-provide more details upon request. A TODO is not a commitment that the person
-referenced will fix the problem. Thus when you create a TODO, it is almost
-always your name that is given.
+TODOs should include the string TODO in all caps, followed by the full name
+of the person who can best provide context about the problem referenced by the
+TODO, in parentheses. A colon is optional. A comment explaining what there is
+to do is required. The main purpose is to have a consistent TODO format that
+can be searched to find the person who can provide more details upon request.
+A TODO is not a commitment that the person referenced will fix the problem.
+Thus when you create a TODO, it is almost always your name that is given.
 
 ```ruby
-# TODO(JKB) Make this play nicely with country-specific locales.
-# TODO(max): Fix this by mocking Trebuchet.
+  # bad
+  # TODO(RS): Use proper namespacing for this constant.
+
+  # bad
+  # TODO(drumm3rz4lyfe): Use proper namespacing for this constant.
+
+  # good
+  # TODO(Ringo Starr): Use proper namespacing for this constant.
 ```
 
 ### Commented-out code
@@ -997,24 +1001,6 @@ in inheritance.
         render :text => 'Howdy'
         return
       end
-    ```
-
-## TODOs
-
-  * When you leave code in the repository which will need eventual cleaning, it is appropriate to
-    leave a TODO for yourself.
-
-  * Use your full name in the TODO parentheses to disambiguate the owner of the TODO.
-
-    ```Ruby
-      # bad
-      # TODO(RS): Use proper namespacing for this constant.
-
-      # bad
-      # TODO(drumm3rz4lyfe): Use proper namespacing for this constant.
-
-      # good
-      # TODO(Ringo Starr): Use proper namespacing for this constant.
     ```
 
 ## Be Consistent
