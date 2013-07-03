@@ -59,6 +59,25 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
            end
     ```
 
+* Indent multi-line `if` conditions in such a way that it's easy to
+  understand where the `if` body starts. Alternatively, add a new line
+  after `if` conditions that span multiple lines.
+
+    ```ruby
+    # good
+    if @reservation_alteration.checkin == @reservation.start_date &&
+        @reservation_alteration.checkout == (@reservation.start_date + @reservation.nights)
+      redirect_to_alteration @reservation_alteration
+    end
+
+    # good
+    if @reservation_alteration.checkin == @reservation.start_date &&
+        @reservation_alteration.checkout == (@reservation.start_date + @reservation.nights)
+
+      redirect_to_alteration @reservation_alteration
+    end
+    ```
+
 ### Inline
 
 * Never leave trailing whitespace.
@@ -78,19 +97,6 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
     ```Ruby
     some(arg).other
     [1, 2, 3].length
-    ```
-
-### Newlines
-
-* Add a new line after `if` conditions span multiple lines to help
-  differentiate between the conditions and the body.
-
-    ```ruby
-    if @reservation_alteration.checkin == @reservation.start_date &&
-       @reservation_alteration.checkout == (@reservation.start_date + @reservation.nights)
-
-      redirect_to_alteration @reservation_alteration
-    end
     ```
 
 ## Line Length
