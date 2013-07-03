@@ -1010,6 +1010,9 @@ in inheritance.
       # bad
       # TODO(RS): Use proper namespacing for this constant.
 
+      # bad
+      # TODO(drumm3rz4lyfe): Use proper namespacing for this constant.
+
       # good
       # TODO(Ringo Starr): Use proper namespacing for this constant.
     ```
