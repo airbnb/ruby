@@ -26,6 +26,7 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
   11. [Strings](#strings)
   12. [Regular Expressions](#regular-expressions)
   13. [Percent Literals](#percent-literals)
+  14. [Rails Specific](#rails)
   14. [Be Consistent](#be-consistent)
 
 ## Whitespace
@@ -237,7 +238,7 @@ module Translation
                                :"en-NZ" => AmericanToKiwi.new,
                              } }
     end
-  
+
   ...
 
   # Applies transforms to American English that are common to
@@ -245,7 +246,7 @@ module Translation
   class AmericanToColonial
     ...
   end
-  
+
   # Converts American to British English.
   # In addition to general Colonial English variations, changes "apartment"
   # to "flat".
@@ -412,24 +413,6 @@ Never leave commented-out code in our codebase.
       ...
     end
     ```
-
-* Use spaces around the `=` operator when assigning default values:
-
-    ```Ruby
-    # bad
-    def some_method(options={})
-      ...
-    end
-
-    # good
-    def some_method(options = {})
-      ...
-    end
-    ```
-
-    While several Ruby books suggest the first style, the second is much more
-    prominent in practice (and arguably a bit more readable).
-
 
 ## Conditional Expressions
 
@@ -1004,6 +987,29 @@ in inheritance.
 
     # good
     %r(^/blog/2011/(.*)$)
+    ```
+
+## Rails
+
+  * When immediately returning after calling `render` or `redirect_to`, put `return` on the next line,
+    not the same line.
+
+    ```Ruby
+      # bad
+      render :text => 'Howdy' and return
+
+      # good
+      render :text => 'Howdy'
+      return
+
+      # still bad
+      render :text => 'Howdy' and return if foo.present?
+
+      # good
+      if foo.present?
+        render :text => 'Howdy'
+        return
+      end
     ```
 
 ## Be Consistent
