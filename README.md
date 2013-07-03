@@ -382,23 +382,6 @@ Never leave commented-out code in our codebase.
     end
     ```
 
-* Use spaces around the `=` operator when assigning default values:
-
-    ```Ruby
-    # bad
-    def some_method(options={})
-      # do something...
-    end
-
-    # good
-    def some_method(options = {})
-      # do something...
-    end
-    ```
-
-    While several Ruby books suggest the first style, the second is much more
-    prominent in practice (and arguably a bit more readable).
-
 
 ## Conditional Expressions
 
