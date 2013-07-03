@@ -62,33 +62,22 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
 * Align function arguments either all on the same line or one per line.
 
     ```ruby
-      # good
-      def self.create_translation(phrase_id,
-                                  phrase_key,
-                                  target_locale,
-                                  value,
-                                  user_id,
-                                  do_xss_check,
-                                  allow_verification)
-        ...
-      end
+    # good
+    def self.create_translation(phrase_id,
+                                phrase_key,
+                                target_locale,
+                                value,
+                                user_id,
+                                do_xss_check,
+                                allow_verification)
+      ...
+    end
 
-      # good
-      def self.create_translation(
-          phrase_id,
-          phrase_key,
-          target_locale,
-          value, user_id,
-          do_xss_check,
-          allow_verification)
-        ...
-      end
-
-      # bad
-      def self.create_translation(phrase_id, phrase_key, target_locale,
-                                  value, user_id, do_xss_check, allow_verification)
-        ...
-      end
+    # bad
+    def self.create_translation(phrase_id, phrase_key, target_locale,
+                                value, user_id, do_xss_check, allow_verification)
+      ...
+    end
     ```
 
 ### Inline
@@ -397,7 +386,7 @@ Never leave commented-out code in our codebase.
 
     ```Ruby
     # bad
-    def obliterate(things, gently = true, except = [], at = Time.now) 
+    def obliterate(things, gently = true, except = [], at = Time.now)
       ...
     end
 
