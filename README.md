@@ -985,6 +985,16 @@ in inheritance.
 
 ## Rails
 
+  * Do not use ActiveRecord dynamic finders.  They are [deprecated](http://guides.rubyonrails.org/active_record_querying.html#dynamic-finders).
+
+    ```ruby
+    # bad
+    Parties.find_by_country_and_wildness('US', 9000)
+
+    # good
+    Parties.where(:country => 'US', :wildness => 9000).first
+    ```
+
   * When immediately returning after calling `render` or `redirect_to`, put `return` on the next line,
     not the same line.
 
