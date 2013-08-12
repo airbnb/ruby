@@ -848,7 +848,7 @@ in inheritance.
   trailing commas to ensure that parameter changes don't cause
   extraneous diff lines when the logic has not otherwise changed.
 
-    ```
+    ```ruby
     hash = {
       :protocol => 'https',
       :only_path => false,
