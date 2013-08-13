@@ -985,25 +985,25 @@ in inheritance.
 
 ## Rails
 
-  * When immediately returning after calling `render` or `redirect_to`, put `return` on the next line,
-    not the same line.
+* When immediately returning after calling `render` or `redirect_to`, put `return` on the next line,
+  not the same line.
 
-    ```Ruby
-      # bad
-      render :text => 'Howdy' and return
+    ```ruby
+    # bad
+    render :text => 'Howdy' and return
 
-      # good
+    # good
+    render :text => 'Howdy'
+    return
+
+    # still bad
+    render :text => 'Howdy' and return if foo.present?
+
+    # good
+    if foo.present?
       render :text => 'Howdy'
       return
-
-      # still bad
-      render :text => 'Howdy' and return if foo.present?
-
-      # good
-      if foo.present?
-        render :text => 'Howdy'
-        return
-      end
+    end
     ```
 
 ## Be Consistent
