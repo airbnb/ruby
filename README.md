@@ -1180,6 +1180,18 @@ in inheritance.
     end
     ```
 
+* When defining ActiveRecord model scopes, wrap the relation in a `lambda`.  A
+  naked relation forces a database connection to be established at class load
+  time (instance startup).
+
+    ```ruby
+    # bad
+    scope :foo, where(:bar => 1)
+
+    # good
+    scope :foo, lambda { where(:bar => 1) }
+    ```
+
 ## Be Consistent
 
 > If you're editing code, take a few minutes to look at the code around you and
