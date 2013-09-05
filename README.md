@@ -84,21 +84,20 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
 
 * Never leave trailing whitespace.
 
-* Use spaces around operators; after commas, colons, and semicolons; and around
-  `{` and before `}`.
+* Use spaces around operators; after commas, colons, and semicolons.
 
     ```Ruby
     sum = 1 + 2
     a, b = 1, 2
     1 > 2 ? true : false; puts 'Hi'
-    [1, 2, 3].each { |e| puts e }
     ```
 
-* No spaces after `(`, `[` or before `]`, `)`.
+* No spaces after `(`, `[`, `{` or before `}`, `]`, `)`.
 
     ```Ruby
     some(arg).other
     [1, 2, 3].length
+    [1, 2, 3].each {|e| puts e}
     ```
 
 ### Newlines
@@ -173,7 +172,7 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
     These code snippets are very much more readable than the alternative:
 
     ```ruby
-    scope = Translation::Phrase.includes(:phrase_translations).joins(:phrase_screenshots).where(:phrase_screenshots => { :controller => controller_name, :action => JAROMIR_JAGR_SALUTE })
+    scope = Translation::Phrase.includes(:phrase_translations).joins(:phrase_screenshots).where(:phrase_screenshots => {:controller => controller_name, :action => JAROMIR_JAGR_SALUTE})
 
     translation = FactoryGirl.create(:phrase_translation, :locale => :is, :phrase => phrase, :key => 'phone_number_not_revealed_time_zone', :value => 'Símanúmerið þitt verður ekki birt. Það er aðeins hægt að hringja á milli 9:00 og 21:00 %{time_zone}.')
 
@@ -221,11 +220,11 @@ module Translation
   # Australian, New Zealand variations is provided.
   class PrimAndProper
     def initialize
-      @converters = { :en => { :"en-AU" => AmericanToAustralian.new,
-                               :"en-CA" => AmericanToCanadian.new,
-                               :"en-GB" => AmericanToBritish.new,
-                               :"en-NZ" => AmericanToKiwi.new,
-                             } }
+      @converters = {:en => {:"en-AU" => AmericanToAustralian.new,
+                             :"en-CA" => AmericanToCanadian.new,
+                             :"en-GB" => AmericanToBritish.new,
+                             :"en-NZ" => AmericanToKiwi.new,
+                            }}
     end
 
   ...
@@ -551,7 +550,7 @@ Never leave commented-out code in our codebase.
     end
 
     # good
-    arr.each { |elem| puts elem }
+    arr.each {|elem| puts elem}
     ```
 
 
@@ -565,7 +564,7 @@ Never leave commented-out code in our codebase.
     names = ["Bozhidar", "Steve", "Sarah"]
 
     # good
-    names.each { |name| puts name }
+    names.each {|name| puts name}
 
     # bad
     names.each do |name|
@@ -573,12 +572,12 @@ Never leave commented-out code in our codebase.
     end
 
     # good
-    names.select { |name| name.start_with?("S") }.map { |name| name.upcase }
+    names.select {|name| name.start_with?("S")}.map {|name| name.upcase}
 
     # bad
     names.select do |name|
       name.start_with?("S")
-    end.map { |name| name.upcase }
+    end.map {|name| name.upcase}
     ```
 
     Some will argue that multiline chaining would look OK with the use of
@@ -654,10 +653,10 @@ Never leave commented-out code in our codebase.
 
     ```Ruby
     # bad
-    result = hash.map { |k, v| v + 1 }
+    result = hash.map {|k, v| v + 1}
 
     # good
-    result = hash.map { |_, v| v + 1 }
+    result = hash.map {|_, v| v + 1}
     ```
 
 * When a method block takes only one argument, and the body consists solely of
@@ -666,8 +665,8 @@ Never leave commented-out code in our codebase.
 
     ```ruby
     # bad
-    bluths.map { |bluth| bluth.occupation }
-    bluths.select { |bluth| bluth.blue_self? }
+    bluths.map {|bluth| bluth.occupation}
+    bluths.select {|bluth| bluth.blue_self?}
 
     # good
     bluths.map(&:occupation)
@@ -838,10 +837,10 @@ in inheritance.
 
     ```Ruby
     # bad
-    hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
+    hash = {'one' => 1, 'two' => 2, 'three' => 3}
 
     # good
-    hash = { one: 1, two: 2, three: 3 }
+    hash = {one: 1, two: 2, three: 3}
     ```
 
 * Use multi-line hashes when it makes the code more readable, and use
