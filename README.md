@@ -21,7 +21,9 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
       4. [Punctuation, spelling, and grammar](#punctuation-spelling-and-grammar)
       5. [TODO comments](#todo-comments)
       6. [Commented-out code](#commented-out-code)
-  4.  [Method Definitions](#method-definitions)
+  4.  [Methods](#methods)
+      1. [Method definitions](#method-definitions)
+      2. [Method calls](#method-calls)
   5.  [Conditional Expressions](#conditional-expressions)
       1. [Conditional keywords](#conditional-keywords)
       2. [Ternary operator](#ternary-operator)
@@ -378,8 +380,9 @@ Thus when you create a TODO, it is almost always your name that is given.
 
 Never leave commented-out code in our codebase.
 
+## Methods
 
-## Method Definitions
+### Method definitions
 
 * Use `def` with parentheses when there are arguments. Omit the
   parentheses when the method doesn't accept any arguments.
@@ -413,6 +416,75 @@ Never leave commented-out code in our codebase.
 
       ...
     end
+    ```
+
+### Method calls
+
+**Use parenthesis** for a method call:
+
+* If the method returns a value.
+
+    ```ruby
+    # bad
+    @current_user = User.find_by_id 1964192
+
+    # good
+    @current_user = User.find_by_id(1964192)
+    ```
+
+* If the first argument to the method uses a parenthesis.
+
+    ```ruby
+    # bad
+    put! (x + y) % len, value
+
+    # good
+    put!((x + y) % len, value)
+    ```
+
+* Never put a space between a method name and the opening parenthesis.
+
+    ```Ruby
+    # bad
+    f (3 + 2) + 1
+
+    # good
+    f(3 + 2) + 1
+    ```
+
+**Omit parenthesis** for a method call:
+
+* If the method accepts no arguments.
+
+    ```ruby
+    # bad
+    nil?()
+
+    # good
+    nil?
+    ```
+
+* If the method doesn't return a value (or we don't care about the return).
+
+    ```ruby
+    # bad
+    render(:partial => 'foo')
+
+    # good
+    render :partial => 'foo'
+    ```
+
+In either case:
+
+* If a method accepts an options hash as the last argument, do not use `{` `}`
+  during invocation.
+
+    ```ruby
+    # bad
+    get '/v1/reservations', { :id => 54875 }
+
+    # good
+    get '/v1/reservations', :id => 54875
     ```
 
 ## Conditional Expressions
@@ -649,20 +721,6 @@ Never leave commented-out code in our codebase.
   etc. ). They are quite cryptic and their use in anything but
   one-liner scripts is discouraged. Prefer long form versions such as
   `$PROGRAM_NAME`.
-
-* Never put a space between a method name and the opening parenthesis.
-
-    ```Ruby
-    # bad
-    f (3 + 2) + 1
-
-    # good
-    f(3 + 2) + 1
-    ```
-
-* If the first argument to a method begins with an open parenthesis,
-  always use parentheses in the method invocation. For example, write
-`f((3 + 2) + 1)`.
 
 * Use `_` for unused block parameters.
 
