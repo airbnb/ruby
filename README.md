@@ -8,16 +8,23 @@ which in turn was inspired by [Bozhidar Batsov's guide][bbatsov-ruby].
 
 We also maintain a [JavaScript Style Guide][airbnb-javascript].
 
-## <a name='TOC'>Table of Contents</a>
+## Table of Contents
   1.  [Whitespace](#whitespace)
       1. [Indentation](#indentation)
       2. [Inline](#inline)
       3. [Newlines](#newlines)
   2.  [Line Length](#line-length)
   3.  [Commenting](#commenting)
+      1. [File/class-level comments](#fileclass-level-comments)
+      2. [Function comments](#function-comments)
+      3. [Block and inline comments](#block-and-inline-comments)
+      4. [Punctuation, spelling, and grammar](#punctuation-spelling-and-grammar)
+      5. [TODO comments](#todo-comments)
+      6. [Commented-out code](#commented-out-code)
   4.  [Method Definitions](#method-definitions)
   5.  [Conditional Expressions](#conditional-expressions)
-      1. [Ternary Operator Usage](#ternary-operator-usage)
+      1. [Conditional keywords](#conditional-keywords)
+      2. [Ternary operator](#ternary-operator)
   6.  [Syntax](#syntax)
   7.  [Naming](#naming)
   8.  [Classes](#classes)
@@ -123,12 +130,12 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
     complex statements into multiple lines that are all < 100 characters.
     Notice techniques like:
 
-    * liberal use of linebreaks inside unclosed ( { [
-    * chaining methods, ending unfinished chains with a "."
+    * liberal use of linebreaks inside unclosed `(` `{` `[`
+    * chaining methods, ending unfinished chains with a `.`
     * composing long strings by putting strings next to each other, separated
       by a backslash-then-newline.
     * breaking long logical statements with linebreaks after operators like
-      "&&" and "||"
+      `&&` and `||`
 
 
     ```ruby
@@ -327,7 +334,7 @@ end
 On the other hand, never describe the code. Assume the person reading the code
 knows the language (though not what you're trying to do) better than you do.
 
-### Punctuation, Spelling and Grammar
+### Punctuation, spelling and grammar
 
 Pay attention to punctuation, spelling, and grammar; it is easier to read
 well-written comments than badly written ones.
@@ -410,6 +417,8 @@ Never leave commented-out code in our codebase.
 
 ## Conditional Expressions
 
+### Conditional keywords
+
 * Never use `then` for multi-line `if/unless`.
 
     ```Ruby
@@ -431,7 +440,7 @@ Never leave commented-out code in our codebase.
   avoid modifier `if/unless`.
 
     ```Ruby
-    # Bad -- this doesn't fit on one line.
+    # bad - this doesn't fit on one line
     add_trebuchet_experiments_on_page(request_opts[:trebuchet_experiments_on_page]) if request_opts[:trebuchet_experiments_on_page] && !request_opts[:trebuchet_experiments_on_page].empty?
 
     # okay
@@ -441,7 +450,7 @@ Never leave commented-out code in our codebase.
       add_trebuchet_experiments_on_page(request_opts[:trebuchet_experiments_on_page])
     end
 
-    # Bad -- this is complex and deserves multiple lines and a comment.
+    # bad - this is complex and deserves multiple lines and a comment
     parts[i] = part.to_i(INTEGER_BASE) if !part.nil? && [0, 2, 3].include?(i)
 
     # okay
@@ -481,8 +490,8 @@ Never leave commented-out code in our codebase.
     ```
 
 * Don't use parentheses around the condition of an `if/unless/while`,
-  unless the condition contains an assignment (see "Using the return
-  value of `=`" below).
+  unless the condition contains an assignment (see [Using the return
+  value of `=`](#syntax) below).
 
     ```Ruby
     # bad
@@ -501,7 +510,7 @@ Never leave commented-out code in our codebase.
     end
     ```
 
-### Ternary Operator Usage
+### Ternary operator
 
 * Avoid the ternary operator (`?:`) except in cases where all expressions are
   extremely trivial. However, do use the ternary operator(`?:`) over
@@ -532,7 +541,6 @@ Never leave commented-out code in our codebase.
     ```
 
 * Avoid multi-line `?:` (the ternary operator), use `if/unless` instead.
-
 
 ## Syntax
 
@@ -582,7 +590,7 @@ Never leave commented-out code in our codebase.
     ```
 
     Some will argue that multiline chaining would look OK with the use of
-    {...}, but they should ask themselves - it this code really readable and
+    `{...}`, but they should ask themselves - it this code really readable and
     can't the blocks contents be extracted into nifty methods.
 
 * Avoid `return` where not required.
@@ -604,13 +612,19 @@ Never leave commented-out code in our codebase.
 
     ```Ruby
     # good - shows intented use of assignment
-    if (v = array.grep(/foo/)) ...
+    if (v = array.grep(/foo/))
+      ...
+    end
 
     # bad
-    if v = array.grep(/foo/) ...
+    if v = array.grep(/foo/)
+      ...
+    end
 
-    # also good - shows intended use of assignment and has correct precedence.
-    if (v = self.next_value) == "hello" ...
+    # also good - shows intended use of assignment and has correct precedence
+    if (v = self.next_value) == "hello"
+      ...
+    end
     ```
 
 * Use `||=` freely to initialize variables.
@@ -686,13 +700,16 @@ Never leave commented-out code in our codebase.
 * The names of predicate methods (methods that return a boolean value)
   should end in a question mark. (i.e. `Array#empty?`).
 
-* The names of potentially "dangerous" methods (i.e. methods that modify `self` or the
-  arguments, `exit!`, etc.) should end with an exclamation mark. Bang methods
-  should only exist if a non-bang method exists. ([More on this][ruby-naming-bang]).
+* The names of potentially "dangerous" methods (i.e. methods that modify `self`
+  or the arguments, `exit!`, etc.) should end with an exclamation mark. Bang
+  methods should only exist if a non-bang method exists.
+  ([More on this][ruby-naming-bang].)
 
-* Name throwaway variables "_".
+* Name throwaway variables `_`.
     ```Ruby
-    payment, _ = Payment.complete_paypal_payment!(params[:token], native_currency, created_at)
+    payment, _ = Payment.complete_paypal_payment!(params[:token],
+                                                  native_currency,
+                                                  created_at)
     ```
 
 ## Classes
@@ -904,7 +921,7 @@ in inheritance.
 
 ## Regular Expressions
 
-* Avoid using $1-9 as it can be hard to track what they contain. Named groups
+* Avoid using `$1-9` as it can be hard to track what they contain. Named groups
   can be used instead.
 
     ```Ruby
@@ -953,19 +970,19 @@ in inheritance.
   and embedded double-quotes. For multi-line strings, prefer heredocs.
 
     ```Ruby
-    # bad (no interpolation needed)
+    # bad - no interpolation needed
     %(<div class="text">Some text</div>)
     # should be '<div class="text">Some text</div>'
 
-    # bad (no double-quotes)
+    # bad - no double-quotes
     %(This is #{quality} style)
     # should be "This is #{quality} style"
 
-    # bad (multiple lines)
+    # bad - multiple lines
     %(<div>\n<span class="big">#{exclamation}</span>\n</div>)
     # should be a heredoc.
 
-    # good (requires interpolation, has quotes, single line)
+    # good - requires interpolation, has quotes, single line
     %(<tr><td class="name">#{name}</td>)
     ```
 
