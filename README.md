@@ -420,7 +420,7 @@ Never leave commented-out code in our codebase.
 
 ### Method calls
 
-**Use parenthesis** for a method call:
+**Use parentheses** for a method call:
 
 * If the method returns a value.
 
@@ -432,7 +432,7 @@ Never leave commented-out code in our codebase.
     @current_user = User.find_by_id(1964192)
     ```
 
-* If the first argument to the method uses a parenthesis.
+* If the first argument to the method uses parentheses.
 
     ```ruby
     # bad
@@ -452,7 +452,7 @@ Never leave commented-out code in our codebase.
     f(3 + 2) + 1
     ```
 
-**Omit parenthesis** for a method call:
+**Omit parentheses** for a method call:
 
 * If the method accepts no arguments.
 
