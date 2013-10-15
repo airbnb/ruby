@@ -13,7 +13,6 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
       1. [Indentation](#indentation)
       1. [Inline](#inline)
       1. [Newlines](#newlines)
-  1.  [Line Length](#line-length)
   1.  [Commenting](#commenting)
       1. [File/class-level comments](#fileclass-level-comments)
       1. [Function comments](#function-comments)
