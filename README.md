@@ -198,6 +198,12 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
     <% end %>
     ```
 
+### Enforcement
+To reduce the amount of noise generated in pull requests through the enforcement of this rule, please adhere to the following guidelines:
+
+  * One "line length" comment *per pull request*
+  * Lines that have only had whitespace modifications (e.g. from re-indentation) are exempt from the line length rule
+
 ## Commenting
 
 > Though a pain to write, comments are absolutely vital to keeping our code
