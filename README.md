@@ -167,7 +167,7 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
     end
     ```
 
-    ```ruby
+    ```erb
     <% if @presenter.guest_visa_russia? %>
       <%= icon_tile_for(I18n.t("email.reservation_confirmed_guest.visa.details_header",
                                :default => "Visa for foreign Travelers"),
@@ -188,7 +188,9 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
     if @reservation_alteration.checkin == @reservation.start_date && @reservation_alteration.checkout == (@reservation.start_date + @reservation.nights)
       redirect_to_alteration @reservation_alteration
     end
+    ```
 
+    ```erb
     <% if @presenter.guest_visa_russia? %>
       <%= icon_tile_for(I18n.t("email.reservation_confirmed_guest.visa.details_header", :default => "Visa for foreign Travelers"), :beveled_big_icon => "stamp" do %>
         <%= I18n.t("email.reservation_confirmed_guest.visa.russia.details_copy", :default => "Foreign guests travelling to Russia may need to obtain a visa prior to...") %>
