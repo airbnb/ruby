@@ -125,11 +125,16 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
 
 ## Line Length
 
-* Keep each line of code to a readable length. Unless you have a reason to, keep lines to fewer than 100 characters. Long complex lines of code are hard to quickly understand.
+Keep each line of code to a readable length. Unless you have a reason
+to, keep lines to fewer than 100 characters. Keeping code visually
+grouped together (as a 100-character line limit enforces) makes it
+easier to understand. For example, you don't have to scroll back and
+forth on one line to see what's going on -- you can view it all
+together.
 
-    Here are examples from our codebase showing several techniques for breaking
-    complex statements into multiple lines that are all < 100 characters.
-    Notice techniques like:
+Here are examples from our codebase showing several techniques for
+breaking complex statements into multiple lines that are all < 100
+characters. Notice techniques like:
 
     * liberal use of linebreaks inside unclosed `(` `{` `[`
     * chaining methods, ending unfinished chains with a `.`
@@ -197,12 +202,6 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
       <% end %>
     <% end %>
     ```
-
-### Enforcement
-To reduce the amount of noise generated in pull requests through the enforcement of this rule, please adhere to the following guidelines:
-
-  * One "line length" comment *per pull request*
-  * Lines that have only had whitespace modifications (e.g. from re-indentation) are exempt from the line length rule
 
 ## Commenting
 
