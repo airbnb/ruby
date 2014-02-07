@@ -922,21 +922,22 @@ in inheritance.
     hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
 
     # good
-    hash = { one: 1, two: 2, three: 3 }
+    hash = { :one => 1, :two => 2, :three => 3 }
     ```
 
 * Use multi-line hashes when it makes the code more readable, and use
   trailing commas to ensure that parameter changes don't cause
-  extraneous diff lines when the logic has not otherwise changed.
+  extraneous diff lines when the logic has not otherwise changed.  Multi-line
+  hashes should be aligned on the hashbang (`=>`).
 
     ```ruby
     hash = {
-      :protocol => 'https',
-      :only_path => false,
+      :protocol   => 'https',
+      :only_path  => false,
       :controller => :users,
-      :action => :set_password,
-      :redirect => @redirect_url,
-      :secret => @secret,
+      :action     => :set_password,
+      :redirect   => @redirect_url,
+      :secret     => @secret,
     }
     ```
 
