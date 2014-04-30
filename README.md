@@ -122,6 +122,16 @@ We also maintain a [JavaScript Style Guide][airbnb-javascript].
       redirect_to_alteration @reservation_alteration
     end
     ```
+    
+* Add a new line after conditionals, blocks, case statements, etc.
+
+    ```ruby
+    if robot.is_awesome?
+      send_robot_present
+    end
+    
+    robot.add_trait(:human_like_intelligence)
+    ```
 
 ## Line Length
 
