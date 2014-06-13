@@ -1,12 +1,10 @@
 # Ruby Style Guide
 
-These are standards and conventions we use for Ruby code at Airbnb. Please take
-what is useful to you.
+This is Airbnb's Ruby Style Guide.
 
-We based our Ruby style on the excellent [Github Ruby Styleguide][github-ruby],
-which in turn was inspired by [Bozhidar Batsov's guide][bbatsov-ruby].
+It was inspired by [Github's guide][github-ruby] and [Bozhidar Batsov's guide][bbatsov-ruby].
 
-We also maintain a [JavaScript Style Guide][airbnb-javascript].
+Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
 ## Table of Contents
   1.  [Whitespace](#whitespace)
