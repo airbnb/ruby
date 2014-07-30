@@ -307,7 +307,7 @@ documentation schemes are [TomDoc](http://tomdoc.org/) and
 just write things out concisely:
 
 ```ruby
-# Return the fallback locales for the_locale.
+# Returns the fallback locales for the_locale.
 # If opts[:exclude_default] is set, the default locale, which is otherwise
 # always the last one in the returned list, will be excluded.
 #
