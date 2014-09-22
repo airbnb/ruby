@@ -856,8 +856,9 @@ in inheritance.
     end
     ```
 
-* Indent the `public`, `protected`, and `private` methods as much the
-  method definitions they apply to. Leave one blank line above them.
+* Indent the `public`, `protected`, and `private` methods one space
+  less than the method definitions they apply to. Leave one blank
+  line above them.
 
     ```Ruby
     class SomeClass
@@ -865,7 +866,7 @@ in inheritance.
         # ...
       end
 
-      private
+     private
       def private_method
         # ...
       end
