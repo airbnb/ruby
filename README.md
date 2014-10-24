@@ -626,7 +626,7 @@ In either case:
     end
     ```
 
-* Avoid multi-line `?:` (the ternary operator), use `if/unless` instead.
+* Avoid multi-line `?:` (the ternary operator), use `if/then/else/end` instead.
 
 ## Syntax
 
