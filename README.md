@@ -131,6 +131,32 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     robot.add_trait(:human_like_intelligence)
     ```
 
+* When writing method calls or hash literals that span multiple lines:
+  * Place the first entry (for method calls, the first argument; for hash
+    literals, the first key-value pair) on a separate line after the opening
+    brace.
+  * Place each subsequent entry on its own line.
+  * Place the closing brace on its own separate line after the last entry.
+    Indent the closing brace to the same indent level as the opening brace's
+    line.
+
+    ```ruby
+    # bad
+    Email.create_from_template('recipient@airbnb.com', 'booking_request',
+      { :subject => 'You received a booking request!',
+        :body    => 'What a rich puppy you must be!' })
+
+    # good
+    Email.create_from_template(
+      'recipient@airbnb.com',
+      'booking_request',
+      {
+        :subject => 'You received a booking request!',
+        :body    => 'What a rich puppy you must be!'
+      }
+    )
+    ```
+
 ## Line Length
 
 Keep each line of code to a readable length. Unless you have a reason
