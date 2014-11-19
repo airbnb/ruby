@@ -1095,6 +1095,20 @@ in inheritance.
     end
     ```
 
+* When adding a new object to an association, prefer `object.build_association` or `object.association.build` to `association_array << new_object`. The latter loads all objects in the association into memory.
+
+    ```ruby
+    # Contrived example
+
+    # bad
+    user.bookings << some_booking
+
+    # good
+    some_booking = user.bookings.build
+
+    ```
+
+
 ## Be Consistent
 
 > If you're editing code, take a few minutes to look at the code around you and
