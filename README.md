@@ -931,7 +931,7 @@ in inheritance.
     hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
 
     # good
-    hash = { one: 1, two: 2, three: 3 }
+    hash = { :one => 1, :two => 2, :three => 3 }
     ```
 
 * Use multi-line hashes when it makes the code more readable, and use
