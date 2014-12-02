@@ -675,9 +675,9 @@ In either case:
     end.map { |name| name.upcase }
     ```
 
-    Some will argue that multiline chaining would look OK with the use of
-    `{...}`, but they should ask themselves - it this code really readable and
-    can't the blocks contents be extracted into nifty methods.
+    Some will argue that multiline chaining would look okay with the use of
+    `{...}`, but they should ask themselves if this code is really readable and
+    whether the block's content can be extracted into nifty methods.
 
 * Avoid `return` where not required.
 
