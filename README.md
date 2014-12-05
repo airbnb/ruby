@@ -1,8 +1,8 @@
 # Ruby Style Guide
 
-This is Airbnb's Ruby Style Guide.
+This is RailsOnMaui's Ruby Style Guide.
 
-It was inspired by [Github's guide][github-ruby] and [Bozhidar Batsov's guide][bbatsov-ruby].
+It is a fork of the [AirBnb Ruby Guide][airbnb-ruby], which was inspired by [Github's guide][github-ruby] and [Bozhidar Batsov's guide][bbatsov-ruby].
 
 Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
@@ -1113,6 +1113,7 @@ in inheritance.
 
 &mdash;[Google C++ Style Guide][google-c++]
 
+[airbnb-ruby]: https://github.com/airbnb/ruby
 [airbnb-javascript]: https://github.com/airbnb/javascript
 [bbatsov-ruby]: https://github.com/bbatsov/ruby-style-guide
 [github-ruby]: https://github.com/styleguide/ruby
