@@ -410,26 +410,26 @@ Never leave commented-out code in our codebase.
        # body omitted
      end
      ```
-
-* Do not use default arguments. Use an options hash instead.
+     
+* Use [Ruby 2 keyword arguments](#ruby-keyword-arguments) when a method takes 3
+  or more parameters or at least one boolean. Use keywords for all arguments if
+  you're going to be using at least one keyword argument. Be aware of the Ruby
+  2.1 syntax of not specifying a default value if you want the parameter to be
+  required.
 
     ```Ruby
     # bad
-    def obliterate(things, gently = true, except = [], at = Time.now)
-      ...
-    end
+    calculate(true, false) 
+    
+    # bad
+    calculate(optimized: true, false) 
 
     # good
-    def obliterate(things, options = {})
-      default_options = {
-        :gently => true, # obliterate with soft-delete
-        :except => [], # skip obliterating these things
-        :at => Time.now, # don't obliterate them until later
-      }
-      options.reverse_merge!(default_options)
+    calculate(optimized: true, debug: false)
 
-      ...
-    end
+    # good (debug param is optional)
+    calculate(optimized: true, debug:)
+    
     ```
 
 ### Method calls
@@ -1121,3 +1121,4 @@ in inheritance.
 [google-c++-comments]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Comments
 [google-python-comments]: http://google-styleguide.googlecode.com/svn/trunk/pyguide.html#Comments
 [ruby-naming-bang]: http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist
+[ruby-keyword-arguments]: http://www.sitepoint.com/look-ruby-2-1/
