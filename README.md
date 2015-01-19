@@ -51,32 +51,26 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     when song.duration > 120
       puts 'Too long!'
     when Time.now.hour > 21
-      puts "It's too late"
+      puts 'It\'s too late'
     else
       song.play
     end
 
     kind = case year
-           when 1850..1889 then 'Blues'
-           when 1890..1909 then 'Ragtime'
-           when 1910..1929 then 'New Orleans Jazz'
-           when 1930..1939 then 'Swing'
-           when 1940..1950 then 'Bebop'
-           else 'Jazz'
-           end
+      when 1850..1889 then 'Blues'
+      when 1890..1909 then 'Ragtime'
+      when 1910..1929 then 'New Orleans Jazz'
+      when 1930..1939 then 'Swing'
+      when 1940..1950 then 'Bebop'
+      else 'Jazz'
+    end
     ```
 
-* Align function arguments either all on the same line or one per line.
+* Align function arguments all on the same line.
 
     ```ruby
     # good
-    def self.create_translation(phrase_id,
-                                phrase_key,
-                                target_locale,
-                                value,
-                                user_id,
-                                do_xss_check,
-                                allow_verification)
+    def self.create_translation(phrase_id, phrase_key, target_locale, value)
       ...
     end
 
@@ -87,6 +81,8 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     end
     ```
 
+* Functions shouldn't have more than 4 arguments
+
 ### Inline
 
 * Never leave trailing whitespace.
@@ -96,9 +92,9 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
     ```Ruby
     sum = 1 + 2
-    a, b = 1, 2
-    1 > 2 ? true : false; puts 'Hi'
-    [1, 2, 3].each { |e| puts e }
+    a = 1
+    1 > 2 ? true : false
+    [1, 2, 3].map { |e| [e, 'hi'] }
     ```
 
 * No spaces after `(`, `[` or before `]`, `)`.
@@ -109,17 +105,6 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     ```
 
 ### Newlines
-
-* Add a new line after `if` conditions span multiple lines to help
-  differentiate between the conditions and the body.
-
-    ```ruby
-    if @reservation_alteration.checkin == @reservation.start_date &&
-       @reservation_alteration.checkout == (@reservation.start_date + @reservation.nights)
-
-      redirect_to_alteration @reservation_alteration
-    end
-    ```
 
 * Add a new line after conditionals, blocks, case statements, etc.
 
@@ -155,27 +140,28 @@ characters. Notice techniques like:
 ```ruby
 scope = Translation::Phrase.includes(:phrase_translations).
   joins(:phrase_screenshots).
-  where(:phrase_screenshots => {
-    :controller => controller_name,
-    :action => JAROMIR_JAGR_SALUTE,
-  })
+  where(
+    phrase_screenshots: {
+      controller: controller_name,
+      action: JAROMIR_JAGR_SALUTE,
+    }
+  )
 ```
 
 ```ruby
 translation = FactoryGirl.create(
   :phrase_translation,
-  :locale => :is,
-  :phrase => phrase,
-  :key => 'phone_number_not_revealed_time_zone',
-  :value => 'Símanúmerið þitt verður ekki birt. Það er aðeins hægt að hringja á '\
-            'milli 9:00 og 21:00 %{time_zone}.'
+  locale: :is,
+  phrase: phrase,
+  key: 'phone_number_not_revealed_time_zone',
+  value: 'Símanúmerið þitt verður ekki birt. Það er aðeins hægt að hringja á '\
+         "milli 9:00 og 21:00 %{time_zone}."
 )
 ```
 
 ```ruby
 if @reservation_alteration.checkin == @reservation.start_date &&
    @reservation_alteration.checkout == (@reservation.start_date + @reservation.nights)
-
   redirect_to_alteration @reservation_alteration
 end
 ```
@@ -183,10 +169,10 @@ end
 ```erb
 <% if @presenter.guest_visa_russia? %>
   <%= icon_tile_for(I18n.t("email.reservation_confirmed_guest.visa.details_header",
-                           :default => "Visa for foreign Travelers"),
-                    :beveled_big_icon => "stamp" do %>
-    <%= I18n.t("email.reservation_confirmed_guest.visa.russia.details_copy",
-               :default => "Foreign guests travelling to Russia may need to obtain a visa...") %>
+                           default: 'Visa for foreign Travelers'),
+                           beveled_big_icon: 'stamp' do %>
+    <%= I18n.t('email.reservation_confirmed_guest.visa.russia.details_copy',
+               default: 'Foreign guests travelling to Russia may need to obtain a visa...'') %>
   <% end %>
 <% end %>
 ```
@@ -422,9 +408,9 @@ Never leave commented-out code in our codebase.
     # good
     def obliterate(things, options = {})
       default_options = {
-        :gently => true, # obliterate with soft-delete
-        :except => [], # skip obliterating these things
-        :at => Time.now, # don't obliterate them until later
+        gently: true, # obliterate with soft-delete
+        except: [], # skip obliterating these things
+        at: Time.now, # don't obliterate them until later
       }
       options.reverse_merge!(default_options)
 
@@ -531,8 +517,7 @@ In either case:
 
     # okay
     if request_opts[:trebuchet_experiments_on_page] &&
-         !request_opts[:trebuchet_experiments_on_page].empty?
-
+       !request_opts[:trebuchet_experiments_on_page].empty?
       add_trebuchet_experiments_on_page(request_opts[:trebuchet_experiments_on_page])
     end
 
@@ -736,14 +721,14 @@ In either case:
   one-liner scripts is discouraged. Prefer long form versions such as
   `$PROGRAM_NAME`.
 
-* Use `_` for unused block parameters.
+* Prefix with `_` for unused block parameters.
 
     ```Ruby
     # bad
     result = hash.map { |k, v| v + 1 }
 
     # good
-    result = hash.map { |_, v| v + 1 }
+    result = hash.map { |_k, v| v + 1 }
     ```
 
 * When a method block takes only one argument, and the body consists solely of
@@ -759,6 +744,25 @@ In either case:
     bluths.map(&:occupation)
     bluths.select(&:blue_self?)
     ```
+
+
+* User Ruby 1.9+ syntax for hash.
+  
+  ```ruby
+  #bad
+  value = {
+    :rest => 'val',
+    :me => 'you'
+  }
+  hash = { :test => value }
+
+  #good
+  value = {
+    rest: 'val',
+    me: 'you'
+  }
+  hash = { test: value }
+  ```
 
 ## Naming
 
@@ -779,9 +783,11 @@ In either case:
 
 * Name throwaway variables `_`.
     ```Ruby
-    payment, _ = Payment.complete_paypal_payment!(params[:token],
-                                                  native_currency,
-                                                  created_at)
+    payment, _ = Payment.complete_paypal_payment!(
+      params[:token],
+      native_currency,
+      created_at
+    )
     ```
 
 ## Classes
@@ -857,7 +863,7 @@ in inheritance.
     ```
 
 * Indent the `public`, `protected`, and `private` methods as much the
-  method definitions they apply to. Leave one blank line above them.
+  method definitions they apply to. Leave one blank line above and under them.
 
     ```Ruby
     class SomeClass
@@ -866,6 +872,7 @@ in inheritance.
       end
 
       private
+
       def private_method
         # ...
       end
@@ -931,7 +938,7 @@ in inheritance.
     hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
 
     # good
-    hash = { :one => 1, :two => 2, :three => 3 }
+    hash = { one: 1, two: 2, three: 3 }
     ```
 
 * Use multi-line hashes when it makes the code more readable, and use
@@ -940,12 +947,12 @@ in inheritance.
 
     ```ruby
     hash = {
-      :protocol => 'https',
-      :only_path => false,
-      :controller => :users,
-      :action => :set_password,
-      :redirect => @redirect_url,
-      :secret => @secret,
+      protocol: 'https',
+      only_path: false,
+      controller: :users,
+      action: :set_password,
+      redirect: @redirect_url,
+      secret: @secret,
     }
     ```
 
@@ -1080,18 +1087,18 @@ in inheritance.
 
     ```ruby
     # bad
-    render :text => 'Howdy' and return
+    render text: 'Howdy' and return
 
     # good
-    render :text => 'Howdy'
+    render text: 'Howdy'
     return
 
     # still bad
-    render :text => 'Howdy' and return if foo.present?
+    render text: 'Howdy' and return if foo.present?
 
     # good
     if foo.present?
-      render :text => 'Howdy'
+      render text: 'Howdy'
       return
     end
     ```
