@@ -466,9 +466,7 @@ Never leave commented-out code in our codebase.
     f(3 + 2) + 1
     ```
 
-**Omit parentheses** for a method call:
-
-* If the method accepts no arguments.
+**Omit parentheses** for a method call if the method accepts no arguments.
 
     ```ruby
     # bad
@@ -478,13 +476,13 @@ Never leave commented-out code in our codebase.
     nil?
     ```
 
-* If the method doesn't return a value (or we don't care about the return).
+If the method doesn't return a value (or we don't care about the return), parentheses are optional. (Especially if the arguments overflow to multiple lines, parentheses may add readability.)
 
     ```ruby
-    # bad
+    # okay
     render(:partial => 'foo')
 
-    # good
+    # okay
     render :partial => 'foo'
     ```
 
