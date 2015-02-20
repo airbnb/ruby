@@ -734,7 +734,7 @@ In either case:
   one-liner scripts is discouraged. Prefer long form versions such as
   `$PROGRAM_NAME`.
 
-* Use `_` for unused block parameters.
+* Use `_` for unused block arguments.
 
     ```Ruby
     # bad
