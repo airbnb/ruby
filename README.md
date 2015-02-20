@@ -66,7 +66,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
            end
     ```
 
-* Align function arguments either all on the same line or one per line.
+* Align function parameters either all on the same line or one per line.
 
     ```ruby
     # good
@@ -398,15 +398,15 @@ Never leave commented-out code in our codebase.
 
 ### Method definitions
 
-* Use `def` with parentheses when there are arguments. Omit the
-  parentheses when the method doesn't accept any arguments.
+* Use `def` with parentheses when there are parameters. Omit the
+  parentheses when the method doesn't accept any parameters.
 
      ```Ruby
      def some_method
        # body omitted
      end
 
-     def some_method_with_arguments(arg1, arg2)
+     def some_method_with_parameters(arg1, arg2)
        # body omitted
      end
      ```
