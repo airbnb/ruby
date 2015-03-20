@@ -660,9 +660,7 @@ In either case:
     names.each { |name| puts name }
 
     # bad
-    names.each do |name|
-      puts name
-    end
+    names.each do |name| puts name end
 
     # good
     names.select { |name| name.start_with?("S") }.map { |name| name.upcase }
