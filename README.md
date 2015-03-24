@@ -87,6 +87,24 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     end
     ```
 
+* Indent succeeding lines in multi-line boolean expressions.
+
+    ```ruby
+    # good
+    def is_eligible?(user)
+      Trebuchet.current.launch?(ProgramEligibilityHelper::PROGRAM_TREBUCHET_FLAG) &&
+        is_in_program?(user) &&
+        program_not_expired
+    end
+
+    # bad
+    def is_eligible?(user)
+      Trebuchet.current.launch?(ProgramEligibilityHelper::PROGRAM_TREBUCHET_FLAG) &&
+      is_in_program?(user) &&
+      program_not_expired
+    end
+    ```
+
 ### Inline
 
 * Never leave trailing whitespace.
