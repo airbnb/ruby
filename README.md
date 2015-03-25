@@ -568,7 +568,7 @@ In either case:
       end
 
       # okay
-      if !(foo? && bar?)
+      if !foo? || !bar?
         ...
       end
     ```
