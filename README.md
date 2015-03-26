@@ -675,18 +675,98 @@ In either case:
     `{...}`, but they should ask themselves if this code is really readable and
     whether the block's content can be extracted into nifty methods.
 
-* Avoid `return` where not required.
+* Highly recommend to use `return` even if it is not required in Ruby language.
+
+    Although it is a Ruby way that an explicit return is unnecessary, it may introduce
+    confusions to programmers working with unfamilar code and to programmers learning
+    Ruby from other strict languages.
 
     ```Ruby
-    # bad
+    # bad: it is unclear whether this function want to return the updated value
+    #      or just want to set the new value
+    def update(new_value)
+      @value = func(new_value)
+    end
+
+    # Someone may extend the function by add a log message, and then unintentionally
+    # complete break it if the return value is intended
+    def update(new_value)
+      @value = func(new_value)
+      Rails.logger.info '...'
+    end
+
+    # good: make it clear the return value is intended
+    def update(new_value)
+      return (@value = func(new_value))
+    end
+    ```
+
+    ```Ruby
+    # bad: it is unclear whether it just wants to invoke another method, or returns
+    #      the function result
     def some_method(some_arr)
-      return some_arr.size
+      if condition
+        func_1(some_arr)
+      else
+        func_2(some_arr)
+      end
     end
 
     # good
     def some_method(some_arr)
-      some_arr.size
+      if condition
+        return func_1(some_arr)
+      end
+      return func_2(some_arr)
     end
+    ```
+
+    ```Ruby
+    # good: just have "return" here to make 100% clear to any programmer
+    def some_method
+      ...
+      return value
+    end
+
+    # good, but why bother, adding "return" incurs no cost
+    def some_method
+      ...
+      value
+    end
+    ```
+
+    ```Ruby
+    # good: no "return" in a function with one statement
+    def default_options
+      {
+        :key => '...',
+        :value => 100
+      }
+    end
+    ```
+
+* Avoid "return" under these situations
+
+    ```Ruby
+    # bad: no "return" in a do-end yield block
+    def foo
+      ...
+      array.map do |v|
+        return v.upcase
+      end
+      ...
+    end
+    ```
+
+    ```Ruby
+    # bad: Proc.new will extend the block of the current function, instead
+    #      of becoming a sub function
+    def foo
+      Proc.new { return "inside the proc" }.call
+      return "end of foo"
+    end
+
+    puts foo # "inside the proc" to be printed
     ```
 
 * Using the return value of `=` (an assignment) is ok, but surround the
