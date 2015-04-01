@@ -517,7 +517,7 @@ In either case:
     end
     ```
 
-* The `and` and `or` keywords are banned. It's just not worth it. Always use `&&` and `||` instead.
+* The `and`, `or`, and `not` keywords are banned. It's just not worth it. Always use `&&`, `||`, and `!` instead.
 
 * Modifier `if/unless` usage is okay when the body is simple, the
   condition is simple, and the whole thing fits on one line. Otherwise,
