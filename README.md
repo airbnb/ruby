@@ -975,8 +975,8 @@ in inheritance.
     email_with_name = "#{user.name} <#{user.email}>"
     ```
 
-    Furthermore, keep in mind Ruby 1.9-style interpolation. Let's say you have
-    are composing cache keys like this:
+    Furthermore, keep in mind Ruby 1.9-style interpolation. Let's say you are 
+    composing cache keys like this:
 
     ```ruby
     CACHE_KEY = '_store'
@@ -984,7 +984,7 @@ in inheritance.
     cache.write(@user.id + CACHE_KEY)
     ```
 
-    Prefer instead string interpolation instead of string concatentation:
+    Prefer string interpolation instead of string concatentation:
 
     ```ruby
     CACHE_KEY = '%d_store'
