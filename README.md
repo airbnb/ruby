@@ -356,8 +356,9 @@ def fallbacks_for(the_locale, opts = {})
   #    children).
   # 1) The default locale is just a language. (Like :en, and not :"en-US".)
   if opts[:exclude_default] &&
-      ret.last == self.default_locale &&
-      ret.last != language_from_locale(the_locale)
+     ret.last == self.default_locale &&
+     ret.last != language_from_locale(the_locale)
+
     ret.pop
   end
 
@@ -547,7 +548,7 @@ In either case:
 
     # okay
     if request_opts[:trebuchet_experiments_on_page] &&
-         !request_opts[:trebuchet_experiments_on_page].empty?
+       !request_opts[:trebuchet_experiments_on_page].empty?
 
       add_trebuchet_experiments_on_page(request_opts[:trebuchet_experiments_on_page])
     end
