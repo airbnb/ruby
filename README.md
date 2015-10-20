@@ -356,7 +356,7 @@ def fallbacks_for(the_locale, opts = {})
   #    children).
   # 1) The default locale is just a language. (Like :en, and not :"en-US".)
   if opts[:exclude_default] &&
-      ret.last == self.default_locale &&
+      ret.last == default_locale &&
       ret.last != language_from_locale(the_locale)
     ret.pop
   end
@@ -556,7 +556,7 @@ In either case:
     parts[i] = part.to_i(INTEGER_BASE) if !part.nil? && [0, 2, 3].include?(i)
 
     # okay
-    return if self.reconciled?
+    return if reconciled?
     ```
 
 * Never use `unless` with `else`. Rewrite these with the positive case first.
@@ -607,7 +607,7 @@ In either case:
     end
 
     # ok
-    if (x = self.next_value)
+    if (x = next_value)
       ...
     end
     ```
@@ -722,7 +722,7 @@ In either case:
     end
 
     # also good - shows intended use of assignment and has correct precedence
-    if (v = self.next_value) == "hello"
+    if (v = next_value) == "hello"
       ...
     end
     ```
@@ -764,15 +764,38 @@ In either case:
   reading an attribute or calling one method with no arguments, use the `&:`
   shorthand.
 
-    ```ruby
-    # bad
-    bluths.map { |bluth| bluth.occupation }
-    bluths.select { |bluth| bluth.blue_self? }
+  ```ruby
+  # bad
+  bluths.map { |bluth| bluth.occupation }
+  bluths.select { |bluth| bluth.blue_self? }
 
-    # good
-    bluths.map(&:occupation)
-    bluths.select(&:blue_self?)
-    ```
+  # good
+  bluths.map(&:occupation)
+  bluths.select(&:blue_self?)
+  ```
+
+* Prefer `some_method` over `self.some_method` when calling a method on the
+  current instance.
+
+  ```ruby
+  # bad
+  def end_date
+    self.start_date + self.nights
+  end
+  
+  # good
+  def end_date
+    start_date + nights
+  end
+  ```
+
+  In the following three common cases, `self.` is required by the language 
+  and is good to use:
+
+  1. When defining a class method: `def self.some_method`.
+  2. The *left hand side* when calling an assignment method, including assigning
+     an attribute when `self` is an ActiveRecord model: `self.guest = user`.
+  3. Referencing the current instance's class: `self.class`.
 
 ## Naming
 
