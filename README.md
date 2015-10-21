@@ -202,7 +202,7 @@ end
 <% if @presenter.guest_visa_russia? %>
   <%= icon_tile_for(I18n.t("email.reservation_confirmed_guest.visa.details_header",
                            :default => "Visa for foreign Travelers"),
-                    :beveled_big_icon => "stamp" do %>
+                    :beveled_big_icon => "stamp") do %>
     <%= I18n.t("email.reservation_confirmed_guest.visa.russia.details_copy",
                :default => "Foreign guests travelling to Russia may need to obtain a visa...") %>
   <% end %>
@@ -223,7 +223,7 @@ end
 
 ```erb
 <% if @presenter.guest_visa_russia? %>
-  <%= icon_tile_for(I18n.t("email.reservation_confirmed_guest.visa.details_header", :default => "Visa for foreign Travelers"), :beveled_big_icon => "stamp" do %>
+  <%= icon_tile_for(I18n.t("email.reservation_confirmed_guest.visa.details_header", :default => "Visa for foreign Travelers"), :beveled_big_icon => "stamp") do %>
     <%= I18n.t("email.reservation_confirmed_guest.visa.russia.details_copy", :default => "Foreign guests travelling to Russia may need to obtain a visa prior to...") %>
   <% end %>
 <% end %>
@@ -782,14 +782,14 @@ In either case:
   def end_date
     self.start_date + self.nights
   end
-  
+
   # good
   def end_date
     start_date + nights
   end
   ```
 
-  In the following three common cases, `self.` is required by the language 
+  In the following three common cases, `self.` is required by the language
   and is good to use:
 
   1. When defining a class method: `def self.some_method`.
@@ -998,7 +998,7 @@ in inheritance.
     email_with_name = "#{user.name} <#{user.email}>"
     ```
 
-    Furthermore, keep in mind Ruby 1.9-style interpolation. Let's say you are 
+    Furthermore, keep in mind Ruby 1.9-style interpolation. Let's say you are
     composing cache keys like this:
 
     ```ruby
