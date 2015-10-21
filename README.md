@@ -202,7 +202,7 @@ end
 <% if @presenter.guest_visa_russia? %>
   <%= icon_tile_for(I18n.t("email.reservation_confirmed_guest.visa.details_header",
                            :default => "Visa for foreign Travelers"),
-                    :beveled_big_icon => "stamp" do %>
+                    :beveled_big_icon => "stamp") do %>
     <%= I18n.t("email.reservation_confirmed_guest.visa.russia.details_copy",
                :default => "Foreign guests travelling to Russia may need to obtain a visa...") %>
   <% end %>
@@ -223,7 +223,7 @@ end
 
 ```erb
 <% if @presenter.guest_visa_russia? %>
-  <%= icon_tile_for(I18n.t("email.reservation_confirmed_guest.visa.details_header", :default => "Visa for foreign Travelers"), :beveled_big_icon => "stamp" do %>
+  <%= icon_tile_for(I18n.t("email.reservation_confirmed_guest.visa.details_header", :default => "Visa for foreign Travelers"), :beveled_big_icon => "stamp") do %>
     <%= I18n.t("email.reservation_confirmed_guest.visa.russia.details_copy", :default => "Foreign guests travelling to Russia may need to obtain a visa prior to...") %>
   <% end %>
 <% end %>
