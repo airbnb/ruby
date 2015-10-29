@@ -956,6 +956,26 @@ in inheritance.
 
 ## Collections
 
+* When creating a new Array based on the contents of another Array, prefer
+  using `map` and `select` instead of declaring a new Array and using `each` to
+  add elements to it one by one.  One exception to this guideline is when you
+  are working with a large Array in a hot path where this style would have a
+  non-trivial impact on performance.
+
+    ```ruby
+    rebels = ['luke (jedi)', 'leia', 'yoda (jedi)', 'han']
+
+    # bad
+    jedis = []
+    rebels.each do |rebel|
+      next unless rebel.match(/jedi/)
+      jedis << rebel.gsub(/ \(jedi\)/, '')
+    end
+
+    # good
+    jedis = rebels.select { |rebel| rebel.match(/jedi/) }.map { |rebel| rebel.gsub(/ \(jedi\)/, '') }
+    ```
+
 * Use `Set` instead of `Array` when dealing with unique elements. `Set`
   implements a collection of unordered values with no duplicates. This
   is a hybrid of `Array`'s intuitive inter-operation facilities and
