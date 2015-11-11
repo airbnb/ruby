@@ -643,35 +643,12 @@ In either case:
     ```
 
 * Avoid multiple conditions in ternaries. Ternaries are best used with single conditions.
-  Convert these statements
-
-    ```ruby
-    # bad
-    some_condition && some_other_condition ? truthy_value : falsey_value
-
-    # good
-    if some_condition && some_other_condition
-      truthy_value
-    else
-      falsey_value
-    end
-    ```
 
 * Avoid multi-line `?:` (the ternary operator), use `if/then/else/end` instead.
     ```Ruby
     # bad
     some_really_long_condition_that_might_make_you_want_to_split_lines ?
       something : something_else
-
-    # bad
-    some_really_long_condition_that_might_make_you_want_to_split_lines ?
-      something :
-      something_else
-
-    # really bad
-    some_really_long_condition_that_might_make_you_want_to_split_lines ?
-      something
-      : something_else
 
     # good
     if some_really_long_condition_that_might_make_you_want_to_split_lines
