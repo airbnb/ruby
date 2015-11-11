@@ -986,6 +986,16 @@ in inheritance.
     }
     ```
 
+* Use a trailing comma in an `Array`
+    ```ruby
+    array = [
+      "car",
+      "bear",
+      "plane",
+      "zoo",
+    ]
+    ```
+
 ## Strings
 
 * Prefer string interpolation instead of string concatenation:
