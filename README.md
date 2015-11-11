@@ -903,6 +903,7 @@ in inheritance.
       end
 
       private
+
       def private_method
         # ...
       end
