@@ -1133,6 +1133,10 @@ in inheritance.
     end
     ```
 
+* Prefer `Time.current` over `Time.now`
+
+* Prefer `Date.current` over `Date.today`
+
 ## Be Consistent
 
 > If you're editing code, take a few minutes to look at the code around you and
