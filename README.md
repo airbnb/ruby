@@ -484,7 +484,7 @@ Never leave commented-out code in our codebase.
     f(3 + 2) + 1
     ```
 
-* **Omit parentheses** for a method call if the method accepts no arguments.
+**Omit parentheses** for a method call if the method accepts no arguments.
 
     ```ruby
     # bad
