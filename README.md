@@ -642,8 +642,22 @@ In either case:
     end
     ```
 
-* Avoid multi-line `?:` (the ternary operator), use `if/then/else/end` instead.
+* Avoid multiple conditions in ternaries. Ternaries are best used with single conditions.
 
+* Avoid multi-line `?:` (the ternary operator), use `if/then/else/end` instead.
+    ```Ruby
+    # bad
+    some_really_long_condition_that_might_make_you_want_to_split_lines ?
+      something : something_else
+
+    # good
+    if some_really_long_condition_that_might_make_you_want_to_split_lines
+      something
+    else
+      something_else
+    end
+    ```
+  
 ## Syntax
 
 * Never use `for`, unless you know exactly why. Most of the time iterators
