@@ -1,10 +1,13 @@
 # Ruby Style Guide
 
-This is Airbnb's Ruby Style Guide.
+This is RailsOnMaui's Ruby Style Guide.
 
-It was inspired by [Github's guide][github-ruby] and [Bozhidar Batsov's guide][bbatsov-ruby].
+It is a fork of the [AirBnb Ruby Guide][airbnb-ruby], which was inspired by [Github's guide][github-ruby] and [Bozhidar Batsov's guide][bbatsov-ruby].
 
 Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
+
+We have a [JavaScript Style Guidelines Page Here](./JavaScript.md)
+
 
 ## Table of Contents
   1.  [Whitespace](#whitespace)
@@ -428,26 +431,26 @@ Never leave commented-out code in our codebase.
        # body omitted
      end
      ```
-
-* Do not use default arguments. Use an options hash instead.
+     
+* Use [Ruby 2 keyword arguments](#ruby-keyword-arguments) when a method takes 3
+  or more parameters or at least one boolean. Use keywords for all arguments if
+  you're going to be using at least one keyword argument. Be aware of the Ruby
+  2.1 syntax of not specifying a default value if you want the parameter to be
+  required.
 
     ```Ruby
     # bad
-    def obliterate(things, gently = true, except = [], at = Time.now)
-      ...
-    end
+    calculate(true, false) 
+    
+    # bad
+    calculate(optimized: true, false) 
 
     # good
-    def obliterate(things, options = {})
-      default_options = {
-        :gently => true, # obliterate with soft-delete
-        :except => [], # skip obliterating these things
-        :at => Time.now, # don't obliterate them until later
-      }
-      options.reverse_merge!(default_options)
+    calculate(optimized: true, debug: false)
 
-      ...
-    end
+    # good (debug param is optional)
+    calculate(optimized: true, debug:)
+    
     ```
 
 ### Method calls
@@ -971,20 +974,215 @@ in inheritance.
 
 ## Collections
 
-* Use `Set` instead of `Array` when dealing with unique elements. `Set`
-  implements a collection of unordered values with no duplicates. This
-  is a hybrid of `Array`'s intuitive inter-operation facilities and
-  `Hash`'s fast lookup.
+* <a name="literal-array-hash"></a>
+  Prefer literal array and hash creation notation (unless you need to pass
+  parameters to their constructors, that is).
+<sup>[[link](#literal-array-hash)]</sup>
 
-* Use symbols instead of strings as hash keys.
+  ```Ruby
+  # bad
+  arr = Array.new
+  hash = Hash.new
 
-    ```Ruby
-    # bad
-    hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
+  # good
+  arr = []
+  hash = {}
+  ```
 
-    # good
-    hash = { :one => 1, :two => 2, :three => 3 }
-    ```
+* <a name="percent-w"></a>
+  Prefer `%w` to the literal array syntax when you need an array of words
+  (non-empty strings without spaces and special characters in them).  Apply this
+  rule only to arrays with two or more elements.
+<sup>[[link](#percent-w)]</sup>
+
+  ```Ruby
+  # bad
+  STATES = ['draft', 'open', 'closed']
+
+  # good
+  STATES = %w(draft open closed)
+  ```
+
+* <a name="percent-i"></a>
+  Prefer `%i` to the literal array syntax when you need an array of symbols
+  (and you don't need to maintain Ruby 1.9 compatibility). Apply this rule only
+  to arrays with two or more elements.
+<sup>[[link](#percent-i)]</sup>
+
+  ```Ruby
+  # bad
+  STATES = [:draft, :open, :closed]
+
+  # good
+  STATES = %i(draft open closed)
+  ```
+
+* <a name="no-trailing-array-commas"></a>
+  Avoid comma after the last item of an `Array` or `Hash` literal, especially
+  when the items are not on separate lines.
+<sup>[[link](#no-trailing-array-commas)]</sup>
+
+  ```Ruby
+  # bad - easier to move/add/remove items, but still not preferred
+  VALUES = [
+             1001,
+             2020,
+             3333,
+           ]
+
+  # bad
+  VALUES = [1001, 2020, 3333, ]
+
+  # good
+  VALUES = [1001, 2020, 3333]
+  ```
+
+* <a name="no-gappy-arrays"></a>
+  Avoid the creation of huge gaps in arrays.
+<sup>[[link](#no-gappy-arrays)]</sup>
+
+  ```Ruby
+  arr = []
+  arr[100] = 1 # now you have an array with lots of nils
+  ```
+
+* <a name="first-and-last"></a>
+  When accessing the first or last element from an array, prefer `first` or
+  `last` over `[0]` or `[-1]`.
+<sup>[[link](#first-and-last)]</sup>
+
+* <a name="set-vs-array"></a>
+  Use `Set` instead of `Array` when dealing with unique elements. `Set`
+  implements a collection of unordered values with no duplicates. This is a
+  hybrid of `Array`'s intuitive inter-operation facilities and `Hash`'s fast
+  lookup.
+<sup>[[link](#set-vs-array)]</sup>
+
+* <a name="symbols-as-keys"></a>
+  Prefer symbols instead of strings as hash keys.
+<sup>[[link](#symbols-as-keys)]</sup>
+
+  ```Ruby
+  # bad
+  hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
+
+  # good
+  hash = { one: 1, two: 2, three: 3 }
+  ```
+
+* <a name="no-mutable-keys"></a>
+  Avoid the use of mutable objects as hash keys.
+<sup>[[link](#no-mutable-keys)]</sup>
+
+* <a name="hash-literals"></a>
+  Use the Ruby 1.9 hash literal syntax when your hash keys are symbols.
+<sup>[[link](#hash-literals)]</sup>
+
+  ```Ruby
+  # bad
+  hash = { :one => 1, :two => 2, :three => 3 }
+
+  # good
+  hash = { one: 1, two: 2, three: 3 }
+  ```
+
+* <a name="no-mixed-hash-syntaces"></a>
+  Don't mix the Ruby 1.9 hash syntax with hash rockets in the same hash
+  literal. When you've got keys that are not symbols stick to the hash rockets
+  syntax.
+<sup>[[link](#no-mixed-hash-syntaces)]</sup>
+
+  ```Ruby
+  # bad
+  { a: 1, 'b' => 2 }
+
+  # good
+  { :a => 1, 'b' => 2 }
+  ```
+
+* <a name="hash-key"></a>
+  Use `Hash#key?` instead of `Hash#has_key?` and `Hash#value?` instead of
+  `Hash#has_value?`. As noted
+  [here](http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/43765) by
+  Matz, the longer forms are considered deprecated.
+<sup>[[link](#hash-key)]</sup>
+
+  ```Ruby
+  # bad
+  hash.has_key?(:test)
+  hash.has_value?(value)
+
+  # good
+  hash.key?(:test)
+  hash.value?(value)
+  ```
+
+* <a name="hash-fetch"></a>
+  Use `Hash#fetch` when dealing with hash keys that should be present.
+<sup>[[link](#hash-fetch)]</sup>
+
+  ```Ruby
+  heroes = { batman: 'Bruce Wayne', superman: 'Clark Kent' }
+  # bad - if we make a mistake we might not spot it right away
+  heroes[:batman] # => "Bruce Wayne"
+  heroes[:supermann] # => nil
+
+  # good - fetch raises a KeyError making the problem obvious
+  heroes.fetch(:supermann)
+  ```
+
+* <a name="hash-fetch-defaults"></a>
+  Introduce default values for hash keys via `Hash#fetch` as opposed to using
+  custom logic.
+<sup>[[link](#hash-fetch-defaults)]</sup>
+
+  ```Ruby
+  batman = { name: 'Bruce Wayne', is_evil: false }
+
+  # bad - if we just use || operator with falsy value we won't get the expected result
+  batman[:is_evil] || true # => true
+
+  # good - fetch work correctly with falsy values
+  batman.fetch(:is_evil, true) # => false
+  ```
+
+* <a name="use-hash-blocks"></a>
+  Prefer the use of the block instead of the default value in `Hash#fetch`.
+<sup>[[link](#use-hash-blocks)]</sup>
+
+  ```Ruby
+  batman = { name: 'Bruce Wayne' }
+
+  # bad - if we use the default value, we eager evaluate it
+  # so it can slow the program down if done multiple times
+  batman.fetch(:powers, get_batman_powers) # get_batman_powers is an expensive call
+
+  # good - blocks are lazy evaluated, so only triggered in case of KeyError exception
+  batman.fetch(:powers) { get_batman_powers }
+  ```
+
+* <a name="hash-values-at"></a>
+  Use `Hash#values_at` when you need to retrieve several values consecutively
+  from a hash.
+<sup>[[link](#hash-values-at)]</sup>
+
+  ```Ruby
+  # bad
+  email = data['email']
+  username = data['nickname']
+
+  # good
+  email, username = data.values_at('email', 'nickname')
+  ```
+
+* <a name="ordered-hashes"></a>
+  Rely on the fact that as of Ruby 1.9 hashes are ordered.
+<sup>[[link](#ordered-hashes)]</sup>
+
+* <a name="no-modifying-collections"></a>
+  Do not modify a collection while traversing it.
+<sup>[[link](#no-modifying-collections)]</sup>
+
 
 * Use multi-line hashes when it makes the code more readable, and use
   trailing commas to ensure that parameter changes don't cause
@@ -1179,6 +1377,7 @@ in inheritance.
 
 &mdash;[Google C++ Style Guide][google-c++]
 
+[airbnb-ruby]: https://github.com/airbnb/ruby
 [airbnb-javascript]: https://github.com/airbnb/javascript
 [bbatsov-ruby]: https://github.com/bbatsov/ruby-style-guide
 [github-ruby]: https://github.com/styleguide/ruby
@@ -1186,3 +1385,4 @@ in inheritance.
 [google-c++-comments]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Comments
 [google-python-comments]: http://google-styleguide.googlecode.com/svn/trunk/pyguide.html#Comments
 [ruby-naming-bang]: http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist
+[ruby-keyword-arguments]: http://www.sitepoint.com/look-ruby-2-1/
