@@ -6,6 +6,9 @@ It is a fork of the [AirBnb Ruby Guide][airbnb-ruby], which was inspired by [Git
 
 Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
+We have a [JavaScript Style Guidelines Page Here](./JavaScript.md)
+
+
 ## Table of Contents
   1.  [Whitespace](#whitespace)
       1. [Indentation](#indentation)
