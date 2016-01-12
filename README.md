@@ -591,9 +591,7 @@ In either case:
       end
     ```
 
-* Don't use parentheses around the condition of an `if/unless/while`,
-  unless the condition contains an assignment (see [Using the return
-  value of `=`](#syntax) below).
+* Don't use parentheses around the condition of an `if/unless/while`.
 
     ```Ruby
     # bad
@@ -606,10 +604,6 @@ In either case:
       ...
     end
 
-    # ok
-    if (x = next_value)
-      ...
-    end
     ```
 
 ### Ternary operator
@@ -721,11 +715,10 @@ In either case:
     end
     ```
 
-* Using the return value of `=` (an assignment) is ok, but surround the
-  assignment with parenthesis.
+* Don't use the return value of `=` in conditionals
 
     ```Ruby
-    # good - shows intended use of assignment
+    # bad - shows intended use of assignment
     if (v = array.grep(/foo/))
       ...
     end
@@ -735,10 +728,12 @@ In either case:
       ...
     end
 
-    # also good - shows intended use of assignment and has correct precedence
-    if (v = next_value) == "hello"
+    # good
+    v = array.grep(/foo/)
+    if v
       ...
     end
+
     ```
 
 * Use `||=` freely to initialize variables.
