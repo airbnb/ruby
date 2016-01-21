@@ -1031,7 +1031,7 @@ in inheritance.
     cache.write(@user.id + CACHE_KEY)
     ```
 
-    Prefer string interpolation instead of string concatentation:
+    Prefer string interpolation instead of string concatenation:
 
     ```ruby
     CACHE_KEY = '%d_store'
