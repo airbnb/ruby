@@ -80,6 +80,19 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
       ...
     end
 
+    # good
+    def self.create_translation(
+      phrase_id,
+      phrase_key,
+      target_locale,
+      value,
+      user_id,
+      do_xss_check,
+      allow_verification
+    )
+      ...
+    end
+
     # bad
     def self.create_translation(phrase_id, phrase_key, target_locale,
                                 value, user_id, do_xss_check, allow_verification)
@@ -651,7 +664,7 @@ In either case:
       something_else
     end
     ```
-  
+
 ## Syntax
 
 * Never use `for`, unless you know exactly why. Most of the time iterators
