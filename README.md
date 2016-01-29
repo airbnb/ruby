@@ -984,6 +984,10 @@ in inheritance.
   is a hybrid of `Array`'s intuitive inter-operation facilities and
   `Hash`'s fast lookup.
 
+*  Prefer `map` over `collect`, `detect` over `find`, and `reduce` over
+   `inject` and size over length. The reason the use of `detect` is preferred
+   over `find` is because of the ambiguity with ActiveRecord's `find` method.
+
 * Use symbols instead of strings as hash keys.
 
     ```Ruby
