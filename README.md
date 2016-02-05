@@ -986,11 +986,13 @@ in inheritance.
 
 * Prefer `map` over `collect`.
 
-* Prefer `detect` over `find`.
+* Prefer `detect` over `find`. The use of `find` is ambiguous with regard
+  to ActiveRecord's `find` method - `detect` makes clear that you're
+  working with a Ruby collection, not an AR object.
 
 * Prefer `reduce` over `inject`.
 
-* Prefer `size` over either `length` or `count`.
+* Prefer `size` over either `length` or `count` for performance reasons.
 
 * Use symbols instead of strings as hash keys.
 
