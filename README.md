@@ -27,7 +27,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
       1. [Ternary operator](#ternary-operator)
   1.  [Syntax](#syntax)
   1. [% Literals](#%-literals)
-    1. [String literals](#string-literals)
+    1. [Array literals](#array-literals)
   1.  [Naming](#naming)
   1.  [Classes](#classes)
   1.  [Exceptions](#exceptions)
@@ -823,7 +823,7 @@ In either case:
 
 ## % Literals
 
-### String literals
+### Array literals
 
 * Only use a capital `ruby %W()` when you need interpolation.
   ```ruby
