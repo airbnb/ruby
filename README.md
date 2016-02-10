@@ -1157,7 +1157,7 @@ in inheritance.
     %r(^/blog/2011/(.*)$)
     ```
 
-## [Rails](#Rails)
+## [Rails](#rails)
 
 * When immediately returning after calling `render` or `redirect_to`, put `return` on the next line,
   not the same line.
@@ -1180,7 +1180,7 @@ in inheritance.
     end
     ```
 
-* When defining ActiveRecord model [scopes](#Scopes), wrap the relation in a `lambda`.  A
+* When defining ActiveRecord model [scopes](#scopes), wrap the relation in a `lambda`.  A
   naked relation forces a database connection to be established at class load
   time (instance startup).
 
