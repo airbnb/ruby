@@ -164,7 +164,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     ```
 
 ### Trailing
-* Do not add more than 1 newline between code
+* Do not add more than 1 newline between code.
   ```ruby
   # bad
   def bow
@@ -182,7 +182,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
   end
   ```
 
-* Avoid adding newlines between comments
+* Avoid adding newlines between comments.
   ```ruby
   # bad
   # I am Luke's
@@ -217,7 +217,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
   end
   ```
 
-* Avoid adding newlines between arguments
+* Avoid adding newlines between arguments.
   ```ruby
   # bad
   ignite_saber(
