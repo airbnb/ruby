@@ -11,6 +11,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
       1. [Indentation](#indentation)
       1. [Inline](#inline)
       1. [Newlines](#newlines)
+      1. [Trailing](#trailing)
   1.  [Line Length](#line-length)
   1.  [Commenting](#commenting)
       1. [File/class-level comments](#fileclass-level-comments)
@@ -161,6 +162,76 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
     robot.add_trait(:human_like_intelligence)
     ```
+
+### Trailing
+* Do not add more than 1 newline between code
+  ```ruby
+  # bad
+  def bow
+  end
+
+
+  def arrow
+  end
+
+  # good
+  def bow
+  end
+
+  def arrow
+  end
+  ```
+
+* Avoid adding newlines between comments
+  ```ruby
+  # bad
+  # I am Luke's
+
+  # long lost father.
+
+  # good
+  # I am Luke's
+  # long lost father.
+  ```
+
+* Avoid adding newlines at the start and end of blocks, functions, methods, etc.
+  ```ruby
+  # bad
+  def destroy_one_ring(gollum_present)
+
+    if gollum_present
+      destroy_one_ring
+    else
+      end_world
+    end
+
+  end
+
+  # good
+  def destroy_one_ring(gollum_present)
+    if gollum_present
+      destroy_one_ring
+    else
+      end_world
+    end
+  end
+  ```
+
+* Avoid adding newlines between arguments
+  ```ruby
+  # bad
+  ignite_saber(
+    100,
+
+    "red"
+  )
+
+  # good
+  ignite_saber(
+    100,
+    "red"
+  )
+  ```
 
 ## Line Length
 
