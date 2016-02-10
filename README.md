@@ -164,7 +164,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     ```
 
 ### Trailing
-* Do not add more than 1 newline between code.
+* Do not add more than 1 newline between methods.
   ```ruby
   # bad
   def bow
@@ -180,18 +180,6 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
   def arrow
   end
-  ```
-
-* Avoid adding newlines between comments.
-  ```ruby
-  # bad
-  # I am Luke's
-
-  # long lost father.
-
-  # good
-  # I am Luke's
-  # long lost father.
   ```
 
 * Avoid adding newlines at the start and end of blocks, functions, methods, etc.
