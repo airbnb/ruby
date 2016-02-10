@@ -843,7 +843,7 @@ In either case:
   %Q(Hello Jin, how are you doing?)
 
   # good
-  %q(Hello #{friend.first_name}, how are you doing?)
+  %Q(Hello #{friend.first_name}, how are you doing?)
   ```
 
 ## Naming
