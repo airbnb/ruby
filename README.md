@@ -28,6 +28,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
   1.  [Syntax](#syntax)
   1. [% Literals](#%-literals)
     1. [Array literals](#array-literals)
+    1. [String literals](#string-literals)
   1.  [Naming](#naming)
   1.  [Classes](#classes)
   1.  [Exceptions](#exceptions)
@@ -832,6 +833,17 @@ In either case:
 
   # good
   %W(Bob John Ragna #{my_grandma.first_name})
+  ```
+
+### String literals
+
+* Only use a capital `ruby %Q()` when you need interpolation.
+  ```ruby
+  # bad
+  %Q(Hello Jin, how are you doing?)
+
+  # good
+  %q(Hello #{friend.first_name}, how are you doing?)
   ```
 
 ## Naming
