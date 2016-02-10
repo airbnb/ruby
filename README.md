@@ -25,6 +25,8 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
   1.  [Conditional Expressions](#conditional-expressions)
       1. [Conditional keywords](#conditional-keywords)
       1. [Ternary operator](#ternary-operator)
+  1. [Loops](#loops)
+    1. [While](#while)
   1.  [Syntax](#syntax)
   1.  [Naming](#naming)
   1.  [Classes](#classes)
@@ -664,6 +666,22 @@ In either case:
       something_else
     end
     ```
+
+## Loops
+
+### While
+* Avoid using `do` when performing `while` loops.
+  ```ruby
+  # bad
+  while i < count do
+    i += 1
+  end
+
+  # good
+  while i < count
+    i += 1
+  end
+  ```
 
 ## Syntax
 
