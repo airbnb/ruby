@@ -1158,7 +1158,7 @@ in inheritance.
     %r(^/blog/2011/(.*)$)
     ```
 
-## [Rails](#rails)
+## Rails
 
 * When immediately returning after calling `render` or `redirect_to`, put `return` on the next line,
   not the same line.
