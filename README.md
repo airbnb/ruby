@@ -994,6 +994,16 @@ in inheritance.
 
 * Prefer `size` over either `length` or `count` for performance reasons.
 
+* Use hashrocket syntax instead of JSON syntax for hashes.
+
+    ```Ruby
+    # bad
+    hash = { one: 1, two: 2, three: 3 }
+
+    # good
+    hash = { :one => 1, :two => 2, :three => 3 }
+    ```
+
 * Use symbols instead of strings as hash keys.
 
     ```Ruby
