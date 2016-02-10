@@ -26,6 +26,8 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
       1. [Conditional keywords](#conditional-keywords)
       1. [Ternary operator](#ternary-operator)
   1.  [Syntax](#syntax)
+  1. [% Literals](#%-literals)
+    1. [Array literals](#array-literals)
   1.  [Naming](#naming)
   1.  [Classes](#classes)
   1.  [Exceptions](#exceptions)
@@ -818,6 +820,19 @@ In either case:
   2. The *left hand side* when calling an assignment method, including assigning
      an attribute when `self` is an ActiveRecord model: `self.guest = user`.
   3. Referencing the current instance's class: `self.class`.
+
+## % Literals
+
+### Array literals
+
+* Only use a capital `ruby %W()` when you need interpolation.
+  ```ruby
+  # bad
+  %W(Bob John Ragna)
+
+  # good
+  %W(Bob John Ragna #{my_grandma.first_name})
+  ```
 
 ## Naming
 
