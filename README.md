@@ -33,7 +33,8 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
   1. [Strings](#strings)
   1. [Regular Expressions](#regular-expressions)
   1. [Percent Literals](#percent-literals)
-  1. [Rails Specific](#rails)
+  1. [Rails](#rails)
+    1. [Scopes](#scopes)
   1. [Be Consistent](#be-consistent)
 
 ## Whitespace
@@ -1178,6 +1179,19 @@ in inheritance.
       render :text => 'Howdy'
       return
     end
+    ```
+
+### Scopes
+* When defining ActiveRecord model scopes, wrap the relation in a `lambda`.  A
+  naked relation forces a database connection to be established at class load
+  time (instance startup).
+
+    ```ruby
+    # bad
+    scope :foo, where(:bar => 1)
+
+    # good
+    scope :foo, -> { where(:bar => 1) }
     ```
 
 ## Be Consistent
