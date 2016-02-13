@@ -187,19 +187,19 @@ characters. Notice techniques like:
 ```ruby
 scope = Translation::Phrase.includes(:phrase_translations).
   joins(:phrase_screenshots).
-  where(:phrase_screenshots => {
-    :controller => controller_name,
-    :action => JAROMIR_JAGR_SALUTE,
+  where(phrase_screenshots: {
+    controller: controller_name,
+    action: JAROMIR_JAGR_SALUTE,
   })
 ```
 
 ```ruby
 translation = FactoryGirl.create(
   :phrase_translation,
-  :locale => :is,
-  :phrase => phrase,
-  :key => 'phone_number_not_revealed_time_zone',
-  :value => 'Símanúmerið þitt verður ekki birt. Það er aðeins hægt að hringja á '\
+  locale: :is,
+  phrase: phrase,
+  key: 'phone_number_not_revealed_time_zone',
+  value: 'Símanúmerið þitt verður ekki birt. Það er aðeins hægt að hringja á '\
             'milli 9:00 og 21:00 %{time_zone}.'
 )
 ```
@@ -215,10 +215,10 @@ end
 ```erb
 <% if @presenter.guest_visa_russia? %>
   <%= icon_tile_for(I18n.t("email.reservation_confirmed_guest.visa.details_header",
-                           :default => "Visa for foreign Travelers"),
-                    :beveled_big_icon => "stamp") do %>
+                           default: "Visa for foreign Travelers"),
+                    beveled_big_icon: "stamp") do %>
     <%= I18n.t("email.reservation_confirmed_guest.visa.russia.details_copy",
-               :default => "Foreign guests travelling to Russia may need to obtain a visa...") %>
+               default: "Foreign guests travelling to Russia may need to obtain a visa...") %>
   <% end %>
 <% end %>
 ```
@@ -226,9 +226,9 @@ end
 These code snippets are very much more readable than the alternative:
 
 ```ruby
-scope = Translation::Phrase.includes(:phrase_translations).joins(:phrase_screenshots).where(:phrase_screenshots => { :controller => controller_name, :action => JAROMIR_JAGR_SALUTE })
+scope = Translation::Phrase.includes(:phrase_translations).joins(:phrase_screenshots).where(phrase_screenshots: { controller: controller_name, action: JAROMIR_JAGR_SALUTE })
 
-translation = FactoryGirl.create(:phrase_translation, :locale => :is, :phrase => phrase, :key => 'phone_number_not_revealed_time_zone', :value => 'Símanúmerið þitt verður ekki birt. Það er aðeins hægt að hringja á milli 9:00 og 21:00 %{time_zone}.')
+translation = FactoryGirl.create(:phrase_translation, locale: :is, phrase: phrase, key: 'phone_number_not_revealed_time_zone', value: 'Símanúmerið þitt verður ekki birt. Það er aðeins hægt að hringja á milli 9:00 og 21:00 %{time_zone}.')
 
 if @reservation_alteration.checkin == @reservation.start_date && @reservation_alteration.checkout == (@reservation.start_date + @reservation.nights)
   redirect_to_alteration @reservation_alteration
@@ -237,8 +237,8 @@ end
 
 ```erb
 <% if @presenter.guest_visa_russia? %>
-  <%= icon_tile_for(I18n.t("email.reservation_confirmed_guest.visa.details_header", :default => "Visa for foreign Travelers"), :beveled_big_icon => "stamp") do %>
-    <%= I18n.t("email.reservation_confirmed_guest.visa.russia.details_copy", :default => "Foreign guests travelling to Russia may need to obtain a visa prior to...") %>
+  <%= icon_tile_for(I18n.t("email.reservation_confirmed_guest.visa.details_header", default: "Visa for foreign Travelers"), beveled_big_icon: "stamp") do %>
+    <%= I18n.t("email.reservation_confirmed_guest.visa.russia.details_copy", default: "Foreign guests travelling to Russia may need to obtain a visa prior to...") %>
   <% end %>
 <% end %>
 ```
@@ -276,7 +276,7 @@ module Translation
   # Australian, New Zealand variations is provided.
   class PrimAndProper
     def initialize
-      @converters = { :en => { :"en-AU" => AmericanToAustralian.new,
+      @converters = { en: { :"en-AU" => AmericanToAustralian.new,
                                :"en-CA" => AmericanToCanadian.new,
                                :"en-GB" => AmericanToBritish.new,
                                :"en-NZ" => AmericanToKiwi.new,
@@ -346,7 +346,7 @@ just write things out concisely:
 # For example:
 #   fallbacks_for(:"pt-BR")
 #     => [:"pt-BR", :pt, :en]
-#   fallbacks_for(:"pt-BR", :exclude_default => true)
+#   fallbacks_for(:"pt-BR", exclude_default: true)
 #     => [:"pt-BR", :pt]
 def fallbacks_for(the_locale, opts = {})
   ...
@@ -454,9 +454,9 @@ Never leave commented-out code in our codebase.
     # good
     def obliterate(things, options = {})
       default_options = {
-        :gently => true, # obliterate with soft-delete
-        :except => [], # skip obliterating these things
-        :at => Time.now, # don't obliterate them until later
+        gently: true, # obliterate with soft-delete
+        except: [], # skip obliterating these things
+        at: Time.now, # don't obliterate them until later
       }
       options.reverse_merge!(default_options)
 
@@ -512,10 +512,10 @@ Never leave commented-out code in our codebase.
 
     ```ruby
     # okay
-    render(:partial => 'foo')
+    render(partial: 'foo')
 
     # okay
-    render :partial => 'foo'
+    render partial: 'foo'
     ```
 
 In either case:
@@ -525,10 +525,10 @@ In either case:
 
     ```ruby
     # bad
-    get '/v1/reservations', { :id => 54875 }
+    get '/v1/reservations', { id: 54875 }
 
     # good
-    get '/v1/reservations', :id => 54875
+    get '/v1/reservations', id: 54875
     ```
 
 ## Conditional Expressions
@@ -1012,7 +1012,7 @@ in inheritance.
     hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
 
     # good
-    hash = { :one => 1, :two => 2, :three => 3 }
+    hash = { one: 1, two: 2, three: 3 }
     ```
 
 * Use multi-line hashes when it makes the code more readable, and use
@@ -1021,12 +1021,12 @@ in inheritance.
 
     ```ruby
     hash = {
-      :protocol => 'https',
-      :only_path => false,
-      :controller => :users,
-      :action => :set_password,
-      :redirect => @redirect_url,
-      :secret => @secret,
+      protocol: 'https',
+      only_path: false,
+      controller: :users,
+      action: :set_password,
+      redirect: @redirect_url,
+      secret: @secret,
     }
     ```
 
@@ -1175,18 +1175,18 @@ in inheritance.
 
     ```ruby
     # bad
-    render :text => 'Howdy' and return
+    render text: 'Howdy' and return
 
     # good
-    render :text => 'Howdy'
+    render text: 'Howdy'
     return
 
     # still bad
-    render :text => 'Howdy' and return if foo.present?
+    render text: 'Howdy' and return if foo.present?
 
     # good
     if foo.present?
-      render :text => 'Howdy'
+      render text: 'Howdy'
       return
     end
     ```
