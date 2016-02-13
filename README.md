@@ -995,6 +995,16 @@ in inheritance.
 
 * Prefer `size` over either `length` or `count` for performance reasons.
 
+* Use hashrocket syntax instead of JSON syntax for hashes. Hashrocket works no matter what type the key is, and symbol keys + symbol values look wonky in the JSON syntax.
+
+    ```ruby
+    # bad
+    hash = { one: 1, two: 2, action: :update }
+
+    # good
+    hash = { :one => 1, :two => 2, :action => :update }
+    ```
+
 * Use symbols instead of strings as hash keys.
 
     ```ruby
