@@ -51,19 +51,11 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     case
     when song.name == 'Misty'
       puts 'Not again!'
-    when song.duration > 120
-      puts 'Too long!'
-    when Time.now.hour > 21
-      puts "It's too late"
     else
       song.play
     end
 
     kind = case year
-           when 1850..1889 then 'Blues'
-           when 1890..1909 then 'Ragtime'
-           when 1910..1929 then 'New Orleans Jazz'
-           when 1930..1939 then 'Swing'
            when 1940..1950 then 'Bebop'
            else 'Jazz'
            end
@@ -76,10 +68,6 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     # good
     def self.create_translation(phrase_id,
                                 phrase_key,
-                                target_locale,
-                                value,
-                                user_id,
-                                do_xss_check,
                                 allow_verification)
       ...
     end
@@ -88,18 +76,14 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     def self.create_translation(
       phrase_id,
       phrase_key,
-      target_locale,
-      value,
-      user_id,
-      do_xss_check,
       allow_verification
     )
       ...
     end
 
     # bad
-    def self.create_translation(phrase_id, phrase_key, target_locale,
-                                value, user_id, do_xss_check, allow_verification)
+    def self.create_translation(phrase_id, phrase_key,
+                                allow_verification)
       ...
     end
     ```
@@ -111,14 +95,12 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     # good
     def is_eligible?(user)
       Trebuchet.current.launch?(ProgramEligibilityHelper::PROGRAM_TREBUCHET_FLAG) &&
-        is_in_program?(user) &&
         program_not_expired
     end
 
     # bad
     def is_eligible?(user)
       Trebuchet.current.launch?(ProgramEligibilityHelper::PROGRAM_TREBUCHET_FLAG) &&
-      is_in_program?(user) &&
       program_not_expired
     end
     ```
@@ -304,7 +286,7 @@ def fallbacks_for(the_locale, opts = {})
   # We make two assumptions here:
   # 1) There is only one default locale (that is, it has no less-specific
   #    children).
-  # 1) The default locale is just a language. (Like :en, and not :"en-US".)
+  # 2) The default locale is just a language. (Like :en, and not :"en-US".)
   if opts[:exclude_default] &&
       ret.last == default_locale &&
       ret.last != language_from_locale(the_locale)
@@ -755,11 +737,9 @@ In either case:
 
     ```ruby
     # bad
-    bluths.map { |bluth| bluth.occupation }
     bluths.select { |bluth| bluth.blue_self? }
 
     # good
-    bluths.map(&:occupation)
     bluths.select(&:blue_self?)
     ```
 
@@ -870,10 +850,8 @@ In either case:
         def first_method
           ...
         end
+        ...
 
-        def second_method_etc
-          ...
-        end
       end
 
       # good
@@ -885,10 +863,8 @@ In either case:
       def self.first_method
         ...
       end
+      ...
 
-      def self.second_method_etc
-        ...
-      end
     end
     ```
 
@@ -1008,9 +984,7 @@ In either case:
       :protocol => 'https',
       :only_path => false,
       :controller => :users,
-      :action => :set_password,
       :redirect => @redirect_url,
-      :secret => @secret,
     }
     ```
 
@@ -1026,7 +1000,6 @@ In either case:
       "car",
       "bear",
       "plane",
-      "zoo",
     ]
     ```
 
