@@ -41,87 +41,21 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
 ### Indentation
 
-* <a name="default-indentation"></a>Use soft-tabs with a two
-    space-indent.<sup>[[link](#default-indentation)]</sup>
-
-* <a name="indent-when-as-case"></a>Indent `when` as deep as `case`.
-    <sup>[[link](#indent-when-as-case)]</sup>
-
-    ```ruby
-    case
-    when song.name == 'Misty'
-      puts 'Not again!'
-    when song.duration > 120
-      puts 'Too long!'
-    when Time.now.hour > 21
-      puts "It's too late"
-    else
-      song.play
-    end
-
-    kind = case year
-           when 1850..1889 then 'Blues'
-           when 1890..1909 then 'Ragtime'
-           when 1910..1929 then 'New Orleans Jazz'
-           when 1930..1939 then 'Swing'
-           when 1940..1950 then 'Bebop'
-           else 'Jazz'
-           end
-    ```
-
-* <a name="align-function-params"></a>Align function parameters either all on
-    the same line or one per line.<sup>[[link](#align-function-params)]</sup>
-
-    ```ruby
-    # good
-    def self.create_translation(phrase_id,
-                                phrase_key,
-                                target_locale,
-                                value,
-                                user_id,
-                                do_xss_check,
-                                allow_verification)
-      ...
-    end
-
-    # good
-    def self.create_translation(
-      phrase_id,
-      phrase_key,
-      target_locale,
-      value,
-      user_id,
-      do_xss_check,
-      allow_verification
-    )
-      ...
-    end
-
-    # bad
-    def self.create_translation(phrase_id, phrase_key, target_locale,
-                                value, user_id, do_xss_check, allow_verification)
-      ...
-    end
-    ```
-
-* <a name="indent-multi-line-bool"></a>Indent succeeding lines in multi-line
-    boolean expressions.<sup>[[link](#indent-multi-line-bool)]</sup>
-
-    ```ruby
-    # good
-    def is_eligible?(user)
-      Trebuchet.current.launch?(ProgramEligibilityHelper::PROGRAM_TREBUCHET_FLAG) &&
-        is_in_program?(user) &&
-        program_not_expired
-    end
-
-    # bad
-    def is_eligible?(user)
-      Trebuchet.current.launch?(ProgramEligibilityHelper::PROGRAM_TREBUCHET_FLAG) &&
-      is_in_program?(user) &&
-      program_not_expired
-    end
-    ```
+* <a name="default-indentation"></a>
+  Use soft-tabs with a twospace-indent.
+  <sup>[[link](#default-indentation)]</sup>
+* <a name="indent-when-as-case"></a>
+  Indent `when` as deep as `case`.
+  [Example](./rationales.md#indent-when-as-case)
+  <sup>[[link](#indent-when-as-case)]</sup>
+* <a name="align-function-params"></a>
+  Align function parameters either all on the same line or one per line.
+  [Example](./rationales.md#align-function-params)
+  <sup>[[link](#align-function-params)]</sup>
+* <a name="indent-multi-line-bool"></a>
+  Indent succeeding lines in multi-line boolean expressions.
+  [Example](./rationales.md#indent-multi-line-bool)
+  <sup>[[link](#indent-multi-line-bool)]</sup>
 
 ### Inline
 
@@ -606,7 +540,7 @@ In either case:
     end
     ```
 
-* <a name="single-condition-ternary"></a>Avoid multiple conditions in ternaries. 
+* <a name="single-condition-ternary"></a>Avoid multiple conditions in ternaries.
     Ternaries are best used with single conditions.
     <sup>[[link](#single-condition-ternary)]</sup>
 
@@ -629,7 +563,7 @@ In either case:
 
 ## Syntax
 
-* <a name="no-for"></a>Never use `for`, unless you know exactly why. Most of the 
+* <a name="no-for"></a>Never use `for`, unless you know exactly why. Most of the
     time iterators should be used instead. `for` is implemented in terms of
     `each` (so you're adding a level of indirection), but with a twist - `for`
     doesn't introduce a new scope (unlike `each`) and variables defined in its
@@ -763,7 +697,7 @@ In either case:
     bluths.select(&:blue_self?)
     ```
 
-* <a name="redundant-self"></a>Prefer `some_method` over `self.some_method` when 
+* <a name="redundant-self"></a>Prefer `some_method` over `self.some_method` when
     calling a method on the current instance.<sup>[[link](#redundant-self)]</sup>
 
     ```ruby

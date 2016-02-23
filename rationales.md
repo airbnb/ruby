@@ -4,7 +4,91 @@ This document contains what are at times lengthy rationales and justifications
 for the decisions made in the main [Style guide](./README.md).
 
 ## Table of Contents
-  1.  [Line Length](#line-length)
+  1. [Whitespace](#whitespace)
+    1. [Indentation](#indentation)
+  1. [Line Length](#line-length)
+
+## Whitespace
+
+### Indentation
+
+<a name="indent-when-as-case"></a>
+Indent `when` as deep as `case`.
+```ruby
+# bad
+kind = case year
+       when 1850..1889 then 'Blues'
+       when 1890..1909 then 'Ragtime'
+       when 1910..1929 then 'New Orleans Jazz'
+       when 1930..1939 then 'Swing'
+       when 1940..1950 then 'Bebop'
+       else 'Jazz'
+       end
+
+# good
+case
+when song.name == 'Misty'
+  puts 'Not again!'
+when song.duration > 120
+  puts 'Too long!'
+when Time.now.hour > 21
+  puts "It's too late"
+else
+  song.play
+end
+```
+
+<a name="align-function-params"></a>
+Align function parameters either all on the same line or one per line.
+```ruby
+# bad
+def self.create_translation(phrase_id, phrase_key, target_locale,
+                            value, user_id, do_xss_check, allow_verification)
+  ...
+end
+
+# good
+def self.create_translation(phrase_id,
+                            phrase_key,
+                            target_locale,
+                            value,
+                            user_id,
+                            do_xss_check,
+                            allow_verification)
+  ...
+end
+
+# good
+def self.create_translation(
+  phrase_id,
+  phrase_key,
+  target_locale,
+  value,
+  user_id,
+  do_xss_check,
+  allow_verification
+)
+  ...
+end
+```
+
+<a name="indent-multi-line-bool"></a>
+Indent succeeding lines in multi-line boolean expressions.
+```ruby
+# bad
+def is_eligible?(user)
+  Trebuchet.current.launch?(ProgramEligibilityHelper::PROGRAM_TREBUCHET_FLAG) &&
+  is_in_program?(user) &&
+  program_not_expired
+end
+
+# good
+def is_eligible?(user)
+  Trebuchet.current.launch?(ProgramEligibilityHelper::PROGRAM_TREBUCHET_FLAG) &&
+    is_in_program?(user) &&
+    program_not_expired
+end
+```
 
 ### Line Length
 
