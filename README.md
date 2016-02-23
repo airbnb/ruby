@@ -1109,7 +1109,7 @@ In either case:
 
 &mdash;[Google C++ Style Guide][google-c++]
 
-[airbnb-javascript]: https://github.com/airbnb/javascript
+[crowdtap-javascript]: https://github.com/crowdtap/javascript
 [bbatsov-ruby]: https://github.com/bbatsov/ruby-style-guide
 [github-ruby]: https://github.com/styleguide/ruby
 [google-c++]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml
