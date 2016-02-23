@@ -73,6 +73,12 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     the same line or one per line.<sup>[[link](#align-function-params)]</sup>
 
     ```ruby
+    # bad
+    def self.create_translation(phrase_id, phrase_key, target_locale,
+                                value, user_id, do_xss_check, allow_verification)
+      ...
+    end
+
     # good
     def self.create_translation(phrase_id,
                                 phrase_key,
@@ -96,30 +102,24 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     )
       ...
     end
-
-    # bad
-    def self.create_translation(phrase_id, phrase_key, target_locale,
-                                value, user_id, do_xss_check, allow_verification)
-      ...
-    end
     ```
 
 * <a name="indent-multi-line-bool"></a>Indent succeeding lines in multi-line
     boolean expressions.<sup>[[link](#indent-multi-line-bool)]</sup>
 
     ```ruby
-    # good
-    def is_eligible?(user)
-      Trebuchet.current.launch?(ProgramEligibilityHelper::PROGRAM_TREBUCHET_FLAG) &&
-        is_in_program?(user) &&
-        program_not_expired
-    end
-
     # bad
     def is_eligible?(user)
       Trebuchet.current.launch?(ProgramEligibilityHelper::PROGRAM_TREBUCHET_FLAG) &&
       is_in_program?(user) &&
       program_not_expired
+    end
+
+    # good
+    def is_eligible?(user)
+      Trebuchet.current.launch?(ProgramEligibilityHelper::PROGRAM_TREBUCHET_FLAG) &&
+        is_in_program?(user) &&
+        program_not_expired
     end
     ```
 
@@ -606,7 +606,7 @@ In either case:
     end
     ```
 
-* <a name="single-condition-ternary"></a>Avoid multiple conditions in ternaries. 
+* <a name="single-condition-ternary"></a>Avoid multiple conditions in ternaries.
     Ternaries are best used with single conditions.
     <sup>[[link](#single-condition-ternary)]</sup>
 
@@ -629,7 +629,7 @@ In either case:
 
 ## Syntax
 
-* <a name="no-for"></a>Never use `for`, unless you know exactly why. Most of the 
+* <a name="no-for"></a>Never use `for`, unless you know exactly why. Most of the
     time iterators should be used instead. `for` is implemented in terms of
     `each` (so you're adding a level of indirection), but with a twist - `for`
     doesn't introduce a new scope (unlike `each`) and variables defined in its
@@ -763,7 +763,7 @@ In either case:
     bluths.select(&:blue_self?)
     ```
 
-* <a name="redundant-self"></a>Prefer `some_method` over `self.some_method` when 
+* <a name="redundant-self"></a>Prefer `some_method` over `self.some_method` when
     calling a method on the current instance.<sup>[[link](#redundant-self)]</sup>
 
     ```ruby
