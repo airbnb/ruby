@@ -9,7 +9,6 @@ It was inspired by Airbnb's styleguide.
     1. [Indentation](#indentation)
     1. [Inline](#inline)
     1. [Newlines](#newlines)
-    1. [Blocks](#blocks)
   1. [Line Length](#line-length)
   1. [Commenting](#commenting)
     1. [File/class-level comments](#fileclass-level-comments)
@@ -34,6 +33,7 @@ It was inspired by Airbnb's styleguide.
   1. [Percent Literals](#percent-literals)
   1. [Rails](#rails)
     1. [Scopes](#scopes)
+    1. [Dates](#dates)
   1. [Be Consistent](#be-consistent)
 
 ## Whitespace
@@ -169,45 +169,6 @@ It was inspired by Airbnb's styleguide.
     end
 
     robot.add_trait(:human_like_intelligence)
-    ```
-
-### Blocks
-* <a name="rspec-let"></a>Add new lines in any block definitions
-    if they are too long
-
-    ```ruby
-    # bad
-    scope :where_name_like, lambda {|name| any_of({ :name => /#{Regexp.quote(name)}/i },  { :short_name => /#{Regexp.quote(name)}/i } )}
-
-    # bad
-    scope :where_name_like, lambda { |name|
-      any_of({ :name => /#{Regexp.quote(name)}/i },
-             { :short_name => /#{Regexp.quote(name)}/i } )
-    }
-
-    # bad
-    let(:brand) { create(:brand, :name => "Hello", :subscription => create(:ready_to_start_subscription, :days_paid => 10), :clients => [create(:client), create(:client)]) }
-
-    # good
-    scope :where_name_like, -> do |name|
-      any_of(
-        { :name => /#{Regexp.quote(name)}/i },
-        { :short_name => /#{Regexp.quote(name)}/i }
-      )
-    end
-
-    # good
-    let(:brand) do
-      create(
-        :brand,
-        :name => "Hello",
-        :subscription => subscription,
-        :clients => [client_1, client_2]
-      )
-    end
-    let(:subscription) { create(:ready_to_start_subscription, :days_paid => 20) }
-    let(:client_1) { create(:client) }
-    let(:client21) { create(:client) }
     ```
 
 ## Line Length
@@ -427,7 +388,7 @@ In either case:
       add_trebuchet_experiments_on_page(request_opts[:trebuchet_experiments_on_page])
     end
 
-    # bad - this is complex and deserves multiple lines and a comment
+    # bad - this is complex and deserves multiple lines
     parts[i] = part.to_i(INTEGER_BASE) if !part.nil? && [0, 2, 3].include?(i)
 
     # okay
@@ -539,7 +500,7 @@ In either case:
 
 ## Syntax
 
-* <a name="no-for"></a>Never use `for`, unless you know exactly why. Most of the 
+* <a name="no-for"></a>Never use `for`, unless you know exactly why. Most of the
     time iterators should be used instead. `for` is implemented in terms of
     `each` (so you're adding a level of indirection), but with a twist - `for`
     doesn't introduce a new scope (unlike `each`) and variables defined in its
@@ -574,6 +535,12 @@ In either case:
 
     # good
     names.select { |name| name.start_with?("S") }.map { |name| name.upcase }
+
+    # good
+    names.each do |name|
+      puts name
+      do_something_with name
+    end
 
     # bad
     names.select do |name|
@@ -1107,6 +1074,24 @@ In either case:
 
     # good
     scope :foo, -> { where(:bar => 1) }
+    ```
+
+### Dates
+* <a name="dates"></a>When trying to set the current date for usage, make use
+    .current instead of .today. Date.today doesn't account for timezones and hence
+    can cause issues.
+    <sup>[[link](#dates)]</sup>
+
+    ```ruby
+    # bad
+    Timecop.freeze(Date.today) do
+      ...
+    end
+
+    # good
+    Timecop.freeze(Date.current) do
+      ...
+    end
     ```
 
 ## Be Consistent
