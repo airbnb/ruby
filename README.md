@@ -1,10 +1,8 @@
 # Ruby Style Guide
 
-This is Airbnb's Ruby Style Guide.
+This is Crowdtap's Ruby Style Guide.
 
-It was inspired by [Github's guide][github-ruby] and [Bozhidar Batsov's guide][bbatsov-ruby].
-
-Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
+It was inspired by Airbnb's styleguide.
 
 ## Table of Contents
   1. [Whitespace](#whitespace)
@@ -35,6 +33,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
   1. [Percent Literals](#percent-literals)
   1. [Rails](#rails)
     1. [Scopes](#scopes)
+    1. [Dates](#dates)
   1. [Be Consistent](#be-consistent)
 
 ## Whitespace
@@ -180,159 +179,31 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
   [[link](#line-length)]</sup>
 
 ## Commenting
+> Good code is its own best documentation. As you're about to add a
+> comment, ask yourself, "How can I improve the code so that this
+> comment isn't needed?" Improve the code and then document it to make
+> it even clearer. <br/>
+> -- Steve McConnell
 
-> Though a pain to write, comments are absolutely vital to keeping our code
-> readable. The following rules describe what you should comment and where. But
-> remember: while comments are very important, the best code is
-> self-documenting. Giving sensible names to types and variables is much better
-> than using obscure names that you must then explain through comments.
+* Write self-documenting code and ignore the rest of this section. Seriously!
+* Avoid superfluous comments.
 
-> When writing your comments, write for your audience: the next contributor who
-> will need to understand your code. Be generous — the next one may be you!
-
-&mdash;[Google C++ Style Guide][google-c++]
-
-Portions of this section borrow heavily from the Google
-[C++][google-c++-comments] and [Python][google-python-comments] style guides.
-
-### File/class-level comments
-
-Every class definition should have an accompanying comment that describes what
-it is for and how it should be used.
-
-A file that contains zero classes or more than one class should have a comment
-at the top describing its contents.
-
-```ruby
-# Automatic conversion of one locale to another where it is possible, like
-# American to British English.
-module Translation
-  # Class for converting between text between similar locales.
-  # Right now only conversion between American English -> British, Canadian,
-  # Australian, New Zealand variations is provided.
-  class PrimAndProper
-    def initialize
-      @converters = { :en => { :"en-AU" => AmericanToAustralian.new,
-                               :"en-CA" => AmericanToCanadian.new,
-                               :"en-GB" => AmericanToBritish.new,
-                               :"en-NZ" => AmericanToKiwi.new,
-                             } }
-    end
-
-  ...
-
-  # Applies transforms to American English that are common to
-  # variants of all other English colonies.
-  class AmericanToColonial
-    ...
-  end
-
-  # Converts American to British English.
-  # In addition to general Colonial English variations, changes "apartment"
-  # to "flat".
-  class AmericanToBritish < AmericanToColonial
-    ...
-  end
+```Ruby
+  # bad
+  counter += 1 # increments counter by one
 ```
 
-All files, including data and config files, should have file-level comments.
+* Keep existing comments up-to-date or attempt to delete them with good code.
+  An outdated is worse than no comment at all.
 
-```ruby
-# List of American-to-British spelling variants.
-#
-# This list is made with
-# lib/tasks/list_american_to_british_spelling_variants.rake.
-#
-# It contains words with general spelling variation patterns:
-#   [trave]led/lled, [real]ize/ise, [flav]or/our, [cent]er/re, plus
-# and these extras:
-#   learned/learnt, practices/practises, airplane/aeroplane, ...
+> Good code is like a good joke - it needs no explanation.
+> <br/>
+> -- Russ Olsen
 
-sectarianizes: sectarianises
-neutralization: neutralisation
-...
-```
-
-### Function comments
-
-Every function declaration should have comments immediately preceding it that
-describe what the function does and how to use it. These comments should be
-descriptive ("Opens the file") rather than imperative ("Open the file"); the
-comment describes the function, it does not tell the function what to do. In
-general, these comments do not describe how the function performs its task.
-Instead, that should be left to comments interspersed in the function's code.
-
-Every function should mention what the inputs and outputs are, unless it meets
-all of the following criteria:
-
-* not externally visible
-* very short
-* obvious
-
-You may use whatever format you wish. In Ruby, two popular function
-documentation schemes are [TomDoc](http://tomdoc.org/) and
-[YARD](http://rubydoc.info/docs/yard/file/docs/GettingStarted.md). You can also
-just write things out concisely:
-
-```ruby
-# Returns the fallback locales for the_locale.
-# If opts[:exclude_default] is set, the default locale, which is otherwise
-# always the last one in the returned list, will be excluded.
-#
-# For example:
-#   fallbacks_for(:"pt-BR")
-#     => [:"pt-BR", :pt, :en]
-#   fallbacks_for(:"pt-BR", :exclude_default => true)
-#     => [:"pt-BR", :pt]
-def fallbacks_for(the_locale, opts = {})
-  ...
-end
-```
-
-### Block and inline comments
-
-The final place to have comments is in tricky parts of the code. If you're
-going to have to explain it at the next code review, you should comment it now.
-Complicated operations get a few lines of comments before the operations
-commence. Non-obvious ones get comments at the end of the line.
-
-```ruby
-def fallbacks_for(the_locale, opts = {})
-  # dup() to produce an array that we can mutate.
-  ret = @fallbacks[the_locale].dup
-
-  # We make two assumptions here:
-  # 1) There is only one default locale (that is, it has no less-specific
-  #    children).
-  # 1) The default locale is just a language. (Like :en, and not :"en-US".)
-  if opts[:exclude_default] &&
-      ret.last == default_locale &&
-      ret.last != language_from_locale(the_locale)
-    ret.pop
-  end
-
-  ret
-end
-```
-
-On the other hand, never describe the code. Assume the person reading the code
-knows the language (though not what you're trying to do) better than you do.
-
-### Punctuation, spelling and grammar
-
-Pay attention to punctuation, spelling, and grammar; it is easier to read
-well-written comments than badly written ones.
-
-Comments should be as readable as narrative text, with proper capitalization
-and punctuation. In many cases, complete sentences are more readable than
-sentence fragments. Shorter comments, such as comments at the end of a line of
-code, can sometimes be less formal, but you should be consistent with your
-style.
-
-Although it can be frustrating to have a code reviewer point out that you are
-using a comma when you should be using a semicolon, it is very important that
-source code maintain a high level of clarity and readability. Proper
-punctuation, spelling, and grammar help with that goal.
+* Avoid writing comments to explain bad code. Refactor the code to make it self-explanatory.
+> Try not! Do or do not - there is no try.
+> <br/>
+> --Yoda
 
 ### TODO comments
 
@@ -517,7 +388,7 @@ In either case:
       add_trebuchet_experiments_on_page(request_opts[:trebuchet_experiments_on_page])
     end
 
-    # bad - this is complex and deserves multiple lines and a comment
+    # bad - this is complex and deserves multiple lines
     parts[i] = part.to_i(INTEGER_BASE) if !part.nil? && [0, 2, 3].include?(i)
 
     # okay
@@ -664,6 +535,12 @@ In either case:
 
     # good
     names.select { |name| name.start_with?("S") }.map { |name| name.upcase }
+
+    # good
+    names.each do |name|
+      puts name
+      do_something_with name
+    end
 
     # bad
     names.select do |name|
@@ -1189,6 +1066,24 @@ In either case:
     scope :foo, -> { where(:bar => 1) }
     ```
 
+### Dates
+* <a name="dates"></a>When trying to set the current date for usage, make use
+    .current instead of .today. Date.today doesn't account for timezones and hence
+    can cause issues.
+    <sup>[[link](#dates)]</sup>
+
+    ```ruby
+    # bad
+    Timecop.freeze(Date.today) do
+      ...
+    end
+
+    # good
+    Timecop.freeze(Date.current) do
+      ...
+    end
+    ```
+
 ## Be Consistent
 
 > If you're editing code, take a few minutes to look at the code around you and
@@ -1206,7 +1101,7 @@ In either case:
 
 &mdash;[Google C++ Style Guide][google-c++]
 
-[airbnb-javascript]: https://github.com/airbnb/javascript
+[crowdtap-javascript]: https://github.com/crowdtap/javascript
 [bbatsov-ruby]: https://github.com/bbatsov/ruby-style-guide
 [github-ruby]: https://github.com/styleguide/ruby
 [google-c++]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml
