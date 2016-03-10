@@ -139,6 +139,13 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     [1, 2, 3].each { |e| puts e }
     ```
 
+* <a name="no-space-before-commas"></a>Never include a space before a comma.
+	  <sup>[[link](#no-space-before-commas)]</sup>
+
+	  ```ruby
+	  result = func(a, b)
+	  ```
+
 * <a name="spaces-block-params"></a>Do not include space inside block
 	  parameter pipes. Include one space between parameters in a block.
 	  Include one space outside block parameter pipes.
