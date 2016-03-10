@@ -186,6 +186,17 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     [1, 2, 3].length
     ```
 
+* <a name="no-spaces-string-interpolation"></a>Omit whitespace when doing
+	  string interpolation.<sup>[[link](#no-spaces-string-interpolation)]</sup>
+
+	  ```ruby
+	  # bad
+	  var = "This #{ foobar } is interpolated."
+
+	  # good
+	  var = "This #{foobar} is interpolated."
+	  ```
+
 * <a name="no-spaces-range-literals"></a>Don't use extra whitespace in range
 	  literals.<sup>[[link](#no-spaces-range-literals)]</sup>
 
