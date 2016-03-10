@@ -186,6 +186,17 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     [1, 2, 3].length
     ```
 
+* <a name="no-spaces-range-literals"></a>Don't use extra whitespace in range
+	  literals.<sup>[[link](#no-spaces-range-literals)]</sup>
+
+	  ```ruby
+	  # bad
+	  (0 ... coll).each do |item|
+
+	  # good
+	  (0...coll).each do |item|
+	  ```
+
 ### Newlines
 
 * <a name="multiline-if-newline"></a>Add a new line after `if` conditions span
