@@ -128,6 +128,18 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 * <a name="trailing-whitespace"></a>Never leave trailing whitespace.
     <sup>[[link](#trailing-whitespace)]</sup>
 
+* <a name="space-before-comments"></a>When making inline comments, include a
+	  space between the end of the code and the start of your comment.
+	  <sup>[[link](#space-before-comments)]</sup>
+
+	  ```ruby
+	  # bad
+	  result = func(a, b)# we might want to change b to c
+
+	  # good
+	  result = func(a, b) # we might want to change b to c
+	  ```
+
 * <a name="spaces-operators"></a>Use spaces around operators; after commas,
     colons, and semicolons; and around `{` and before `}`.
     <sup>[[link](#spaces-operators)]</sup>
