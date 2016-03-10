@@ -139,6 +139,13 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     [1, 2, 3].each { |e| puts e }
     ```
 
+* <a name="no-space-after-!"></a>Do not leave space between `!` and its
+	  argument.<sup>[[link](#no-space-after-!)]</sup>
+
+	  ```ruby
+	  !something
+	  ```
+
 * <a name="no-spaces-braces"></a>No spaces after `(`, `[` or before `]`, `)`.
     <sup>[[link](#no-spaces-braces)]</sup>
 
