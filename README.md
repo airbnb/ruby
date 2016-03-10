@@ -172,6 +172,17 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     robot.add_trait(:human_like_intelligence)
     ```
 
+* <a name="newline-between-methods"></a>Include one, but no more than one, new
+	  line between methods.<sup>[[link](#newline-between-methods)]</sup>
+
+    ```ruby
+    def a
+    end
+
+    def b
+    end
+    ```
+
 ## Line Length
 
 * Keep each line of code to a readable length. Unless
