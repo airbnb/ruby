@@ -414,6 +414,21 @@ Thus when you create a TODO, it is almost always your name that is given.
     end
     ```
 
+* <a name="no-single-line-methods"></a>Avoid single-line methods. Although
+	  they are somewhat popular in the wild, there are a few peculiarities about
+	  their definition syntax that make their use undesirable.
+	  <sup>[[link](#no-single-line-methods)]</sup>
+
+    ```ruby
+    # bad
+    def too_much; something; something_else; end
+
+    # good
+    def some_method
+      # body
+    end
+    ```
+
 ### Method calls
 
 **Use parentheses** for a method call:
