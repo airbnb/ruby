@@ -762,6 +762,27 @@ In either case:
     `{...}`, but they should ask themselves if this code is really readable and
     whether the block's content can be extracted into nifty methods.
 
+* <a name="self-assignment"></a>Use shorthand self assignment operators
+	  whenever applicable.<sup>[[link](#self-assignment)]</sup>
+
+	  ```ruby
+	  # bad
+	  x = x + y
+	  x = x * y
+	  x = x**y
+	  x = x / y
+	  x = x || y
+	  x = x && y
+
+	  # good
+	  x += y
+	  x *= y
+	  x **= y
+	  x /= y
+	  x ||= y
+	  x &&= y
+	  ```
+
 * <a name="redundant-return"></a>Avoid `return` where not required.
     <sup>[[link](#redundant-return)]</sup>
 
