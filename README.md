@@ -233,6 +233,28 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     robot.add_trait(:human_like_intelligence)
     ```
 
+* <a name="newline-different-indent"></a>Don’t include newlines between areas
+	  of different indentation (such as around class or module bodies).
+	  <sup>[[link](#newline-different-indent)]</sup>
+
+	  ```ruby
+    # bad
+    class Foo
+
+      def bar
+        # body omitted
+      end
+
+    end
+
+    # good
+    class Foo
+      def bar
+        # body omitted
+      end
+    end
+	  ```
+
 * <a name="newline-between-methods"></a>Include one, but no more than one, new
 	  line between methods.<sup>[[link](#newline-between-methods)]</sup>
 
