@@ -390,6 +390,22 @@ end
 On the other hand, never describe the code. Assume the person reading the code
 knows the language (though not what you're trying to do) better than you do.
 
+<a name="no-block-comments"></a>Related: do not use block comments. They cannot
+  be preceded by whitespace and are not as easy to spot as regular comments.
+  <sup>[[link](#no-block-comments)]</sup>
+
+  ```ruby
+  # bad
+  =begin
+  comment line
+  another comment line
+  =end
+
+  # good
+  # comment line
+  # another comment line
+  ```
+
 ### Punctuation, spelling and grammar
 
 Pay attention to punctuation, spelling, and grammar; it is easier to read
