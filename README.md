@@ -817,6 +817,25 @@ In either case:
 	  x &&= y
 	  ```
 
+* <a name="semicolons"></a>Avoid semicolons except for in single line class
+	  definitions. When it is appropriate to use a semicolon, it should be
+	  directly adjacent to the statement it terminates: there should be no
+	  space before the semicolon.<sup>[[link](#semicolons)]</sup>
+
+	  ```ruby
+	  # bad
+	  puts 'foobar'; # superfluous semicolon
+	  puts 'foo'; puts 'bar' # two expressions on the same line
+
+	  # good
+	  puts 'foobar'
+
+	  puts 'foo'
+	  puts 'bar'
+
+	  puts 'foo', 'bar' # this applies to puts in particular
+	  ```
+
 * <a name="redundant-return"></a>Avoid `return` where not required.
     <sup>[[link](#redundant-return)]</sup>
 
