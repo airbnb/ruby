@@ -1207,6 +1207,21 @@ In either case:
 	  :symbol
 	  ```
 
+* <a name="deprecated-hash-methods"></a>Use `Hash#key?` instead of
+	  `Hash#has_key?` and `Hash#value?` instead of `Hash#has_value?`. According
+	  to Matz, the longer forms are considered deprecated.
+	  <sup>[[link](#deprecated-hash-methods")</sup>
+
+	  ```ruby
+	  # bad
+	  hash.has_key?(:test)
+	  hash.has_value?(value)
+
+	  # good
+	  hash.key?(:test)
+	  hash.value?(value)
+	  ```
+
 * <a name="multiline-hashes"></a>Use multi-line hashes when it makes the code
     more readable, and use trailing commas to ensure that parameter changes
     don't cause extraneous diff lines when the logic has not otherwise changed.
