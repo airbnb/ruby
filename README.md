@@ -1120,6 +1120,23 @@ In either case:
 * <a name="size-over-count"></a>Prefer `size` over either `length` or `count`
     for performance reasons.<sup>[[link](#size-over-count)]</sup>
 
+* <a name="empty-collection-literals"></a>Prefer literal array and hash creation
+	  notation unless you need to pass parameters to their constructors.
+	  <sup>[[link](#empty-collection-literals)]</sup>
+
+	  ```ruby
+	  # bad
+	  arr = Array.new
+	  hash = Hash.new
+
+	  # good
+	  arr = []
+	  hash = {}
+
+	  # good because constructor requires parameters
+	  x = Hash.new { |h, k| h[k] = {} }
+	  ```
+
 * <a name="array-join"></a>Favor `Array#join` over `Array#*` for clarity.
 	  <sup>[[link](#array-join)]</sup>
 
