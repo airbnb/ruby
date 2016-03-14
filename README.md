@@ -1196,6 +1196,17 @@ In either case:
     hash = { :one => 1, :two => 2, :three => 3 }
     ```
 
+* <a name="symbol-literals"></a>Relatedly, use plain symbols instead of string
+	  symbols when possible.<sup>[[link](#symbol-literals)]</sup>
+
+	  ```ruby
+	  # bad
+	  :"symbol"
+
+	  # good
+	  :symbol
+	  ```
+
 * <a name="multiline-hashes"></a>Use multi-line hashes when it makes the code
     more readable, and use trailing commas to ensure that parameter changes
     don't cause extraneous diff lines when the logic has not otherwise changed.
