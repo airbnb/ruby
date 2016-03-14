@@ -836,6 +836,22 @@ In either case:
 	  puts 'foo', 'bar' # this applies to puts in particular
 	  ```
 
+* <a name="colon-use"></a>Use :: only to reference constants(this includes
+	  classes and modules) and constructors (like Array() or Nokogiri::HTML()).
+	  Do not use :: for regular method invocation.<sup>[[link](#colon-use)]</sup>
+
+	  ```ruby
+	  # bad
+	  SomeClass::some_method
+	  some_object::some_method
+
+	  # good
+	  SomeClass.some_method
+	  some_object.some_method
+	  SomeModule::SomeClass::SOME_CONST
+	  SomeModule::SomeClass()
+	  ```
+
 * <a name="redundant-return"></a>Avoid `return` where not required.
     <sup>[[link](#redundant-return)]</sup>
 
