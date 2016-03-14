@@ -244,6 +244,24 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     end
     ```
 
+* <a name="method-def-empty-lines"></a>Use a single empty line to break between
+    statements to break up methods into logical paragraphs internally.
+    <sup>[[link](#method-def-empty-lines)]</sup>
+
+    ```ruby
+    def transformorize_car
+      car = manufacture(options)
+      t = transformer(robot, disguise)
+
+      car.after_market_mod!
+      t.transform(car)
+      car.assign_cool_name!
+
+      fleet.add(car)
+      car
+    end
+    ```
+
 ## Line Length
 
 * Keep each line of code to a readable length. Unless
