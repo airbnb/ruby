@@ -978,7 +978,8 @@ In either case:
 * <a name="size-over-count"></a>Prefer `size` over either `length` or `count`
     for performance reasons.<sup>[[link](#size-over-count)]</sup>
 
-* Use symbols instead of strings as hash keys.
+* <a name="symbol-keys"></a>Use symbols instead of strings as hash keys.
+	  <sup>[[link](#symbol-keys)]</sup>
 
     ```ruby
     # bad
