@@ -1412,6 +1412,21 @@ In either case:
 
 ## Percent Literals
 
+* <a name="percent-literal-delimiters"></a>Prefer parentheses over curly
+	  braces, brackets, or pipes when using `%`-literal delimiters for
+	  consistency, and because the behavior of `%`-literals is closer to method
+	  calls than the alternatives.<sup>[[link](#percent-literal-delimiters)]</sup>
+
+	  ```ruby
+	  # bad
+	  %w[date locale]
+	  %w{date locale}
+	  %w|date locale|
+
+	  # good
+	  %w(date locale)
+	  ```
+
 * <a name="percent-w"></a>Use `%w` freely.<sup>[[link](#percent-w)]</sup>
 
     ```ruby
