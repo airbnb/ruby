@@ -284,6 +284,10 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     end
     ```
 
+* <a name="trailing-newline"></a>End each file with a newline. Don't include
+	  multiple newlines at the end of a file.
+	  <sup>[[link](#trailing-newline)]</sup>
+
 ## Line Length
 
 * Keep each line of code to a readable length. Unless
