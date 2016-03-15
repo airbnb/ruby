@@ -1156,6 +1156,21 @@ In either case:
     end
     ```
 
+* <a name="rescue-as-modifier"></a>Avoid using rescue in its modifier form.
+	  <sup>[[link](#rescue-as-modifier)]</sup>
+
+	  ```ruby
+	  # bad
+	  read_file rescue handle_error($!)
+
+	  # good
+	  begin
+	    read_file
+	  rescue Errno:ENOENT => ex
+	    handle_error(ex)
+	  end
+	  ```
+
 ## Collections
 
 * <a name="set-unique"></a>Use `Set` instead of `Array` when dealing with unique
