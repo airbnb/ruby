@@ -1351,6 +1351,23 @@ In either case:
     end
     ```
 
+* <a name="multi-line-strings"></a>Use `\` at the end of the line instead of `+`
+    or `<<` to concatenate multi-line strings.
+    <sup>[[link](#multi-line-strings)]</sup>
+
+    ```ruby
+    # bad
+    "Some string is really long and " +
+      "spans multiple lines."
+
+    "Some string is really long and " <<
+      "spans multiple lines."
+
+    # good
+    "Some string is really long and " \
+      "spans multiple lines."
+    ```
+
 ## Regular Expressions
 
 * <a name="regex-named-groups"></a>Avoid using `$1-9` as it can be hard to track
