@@ -644,6 +644,29 @@ In either case:
     end
     ```
 
+* <a name="multiline-while-until"></a>Never use `do` for multi-line `while` or
+	  `until`.<sup>[[link](#multiline-while-until)]</sup>
+
+	  ```ruby
+    # bad
+    while x > 5 do
+      ...
+    end
+
+    until x > 5 do
+      ...
+    end
+
+    # good
+    while x > 5
+      ...
+    end
+
+    until x > 5
+      ...
+    end
+	  ```
+
 * <a name="no-and-or"></a>The `and`, `or`, and `not` keywords are banned. It's
     just not worth it. Always use `&&`, `||`, and `!` instead.
     <sup>[[link](#no-and-or)]</sup>
