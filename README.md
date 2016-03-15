@@ -128,6 +128,18 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 * <a name="trailing-whitespace"></a>Never leave trailing whitespace.
     <sup>[[link](#trailing-whitespace)]</sup>
 
+* <a name="space-before-comments"></a>When making inline comments, include a
+    space between the end of the code and the start of your comment.
+    <sup>[[link](#space-before-comments)]</sup>
+
+    ```ruby
+    # bad
+    result = func(a, b)# we might want to change b to c
+
+    # good
+    result = func(a, b) # we might want to change b to c
+    ```
+
 * <a name="spaces-operators"></a>Use spaces around operators; after commas,
     colons, and semicolons; and around `{` and before `}`.
     <sup>[[link](#spaces-operators)]</sup>
@@ -139,12 +151,61 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     [1, 2, 3].each { |e| puts e }
     ```
 
+* <a name="no-space-before-commas"></a>Never include a space before a comma.
+    <sup>[[link](#no-space-before-commas)]</sup>
+
+    ```ruby
+    result = func(a, b)
+    ```
+
+* <a name="spaces-block-params"></a>Do not include space inside block
+    parameter pipes. Include one space between parameters in a block.
+    Include one space outside block parameter pipes.
+    <sup>[[link](#spaces-block-params")]</sup>
+
+    ```ruby
+    # bad
+    {}.each { | x,  y |puts x }
+
+    # good
+    {}.each { |x, y| puts x }
+    ```
+
+* <a name="no-space-after-!"></a>Do not leave space between `!` and its
+    argument.<sup>[[link](#no-space-after-!)]</sup>
+
+    ```ruby
+    !something
+    ```
+
 * <a name="no-spaces-braces"></a>No spaces after `(`, `[` or before `]`, `)`.
     <sup>[[link](#no-spaces-braces)]</sup>
 
     ```ruby
     some(arg).other
     [1, 2, 3].length
+    ```
+
+* <a name="no-spaces-string-interpolation"></a>Omit whitespace when doing
+    string interpolation.<sup>[[link](#no-spaces-string-interpolation)]</sup>
+
+    ```ruby
+    # bad
+    var = "This #{ foobar } is interpolated."
+
+    # good
+    var = "This #{foobar} is interpolated."
+    ```
+
+* <a name="no-spaces-range-literals"></a>Don't use extra whitespace in range
+    literals.<sup>[[link](#no-spaces-range-literals)]</sup>
+
+    ```ruby
+    # bad
+    (0 ... coll).each do |item|
+
+    # good
+    (0...coll).each do |item|
     ```
 
 ### Newlines
@@ -171,6 +232,61 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
     robot.add_trait(:human_like_intelligence)
     ```
+
+* <a name="newline-different-indent"></a>Don’t include newlines between areas
+    of different indentation (such as around class or module bodies).
+    <sup>[[link](#newline-different-indent)]</sup>
+
+    ```ruby
+    # bad
+    class Foo
+
+      def bar
+        # body omitted
+      end
+
+    end
+
+    # good
+    class Foo
+      def bar
+        # body omitted
+      end
+    end
+    ```
+
+* <a name="newline-between-methods"></a>Include one, but no more than one, new
+    line between methods.<sup>[[link](#newline-between-methods)]</sup>
+
+    ```ruby
+    def a
+    end
+
+    def b
+    end
+    ```
+
+* <a name="method-def-empty-lines"></a>Use a single empty line to break between
+    statements to break up methods into logical paragraphs internally.
+    <sup>[[link](#method-def-empty-lines)]</sup>
+
+    ```ruby
+    def transformorize_car
+      car = manufacture(options)
+      t = transformer(robot, disguise)
+
+      car.after_market_mod!
+      t.transform(car)
+      car.assign_cool_name!
+
+      fleet.add(car)
+      car
+    end
+    ```
+
+* <a name="trailing-newline"></a>End each file with a newline. Don't include
+    multiple newlines at the end of a file.
+    <sup>[[link](#trailing-newline)]</sup>
 
 ## Line Length
 
@@ -318,6 +434,22 @@ end
 On the other hand, never describe the code. Assume the person reading the code
 knows the language (though not what you're trying to do) better than you do.
 
+<a name="no-block-comments"></a>Related: do not use block comments. They cannot
+  be preceded by whitespace and are not as easy to spot as regular comments.
+  <sup>[[link](#no-block-comments)]</sup>
+
+  ```ruby
+  # bad
+  =begin
+  comment line
+  another comment line
+  =end
+
+  # good
+  # comment line
+  # another comment line
+  ```
+
 ### Punctuation, spelling and grammar
 
 Pay attention to punctuation, spelling, and grammar; it is easier to read
@@ -400,6 +532,21 @@ Thus when you create a TODO, it is almost always your name that is given.
       options.reverse_merge!(default_options)
 
       ...
+    end
+    ```
+
+* <a name="no-single-line-methods"></a>Avoid single-line methods. Although
+    they are somewhat popular in the wild, there are a few peculiarities about
+    their definition syntax that make their use undesirable.
+    <sup>[[link](#no-single-line-methods)]</sup>
+
+    ```ruby
+    # bad
+    def too_much; something; something_else; end
+
+    # good
+    def some_method
+      # body
     end
     ```
 
@@ -493,6 +640,29 @@ In either case:
 
     # good
     if some_condition
+      ...
+    end
+    ```
+
+* <a name="multiline-while-until"></a>Never use `do` for multi-line `while` or
+    `until`.<sup>[[link](#multiline-while-until)]</sup>
+
+    ```ruby
+    # bad
+    while x > 5 do
+      ...
+    end
+
+    until x > 5 do
+      ...
+    end
+
+    # good
+    while x > 5
+      ...
+    end
+
+    until x > 5
       ...
     end
     ```
@@ -675,6 +845,62 @@ In either case:
     `{...}`, but they should ask themselves if this code is really readable and
     whether the block's content can be extracted into nifty methods.
 
+* <a name="self-assignment"></a>Use shorthand self assignment operators
+    whenever applicable.<sup>[[link](#self-assignment)]</sup>
+
+    ```ruby
+    # bad
+    x = x + y
+    x = x * y
+    x = x**y
+    x = x / y
+    x = x || y
+    x = x && y
+
+    # good
+    x += y
+    x *= y
+    x **= y
+    x /= y
+    x ||= y
+    x &&= y
+    ```
+
+* <a name="semicolons"></a>Avoid semicolons except for in single line class
+    definitions. When it is appropriate to use a semicolon, it should be
+    directly adjacent to the statement it terminates: there should be no
+    space before the semicolon.<sup>[[link](#semicolons)]</sup>
+
+    ```ruby
+    # bad
+    puts 'foobar'; # superfluous semicolon
+    puts 'foo'; puts 'bar' # two expressions on the same line
+
+    # good
+    puts 'foobar'
+
+    puts 'foo'
+    puts 'bar'
+
+    puts 'foo', 'bar' # this applies to puts in particular
+    ```
+
+* <a name="colon-use"></a>Use :: only to reference constants(this includes
+    classes and modules) and constructors (like Array() or Nokogiri::HTML()).
+    Do not use :: for regular method invocation.<sup>[[link](#colon-use)]</sup>
+
+    ```ruby
+    # bad
+    SomeClass::some_method
+    some_object::some_method
+
+    # good
+    SomeClass.some_method
+    some_object.some_method
+    SomeModule::SomeClass::SOME_CONST
+    SomeModule::SomeClass()
+    ```
+
 * <a name="redundant-return"></a>Avoid `return` where not required.
     <sup>[[link](#redundant-return)]</sup>
 
@@ -730,6 +956,17 @@ In either case:
 
     # good
     enabled = true if enabled.nil?
+    ```
+
+* <a name="lambda-calls"></a>Use `.call` explicitly when calling lambdas.
+    <sup>[[link](#lambda-calls)]</sup>
+
+    ```ruby
+    # bad
+    lambda.(x, y)
+
+    # good
+    lambda.call(x, y)
     ```
 
 * <a name="no-cryptic-perl"></a>Avoid using Perl-style special variables (like
@@ -957,6 +1194,37 @@ In either case:
     end
     ```
 
+* <a name="redundant-exception"></a>Don't specify `RuntimeError` explicitly in
+    the two argument version of raise. Prefer error sub-classes for clarity and
+    explicit error creation.<sup>[[link](#redundant-exception)]</sup>
+
+    ```ruby
+    # bad
+    raise RuntimeError, 'message'
+
+    # better - RuntimeError is implicit here
+    raise 'message'
+
+    # best
+    class MyExplicitError < RuntimeError; end
+    raise MyExplicitError
+    ```
+
+* <a name="rescue-as-modifier"></a>Avoid using rescue in its modifier form.
+    <sup>[[link](#rescue-as-modifier)]</sup>
+
+    ```ruby
+    # bad
+    read_file rescue handle_error($!)
+
+    # good
+    begin
+      read_file
+    rescue Errno:ENOENT => ex
+      handle_error(ex)
+    end
+    ```
+
 ## Collections
 
 * <a name="set-unique"></a>Use `Set` instead of `Array` when dealing with unique
@@ -978,8 +1246,38 @@ In either case:
 * <a name="size-over-count"></a>Prefer `size` over either `length` or `count`
     for performance reasons.<sup>[[link](#size-over-count)]</sup>
 
+* <a name="empty-collection-literals"></a>Prefer literal array and hash creation
+    notation unless you need to pass parameters to their constructors.
+    <sup>[[link](#empty-collection-literals)]</sup>
+
+    ```ruby
+    # bad
+    arr = Array.new
+    hash = Hash.new
+
+    # good
+    arr = []
+    hash = {}
+
+    # good because constructor requires parameters
+    x = Hash.new { |h, k| h[k] = {} }
+    ```
+
+* <a name="array-join"></a>Favor `Array#join` over `Array#*` for clarity.
+    <sup>[[link](#array-join)]</sup>
+
+    ```ruby
+    # bad
+    %w(one two three) * ', '
+    # => 'one, two, three'
+
+    # good
+    %w(one two three).join(', ')
+    # => 'one, two, three'
+    ```
+
 * <a name="symbol-keys"></a>Use symbols instead of strings as hash keys.
-	  <sup>[[link](#symbol-keys)]</sup>
+    <sup>[[link](#symbol-keys)]</sup>
 
     ```ruby
     # bad
@@ -987,6 +1285,32 @@ In either case:
 
     # good
     hash = { :one => 1, :two => 2, :three => 3 }
+    ```
+
+* <a name="symbol-literals"></a>Relatedly, use plain symbols instead of string
+    symbols when possible.<sup>[[link](#symbol-literals)]</sup>
+
+    ```ruby
+    # bad
+    :"symbol"
+
+    # good
+    :symbol
+    ```
+
+* <a name="deprecated-hash-methods"></a>Use `Hash#key?` instead of
+    `Hash#has_key?` and `Hash#value?` instead of `Hash#has_value?`. According
+    to Matz, the longer forms are considered deprecated.
+    <sup>[[link](#deprecated-hash-methods")</sup>
+
+    ```ruby
+    # bad
+    hash.has_key?(:test)
+    hash.has_value?(value)
+
+    # good
+    hash.key?(:test)
+    hash.value?(value)
     ```
 
 * <a name="multiline-hashes"></a>Use multi-line hashes when it makes the code
@@ -1066,6 +1390,23 @@ In either case:
     end
     ```
 
+* <a name="multi-line-strings"></a>Use `\` at the end of the line instead of `+`
+    or `<<` to concatenate multi-line strings.
+    <sup>[[link](#multi-line-strings)]</sup>
+
+    ```ruby
+    # bad
+    "Some string is really long and " +
+      "spans multiple lines."
+
+    "Some string is really long and " <<
+      "spans multiple lines."
+
+    # good
+    "Some string is really long and " \
+      "spans multiple lines."
+    ```
+
 ## Regular Expressions
 
 * <a name="regex-named-groups"></a>Avoid using `$1-9` as it can be hard to track
@@ -1110,6 +1451,21 @@ In either case:
 
 ## Percent Literals
 
+* <a name="percent-literal-delimiters"></a>Prefer parentheses over curly
+    braces, brackets, or pipes when using `%`-literal delimiters for
+    consistency, and because the behavior of `%`-literals is closer to method
+    calls than the alternatives.<sup>[[link](#percent-literal-delimiters)]</sup>
+
+    ```ruby
+    # bad
+    %w[date locale]
+    %w{date locale}
+    %w|date locale|
+
+    # good
+    %w(date locale)
+    ```
+
 * <a name="percent-w"></a>Use `%w` freely.<sup>[[link](#percent-w)]</sup>
 
     ```ruby
@@ -1150,6 +1506,19 @@ In either case:
 
     # good
     %r(^/blog/2011/(.*)$)
+    ```
+
+* <a name="percent-x"></a>Avoid the use of %x unless you're going to invoke a
+    command with backquotes in it (which is rather unlikely).
+    <sup>[[link](#percent-x)]</sup>
+
+    ```ruby
+    # bad
+    date = %x(date)
+
+    # good
+    date = `date`
+    echo = %x(echo `date`)
     ```
 
 ## Rails
