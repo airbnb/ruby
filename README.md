@@ -1426,6 +1426,19 @@ In either case:
     %r(^/blog/2011/(.*)$)
     ```
 
+* <a name="percent-x"></a>Avoid the use of %x unless you're going to invoke a
+	  command with backquotes in it (which is rather unlikely).
+	  <sup>[[link](#percent-x)]</sup>
+
+	  ```ruby
+	  # bad
+	  date = %x(date)
+
+	  # good
+	  date = `date`
+	  echo = %x(echo `date`)
+	  ```
+
 ## Rails
 
 * <a name="next-line-return"></a>When immediately returning after calling
