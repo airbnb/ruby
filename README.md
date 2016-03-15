@@ -1194,6 +1194,22 @@ In either case:
     end
     ```
 
+* <a name="redundant-exception"></a>Don't specify `RuntimeError` explicitly in
+	  the two argument version of raise. Prefer error sub-classes for clarity and
+	  explicit error creation.<sup>[[link](#redundant-exception)]</sup>
+
+	  ```ruby
+	  # bad
+	  raise RuntimeError, 'message'
+
+	  # better - RuntimeError is implicit here
+	  raise 'message'
+
+	  # best
+	  class MyExplicitError < RuntimeError; end
+	  raise MyExplicitError
+	  ```
+
 * <a name="rescue-as-modifier"></a>Avoid using rescue in its modifier form.
 	  <sup>[[link](#rescue-as-modifier)]</sup>
 
