@@ -935,6 +935,17 @@ In either case:
     enabled = true if enabled.nil?
     ```
 
+* <a name="lambda-calls"></a>Use `.call` explicitly when calling lambdas.
+	  <sup>[[link](#lambda-calls)]</sup>
+
+	  ```ruby
+	  # bad
+	  lambda.(x, y)
+
+	  # good
+	  lambda.call(x, y)
+	  ```
+
 * <a name="no-cryptic-perl"></a>Avoid using Perl-style special variables (like
     `$0-9`, `$`, etc. ). They are quite cryptic and their use in anything but
     one-liner scripts is discouraged. Prefer long form versions such as
