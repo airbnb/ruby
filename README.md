@@ -974,17 +974,6 @@ In either case:
     one-liner scripts is discouraged. Prefer long form versions such as
     `$PROGRAM_NAME`.<sup>[[link](#no-cryptic-perl)]</sup>
 
-* <a name="unused-block-args"></a>Use `_` for unused block arguments.
-    <sup>[[link](#unused-block-args)]</sup>
-
-    ```ruby
-    # bad
-    result = hash.map { |k, v| v + 1 }
-
-    # good
-    result = hash.map { |_, v| v + 1 }
-    ```
-
 * <a name="single-action-blocks"></a>When a method block takes only one
     argument, and the body consists solely of reading an attribute or calling
     one method with no arguments, use the `&:` shorthand.
