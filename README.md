@@ -1216,11 +1216,6 @@ In either case:
 
 ## Collections
 
-* <a name="set-unique"></a>Use `Set` instead of `Array` when dealing with unique
-    elements. `Set` implements a collection of unordered values with no
-    duplicates. This is a hybrid of `Array`'s intuitive inter-operation
-    facilities and `Hash`'s fast lookup.<sup>[[link](#set-unique)]</sup>
-
 * <a name="map-over-collect"></a>Prefer `map` over
     `collect`.<sup>[[link](#map-over-collect)]</sup>
 
