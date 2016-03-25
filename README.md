@@ -487,7 +487,7 @@ Thus when you create a TODO, it is almost always your name that is given.
   # TODO(drumm3rz4lyfe): Use proper namespacing for this constant.
 
   # good
-  # TODO(Ringo Starr): Use proper namespacing for this constant.
+  # TODO (Ringo Starr): Use proper namespacing for this constant.
 ```
 
 ### Commented-out code
