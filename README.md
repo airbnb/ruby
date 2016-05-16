@@ -420,7 +420,7 @@ def fallbacks_for(the_locale, opts = {})
   # We make two assumptions here:
   # 1) There is only one default locale (that is, it has no less-specific
   #    children).
-  # 1) The default locale is just a language. (Like :en, and not :"en-US".)
+  # 2) The default locale is just a language. (Like :en, and not :"en-US".)
   if opts[:exclude_default] &&
       ret.last == default_locale &&
       ret.last != language_from_locale(the_locale)
