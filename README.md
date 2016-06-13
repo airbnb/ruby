@@ -833,6 +833,18 @@ In either case:
     names.each do |name| puts name end
 
     # good
+    names.each do |name|
+      puts name
+      puts 'yay!'
+    end
+
+    # bad
+    names.each { |name|
+      puts name
+      puts 'yay!'
+    }
+
+    # good
     names.select { |name| name.start_with?("S") }.map { |name| name.upcase }
 
     # bad
