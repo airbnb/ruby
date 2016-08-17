@@ -36,6 +36,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
   1. [Rails](#rails)
     1. [Scopes](#scopes)
   1. [Be Consistent](#be-consistent)
+  1. [Translation](#translation)
 
 ## Whitespace
 
@@ -1579,3 +1580,9 @@ In either case:
 [google-c++-comments]: http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Comments
 [google-python-comments]: http://google-styleguide.googlecode.com/svn/trunk/pyguide.html#Comments
 [ruby-naming-bang]: http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist
+
+## Translation
+
+  This style guide is also available in other languages:
+
+  - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [1c7/ruby-airbnb](https://github.com/1c7/ruby-airbnb)
