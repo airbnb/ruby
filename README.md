@@ -1212,6 +1212,23 @@ In either case:
     raise MyExplicitError
     ```
 
+
+* <a name="exception-class-messages"></a>
+    Prefer supplying an exception class and a message as two separate arguments
+    to `raise`, instead of an exception instance.
+    <sup>[[link](#exception-class-messages)]</sup>
+
+    ```Ruby
+    # bad
+    raise SomeException.new('message')
+    # Note that there is no way to do `raise SomeException.new('message'), backtrace`.
+
+    # good
+    raise SomeException, 'message'
+    # Consistent with `raise SomeException, 'message', backtrace`.
+    ```
+
+
 * <a name="rescue-as-modifier"></a>Avoid using rescue in its modifier form.
     <sup>[[link](#rescue-as-modifier)]</sup>
 
