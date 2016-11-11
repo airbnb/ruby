@@ -1315,7 +1315,7 @@ In either case:
 * <a name="deprecated-hash-methods"></a>Use `Hash#key?` instead of
     `Hash#has_key?` and `Hash#value?` instead of `Hash#has_value?`. According
     to Matz, the longer forms are considered deprecated.
-    <sup>[[link](#deprecated-hash-methods")</sup>
+    <sup>[[link](#deprecated-hash-methods")]</sup>
 
     ```ruby
     # bad
