@@ -525,12 +525,11 @@ Thus when you create a TODO, it is almost always your name that is given.
 
     # good
     def obliterate(things, options = {})
-      default_options = {
+      options = {
         :gently => true, # obliterate with soft-delete
         :except => [], # skip obliterating these things
         :at => Time.now, # don't obliterate them until later
-      }
-      options.reverse_merge!(default_options)
+      }.merge(options)
 
       ...
     end
