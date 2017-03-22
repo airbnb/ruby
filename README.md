@@ -1,10 +1,8 @@
 # Ruby Style Guide
 
-This is Airbnb's Ruby Style Guide.
+This is Optimal Workshop's Ruby Style Guide.
 
-It was inspired by [Github's guide](https://web.archive.org/web/20160410033955/https://github.com/styleguide/ruby) and [Bozhidar Batsov's guide][bbatsov-ruby].
-
-Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
+It was inspired by [AirBnB's guide][airbnb-ruby].
 
 ## Table of Contents
   1. [Whitespace](#whitespace)
@@ -1589,9 +1587,7 @@ In either case:
 
 &mdash;[Google C++ Style Guide][google-c++]
 
-[airbnb-javascript]: https://github.com/airbnb/javascript
-[bbatsov-ruby]: https://github.com/bbatsov/ruby-style-guide
-[github-ruby]: https://github.com/styleguide/ruby
+[airbnb-ruby]: https://github.com/airbnb/ruby
 [google-c++]: https://google.github.io/styleguide/cppguide.html
 [google-c++-comments]: https://google.github.io/styleguide/cppguide.html#Comments
 [google-python-comments]: https://google.github.io/styleguide/pyguide.html#Comments
