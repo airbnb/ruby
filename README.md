@@ -512,26 +512,26 @@ Thus when you create a TODO, it is almost always your name that is given.
      end
      ```
 
-* <a name="no-default-args"></a>Do not use default arguments. Use an options
-    hash instead.<sup>[[link](#no-default-args)]</sup>
+ * <a name=""></a>Use keyword arguments when a method takes multiple optional
+    parameters or at least one boolean. Use keywords for all arguments if
+    at least one keyword argument is present.
 
     ```ruby
     # bad
-    def obliterate(things, gently = true, except = [], at = Time.now)
+    def search(query, extras = nil, feeling_lucky = true)
+      ...
+    end
+
+    # bad
+    def search(query, extras = nil, feeling_lucky: true)
       ...
     end
 
     # good
-    def obliterate(things, options = {})
-      options = {
-        :gently => true, # obliterate with soft-delete
-        :except => [], # skip obliterating these things
-        :at => Time.now, # don't obliterate them until later
-      }.merge(options)
-
+    def search(query, extras: nil, feeling_lucky: true)
       ...
     end
-    ```
+      ```
 
 * <a name="no-single-line-methods"></a>Avoid single-line methods. Although
     they are somewhat popular in the wild, there are a few peculiarities about
