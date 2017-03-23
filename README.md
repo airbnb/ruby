@@ -1534,6 +1534,12 @@ In either case:
 
 ## Rails
 
+* <a name="logging"></a>Use `Rails.logger` instead of `puts` for non-debugging code
+
+  ```ruby
+  Rails.logger.warn('My message')
+  ```
+
 ### Scopes
 * <a name="scope-lambda"></a>When defining ActiveRecord model scopes, wrap the
     relation in a `lambda`.  A naked relation forces a database connection to be
