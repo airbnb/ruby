@@ -1140,9 +1140,9 @@ In either case:
 
       private
 
-      def private_method
-        # ...
-      end
+        def private_method
+          # ...
+        end
     end
     ```
 
