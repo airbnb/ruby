@@ -1290,6 +1290,20 @@ In either case:
     # => 'one, two, three'
     ```
 
+* <a name="hash-syntax"></a>Use the ruby 1.9 hash syntax instead of the
+    old-style syntax where possible.<sup>[[link](#hash-syntax)]</sup>
+
+    ```ruby
+    # bad
+    { :one => 1, :two => 2, :three => 3 }
+
+    # good
+    { one: 1, two: 2, three: 3 }
+
+    # good - unavoidable
+    { 'en-GB' => 0.8 }
+    ```
+
 * <a name="symbol-keys"></a>Use symbols instead of strings as hash keys.
     <sup>[[link](#symbol-keys)]</sup>
 
