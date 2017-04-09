@@ -327,11 +327,14 @@ module Translation
   # Australian, New Zealand variations is provided.
   class PrimAndProper
     def initialize
-      @converters = { :en => { :"en-AU" => AmericanToAustralian.new,
-                               :"en-CA" => AmericanToCanadian.new,
-                               :"en-GB" => AmericanToBritish.new,
-                               :"en-NZ" => AmericanToKiwi.new,
-                             } }
+      @converters = {
+        en: {
+          :"en-AU" => AmericanToAustralian.new,
+          :"en-CA" => AmericanToCanadian.new,
+          :"en-GB" => AmericanToBritish.new,
+          :"en-NZ" => AmericanToKiwi.new,
+        }
+      }
     end
 
   ...
@@ -397,7 +400,7 @@ just write things out concisely:
 # For example:
 #   fallbacks_for(:"pt-BR")
 #     => [:"pt-BR", :pt, :en]
-#   fallbacks_for(:"pt-BR", :exclude_default => true)
+#   fallbacks_for(:"pt-BR", exclude_default: true)
 #     => [:"pt-BR", :pt]
 def fallbacks_for(the_locale, opts = {})
   ...
@@ -603,10 +606,10 @@ Thus when you create a TODO, it is almost always your name that is given.
 
     ```ruby
     # okay
-    render(:partial => 'foo')
+    render(partial: 'foo')
 
     # okay
-    render :partial => 'foo'
+    render partial: 'foo'
     ```
 
 In either case:
@@ -617,10 +620,10 @@ In either case:
 
     ```ruby
     # bad
-    get '/v1/reservations', { :id => 54875 }
+    get '/v1/reservations', { id: 54875 }
 
     # good
-    get '/v1/reservations', :id => 54875
+    get '/v1/reservations', id: 54875
     ```
 
 ## Conditional Expressions
@@ -1295,7 +1298,7 @@ In either case:
     hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
 
     # good
-    hash = { :one => 1, :two => 2, :three => 3 }
+    hash = { one: 1, two: 2, three: 3 }
     ```
 
 * <a name="symbol-literals"></a>Relatedly, use plain symbols instead of string
@@ -1331,12 +1334,12 @@ In either case:
 
     ```ruby
     hash = {
-      :protocol => 'https',
-      :only_path => false,
-      :controller => :users,
-      :action => :set_password,
-      :redirect => @redirect_url,
-      :secret => @secret,
+      protocol: 'https',
+      only_path: false,
+      controller: :users,
+      action: :set_password,
+      redirect: @redirect_url,
+      secret: @secret,
     }
     ```
 
@@ -1548,10 +1551,10 @@ In either case:
 
     ```ruby
     # bad
-    scope :foo, where(:bar => 1)
+    scope :foo, where(bar: 1)
 
     # good
-    scope :foo, -> { where(:bar => 1) }
+    scope :foo, -> { where(bar: 1) }
     ```
 
 ## Be Consistent
