@@ -1129,7 +1129,7 @@ In either case:
     ```
 
 * <a name="access-modifiers"></a>Indent the `public`, `protected`, and
-    `private` methods an extra level. Leave one
+    `private` methods as much the method definitions they apply to. Leave one
     blank line above and below them.<sup>[[link](#access-modifiers)]</sup>
 
     ```ruby
@@ -1140,9 +1140,9 @@ In either case:
 
       private
 
-        def private_method
-          # ...
-        end
+      def private_method
+        # ...
+      end
     end
     ```
 
