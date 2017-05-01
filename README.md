@@ -797,6 +797,71 @@ In either case:
     end
     ```
 
+### Nested conditionals
+
+* <a name="no-nested-conditionals"></a>
+  Avoid the use of nested conditionals for flow of control. 
+  ([More on this][avoid-else-return-early].) <sup>[[link](#no-nested-conditionals)]</sup>
+  
+  Prefer a guard clause when you can assert invalid data. A guard clause
+  is a conditional statement at the top of a function that returns as soon
+  as it can. 
+  
+  The general principles boil down to:
+  * Return immediately once you know your function cannot do anything more.
+  * Reduce nesting and indentation in the code by returning early. This makes
+  the code easier to read and requires less mental bookkeeping on the part
+  of the reader to keep track of `else` branches.
+  * The core or most important flows should be the least indented.
+
+  ```ruby
+  # bad
+  def compute
+    server = find_server
+    if server
+      client = server.client
+      if client
+        request = client.make_request
+        if request
+           process_request(request)
+        end
+      end
+    end
+  end
+
+  # good
+  def compute
+    server = find_server
+    return unless server
+    client = server.client
+    return unless client
+    request = client.make_request
+    return unless request
+    process_request(request)  
+  end
+  ```
+
+  Prefer `next` in loops instead of conditional blocks.
+
+  ```ruby
+  # bad
+  [0, 1, 2, 3].each do |item|
+    if item > 1
+      puts item
+    end
+  end
+
+  # good
+  [0, 1, 2, 3].each do |item|
+    next unless item > 1
+    puts item
+  end
+  ```
+
+  See also the section "Guard Clause", p68-70 in Beck, Kent.
+  *Implementation Patterns*. Upper Saddle River: Addison-Wesley, 2008, which
+  has inspired some of the content above.
+
 ## Syntax
 
 * <a name="no-for"></a>Never use `for`, unless you know exactly why. Most of the
@@ -1596,6 +1661,7 @@ In either case:
 [google-c++-comments]: https://google.github.io/styleguide/cppguide.html#Comments
 [google-python-comments]: https://google.github.io/styleguide/pyguide.html#Comments
 [ruby-naming-bang]: http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist
+[avoid-else-return-early]: http://blog.timoxley.com/post/47041269194/avoid-else-return-early
 
 ## Translation
 
