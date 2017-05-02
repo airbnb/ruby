@@ -728,6 +728,30 @@ In either case:
       end
     ```
 
+* <a name="unless-with-comparator"></a>Avoid `unless` with comparators if you can use `if` with an opposing comparator.<sup>[[link](#unless-with-comparator)]</sup>
+
+    ```ruby     
+      # bad
+      unless x == 10
+        ...
+      end
+      
+      # good
+      if x != 10
+        ...
+      end
+      
+      # bad
+      unless x < 10
+        ...
+      end
+      
+      # good
+      if x >= 10
+        ...
+      end
+    ```
+
 * <a name="parens-around-conditions"></a>Don't use parentheses around the
     condition of an `if/unless/while`.
     <sup>[[link](#parens-around-conditions)]</sup>
