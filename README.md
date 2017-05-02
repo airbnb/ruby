@@ -727,8 +727,6 @@ In either case:
         ...
       end
     ```
-    
-    
 
 * <a name="unless-with-comparator"></a>Avoid `unless` with comparators if you can use `if` with an opposing comparator.<sup>[[link](#unless-with-comparator)]</sup>
 
