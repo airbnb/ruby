@@ -1118,20 +1118,21 @@ In either case:
        an attribute when `self` is an ActiveRecord model: `self.guest = user`.
     3. Referencing the current instance's class: `self.class`.
 
-* <a name="freeze-constants"></a>When defining arrays and hashes meant to be
-    constants, make sure to call `freeze` on them. ([More on this][ruby-freeze].)
-    <sup>[[link](#freeze-constants)]</sup>
+* <a name="freeze-constants"></a>When defining strings, arrays or hashes meant to 
+    be constants, make sure to call `freeze` on them. 
+    ([More on this][ruby-freeze].)<sup>[[link](#freeze-constants)]</sup>
 
     The reason is that Ruby constants are actually mutable. Calling `freeze`
     ensures they are not mutated and are therefore truly constant and 
-    attempting to modify them will raise an exception. 
+    attempting to modify them will raise an exception. For strings, this allows
+    older versions of Ruby below 2.2 to intern them.
 
     ```ruby
     class Color
-      # Each color
-      RED = 0
-      BLUE = 1
-      GREEN = 2
+      # bad
+      RED = 'red'
+      BLUE = 'blue'
+      GREEN = 'green'
       
       # bad
       ALL_COLORS = [
@@ -1139,6 +1140,11 @@ In either case:
         BLUE,
         GREEN,
       ]
+
+      # good
+      RED = 'red'.freeze
+      BLUE = 'blue'.freeze
+      GREEN = 'green'.freeze
 
       # good
       ALL_COLORS = [
