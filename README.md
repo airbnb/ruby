@@ -1024,6 +1024,37 @@ In either case:
        an attribute when `self` is an ActiveRecord model: `self.guest = user`.
     3. Referencing the current instance's class: `self.class`.
 
+* <a name="freeze-constants"></a>When defining arrays and hashes meant to be
+    constants, make sure to call `freeze` on them. ([More on this][ruby-freeze].)
+    <sup>[[link](#freeze-constants)]</sup>
+
+    The reason is that Ruby constants are actually mutable. Calling `freeze`
+    ensures they are not mutated and are therefore truly constant and 
+    attempting to modify them will raise an exception. 
+
+    ```ruby
+    class COLOR
+      # Each color
+      RED = 0
+      BLUE = 1
+      GREEN = 2
+      
+      # bad
+      ALL_COLORS = [
+        RED,
+        BLUE,
+        GREEN,
+      ]
+
+      # good
+      ALL_COLORS = [
+        RED,
+        BLUE,
+        GREEN,
+      ].freeze
+    end
+    ```
+
 ## Naming
 
 * <a name="snake-case"></a>Use `snake_case` for methods and variables.
@@ -1596,6 +1627,7 @@ In either case:
 [google-c++-comments]: https://google.github.io/styleguide/cppguide.html#Comments
 [google-python-comments]: https://google.github.io/styleguide/pyguide.html#Comments
 [ruby-naming-bang]: http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist
+[ruby-freeze]: http://blog.honeybadger.io/when-to-use-freeze-and-frozen-in-ruby/
 
 ## Translation
 
