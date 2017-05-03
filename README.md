@@ -728,7 +728,7 @@ In either case:
       end
     ```
 
-* <a name="unless-with-comparator"></a>Avoid `unless` with comparators if you can use `if` with an opposing comparator.<sup>[[link](#unless-with-comparator)]</sup>
+* <a name="unless-with-comparison-operator"></a>Avoid `unless` with comparison operators if you can use `if` with an opposing comparison operator.<sup>[[link](#unless-with-comparison-operator)]</sup>
 
     ```ruby     
       # bad
@@ -748,6 +748,11 @@ In either case:
       
       # good
       if x >= 10
+        ...
+      end
+      
+      # ok
+      unless x === 10
         ...
       end
     ```
