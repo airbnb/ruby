@@ -1127,7 +1127,7 @@ In either case:
     attempting to modify them will raise an exception. 
 
     ```ruby
-    class COLOR
+    class Color
       # Each color
       RED = 0
       BLUE = 1
