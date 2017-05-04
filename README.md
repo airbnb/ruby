@@ -211,7 +211,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
 ### Newlines
 
-* <a name="multiline-if-newline"></a>Add a new line after `if` conditions span
+* <a name="multiline-if-newline"></a>Add a new line after `if` conditions spanning
     multiple lines to help differentiate between the conditions and the body.
     <sup>[[link](#multiline-if-newline)]</sup>
 
@@ -1118,34 +1118,53 @@ In either case:
        an attribute when `self` is an ActiveRecord model: `self.guest = user`.
     3. Referencing the current instance's class: `self.class`.
 
-* <a name="freeze-constants"></a>When defining arrays and hashes meant to be
-    constants, make sure to call `freeze` on them. ([More on this][ruby-freeze].)
-    <sup>[[link](#freeze-constants)]</sup>
+* <a name="freeze-constants"></a>When defining an object of any mutable
+    type meant to be a constant, make sure to call `freeze` on it. Common 
+    examples are strings, arrays, and hashes.
+    ([More on this][ruby-freeze].)<sup>[[link](#freeze-constants)]</sup>
 
     The reason is that Ruby constants are actually mutable. Calling `freeze`
     ensures they are not mutated and are therefore truly constant and 
-    attempting to modify them will raise an exception. 
+    attempting to modify them will raise an exception. For strings, this allows
+    older versions of Ruby below 2.2 to intern them.
 
     ```ruby
+    # bad
     class Color
-      # Each color
-      RED = 0
-      BLUE = 1
-      GREEN = 2
+      RED = 'red'
+      BLUE = 'blue'
+      GREEN = 'green'
       
-      # bad
       ALL_COLORS = [
         RED,
         BLUE,
         GREEN,
       ]
+    
+      COLOR_TO_RGB = {
+        RED => 0xFF0000,
+        BLUE => 0x0000FF,
+        GREEN => 0x00FF00,
+      }
+    end
 
-      # good
+    # good    
+    class Color
+      RED = 'red'.freeze
+      BLUE = 'blue'.freeze
+      GREEN = 'green'.freeze
+
       ALL_COLORS = [
         RED,
         BLUE,
         GREEN,
       ].freeze
+    
+      COLOR_TO_RGB = {
+        RED => 0xFF0000,
+        BLUE => 0x0000FF,
+        GREEN => 0x00FF00,
+      }.freeze
     end
     ```
 
