@@ -940,6 +940,18 @@ In either case:
 
     # good
     names.select { |name| name.start_with?("S") }.map { |name| name.upcase }
+    
+    # bad
+    names.each { |name|
+      puts name
+      print "\n"
+    }
+    
+    # good
+    names.each do |name|
+      puts name
+      print "\n"
+    end
 
     # bad
     names.select do |name|
