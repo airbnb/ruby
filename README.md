@@ -1390,7 +1390,7 @@ In either case:
 ## Collections
 
 * <a name="map-over-collect"></a>Prefer `map` over
-    `collect`.<sup>[[link](#map-over-collect)]</sup>
+    `collect` as it's a more recognized convention among programmers.<sup>[[link](#map-over-collect)]</sup>
 
 * <a name="detect-over-find"></a>Prefer `detect` over `find`. The use of `find`
     is ambiguous with regard to ActiveRecord's `find` method - `detect` makes
