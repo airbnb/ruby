@@ -1,10 +1,8 @@
 # Ruby Style Guide
 
-This is Airbnb's Ruby Style Guide.
+This is Optimal Workshop's Ruby Style Guide.
 
-It was inspired by [Github's guide](https://web.archive.org/web/20160410033955/https://github.com/styleguide/ruby) and [Bozhidar Batsov's guide][bbatsov-ruby].
-
-Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
+It was inspired by [AirBnB's guide][airbnb-ruby].
 
 ## Table of Contents
   1. [Whitespace](#whitespace)
@@ -329,11 +327,14 @@ module Translation
   # Australian, New Zealand variations is provided.
   class PrimAndProper
     def initialize
-      @converters = { :en => { :"en-AU" => AmericanToAustralian.new,
-                               :"en-CA" => AmericanToCanadian.new,
-                               :"en-GB" => AmericanToBritish.new,
-                               :"en-NZ" => AmericanToKiwi.new,
-                             } }
+      @converters = {
+        en: {
+          :"en-AU" => AmericanToAustralian.new,
+          :"en-CA" => AmericanToCanadian.new,
+          :"en-GB" => AmericanToBritish.new,
+          :"en-NZ" => AmericanToKiwi.new,
+        }
+      }
     end
 
   ...
@@ -399,7 +400,7 @@ just write things out concisely:
 # For example:
 #   fallbacks_for(:"pt-BR")
 #     => [:"pt-BR", :pt, :en]
-#   fallbacks_for(:"pt-BR", :exclude_default => true)
+#   fallbacks_for(:"pt-BR", exclude_default: true)
 #     => [:"pt-BR", :pt]
 def fallbacks_for(the_locale, opts = {})
   ...
@@ -514,26 +515,26 @@ Thus when you create a TODO, it is almost always your name that is given.
      end
      ```
 
-* <a name="no-default-args"></a>Do not use default arguments. Use an options
-    hash instead.<sup>[[link](#no-default-args)]</sup>
+ * <a name=""></a>Use keyword arguments when a method takes multiple optional
+    parameters or at least one boolean. Use keywords for all arguments if
+    at least one keyword argument is present.
 
     ```ruby
     # bad
-    def obliterate(things, gently = true, except = [], at = Time.now)
+    def search(query, extras = nil, feeling_lucky = true)
+      ...
+    end
+
+    # bad
+    def search(query, extras = nil, feeling_lucky: true)
       ...
     end
 
     # good
-    def obliterate(things, options = {})
-      options = {
-        :gently => true, # obliterate with soft-delete
-        :except => [], # skip obliterating these things
-        :at => Time.now, # don't obliterate them until later
-      }.merge(options)
-
+    def search(query, extras: nil, feeling_lucky: true)
       ...
     end
-    ```
+      ```
 
 * <a name="no-single-line-methods"></a>Avoid single-line methods. Although
     they are somewhat popular in the wild, there are a few peculiarities about
@@ -605,10 +606,10 @@ Thus when you create a TODO, it is almost always your name that is given.
 
     ```ruby
     # okay
-    render(:partial => 'foo')
+    render(partial: 'foo')
 
     # okay
-    render :partial => 'foo'
+    render partial: 'foo'
     ```
 
 In either case:
@@ -619,10 +620,10 @@ In either case:
 
     ```ruby
     # bad
-    get '/v1/reservations', { :id => 54875 }
+    get '/v1/reservations', { id: 54875 }
 
     # good
-    get '/v1/reservations', :id => 54875
+    get '/v1/reservations', id: 54875
     ```
 
 ## Conditional Expressions
@@ -1289,6 +1290,20 @@ In either case:
     # => 'one, two, three'
     ```
 
+* <a name="hash-syntax"></a>Use the ruby 1.9 hash syntax instead of the
+    old-style syntax where possible.<sup>[[link](#hash-syntax)]</sup>
+
+    ```ruby
+    # bad
+    { :one => 1, :two => 2, :three => 3 }
+
+    # good
+    { one: 1, two: 2, three: 3 }
+
+    # good - unavoidable
+    { 'en-GB' => 0.8 }
+    ```
+
 * <a name="symbol-keys"></a>Use symbols instead of strings as hash keys.
     <sup>[[link](#symbol-keys)]</sup>
 
@@ -1297,7 +1312,7 @@ In either case:
     hash = { 'one' => 1, 'two' => 2, 'three' => 3 }
 
     # good
-    hash = { :one => 1, :two => 2, :three => 3 }
+    hash = { one: 1, two: 2, three: 3 }
     ```
 
 * <a name="symbol-literals"></a>Relatedly, use plain symbols instead of string
@@ -1333,12 +1348,12 @@ In either case:
 
     ```ruby
     hash = {
-      :protocol => 'https',
-      :only_path => false,
-      :controller => :users,
-      :action => :set_password,
-      :redirect => @redirect_url,
-      :secret => @secret,
+      protocol: 'https',
+      only_path: false,
+      controller: :users,
+      action: :set_password,
+      redirect: @redirect_url,
+      secret: @secret,
     }
     ```
 
@@ -1536,27 +1551,11 @@ In either case:
 
 ## Rails
 
-* <a name="next-line-return"></a>When immediately returning after calling
-    `render` or `redirect_to`, put `return` on the next line, not the same line.
-    <sup>[[link](#next-line-return)]</sup>
+* <a name="logging"></a>Use `Rails.logger` instead of `puts` for non-debugging code
 
-    ```ruby
-    # bad
-    render :text => 'Howdy' and return
-
-    # good
-    render :text => 'Howdy'
-    return
-
-    # still bad
-    render :text => 'Howdy' and return if foo.present?
-
-    # good
-    if foo.present?
-      render :text => 'Howdy'
-      return
-    end
-    ```
+  ```ruby
+  Rails.logger.warn('My message')
+  ```
 
 ### Scopes
 * <a name="scope-lambda"></a>When defining ActiveRecord model scopes, wrap the
@@ -1566,10 +1565,10 @@ In either case:
 
     ```ruby
     # bad
-    scope :foo, where(:bar => 1)
+    scope :foo, where(bar: 1)
 
     # good
-    scope :foo, -> { where(:bar => 1) }
+    scope :foo, -> { where(bar: 1) }
     ```
 
 ## Be Consistent
@@ -1589,9 +1588,7 @@ In either case:
 
 &mdash;[Google C++ Style Guide][google-c++]
 
-[airbnb-javascript]: https://github.com/airbnb/javascript
-[bbatsov-ruby]: https://github.com/bbatsov/ruby-style-guide
-[github-ruby]: https://github.com/styleguide/ruby
+[airbnb-ruby]: https://github.com/airbnb/ruby
 [google-c++]: https://google.github.io/styleguide/cppguide.html
 [google-c++-comments]: https://google.github.io/styleguide/cppguide.html#Comments
 [google-python-comments]: https://google.github.io/styleguide/pyguide.html#Comments
