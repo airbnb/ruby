@@ -1194,9 +1194,12 @@ In either case:
     <sup>[[link](#throwaway-variables)]</sup>
 
     ```ruby
-    payment, _ = Payment.complete_paypal_payment!(params[:token],
-                                                  native_currency,
-                                                  created_at)
+    {
+      a: 1,
+      b: 2,
+    }.each do |key, _|
+      puts key
+    end
     ```
 
 ## Classes
