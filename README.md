@@ -1194,12 +1194,8 @@ In either case:
     <sup>[[link](#throwaway-variables)]</sup>
 
     ```ruby
-    {
-      a: 1,
-      b: 2,
-    }.each do |key, _|
-      puts key
-    end
+    version = '3.2.1'
+    major_version, minor_version, _ = version.split('.')
     ```
 
 ## Classes
