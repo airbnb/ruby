@@ -514,12 +514,18 @@ Thus when you create a TODO, it is almost always your name that is given.
      end
      ```
 
-* <a name="no-default-args"></a>Do not use default arguments. Use an options
+* <a name="no-default-args"></a>Do not use default positional arguments. 
+    Use keyword arguments (if available - in Ruby 2.0 or later) or an options
     hash instead.<sup>[[link](#no-default-args)]</sup>
 
     ```ruby
     # bad
     def obliterate(things, gently = true, except = [], at = Time.now)
+      ...
+    end
+
+    # good
+    def obliterate(things, gently: true, except: [], at: Time.now)
       ...
     end
 
