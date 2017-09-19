@@ -29,6 +29,7 @@ It was inspired by [AirBnB's guide][airbnb-ruby].
   1. [Exceptions](#exceptions)
   1. [Collections](#collections)
   1. [Strings](#strings)
+  1. [Global variables](#global-variables)
   1. [Regular Expressions](#regular-expressions)
   1. [Percent Literals](#percent-literals)
   1. [Rails](#rails)
@@ -1458,6 +1459,11 @@ In either case:
     "Some string is really long and " \
       "spans multiple lines."
     ```
+
+## Global variables
+
+Don't use global variables unless there's a very good reason for it.
+
 
 ## Regular Expressions
 
