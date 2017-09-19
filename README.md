@@ -550,6 +550,8 @@ Thus when you create a TODO, it is almost always your name that is given.
       # body
     end
     ```
+* <a name="method-length"></a>Keep methods short. No method should be longer than 10 lines of code.
+
 
 ### Method calls
 
