@@ -11,12 +11,9 @@ It was inspired by [AirBnB's guide][airbnb-ruby].
     1. [Newlines](#newlines)
   1. [Line Length](#line-length)
   1. [Commenting](#commenting)
-    1. [File/class-level comments](#fileclass-level-comments)
-    1. [Function comments](#function-comments)
-    1. [Block and inline comments](#block-and-inline-comments)
-    1. [Punctuation, spelling, and grammar](#punctuation-spelling-and-grammar)
-    1. [TODO comments](#todo-comments)
-    1. [Commented-out code](#commented-out-code)
+      1. [Punctuation, spelling, and grammar](#punctuation-spelling-and-grammar)
+      1. [TODO comments](#todo-comments)
+      1. [Commented-out code](#commented-out-code)
   1. [Methods](#methods)
     1. [Method definitions](#method-definitions)
     1. [Method calls](#method-calls)
@@ -308,109 +305,11 @@ It was inspired by [AirBnB's guide][airbnb-ruby].
 
 &mdash;[Google C++ Style Guide][google-c++]
 
-Portions of this section borrow heavily from the Google
-[C++][google-c++-comments] and [Python][google-python-comments] style guides.
+Code should be self-documenting, avoid describing the code. Assume the person reading the code
+knows the language (though not what you're trying to do) better than you do.
 
-### File/class-level comments
 
-Every class definition should have an accompanying comment that describes what
-it is for and how it should be used.
-
-A file that contains zero classes or more than one class should have a comment
-at the top describing its contents.
-
-```ruby
-# Automatic conversion of one locale to another where it is possible, like
-# American to British English.
-module Translation
-  # Class for converting between text between similar locales.
-  # Right now only conversion between American English -> British, Canadian,
-  # Australian, New Zealand variations is provided.
-  class PrimAndProper
-    def initialize
-      @converters = {
-        en: {
-          :"en-AU" => AmericanToAustralian.new,
-          :"en-CA" => AmericanToCanadian.new,
-          :"en-GB" => AmericanToBritish.new,
-          :"en-NZ" => AmericanToKiwi.new,
-        }
-      }
-    end
-
-  ...
-
-  # Applies transforms to American English that are common to
-  # variants of all other English colonies.
-  class AmericanToColonial
-    ...
-  end
-
-  # Converts American to British English.
-  # In addition to general Colonial English variations, changes "apartment"
-  # to "flat".
-  class AmericanToBritish < AmericanToColonial
-    ...
-  end
-```
-
-All files, including data and config files, should have file-level comments.
-
-```ruby
-# List of American-to-British spelling variants.
-#
-# This list is made with
-# lib/tasks/list_american_to_british_spelling_variants.rake.
-#
-# It contains words with general spelling variation patterns:
-#   [trave]led/lled, [real]ize/ise, [flav]or/our, [cent]er/re, plus
-# and these extras:
-#   learned/learnt, practices/practises, airplane/aeroplane, ...
-
-sectarianizes: sectarianises
-neutralization: neutralisation
-...
-```
-
-### Function comments
-
-Every function declaration should have comments immediately preceding it that
-describe what the function does and how to use it. These comments should be
-descriptive ("Opens the file") rather than imperative ("Open the file"); the
-comment describes the function, it does not tell the function what to do. In
-general, these comments do not describe how the function performs its task.
-Instead, that should be left to comments interspersed in the function's code.
-
-Every function should mention what the inputs and outputs are, unless it meets
-all of the following criteria:
-
-* not externally visible
-* very short
-* obvious
-
-You may use whatever format you wish. In Ruby, two popular function
-documentation schemes are [TomDoc](http://tomdoc.org/) and
-[YARD](http://rubydoc.info/docs/yard/file/docs/GettingStarted.md). You can also
-just write things out concisely:
-
-```ruby
-# Returns the fallback locales for the_locale.
-# If opts[:exclude_default] is set, the default locale, which is otherwise
-# always the last one in the returned list, will be excluded.
-#
-# For example:
-#   fallbacks_for(:"pt-BR")
-#     => [:"pt-BR", :pt, :en]
-#   fallbacks_for(:"pt-BR", exclude_default: true)
-#     => [:"pt-BR", :pt]
-def fallbacks_for(the_locale, opts = {})
-  ...
-end
-```
-
-### Block and inline comments
-
-The final place to have comments is in tricky parts of the code. If you're
+* <a name="inline-comments"></a> Use comments for tricky parts of the code. If you're
 going to have to explain it at the next code review, you should comment it now.
 Complicated operations get a few lines of comments before the operations
 commence. Non-obvious ones get comments at the end of the line.
@@ -434,10 +333,7 @@ def fallbacks_for(the_locale, opts = {})
 end
 ```
 
-On the other hand, never describe the code. Assume the person reading the code
-knows the language (though not what you're trying to do) better than you do.
-
-<a name="no-block-comments"></a>Related: do not use block comments. They cannot
+* <a name="no-block-comments"></a>Do not use block comments. They cannot
   be preceded by whitespace and are not as easy to spot as regular comments.
   <sup>[[link](#no-block-comments)]</sup>
 
