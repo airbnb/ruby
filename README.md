@@ -1148,6 +1148,28 @@ In either case:
       end
     end
     ```
+    
+* <a name="inherit-struct"></a>Don't inherit from `Struct.new` but add instead each needed parameter in the initializer.
+
+    ```ruby
+    # bad
+    class Person < Struct.new(:name)
+      def greet
+        puts "Hello, #{name}!"
+      end
+    end
+    
+    # good
+    class Person
+      def initialize(name)
+        @name = name
+      end
+    
+      def greet
+        puts "Hello, #{name}!"
+      end
+    end
+    ```
 
 ## Exceptions
 
