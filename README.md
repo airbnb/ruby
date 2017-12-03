@@ -42,8 +42,8 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
 ### Indentation
 
-* <a name="default-indentation"></a>Use soft-tabs with a two
-    space-indent.<sup>[[link](#default-indentation)]</sup>
+* <a name="default-indentation"></a>Use soft-tabs with a
+    two-space indent.<sup>[[link](#default-indentation)]</sup>
 
 * <a name="indent-when-as-case"></a>Indent `when` as deep as `case`.
     <sup>[[link](#indent-when-as-case)]</sup>
