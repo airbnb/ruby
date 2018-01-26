@@ -162,7 +162,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 * <a name="spaces-block-params"></a>Do not include space inside block
     parameter pipes. Include one space between parameters in a block.
     Include one space outside block parameter pipes.
-    <sup>[[link](#spaces-block-params")]</sup>
+    <sup>[[link](#spaces-block-params)]</sup>
 
     ```ruby
     # bad
