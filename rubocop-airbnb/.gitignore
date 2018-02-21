@@ -1,0 +1,40 @@
+# Ignore bundler config
+/.bundle
+bundle
+vendor/bundle/
+vendor/rubocop/
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+
+# Ignore development bundled assets
+.sass-cache/
+public/assets/
+
+/config/database.yml
+/config/configatron/secure.yml
+/config/initializers/aws_credentials.rb
+
+.DS_Store
+.rvmrc
+.ruby-version
+.*.swp
+.\#*
+\#*#
+node_modules
+npm-debug.log
+
+rubocop-airbnb*.gem
+
+# IDEs
+.idea
+
+# Temp files
+*.swo
+.byebug_history
+
+Gemfile.lock
