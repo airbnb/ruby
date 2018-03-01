@@ -1,0 +1,15 @@
+language: ruby
+cache:
+  bundler: true
+sudo: false
+rvm:
+  - 2.1.8
+  - 2.2
+  - 2.3
+install:
+  - cd rubocop-airbnb
+  - bundle install
+script:
+  - bundle exec rspec
+  - bundle exec rubocop --config .rubocop.yml
+

@@ -514,7 +514,7 @@ Thus when you create a TODO, it is almost always your name that is given.
      end
      ```
 
-* <a name="no-default-args"></a>Do not use default positional arguments. 
+* <a name="no-default-args"></a>Do not use default positional arguments.
     Use keyword arguments (if available - in Ruby 2.0 or later) or an options
     hash instead.<sup>[[link](#no-default-args)]</sup>
 
@@ -736,27 +736,27 @@ In either case:
 
 * <a name="unless-with-comparison-operator"></a>Avoid `unless` with comparison operators if you can use `if` with an opposing comparison operator.<sup>[[link](#unless-with-comparison-operator)]</sup>
 
-    ```ruby     
+    ```ruby
       # bad
       unless x == 10
         ...
       end
-      
+
       # good
       if x != 10
         ...
       end
-      
+
       # bad
       unless x < 10
         ...
       end
-      
+
       # good
       if x >= 10
         ...
       end
-      
+
       # ok
       unless x === 10
         ...
@@ -835,13 +835,13 @@ In either case:
 ### Nested conditionals
 
 * <a name="no-nested-conditionals"></a>
-  Avoid the use of nested conditionals for flow of control. 
+  Avoid the use of nested conditionals for flow of control.
   ([More on this][avoid-else-return-early].) <sup>[[link](#no-nested-conditionals)]</sup>
-  
+
   Prefer a guard clause when you can assert invalid data. A guard clause
   is a conditional statement at the top of a function that returns as soon
-  as it can. 
-  
+  as it can.
+
   The general principles boil down to:
   * Return immediately once you know your function cannot do anything more.
   * Reduce nesting and indentation in the code by returning early. This makes
@@ -872,7 +872,7 @@ In either case:
     return unless client
     request = client.make_request
     return unless request
-    process_request(request)  
+    process_request(request)
   end
   ```
 
@@ -1125,12 +1125,12 @@ In either case:
     3. Referencing the current instance's class: `self.class`.
 
 * <a name="freeze-constants"></a>When defining an object of any mutable
-    type meant to be a constant, make sure to call `freeze` on it. Common 
+    type meant to be a constant, make sure to call `freeze` on it. Common
     examples are strings, arrays, and hashes.
     ([More on this][ruby-freeze].)<sup>[[link](#freeze-constants)]</sup>
 
     The reason is that Ruby constants are actually mutable. Calling `freeze`
-    ensures they are not mutated and are therefore truly constant and 
+    ensures they are not mutated and are therefore truly constant and
     attempting to modify them will raise an exception. For strings, this allows
     older versions of Ruby below 2.2 to intern them.
 
@@ -1140,13 +1140,13 @@ In either case:
       RED = 'red'
       BLUE = 'blue'
       GREEN = 'green'
-      
+
       ALL_COLORS = [
         RED,
         BLUE,
         GREEN,
       ]
-    
+
       COLOR_TO_RGB = {
         RED => 0xFF0000,
         BLUE => 0x0000FF,
@@ -1154,7 +1154,7 @@ In either case:
       }
     end
 
-    # good    
+    # good
     class Color
       RED = 'red'.freeze
       BLUE = 'blue'.freeze
@@ -1165,7 +1165,7 @@ In either case:
         BLUE,
         GREEN,
       ].freeze
-    
+
       COLOR_TO_RGB = {
         RED => 0xFF0000,
         BLUE => 0x0000FF,

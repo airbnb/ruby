@@ -1,0 +1,8 @@
+# Default rules. These will be overridden by modified rules in
+# `.rubocop_todo.yml`. Eventually, both this and `.rubocop_todo.yml` should be
+# merged and moved "upstairs" into `.rubocop.yml`, but due to RuboCop's
+# inheritance model we'll be doing this for now.
+
+# For the rubocop-airbnb gem specifically, we want to load the local configuration.
+require:
+  - ./lib/rubocop-airbnb.rb

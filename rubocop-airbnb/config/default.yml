@@ -1,0 +1,39 @@
+Rails:
+  Enabled: true
+
+##############
+# Global rules
+
+AllCops:
+  Exclude:
+    - '.chefrepo/**/*'
+    - '.vagrant/**/*'
+    - '.git/**/*'
+    - 'node_modules/**/*'
+    - 'tungsten/**/*'
+    - 'tungsten-support/**/*'
+    - 'vendor/**/*'
+    - Vagrantfile
+    - Guardfile
+  RSpec:
+    Patterns:
+    - _spec.rb
+    - "(?:^|/)spec/"
+  RSpec/FactoryBot:
+    Patterns:
+    - spec/factories/**/*.rb
+    - features/support/factories/**/*.rb
+
+inherit_from:
+  - './rubocop-airbnb.yml'
+  - './rubocop-bundler.yml'
+  - './rubocop-gemspec.yml'
+  - './rubocop-layout.yml'
+  - './rubocop-lint.yml'
+  - './rubocop-metrics.yml'
+  - './rubocop-naming.yml'
+  - './rubocop-performance.yml'
+  - './rubocop-rails.yml'
+  - './rubocop-rspec.yml'
+  - './rubocop-security.yml'
+  - './rubocop-style.yml'

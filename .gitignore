@@ -1,0 +1,28 @@
+# rcov generated
+coverage
+coverage.data
+
+# rdoc generated
+rdoc
+
+# bundler
+/rubocop-airbnb/.bundle
+.bundle
+.config
+/rubocop-airbnb/vendor/bundle
+Gemfile.lock
+
+# rbenv
+.ruby-version
+
+# jeweler generated
+*.gem
+pkg
+
+# etags
+TAGS
+
+# logfiles and tempfiles.
+/rubocop-airbnb/log/*.log
+/rubocop-airbnb/tmp
+.byebug_history
