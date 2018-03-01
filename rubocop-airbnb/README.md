@@ -4,7 +4,8 @@ Airbnb specific analysis for [RuboCop](https://github.com/bbatsov/rubocop).
 
 It contains Airbnb's internally used configuration for
 [RuboCop](https://github.com/bbatsov/rubocop) and
-[RuboCop RSpec](https://github.com/backus/rubocop-rspec). It also includes custom
+[RuboCop RSpec](https://github.com/backus/rubocop-rspec). It also includes a handful custom rules
+that are not currently addressed by other projects.
 
 ## Installation
 
