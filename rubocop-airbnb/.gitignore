@@ -1,40 +1,29 @@
-# Ignore bundler config
+
+# rcov generated
+coverage
+coverage.data
+
+# rdoc generated
+rdoc
+
+# bundler
 /.bundle
-bundle
-vendor/bundle/
-vendor/rubocop/
+.bundle
+.config
+/vendor/bundle
+Gemfile.lock
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
+# rbenv
+.ruby-version
 
-# Ignore all logfiles and tempfiles.
+# jeweler generated
+*.gem
+pkg
+
+# etags
+TAGS
+
+# logfiles and tempfiles.
 /log/*.log
 /tmp
-
-# Ignore development bundled assets
-.sass-cache/
-public/assets/
-
-/config/database.yml
-/config/configatron/secure.yml
-/config/initializers/aws_credentials.rb
-
-.DS_Store
-.rvmrc
-.ruby-version
-.*.swp
-.\#*
-\#*#
-node_modules
-npm-debug.log
-
-rubocop-airbnb*.gem
-
-# IDEs
-.idea
-
-# Temp files
-*.swo
 .byebug_history
-
-Gemfile.lock
