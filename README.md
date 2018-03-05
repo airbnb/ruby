@@ -71,38 +71,35 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
     ```
 
 * <a name="align-function-params"></a>Align function parameters either all on
-    the same line or one per line.<sup>[[link](#align-function-params)]</sup>
+    the same line or one per line. Use a trailing comma in function calls, but
+    not in function definitions (Ruby does not allow trailing commas there).
+    Caution, don't use trailing comma for function calls without parentheses!
+    <sup>[[link](#align-function-params)]</sup>
 
     ```ruby
     # bad
-    def self.create_translation(phrase_id, phrase_key, target_locale,
-                                value, user_id, do_xss_check, allow_verification)
-      ...
-    end
+    create_translation(phrase_id, phrase_key, target_locale,
+                       value, user_id, do_xss_check, allow_verification)
 
     # good
-    def self.create_translation(phrase_id,
-                                phrase_key,
-                                target_locale,
-                                value,
-                                user_id,
-                                do_xss_check,
-                                allow_verification)
-      ...
-    end
+    create_translation(phrase_id,
+                       phrase_key,
+                       target_locale,
+                       value,
+                       user_id,
+                       do_xss_check,
+                       allow_verification)
 
     # good
-    def self.create_translation(
+    create_translation(
       phrase_id,
       phrase_key,
       target_locale,
       value,
       user_id,
       do_xss_check,
-      allow_verification
+      allow_verification,
     )
-      ...
-    end
     ```
 
 * <a name="indent-multi-line-bool"></a>Indent succeeding lines in multi-line
@@ -605,7 +602,7 @@ Thus when you create a TODO, it is almost always your name that is given.
     ```
 
 * <a name="no-return-parens"></a>If the method doesn't return a value (or we
-    don't care about the return), parentheses are optional. (Especially if the
+    don't care about the return), parentheses are optional. (However if the
     arguments overflow to multiple lines, parentheses may add readability.)
     <sup>[[link](#no-return-parens)]</sup>
 
