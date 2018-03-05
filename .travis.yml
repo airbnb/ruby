@@ -3,9 +3,11 @@ cache:
   bundler: true
 sudo: false
 rvm:
-  - 2.1.8
+  - 2.1
   - 2.2
   - 2.3
+  - 2.4
+  - 2.5
 install:
   - cd rubocop-airbnb
   - bundle install
