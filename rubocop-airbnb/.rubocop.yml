@@ -4,9 +4,6 @@ inherit_from:
 
 AllCops:
   CacheRootDirectory: tmp/rubocop
-  Exclude:
-    - 'vendor/**/*'
-    - 'node_modules/**/*'
 
 Rails:
   Enabled: false

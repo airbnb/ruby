@@ -18,10 +18,9 @@ Lint/AssignmentInCondition:
   Enabled: true
   AllowSafeAssignment: false
 
-# Supports --auto-correct
-Lint/BlockAlignment:
-  Description: Align block ends correctly.
-  Enabled: true
+Lint/BigDecimalNew:
+  Description: '`BigDecimal.new()` is deprecated. Use `BigDecimal()` instead.'
+  Enabled: false
 
 Lint/BooleanSymbol:
   Enabled: false
@@ -30,21 +29,9 @@ Lint/CircularArgumentReference:
   Description: Don't refer to the keyword argument in the default value.
   Enabled: false
 
-Lint/ConditionPosition:
-  Description: Checks for condition placed in a confusing position relative to the keyword.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#same-line-condition
-  Enabled: true
-
 Lint/Debugger:
   Description: Check for debugger calls.
   Enabled: true
-
-# Supports --auto-correct
-Lint/DefEndAlignment:
-  Description: Align ends corresponding to defs correctly.
-  Enabled: true
-  EnforcedStyleAlignWith: start_of_line
-  AutoCorrect: false
 
 # Supports --auto-correct
 Lint/DeprecatedClassMethods:
@@ -80,20 +67,6 @@ Lint/EmptyInterpolation:
 
 Lint/EmptyWhen:
   Enabled: false
-
-# Supports --auto-correct
-Lint/EndAlignment:
-  Description: Align ends correctly.
-  # The value `keyword` means that `end` should be aligned with the matching
-  # keyword (if, while, etc.).
-  # The value `variable` means that in assignments, `end` should be aligned
-  # with the start of the variable on the left hand side of `=`. In all other
-  # situations, `end` should still be aligned with the keyword.
-  # The value `start_of_line` means that `end` should be aligned with the start
-  # of the line which the matching keyword appears on.
-  Enabled: true
-  EnforcedStyleAlignWith: keyword
-  AutoCorrect: false
 
 Lint/EndInMethod:
   Description: END blocks should not be placed inside method definitions.
@@ -178,6 +151,10 @@ Lint/NonLocalExitFromIterator:
   Description: Do not use return in iterator to cause non-local exit.
   Enabled: false
 
+Lint/OrderedMagicComments:
+  Description: 'Checks the proper ordering of magic comments and whether a magic comment is not placed before a shebang.'
+  Enabled: true
+
 Lint/ParenthesesAsGroupedExpression:
   Description: Checks for method calls with a space before the opening parenthesis.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#parens-no-spaces
@@ -254,10 +231,14 @@ Lint/UnderscorePrefixedVariableName:
 Lint/UnifiedInteger:
   Enabled: false
 
-Lint/UnneededDisable:
+Lint/UnneededCopDisableDirective:
   Description: >-
     Checks for rubocop:disable comments that can be removed.
     Note: this cop is not disabled when disabling all cops. It must be explicitly disabled.
+  Enabled: true
+
+Lint/UnneededCopEnableDirective:
+  Description: Checks for rubocop:enable comments that can be removed.
   Enabled: true
 
 Lint/UnneededRequireStatement:

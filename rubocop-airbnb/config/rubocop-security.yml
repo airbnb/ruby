@@ -8,6 +8,10 @@ Security/JSONLoad:
 Security/MarshalLoad:
   Enabled: false
 
+Security/Open:
+  Description: 'The use of Kernel#open represents a serious security risk.'
+  Enabled: false
+
 Security/YAMLLoad:
   Enabled: false
 

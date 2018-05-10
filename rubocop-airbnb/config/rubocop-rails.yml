@@ -2,6 +2,9 @@
 Rails/ActionFilter:
   Enabled: false
 
+Rails/ActiveRecordAliases:
+  Enabled: false
+
 Rails/ActiveSupportAliases:
   Enabled: false
 
