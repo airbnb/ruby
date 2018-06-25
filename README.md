@@ -2,7 +2,7 @@
 
 This is Airbnb's Ruby Style Guide.
 
-It was inspired by [GitHub's guide](https://web.archive.org/web/20160410033955/https://github.com/styleguide/ruby) and [Bozhidar Batsov's guide][bbatsov-ruby].
+It was inspired by [GitHub's guide](https://web.archive.org/web/20160410033955/https://github.com/styleguide/ruby) and [Rubocop guide][rubocop-guide].
 
 Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 
@@ -1739,7 +1739,7 @@ In either case:
 &mdash;[Google C++ Style Guide][google-c++]
 
 [airbnb-javascript]: https://github.com/airbnb/javascript
-[bbatsov-ruby]: https://github.com/bbatsov/ruby-style-guide
+[rubocop-guide]: https://github.com/rubocop-hq/ruby-style-guide
 [github-ruby]: https://github.com/styleguide/ruby
 [google-c++]: https://google.github.io/styleguide/cppguide.html
 [google-c++-comments]: https://google.github.io/styleguide/cppguide.html#Comments

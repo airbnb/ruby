@@ -4,7 +4,7 @@ Lint/AmbiguousBlockAssociation:
 Lint/AmbiguousOperator:
   Description: Checks for ambiguous operators in the first argument of a method invocation
     without parentheses.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#parens-as-args
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#parens-as-args
   Enabled: true
 
 Lint/AmbiguousRegexpLiteral:
@@ -14,7 +14,7 @@ Lint/AmbiguousRegexpLiteral:
 
 Lint/AssignmentInCondition:
   Description: Don't use assignment in conditions.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#safe-assignment-in-condition
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#safe-assignment-in-condition
   Enabled: true
   AllowSafeAssignment: false
 
@@ -74,7 +74,7 @@ Lint/EndInMethod:
 
 Lint/EnsureReturn:
   Description: Do not use return in an ensure block.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-return-ensure
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-return-ensure
   Enabled: false
 
 Lint/FloatOutOfRange:
@@ -87,7 +87,7 @@ Lint/FormatParameterMismatch:
 
 Lint/HandleExceptions:
   Description: Don't suppress exception.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#dont-hide-exceptions
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#dont-hide-exceptions
   Enabled: false
 
 Lint/ImplicitStringConcatenation:
@@ -121,7 +121,7 @@ Lint/LiteralInInterpolation:
 Lint/Loop:
   Description: Use Kernel#loop with break rather than begin/end/until or begin/end/while
     for post-loop tests.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#loop-with-break
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#loop-with-break
   Enabled: false
 
 Lint/MissingCopEnableDirective:
@@ -141,7 +141,7 @@ Lint/MultipleCompare:
 
 Lint/NestedMethodDefinition:
   Description: Do not use nested method definitions.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-nested-methods
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-nested-methods
   Enabled: false
 
 Lint/NextWithoutAccumulator:
@@ -157,7 +157,7 @@ Lint/OrderedMagicComments:
 
 Lint/ParenthesesAsGroupedExpression:
   Description: Checks for method calls with a space before the opening parenthesis.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#parens-no-spaces
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#parens-no-spaces
   Enabled: true
 
 Lint/PercentStringArray:
@@ -188,7 +188,7 @@ Lint/RequireParentheses:
 
 Lint/RescueException:
   Description: Avoid rescuing the Exception class.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-blind-rescues
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-blind-rescues
   Enabled: true
 
 Lint/RescueType:
@@ -221,7 +221,7 @@ Lint/ShadowingOuterLocalVariable:
 # Supports --auto-correct
 Lint/StringConversionInInterpolation:
   Description: Checks for Object#to_s usage in string interpolation.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-to-s
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-to-s
   Enabled: true
 
 Lint/UnderscorePrefixedVariableName:
@@ -254,13 +254,13 @@ Lint/UnreachableCode:
 # Supports --auto-correct
 Lint/UnusedBlockArgument:
   Description: Checks for unused block arguments.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#underscore-unused-vars
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#underscore-unused-vars
   Enabled: false
 
 # Supports --auto-correct
 Lint/UnusedMethodArgument:
   Description: Checks for unused method arguments.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#underscore-unused-vars
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#underscore-unused-vars
   Enabled: false
 
 Lint/UriEscapeUnescape:
@@ -275,7 +275,7 @@ Lint/UselessAccessModifier:
 
 Lint/UselessAssignment:
   Description: Checks for useless assignment to a local variable.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#underscore-unused-vars
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#underscore-unused-vars
   Enabled: true
 
 Lint/UselessComparison:
