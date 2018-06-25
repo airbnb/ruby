@@ -85,6 +85,10 @@ Airbnb/SimpleModifierConditional:
   Enabled: true
   StyleGuide: https://github.com/airbnb/ruby#only-simple-if-unless
 
+Airbnb/SimpleUnless:
+  Enabled: true
+  StyleGuide: https://github.com/airbnb/ruby#unless-with-multiple-conditions
+
 Airbnb/SpecConstantAssignment:
   Description: Constant assignment in specs polute global namespace and are a cause of spurious
     specs. They should be avoided. Also modifing existing constants is bad too, use stub_const
