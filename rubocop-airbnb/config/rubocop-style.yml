@@ -934,6 +934,9 @@ Style/UnneededPercentQ:
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#percent-q
   Enabled: false
 
+Style/UnpackFirst:
+  Enabled: false
+
 # Supports --auto-correct
 Style/VariableInterpolation:
   Description: Don't interpolate global, instance and class variables directly in strings.

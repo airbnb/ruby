@@ -91,6 +91,9 @@ Rails/HasManyOrHasOneDependent:
 Rails/HttpPositionalArguments:
   Enabled: false
 
+Rails/HttpStatus:
+  Enabled: false
+
 Rails/InverseOf:
   Description: 'Checks for associations where the inverse cannot be determined automatically.'
   Enabled: false
