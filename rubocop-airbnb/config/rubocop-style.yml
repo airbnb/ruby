@@ -322,6 +322,10 @@ Style/EvenOdd:
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#predicate-methods
   Enabled: false
 
+Style/ExpandPathArguments:
+  Description: "Use `expand_path(__dir__)` instead of `expand_path('..', __FILE__)`."
+  Enabled: false
+
 Style/FlipFlop:
   Description: Checks for flip flops
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-flip-flops
@@ -433,6 +437,9 @@ Style/LineEndConcatenation:
   Description: Use \ instead of + or << to concatenate two string literals at line end.
   Enabled: true
 
+Style/EmptyLineAfterGuardClause:
+  Enabled: false
+
 Style/MethodCallWithArgsParentheses:
   Enabled: false
 
@@ -485,6 +492,7 @@ Style/MixinUsage:
     `include`, `extend` and `prepend` at the top level. Let's use it inside `class` or `module`.
   Enabled: true
 
+# Supports --auto-correct
 Style/ModuleFunction:
   Description: Checks for usage of `extend self` in modules.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#module-function
@@ -870,15 +878,28 @@ Style/SymbolProc:
 Style/TernaryParentheses:
   Enabled: false
 
+Style/TrailingBodyOnClass:
+  Description: 'Class body goes below class statement.'
+  Enabled: true
+
 Style/TrailingBodyOnMethodDefinition:
   Description: 'Method body goes below definition.'
+  Enabled: true
+
+Style/TrailingBodyOnModule:
+  Description: 'Module body goes below module statement.'
   Enabled: true
 
 Style/TrailingCommaInArguments:
   Enabled: false
 
-# Allow trailing commas (we like 'em!)
-Style/TrailingCommaInLiteral:
+# Enforce trailing commas (we like 'em!)
+Style/TrailingCommaInArrayLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma
+
+# Enforce trailing commas (we like 'em!)
+Style/TrailingCommaInHashLiteral:
   Enabled: true
   EnforcedStyleForMultiline: consistent_comma
 
@@ -911,6 +932,9 @@ Style/UnneededInterpolation:
 Style/UnneededPercentQ:
   Description: Checks for %q/%Q when single quotes or double quotes would do.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#percent-q
+  Enabled: false
+
+Style/UnpackFirst:
   Enabled: false
 
 # Supports --auto-correct

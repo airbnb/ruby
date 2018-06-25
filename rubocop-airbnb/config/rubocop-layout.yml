@@ -40,6 +40,11 @@ Layout/AlignParameters:
   - with_fixed_indentation
 
 # Supports --auto-correct
+Layout/BlockAlignment:
+  Description: Align block ends correctly.
+  Enabled: true
+
+# Supports --auto-correct
 Layout/BlockEndNewline:
   Description: Put end statement of multiline block on its own line.
   Enabled: true
@@ -78,6 +83,18 @@ Layout/CommentIndentation:
   Description: Indentation of comments.
   Enabled: true
 
+Layout/ConditionPosition:
+  Description: Checks for condition placed in a confusing position relative to the keyword.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#same-line-condition
+  Enabled: true
+
+# Supports --auto-correct
+Layout/DefEndAlignment:
+  Description: Align ends corresponding to defs correctly.
+  Enabled: true
+  EnforcedStyleAlignWith: start_of_line
+  AutoCorrect: false
+
 # Use trailing commas, because there are safer in ruby.
 Layout/DotPosition:
   Enabled: true
@@ -86,6 +103,10 @@ Layout/DotPosition:
 # Supports --auto-correct
 Layout/ElseAlignment:
   Description: Align elses and elsifs correctly.
+  Enabled: true
+
+Layout/EmptyComment:
+  Description: 'Checks empty comment.'
   Enabled: true
 
 Layout/EmptyLineAfterMagicComment:
@@ -130,7 +151,9 @@ Layout/EmptyLinesAroundClassBody:
   Enabled: true
   EnforcedStyle: no_empty_lines
   SupportedStyles:
+  - beginning_only
   - empty_lines
+  - end_only
   - no_empty_lines
 
 Layout/EmptyLinesAroundExceptionHandlingKeywords:
@@ -149,6 +172,20 @@ Layout/EmptyLinesAroundModuleBody:
   SupportedStyles:
   - empty_lines
   - no_empty_lines
+
+# Supports --auto-correct
+Layout/EndAlignment:
+  Description: Align ends correctly.
+  # The value `keyword` means that `end` should be aligned with the matching
+  # keyword (if, while, etc.).
+  # The value `variable` means that in assignments, `end` should be aligned
+  # with the start of the variable on the left hand side of `=`. In all other
+  # situations, `end` should still be aligned with the keyword.
+  # The value `start_of_line` means that `end` should be aligned with the start
+  # of the line which the matching keyword appears on.
+  Enabled: true
+  EnforcedStyleAlignWith: keyword
+  AutoCorrect: false
 
 Layout/EndOfLine:
   Description: Use Unix-style line endings.
@@ -448,7 +485,7 @@ Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: true
 
 Layout/SpaceInsideReferenceBrackets:
-  EnforcedStyle: no_space
+  EnforcedStyleForEmptyBrackets: no_space
   SupportedStyles:
     - space
     - no_space

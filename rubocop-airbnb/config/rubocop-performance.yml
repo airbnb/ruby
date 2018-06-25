@@ -54,14 +54,6 @@ Performance/FlatMap:
   EnabledForFlattenWithoutParams: false
 
 # Supports --auto-correct
-Performance/HashEachMethods:
-  Description: Use `Hash#each_key` and `Hash#each_value` instead of `Hash#keys.each`
-    and `Hash#values.each`.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#hash-each
-  Enabled: false
-  AutoCorrect: false
-
-# Supports --auto-correct
 Performance/LstripRstrip:
   Description: Use `strip` instead of `lstrip.rstrip`.
   Enabled: false
