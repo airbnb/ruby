@@ -14,6 +14,9 @@ Rails/ApplicationJob:
 Rails/ApplicationRecord:
   Enabled: false
 
+Rails/AssertNot:
+  Enabled: false
+
 Rails/Blank:
   Description: 'Enforce using `blank?` and `present?`.'
   Enabled: true
@@ -23,6 +26,9 @@ Rails/Blank:
   NotPresent: true
   # Convert usages of `unless` `present?` to `if` `blank?`
   UnlessPresent: true
+
+Rails/BulkChangeTable:
+  Enabled: false
 
 Rails/CreateTableWithTimestamps:
   Description: Checks the migration for which timestamps are not included when creating a new table.
@@ -150,6 +156,9 @@ Rails/ReadWriteAttribute:
 Rails/RedundantReceiverInWithOptions:
   Description: 'Checks for redundant receiver in `with_options`.'
   Enabled: true
+
+Rails/RefuteMethods:
+  Enabled: false
 
 Rails/RelativeDateConstant:
   Enabled: false

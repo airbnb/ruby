@@ -77,6 +77,9 @@ Lint/EnsureReturn:
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-return-ensure
   Enabled: false
 
+Lint/ErbNewArguments:
+  Enabled: false
+
 Lint/FloatOutOfRange:
   Description: Catches floating-point literals too large or small for Ruby to represent.
   Enabled: false
@@ -200,6 +203,9 @@ Lint/ReturnInVoidContext:
 Lint/SafeNavigationChain:
   Enabled: false
 
+Lint/SafeNavigationConsistency:
+  Enabled: false
+
 Lint/ScriptPermission:
   Enabled: false
 
@@ -293,4 +299,3 @@ Lint/UselessSetterCall:
 Lint/Void:
   Description: Possible use of operator/literal/variable in void context.
   Enabled: false
-

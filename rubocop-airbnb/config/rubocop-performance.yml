@@ -53,6 +53,9 @@ Performance/FlatMap:
   Enabled: false
   EnabledForFlattenWithoutParams: false
 
+Performance/InefficientHashSearch:
+  Enabled: false
+
 # Supports --auto-correct
 Performance/LstripRstrip:
   Description: Use `strip` instead of `lstrip.rstrip`.
@@ -128,6 +131,9 @@ Performance/TimesMap:
   Enabled: false
 
 Performance/UnfreezeString:
+  Enabled: false
+
+Performance/UnneededSort:
   Enabled: false
 
 Performance/UriDefaultParser:
