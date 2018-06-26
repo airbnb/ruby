@@ -1,3 +1,5 @@
+Style/AccessModifierDeclarations:
+  Enabled: false
 
 # Supports --auto-correct
 Style/Alias:
@@ -437,9 +439,6 @@ Style/LineEndConcatenation:
   Description: Use \ instead of + or << to concatenate two string literals at line end.
   Enabled: true
 
-Style/EmptyLineAfterGuardClause:
-  Enabled: false
-
 Style/MethodCallWithArgsParentheses:
   Enabled: false
 
@@ -463,7 +462,11 @@ Style/MethodDefParentheses:
   SupportedStyles:
   - require_parentheses
   - require_no_parentheses
-Style/MethodMissing:
+
+Style/MethodMissingSuper:
+  Enabled: false
+
+Style/MissingRespondToMissing:
   Enabled: false
 
 Style/MinMax:
@@ -921,6 +924,9 @@ Style/UnlessElse:
 # Supports --auto-correct
 Style/UnneededCapitalW:
   Description: Checks for %W when interpolation is not needed.
+  Enabled: false
+
+Style/UnneededCondition:
   Enabled: false
 
 # Supports --auto-correct

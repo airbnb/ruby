@@ -73,6 +73,9 @@ Layout/ClassStructure:
       - protected_methods
       - private_methods
 
+Layout/ClosingHeredocIndentation:
+  Enabled: false
+
 # Supports --auto-correct
 Layout/ClosingParenthesisIndentation:
   Description: Checks the indentation of hanging closing parentheses.
@@ -123,6 +126,9 @@ Layout/EmptyLineBetweenDefs:
 Layout/EmptyLines:
   Description: Don't use several empty lines in a row.
   Enabled: true
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
 
 # Supports --auto-correct
 Layout/EmptyLinesAroundAccessModifier:
@@ -227,9 +233,9 @@ Layout/FirstParameterIndentation:
   EnforcedStyle: consistent
   SupportedStyles:
   - consistent
+  - consistent_relative_to_receiver
   - special_for_inner_method_call
   - special_for_inner_method_call_in_parentheses
-
 
 # Supports --auto-correct
 Layout/IndentArray:
@@ -275,6 +281,9 @@ Layout/IndentationWidth:
 # Supports --auto-correct
 Layout/InitialIndentation:
   Description: Checks the indentation of the first non-blank non-comment line in a file.
+  Enabled: true
+
+Layout/LeadingBlankLines:
   Enabled: true
 
 # Supports --auto-correct
