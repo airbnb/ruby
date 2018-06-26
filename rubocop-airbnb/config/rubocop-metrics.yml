@@ -7,7 +7,7 @@ Metrics/BlockLength:
 
 Metrics/BlockNesting:
   Description: Avoid excessive block nesting
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#three-is-the-number-thou-shalt-count
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#three-is-the-number-thou-shalt-count
   Enabled: false
   Max: 3
 
@@ -36,7 +36,7 @@ Metrics/ModuleLength:
 
 Metrics/ParameterLists:
   Description: Avoid parameter lists longer than three or four parameters.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#too-many-params
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#too-many-params
   Enabled: false
   Max: 5
   CountKeywordArgs: true

@@ -3,7 +3,7 @@
 Layout/AccessModifierIndentation:
   Description: Check indentation of private/protected visibility modifiers.
   # Airbnb: https://github.com/airbnb/ruby#access-modifiers
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#indent-public-private-protected
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#indent-public-private-protected
   Enabled: true
   EnforcedStyle: indent
   SupportedStyles:
@@ -13,7 +13,7 @@ Layout/AccessModifierIndentation:
 # Supports --auto-correct
 Layout/AlignArray:
   Description: Align the elements of an array literal if they span more than one line.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#align-multiline-arrays
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#align-multiline-arrays
   Enabled: true
 
 # Supports --auto-correct
@@ -32,7 +32,7 @@ Layout/AlignHash:
 # Supports --auto-correct
 Layout/AlignParameters:
   Description: Align the parameters of a method call if they span more than one line.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-double-indent
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-double-indent
   Enabled: true
   EnforcedStyle: with_first_parameter
   SupportedStyles:
@@ -52,7 +52,7 @@ Layout/BlockEndNewline:
 # Supports --auto-correct
 Layout/CaseIndentation:
   Description: Indentation of when in a case/when/[else/]end.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#indent-when-to-case
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#indent-when-to-case
   Enabled: true
   EnforcedStyle: case
   IndentOneStep: false
@@ -85,7 +85,7 @@ Layout/CommentIndentation:
 
 Layout/ConditionPosition:
   Description: Checks for condition placed in a confusing position relative to the keyword.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#same-line-condition
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#same-line-condition
   Enabled: true
 
 # Supports --auto-correct
@@ -115,7 +115,7 @@ Layout/EmptyLineAfterMagicComment:
 # Supports --auto-correct
 Layout/EmptyLineBetweenDefs:
   Description: Use empty lines between defs.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#empty-lines-between-methods
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#empty-lines-between-methods
   Enabled: true
   AllowAdjacentOneLineDefs: false
 
@@ -189,7 +189,7 @@ Layout/EndAlignment:
 
 Layout/EndOfLine:
   Description: Use Unix-style line endings.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#crlf
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#crlf
   Enabled: false
 
 # Supports --auto-correct
@@ -268,7 +268,7 @@ Layout/IndentationConsistency:
 # Supports --auto-correct
 Layout/IndentationWidth:
   Description: Use 2 spaces for indentation.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#spaces-indentation
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-indentation
   Enabled: true
   Width: 2
 
@@ -280,7 +280,7 @@ Layout/InitialIndentation:
 # Supports --auto-correct
 Layout/LeadingCommentSpace:
   Description: Comments should start with a space.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#hash-space
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#hash-space
   Enabled: true
 
 # Supports --auto-correct
@@ -292,7 +292,7 @@ Layout/MultilineArrayBraceLayout:
 # Supports --auto-correct
 Layout/MultilineAssignmentLayout:
   Description: Check for a newline after the assignment operator in multi-line assignments.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#indent-conditional-assignment
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#indent-conditional-assignment
   Enabled: false
   SupportedTypes:
   - block
@@ -361,32 +361,32 @@ Layout/RescueEnsureAlignment:
 # Supports --auto-correct
 Layout/SpaceAfterColon:
   Description: Use spaces after colons.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#spaces-operators
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-operators
   Enabled: true
 
 # Supports --auto-correct
 Layout/SpaceAfterComma:
   Description: Use spaces after commas.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#spaces-operators
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-operators
   Enabled: true
 
 # Supports --auto-correct
 Layout/SpaceAfterMethodName:
   Description: Do not put a space between a method name and the opening parenthesis
     in a method definition.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#parens-no-spaces
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#parens-no-spaces
   Enabled: true
 
 # Supports --auto-correct
 Layout/SpaceAfterNot:
   Description: Tracks redundant space after the ! operator.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-space-bang
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-space-bang
   Enabled: true
 
 # Supports --auto-correct
 Layout/SpaceAfterSemicolon:
   Description: Use spaces after semicolons.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#spaces-operators
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-operators
   Enabled: true
 
 # Supports --auto-correct
@@ -399,7 +399,7 @@ Layout/SpaceAroundBlockParameters:
 Layout/SpaceAroundEqualsInParameterDefault:
   Description: Checks that the equals signs in parameter default assignments have or
     don't have surrounding space depending on configuration.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#spaces-around-equals
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-around-equals
   Enabled: true
   EnforcedStyle: space
   SupportedStyles:
@@ -413,7 +413,7 @@ Layout/SpaceAroundKeyword:
 # Supports --auto-correct
 Layout/SpaceAroundOperators:
   Description: Use a single space around operators.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#spaces-operators
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-operators
   Enabled: true
   AllowForAlignment: true
 
@@ -494,7 +494,7 @@ Layout/SpaceInsideReferenceBrackets:
 # Supports --auto-correct
 Layout/SpaceInsideHashLiteralBraces:
   Description: Use spaces inside hash literal braces - or don't.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#spaces-operators
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-operators
   Enabled: true
   EnforcedStyle: space
   EnforcedStyleForEmptyBraces: no_space
@@ -505,7 +505,7 @@ Layout/SpaceInsideHashLiteralBraces:
 # Supports --auto-correct
 Layout/SpaceInsideParens:
   Description: No spaces after ( or before ).
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-spaces-braces
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-spaces-braces
   Enabled: true
 
 Layout/SpaceInsidePercentLiteralDelimiters:
@@ -515,13 +515,13 @@ Layout/SpaceInsidePercentLiteralDelimiters:
 # Supports --auto-correct
 Layout/SpaceInsideRangeLiteral:
   Description: No spaces inside range literals.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-space-inside-range-literals
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-space-inside-range-literals
   Enabled: true
 
 # Supports --auto-correct
 Layout/SpaceInsideStringInterpolation:
   Description: Checks for padding/surrounding spaces inside string interpolation.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#string-interpolation
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#string-interpolation
   Enabled: true
   EnforcedStyle: no_space
   SupportedStyles:
@@ -531,13 +531,13 @@ Layout/SpaceInsideStringInterpolation:
 # Supports --auto-correct
 Layout/Tab:
   Description: No hard tabs.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#spaces-indentation
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-indentation
   Enabled: true
 
 # Supports --auto-correct
 Layout/TrailingBlankLines:
   Description: Checks trailing blank lines and final newline.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#newline-eof
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#newline-eof
   Enabled: true
   EnforcedStyle: final_newline
   SupportedStyles:
@@ -547,5 +547,5 @@ Layout/TrailingBlankLines:
 # Supports --auto-correct
 Layout/TrailingWhitespace:
   Description: Avoid trailing whitespace.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-trailing-whitespace
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-trailing-whitespace
   Enabled: true
