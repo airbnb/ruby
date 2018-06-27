@@ -1,3 +1,11 @@
+# 1.5.0
+* Upgrade to rubocop-rspec 1.27.0
+* Enable RSpec/Be
+* Enable RSpec/EmptyLineAfterExampleGroup
+* Enable RSpec/EmptyLineAfterHook
+* Enable RSpec/SharedExamples
+* Enable FactoryBot/CreateList
+
 # 1.4.0
 * Upgrade to rubocop 0.57.2
 
