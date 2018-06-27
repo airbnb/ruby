@@ -17,6 +17,10 @@ RSpec/AroundBlock:
   Description: Checks that around blocks actually run the test.
   Enabled: true
 
+RSpec/Be:
+  Description: Check for expectations where `be` is used without argument.
+  Enabled: true
+
 RSpec/BeEql:
   Description: Check for expectations where `be(...)` can replace `eql(...)`.
   Enabled: false
@@ -30,6 +34,7 @@ RSpec/BeforeAfterAll:
   - spec/support/**/*.rb
 
 RSpec/ContextWording:
+  Description: "`context` block descriptions should start with 'when', or 'with'."
   Enabled: false
 
 RSpec/DescribeClass:
@@ -53,8 +58,16 @@ RSpec/EmptyExampleGroup:
   Enabled: true
   CustomIncludeMethods: []
 
+RSpec/EmptyLineAfterExampleGroup:
+  Description: Checks if there is an empty line after example group blocks.
+  Enabled: true
+
 RSpec/EmptyLineAfterFinalLet:
   Description: Checks if there is an empty line after the last let block.
+  Enabled: true
+
+RSpec/EmptyLineAfterHook:
+  Description: Checks if there is an empty line after hook blocks.
   Enabled: true
 
 RSpec/EmptyLineAfterSubject:
@@ -159,6 +172,7 @@ RSpec/LetBeforeExamples:
   Enabled: true
 
 RSpec/LetSetup:
+  Description: Checks unreferenced `let!` calls being used for test setup.
   Enabled: false
 
 RSpec/MessageChain:
@@ -215,6 +229,10 @@ RSpec/OverwritingSetup:
   Enabled: false
   Description: Checks if there is a let/subject that overwrites an existing one.
 
+RSpec/Pending:
+  Description: Checks for any pending or skipped examples.
+  Enabled: false
+
 RSpec/PredicateMatcher:
   Description: Prefer using predicate matcher over using predicate method directly.
   Enabled: false
@@ -224,9 +242,13 @@ RSpec/PredicateMatcher:
   - inflected
   - explicit
 
+RSpec/ReceiveCounts:
+  Description: Check for `once` and `twice` receive counts matchers usage.
+  Enabled: false
+
 RSpec/RepeatedDescription:
-  Enabled: true
   Description: Check for repeated description strings in example groups.
+  Enabled: true
 
 RSpec/RepeatedExample:
   Enabled: true
@@ -252,6 +274,10 @@ RSpec/SharedContext:
   Description: Checks for proper shared_context and shared_examples usage.
   Enabled: false
 
+RSpec/SharedExamples:
+  Description: Enforces use of string to titleize shared examples.
+  Enabled: true
+
 RSpec/SingleArgumentMessageChain:
   Description: Checks that chains of messages contain more than one element.
   Enabled: true
@@ -276,6 +302,14 @@ Capybara/FeatureMethods:
   Description: Checks for consistent method usage in feature specs.
   Enabled: false
 
+FactoryBot/CreateList:
+  Description: Checks for create_list usage.
+  Enabled: true
+
 FactoryBot/DynamicAttributeDefinedStatically:
   Description: Prefer declaring dynamic attribute values in a block.
   Enabled: true
+
+FactoryBot/StaticAttributeDefinedDynamically:
+  Description: Prefer declaring static attribute values without a block.
+  Enabled: false
