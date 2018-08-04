@@ -37,7 +37,7 @@ inherit_from:
   - .rubocop_todo.yml
 ```
 
-You need to inherit `.rubocop_airbnb.yml` from another file becuase Rubocop order of operations.
+You need to inherit `.rubocop_airbnb.yml` from another file because of Rubocop order of operations.
 It runs `inherit_from` before `require` commands. If the configuration is not in a separate file
 you could potentially experience a bunch of warnings from `.rubocop_todo.yml` for non-existant
 `Airbnb` rules.
