@@ -388,7 +388,7 @@ all of the following criteria:
 
 You may use whatever format you wish. In Ruby, two popular function
 documentation schemes are [TomDoc](http://tomdoc.org/) and
-[YARD](http://rubydoc.info/docs/yard/file/docs/GettingStarted.md). You can also
+[YARD](https://rubydoc.info/docs/yard/file/docs/GettingStarted.md). You can also
 just write things out concisely:
 
 ```ruby
@@ -1745,7 +1745,7 @@ In either case:
 [google-c++-comments]: https://google.github.io/styleguide/cppguide.html#Comments
 [google-python-comments]: https://google.github.io/styleguide/pyguide.html#Comments
 [ruby-naming-bang]: http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist
-[ruby-freeze]: http://blog.honeybadger.io/when-to-use-freeze-and-frozen-in-ruby/
+[ruby-freeze]: https://blog.honeybadger.io/when-to-use-freeze-and-frozen-in-ruby/
 [avoid-else-return-early]: http://blog.timoxley.com/post/47041269194/avoid-else-return-early
 
 ## Translation
