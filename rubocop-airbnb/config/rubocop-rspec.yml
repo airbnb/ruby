@@ -131,6 +131,10 @@ RSpec/HookArgument:
   - each
   - example
 
+RSpec/HooksBeforeExamples:
+  Description: Checks for before/around/after hooks that come after an example.
+  Enabled: true
+
 RSpec/ImplicitExpect:
   Description: Check that a consistent implicit expectation style is used.
   Enabled: false
@@ -138,6 +142,10 @@ RSpec/ImplicitExpect:
   SupportedStyles:
   - is_expected
   - should
+
+RSpec/ImplicitSubject:
+  Description: 'Checks for usage of implicit subject (`is_expected` / `should`).'
+  Enabled: false
 
 RSpec/InstanceSpy:
   Description: Checks for `instance_double` used with `have_received`.
@@ -195,6 +203,10 @@ RSpec/MessageSpies:
   - have_received
   - receive
 
+RSpec/MissingExampleGroupArgument:
+  Description: Checks that the first argument to an example group is not empty.
+  Enabled: true
+
 RSpec/MultipleDescribes:
   Description: 'Checks for multiple top level describes.'
   Enabled: true
@@ -216,6 +228,10 @@ RSpec/NestedGroups:
   Description: Checks for nested example groups.
   Enabled: false
   Max: 3
+
+RSpec/ReceiveNever:
+  Description: 'Prefer `not_to receive(…)` over `receive(…).never`.'
+  Enabled: true
 
 RSpec/NotToNot:
   Description: 'Enforces the usage of the same method on all negative message expectations.'
@@ -286,6 +302,10 @@ RSpec/SubjectStub:
   Description: Checks for stubbed test subjects.
   Enabled: false
 
+RSpec/UnspecifiedException:
+  Description: Checks for a specified error in checking raised errors.
+  Enabled: false
+
 RSpec/VerifiedDoubles:
   Description: 'Prefer using verifying doubles over normal doubles.'
   Enabled: false
@@ -302,14 +322,10 @@ Capybara/FeatureMethods:
   Description: Checks for consistent method usage in feature specs.
   Enabled: false
 
+FactoryBot/AttributeDefinedStatically:
+  Description: Always declare attribute values as blocks.
+  Enabled: false
+
 FactoryBot/CreateList:
   Description: Checks for create_list usage.
   Enabled: true
-
-FactoryBot/DynamicAttributeDefinedStatically:
-  Description: Prefer declaring dynamic attribute values in a block.
-  Enabled: true
-
-FactoryBot/StaticAttributeDefinedDynamically:
-  Description: Prefer declaring static attribute values without a block.
-  Enabled: false

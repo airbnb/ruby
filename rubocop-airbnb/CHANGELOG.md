@@ -1,3 +1,12 @@
+# 2.0.0
+* Upgrade to rubocop-rspec 1.30.0, use ~> to allow for PATCH version flexibility
+* Upgrade to rubocop 0.58.0, use ~> to allow for PATCH version flexibility
+* Enable RSpec/HooksBeforeExamples
+* Enable RSpec/MissingExampleGroupArgument
+* Enable RSpec/ReceiveNever
+* Remove FactoryBot/DynamicAttributeDefinedStatically
+* Remove FactoryBot/StaticAttributeDefinedDynamically
+
 # 1.5.0
 * Upgrade to rubocop-rspec 1.27.0
 * Enable RSpec/Be
