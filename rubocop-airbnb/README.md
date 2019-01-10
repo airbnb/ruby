@@ -29,7 +29,7 @@ require:
 ```
 
 Next add the following to `.rubocop.yml`
-or add before `.rubocop_todo.yml` in your existin `inherit_from`
+or add before `.rubocop_todo.yml` in your existing `inherit_from`
 
 ```
 inherit_from:
