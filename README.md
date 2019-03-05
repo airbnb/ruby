@@ -1544,11 +1544,11 @@ In either case:
 
     ```ruby
     # good and also fast
-    html = ''
-    html << '<h1>Page title</h1>'
+    story = ''
+    story << 'The Ugly Duckling'
 
     paragraphs.each do |paragraph|
-      html << "<p>#{paragraph}</p>"
+      story << paragraph
     end
     ```
 
@@ -1640,19 +1640,19 @@ In either case:
 
     ```ruby
     # bad - no interpolation needed
-    %(<div class="text">Some text</div>)
-    # should be '<div class="text">Some text</div>'
+    %(Welcome, Jane!)
+    # should be 'Welcome, Jane!'
 
     # bad - no double-quotes
     %(This is #{quality} style)
     # should be "This is #{quality} style"
 
     # bad - multiple lines
-    %(<div>\n<span class="big">#{exclamation}</span>\n</div>)
+    %(Welcome, Jane!\nPlease enjoy your stay at #{location}\nCheers!)
     # should be a heredoc.
 
     # good - requires interpolation, has quotes, single line
-    %(<tr><td class="name">#{name}</td>)
+    %(Welcome, #{name}!)
     ```
 
 * <a name="percent-r"></a>Use `%r` only for regular expressions matching *more
