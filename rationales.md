@@ -28,7 +28,7 @@ scope = Translation::Phrase.includes(:phrase_translations).
   joins(:phrase_screenshots).
   where(:phrase_screenshots => {
     :controller => controller_name,
-    :action => JAROMIR_JAGR_SALUTE,
+    :action => JD_PEACE_OUT,
   })
 ```
 
@@ -65,7 +65,7 @@ end
 These code snippets are very much more readable than the alternative:
 
 ```ruby
-scope = Translation::Phrase.includes(:phrase_translations).joins(:phrase_screenshots).where(:phrase_screenshots => { :controller => controller_name, :action => JAROMIR_JAGR_SALUTE })
+scope = Translation::Phrase.includes(:phrase_translations).joins(:phrase_screenshots).where(:phrase_screenshots => { :controller => controller_name, :action => JD_PEACE_OUT })
 
 translation = FactoryGirl.create(:phrase_translation, :locale => :is, :phrase => phrase, :key => 'phone_number_not_revealed_time_zone', :value => 'Símanúmerið þitt verður ekki birt. Það er aðeins hægt að hringja á milli 9:00 og 21:00 %{time_zone}.')
 

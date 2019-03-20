@@ -1,10 +1,8 @@
 # Ruby Style Guide
 
-This is Airbnb's Ruby Style Guide.
+This is Church of the Highlands's Ruby Style Guide.
 
-It was inspired by [GitHub's guide](https://web.archive.org/web/20160410033955/https://github.com/styleguide/ruby) and [Rubocop guide][rubocop-guide].
-
-Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
+It was inspired by [AirBnB's guide] https://github.com/highlands/ruby that was inspired by [GitHub's guide](https://web.archive.org/web/20160410033955/https://github.com/styleguide/ruby) and [Rubocop guide][rubocop-guide].
 
 ## Table of Contents
   1. [Whitespace](#whitespace)
@@ -1054,8 +1052,8 @@ In either case:
     <sup>[[link](#double-pipe-for-uninit)]</sup>
 
     ```ruby
-    # set name to Bozhidar, only if it's nil or false
-    name ||= 'Bozhidar'
+    # set name to Delvin, only if it's nil or false
+    name ||= 'Delvin'
     ```
 
 * <a name="no-double-pipes-for-bools"></a>Don't use `||=` to initialize boolean
@@ -1667,7 +1665,7 @@ In either case:
     # should be /^\/(.*)$/
 
     # good
-    %r(^/blog/2011/(.*)$)
+    %r(^/blog/2020/(.*)$)
     ```
 
 * <a name="percent-x"></a>Avoid the use of %x unless you're going to invoke a
@@ -1738,7 +1736,6 @@ In either case:
 
 &mdash;[Google C++ Style Guide][google-c++]
 
-[airbnb-javascript]: https://github.com/airbnb/javascript
 [rubocop-guide]: https://github.com/rubocop-hq/ruby-style-guide
 [github-ruby]: https://github.com/styleguide/ruby
 [google-c++]: https://google.github.io/styleguide/cppguide.html
@@ -1748,8 +1745,3 @@ In either case:
 [ruby-freeze]: https://blog.honeybadger.io/when-to-use-freeze-and-frozen-in-ruby/
 [avoid-else-return-early]: http://blog.timoxley.com/post/47041269194/avoid-else-return-early
 
-## Translation
-
-  This style guide is also available in other languages:
-
-  - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [1c7/ruby-airbnb](https://github.com/1c7/ruby-airbnb)

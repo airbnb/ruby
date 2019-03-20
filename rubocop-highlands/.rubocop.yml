@@ -1,0 +1,9 @@
+inherit_from:
+  - .rubocop_highlands.yml
+  - ./config/default.yml
+
+AllCops:
+  CacheRootDirectory: tmp/rubocop
+
+Rails:
+  Enabled: false
