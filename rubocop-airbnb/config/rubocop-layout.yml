@@ -344,6 +344,7 @@ Layout/MultilineMethodCallIndentation:
   SupportedStyles:
   - aligned
   - indented
+  - indented_relative_to_receiver
   IndentationWidth:
 
 Layout/MultilineMethodDefinitionBraceLayout:
