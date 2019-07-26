@@ -23,4 +23,15 @@ describe RuboCop::Cop::Airbnb::FactoryClassUseString do
 
     expect(cop.offenses).to be_empty
   end
+
+  it 'passes with :class => :Model' do
+    source = [
+      'factory :help_answer, :class => :Answer do',
+      '  text { Faker::Company.name }',
+      'end',
+    ].join("\n")
+    inspect_source(source)
+
+    expect(cop.offenses).to be_empty
+  end
 end

@@ -9,7 +9,7 @@ module RuboCop
           'reloading of zeus after changing a model.'.freeze
 
         # Is this a has_many, has_one, or belongs_to with a :class_name arg? Make sure the
-        # class name is a hardcoded string. If not, add an offense and return true.
+        # class name is a hardcoded string or symbol. If not, add an offense and return true.
         def on_send(node)
           association_statement =
             node.command?(:has_many) ||
@@ -20,7 +20,7 @@ module RuboCop
 
           class_pair = class_name_node(node)
 
-          if class_pair && !string_class_name?(class_pair)
+          if class_pair && !valid_class_name?(class_pair)
             add_offense(class_pair)
           end
         end
@@ -37,9 +37,10 @@ module RuboCop
           end
         end
 
-        # Given a hash pair :class_name => value, is the value a hardcoded string?
-        def string_class_name?(class_pair)
-          class_pair.children[1].str_type?
+        # Given a hash pair :class_name => value, is the value a hardcoded string or symbol?
+        def valid_class_name?(class_pair)
+          name = class_pair.children[1]
+          name.str_type? || name.sym_type?
         end
       end
     end

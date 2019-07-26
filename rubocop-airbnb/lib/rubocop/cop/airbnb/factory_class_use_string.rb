@@ -12,7 +12,7 @@ module RuboCop
 
           class_pair = class_node(node)
 
-          if class_pair && !string_class_name?(class_pair)
+          if class_pair && !valid_class_name?(class_pair)
             add_offense(class_pair)
           end
         end
@@ -29,9 +29,10 @@ module RuboCop
           end
         end
 
-        # Given a hash pair :class_name => value, is the value a hardcoded string?
-        def string_class_name?(class_pair)
-          class_pair.children[1].str_type?
+        # Given a hash pair :class_name => value, is the value a hardcoded string or symbol?
+        def valid_class_name?(class_pair)
+          name = class_pair.children[1]
+          name.str_type? || name.sym_type?
         end
       end
     end
