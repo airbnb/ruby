@@ -1,3 +1,5 @@
+Forked and updated from the Airbnb/ruby project which is locked for Ruby 2.1.8. This fork works with Ruby 2.6.x and Rubocop 0.75.1.
+
 # Ruby Style Guide
 
 This is Airbnb's Ruby Style Guide.
