@@ -328,11 +328,6 @@ Style/ExpandPathArguments:
   Description: "Use `expand_path(__dir__)` instead of `expand_path('..', __FILE__)`."
   Enabled: false
 
-Style/FlipFlop:
-  Description: Checks for flip flops
-  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-flip-flops
-  Enabled: false
-
 Style/For:
   Description: Checks use of for or each in multiline loops.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-for-loops
@@ -736,6 +731,11 @@ Style/RedundantSelf:
   Enabled: true
 
 # Supports --auto-correct
+Style/RedundantSortBy:
+  Description: Use `sort` instead of `sort_by { |x| x }`.
+  Enabled: false
+
+# Supports --auto-correct
 Style/RegexpLiteral:
   Description: Use / or %r around regular expressions.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#percent-r
@@ -761,6 +761,12 @@ Style/ReturnNil:
   Enabled: false
 
 Style/SafeNavigation:
+  Enabled: false
+
+# Supports --auto-correct
+Style/Sample:
+  Description: Use `sample` instead of `shuffle.first`, `shuffle.last`, and `shuffle[Fixnum]`.
+  Reference: https://github.com/JuanitoFatas/fast-ruby#arrayshufflefirst-vs-arraysample-code
   Enabled: false
 
 # Supports --auto-correct
@@ -940,6 +946,9 @@ Style/UnneededPercentQ:
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#percent-q
   Enabled: false
 
+Style/UnneededSort:
+  Enabled: false
+
 Style/UnpackFirst:
   Enabled: false
 
@@ -981,3 +990,4 @@ Style/YodaCondition:
 Style/ZeroLengthPredicate:
   Description: 'Use #empty? when testing for objects of length 0.'
   Enabled: false
+
