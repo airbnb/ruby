@@ -1,4 +1,6 @@
+require 'rubocop-performance'
 require 'rubocop-rspec'
+require 'rubocop-rails'
 
 module RuboCop
   module Cop

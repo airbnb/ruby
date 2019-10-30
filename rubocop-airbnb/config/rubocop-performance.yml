@@ -57,11 +57,6 @@ Performance/InefficientHashSearch:
   Enabled: false
 
 # Supports --auto-correct
-Performance/LstripRstrip:
-  Description: Use `strip` instead of `lstrip.rstrip`.
-  Enabled: false
-
-# Supports --auto-correct
 Performance/RangeInclude:
   Description: Use `Range#cover?` instead of `Range#include?`.
   Reference: https://github.com/JuanitoFatas/fast-ruby#cover-vs-include-code
@@ -120,9 +115,6 @@ Performance/TimesMap:
   Enabled: false
 
 Performance/UnfreezeString:
-  Enabled: false
-
-Performance/UnneededSort:
   Enabled: false
 
 Performance/UriDefaultParser:
