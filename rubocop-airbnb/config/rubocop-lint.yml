@@ -80,6 +80,11 @@ Lint/EnsureReturn:
 Lint/ErbNewArguments:
   Enabled: false
 
+Lint/FlipFlop:
+  Description: Checks for flip flops
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-flip-flops
+  Enabled: false
+
 Lint/FloatOutOfRange:
   Description: Catches floating-point literals too large or small for Ruby to represent.
   Enabled: false
@@ -237,20 +242,20 @@ Lint/UnderscorePrefixedVariableName:
 Lint/UnifiedInteger:
   Enabled: false
 
-Lint/UnneededCopDisableDirective:
+Lint/RedundantCopDisableDirective:
   Description: >-
     Checks for rubocop:disable comments that can be removed.
     Note: this cop is not disabled when disabling all cops. It must be explicitly disabled.
   Enabled: true
 
-Lint/UnneededCopEnableDirective:
+Lint/RedundantCopEnableDirective:
   Description: Checks for rubocop:enable comments that can be removed.
   Enabled: true
 
-Lint/UnneededRequireStatement:
+Lint/RedundantRequireStatement:
   Enabled: false
 
-Lint/UnneededSplatExpansion:
+Lint/RedundantSplatExpansion:
   Enabled: false
 
 Lint/UnreachableCode:

@@ -170,9 +170,6 @@ Rails/RequestReferer:
 Rails/ReversibleMigration:
   Enabled: false
 
-Rails/SafeNavigation:
-  Enabled: false
-
 Rails/SaveBang:
   Enabled: false
 

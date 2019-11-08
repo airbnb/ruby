@@ -227,7 +227,7 @@ Layout/FirstMethodParameterLineBreak:
   Enabled: false
 
 # Supports --auto-correct
-Layout/FirstParameterIndentation:
+Layout/IndentFirstArgument:
   Description: Checks the indentation of the first parameter in a method call.
   Enabled: true
   EnforcedStyle: consistent
@@ -238,7 +238,7 @@ Layout/FirstParameterIndentation:
   - special_for_inner_method_call_in_parentheses
 
 # Supports --auto-correct
-Layout/IndentArray:
+Layout/IndentFirstArrayElement:
   Description: Checks the indentation of the first element in an array literal.
   Enabled: true
   EnforcedStyle: consistent
@@ -251,7 +251,7 @@ Layout/IndentAssignment:
   IndentationWidth:
 
 # Supports --auto-correct
-Layout/IndentHash:
+Layout/IndentFirstHashElement:
   Description: Checks the indentation of the first key in a hash literal.
   Enabled: true
   EnforcedStyle: consistent
@@ -473,11 +473,6 @@ Layout/SpaceInsideBlockBraces:
   - no_space
   EnforcedStyleForEmptyBraces: no_space
   SpaceBeforeBlockParameters: true
-
-Layout/SpaceInsideParens:
-  Description: 'No spaces after ( or before ).'
-  StyleGuide: '#spaces-braces'
-  Enabled: true
 
 Layout/SpaceInsideArrayLiteralBrackets:
   EnforcedStyle: no_space

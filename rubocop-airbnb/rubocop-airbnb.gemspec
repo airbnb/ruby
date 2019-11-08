@@ -24,8 +24,4 @@ Gem::Specification.new do |spec|
     '*.gemspec',
     'Gemfile',
   ]
-
-  spec.add_dependency('rubocop', '~> 0.58.0')
-  spec.add_dependency('rubocop-rspec', '~> 1.30.0')
-  spec.add_development_dependency('rspec', '~> 3.5')
 end

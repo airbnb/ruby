@@ -14,7 +14,13 @@ module RuboCop
         alias on_send enforce_violation
         alias on_if enforce_violation
 
-        Util::ASGN_NODES.each do |type|
+        assignments = if Gem.loaded_specs['rubocop'].version < Gem::Version.new('0.59.0')
+                        Util::ASGN_NODES
+                      else
+                        RuboCop::AST::Node::ASSIGNMENTS
+                      end
+
+        assignments.each do |type|
           define_method("on_#{type}") do |node|
             enforce_violation(node)
           end

@@ -2,6 +2,20 @@ source 'https://rubygems.org'
 
 gemspec
 
+ruby_version = Gem::Version.new(RUBY_VERSION)
+if ruby_version < Gem::Version.new("2.6")
+  gem 'rubocop', '~> 0.58.0'
+  gem 'rubocop-rspec', '~> 1.30.0'
+  gem 'rspec', '~> 3.5'
+else
+  # rubocop:disable Bundler/DuplicatedGem
+  gem 'rubocop', '~> 0.76.0'
+  gem 'rubocop-rspec', '~> 1.36.0'
+  gem 'rubocop-rails', '~> 2.3.2'
+  gem 'rubocop-performance', '~> 1.5.0'
+  gem 'rspec', '~> 3.5'
+  # rubocop:enable Bundler/DuplicatedGem
+end
 group :test do
   gem 'pry'
 end

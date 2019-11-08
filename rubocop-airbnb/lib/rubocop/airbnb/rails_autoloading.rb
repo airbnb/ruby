@@ -47,7 +47,7 @@ module RailsAutoloading
 
   def full_const_name(parent_module_name, const_name)
     if parent_module_name == "".freeze
-      "#{const_name}"
+      const_name.to_s
     else
       "#{parent_module_name}::#{const_name}"
     end
