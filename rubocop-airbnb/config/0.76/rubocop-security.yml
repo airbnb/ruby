@@ -1,0 +1,17 @@
+Security/Eval:
+  Description: The use of eval represents a serious security risk.
+  Enabled: true
+
+Security/JSONLoad:
+  Enabled: false
+
+Security/MarshalLoad:
+  Enabled: false
+
+Security/Open:
+  Description: 'The use of Kernel#open represents a serious security risk.'
+  Enabled: false
+
+Security/YAMLLoad:
+  Enabled: false
+

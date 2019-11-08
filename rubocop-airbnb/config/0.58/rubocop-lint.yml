@@ -1,0 +1,301 @@
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+Lint/AmbiguousOperator:
+  Description: Checks for ambiguous operators in the first argument of a method invocation
+    without parentheses.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#parens-as-args
+  Enabled: true
+
+Lint/AmbiguousRegexpLiteral:
+  Description: Checks for ambiguous regexp literals in the first argument of a method
+    invocation without parenthesis.
+  Enabled: false
+
+Lint/AssignmentInCondition:
+  Description: Don't use assignment in conditions.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#safe-assignment-in-condition
+  Enabled: true
+  AllowSafeAssignment: false
+
+Lint/BigDecimalNew:
+  Description: '`BigDecimal.new()` is deprecated. Use `BigDecimal()` instead.'
+  Enabled: false
+
+Lint/BooleanSymbol:
+  Enabled: false
+
+Lint/CircularArgumentReference:
+  Description: Don't refer to the keyword argument in the default value.
+  Enabled: false
+
+Lint/Debugger:
+  Description: Check for debugger calls.
+  Enabled: true
+
+# Supports --auto-correct
+Lint/DeprecatedClassMethods:
+  Description: Check for deprecated class method calls.
+  Enabled: false
+
+Lint/DuplicateCaseCondition:
+  Enabled: false
+
+Lint/DuplicateMethods:
+  Description: Check for duplicate methods calls.
+  Enabled: true
+
+Lint/DuplicatedKey:
+  Description: Check for duplicate keys in hash literals.
+  Enabled: true
+
+Lint/EachWithObjectArgument:
+  Description: Check for immutable argument given to each_with_object.
+  Enabled: false
+
+Lint/ElseLayout:
+  Description: Check for odd code arrangement in an else block.
+  Enabled: true
+
+Lint/EmptyEnsure:
+  Description: Checks for empty ensure block.
+  Enabled: false
+
+Lint/EmptyInterpolation:
+  Description: Checks for empty string interpolation.
+  Enabled: true
+
+Lint/EmptyWhen:
+  Enabled: false
+
+Lint/EndInMethod:
+  Description: END blocks should not be placed inside method definitions.
+  Enabled: false
+
+Lint/EnsureReturn:
+  Description: Do not use return in an ensure block.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-return-ensure
+  Enabled: false
+
+Lint/ErbNewArguments:
+  Enabled: false
+
+Lint/FloatOutOfRange:
+  Description: Catches floating-point literals too large or small for Ruby to represent.
+  Enabled: false
+
+Lint/FormatParameterMismatch:
+  Description: The number of parameters to format/sprint must match the fields.
+  Enabled: true
+
+Lint/HandleExceptions:
+  Description: Don't suppress exception.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#dont-hide-exceptions
+  Enabled: false
+
+Lint/ImplicitStringConcatenation:
+  Description: Checks for adjacent string literals on the same line, which could better
+    be represented as a single string literal.
+  Enabled: true
+
+Lint/IneffectiveAccessModifier:
+  Description: Checks for attempts to use `private` or `protected` to set the visibility
+    of a class method, which does not work.
+  Enabled: true
+
+Lint/InheritException:
+  Enabled: true
+  # The default base class in favour of `Exception`.
+  EnforcedStyle: standard_error
+
+Lint/InterpolationCheck:
+  Enabled: false
+
+Lint/LiteralAsCondition:
+  Description: Checks of literals used in conditions.
+  Enabled: false
+
+# Supports --auto-correct
+Lint/LiteralInInterpolation:
+  Description: Avoid interpolating literals in strings
+  Enabled: false
+  AutoCorrect: false
+
+Lint/Loop:
+  Description: Use Kernel#loop with break rather than begin/end/until or begin/end/while
+    for post-loop tests.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#loop-with-break
+  Enabled: false
+
+Lint/MissingCopEnableDirective:
+  # Maximum number of consecutive lines the cop can be disabled for.
+  # 0 allows only single-line disables
+  # 1 would mean the maximum allowed is the following:
+  #   # rubocop:disable SomeCop
+  #   a = 1
+  #   # rubocop:enable SomeCop
+  # .inf for any size
+  MaximumRangeSize: .inf
+  Description: 'Checks for a `# rubocop:enable` after `# rubocop:disable`'
+  Enabled: true
+
+Lint/MultipleCompare:
+  Enabled: false
+
+Lint/NestedMethodDefinition:
+  Description: Do not use nested method definitions.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-nested-methods
+  Enabled: false
+
+Lint/NextWithoutAccumulator:
+  Enabled: false
+
+Lint/NonLocalExitFromIterator:
+  Description: Do not use return in iterator to cause non-local exit.
+  Enabled: false
+
+Lint/OrderedMagicComments:
+  Description: 'Checks the proper ordering of magic comments and whether a magic comment is not placed before a shebang.'
+  Enabled: true
+
+Lint/ParenthesesAsGroupedExpression:
+  Description: Checks for method calls with a space before the opening parenthesis.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#parens-no-spaces
+  Enabled: true
+
+Lint/PercentStringArray:
+  Description: >-
+                 Checks for unwanted commas and quotes in %w/%W literals.
+  Enabled: true
+
+Lint/PercentSymbolArray:
+  Enabled: false
+
+Lint/RandOne:
+  Description: Checks for `rand(1)` calls. Such calls always return `0` and most likely
+    a mistake.
+  Enabled: true
+
+Lint/RedundantWithIndex:
+  Enabled: false
+
+Lint/RedundantWithObject:
+  Enabled: false
+
+Lint/RegexpAsCondition:
+  Enabled: false
+
+Lint/RequireParentheses:
+  Description: Use parentheses in the method call to avoid confusion about precedence.
+  Enabled: true
+
+Lint/RescueException:
+  Description: Avoid rescuing the Exception class.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-blind-rescues
+  Enabled: true
+
+Lint/RescueType:
+  Enabled: false
+
+Lint/ReturnInVoidContext:
+  Enabled: false
+
+Lint/SafeNavigationChain:
+  Enabled: false
+
+Lint/SafeNavigationConsistency:
+  Enabled: false
+
+Lint/ScriptPermission:
+  Enabled: false
+
+Lint/ShadowedArgument:
+  Description: 'Avoid reassigning arguments before they were used.'
+  Enabled: true
+
+Lint/ShadowedException:
+  Description: >-
+                  Avoid rescuing a higher level exception
+                  before a lower level exception.
+  Enabled: false
+
+Lint/ShadowingOuterLocalVariable:
+  Description: Do not use the same name as outer local variable for block arguments
+    or block local variables.
+  Enabled: true
+
+# Supports --auto-correct
+Lint/StringConversionInInterpolation:
+  Description: Checks for Object#to_s usage in string interpolation.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-to-s
+  Enabled: true
+
+Lint/UnderscorePrefixedVariableName:
+  Description: Do not use prefix `_` for a variable that is used.
+  Enabled: false
+
+Lint/UnifiedInteger:
+  Enabled: false
+
+Lint/UnneededCopDisableDirective:
+  Description: >-
+    Checks for rubocop:disable comments that can be removed.
+    Note: this cop is not disabled when disabling all cops. It must be explicitly disabled.
+  Enabled: true
+
+Lint/UnneededCopEnableDirective:
+  Description: Checks for rubocop:enable comments that can be removed.
+  Enabled: true
+
+Lint/UnneededRequireStatement:
+  Enabled: false
+
+Lint/UnneededSplatExpansion:
+  Enabled: false
+
+Lint/UnreachableCode:
+  Description: Unreachable code.
+  Enabled: false
+
+# Supports --auto-correct
+Lint/UnusedBlockArgument:
+  Description: Checks for unused block arguments.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#underscore-unused-vars
+  Enabled: false
+
+# Supports --auto-correct
+Lint/UnusedMethodArgument:
+  Description: Checks for unused method arguments.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#underscore-unused-vars
+  Enabled: false
+
+Lint/UriEscapeUnescape:
+  Enabled: false
+
+Lint/UriRegexp:
+  Enabled: false
+
+Lint/UselessAccessModifier:
+  Description: Checks for useless access modifiers.
+  Enabled: true
+
+Lint/UselessAssignment:
+  Description: Checks for useless assignment to a local variable.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#underscore-unused-vars
+  Enabled: true
+
+Lint/UselessComparison:
+  Description: Checks for comparison of something with itself.
+  Enabled: true
+
+Lint/UselessElseWithoutRescue:
+  Description: Checks for useless `else` in `begin..end` without `rescue`.
+  Enabled: true
+
+Lint/UselessSetterCall:
+  Description: Checks for useless setter call to a local variable.
+  Enabled: true
+
+Lint/Void:
+  Description: Possible use of operator/literal/variable in void context.
+  Enabled: false

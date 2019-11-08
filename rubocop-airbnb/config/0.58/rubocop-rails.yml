@@ -1,0 +1,208 @@
+# before_action doesn't seem to exist, so this doesn't make sense.
+Rails/ActionFilter:
+  Enabled: false
+
+Rails/ActiveRecordAliases:
+  Enabled: false
+
+Rails/ActiveSupportAliases:
+  Enabled: false
+
+Rails/ApplicationJob:
+  Enabled: false
+
+Rails/ApplicationRecord:
+  Enabled: false
+
+Rails/AssertNot:
+  Enabled: false
+
+Rails/Blank:
+  Description: 'Enforce using `blank?` and `present?`.'
+  Enabled: true
+  # Convert checks for `nil` or `empty?` to `blank?`
+  NilOrEmpty: true
+  # Convert usages of not `present?` to `blank?`
+  NotPresent: true
+  # Convert usages of `unless` `present?` to `if` `blank?`
+  UnlessPresent: true
+
+Rails/BulkChangeTable:
+  Enabled: false
+
+Rails/CreateTableWithTimestamps:
+  Description: Checks the migration for which timestamps are not included when creating a new table.
+  Enabled: true
+
+Rails/Date:
+  Description: Checks the correct usage of date aware methods, such as Date.today, Date.current
+    etc.
+  Enabled: false
+  EnforcedStyle: flexible
+  SupportedStyles:
+  - strict
+  - flexible
+
+# Supports --auto-correct
+Rails/Delegate:
+  Description: Prefer delegate method for delegations.
+  Enabled: false
+
+Rails/DelegateAllowBlank:
+  Enabled: false
+
+Rails/DynamicFindBy:
+  Enabled: false
+
+Rails/EnumUniqueness:
+  Enabled: false
+
+Rails/EnvironmentComparison:
+  Description: "Favor `Rails.env.production?` over `Rails.env == 'production'`"
+  Enabled: true
+
+Rails/Exit:
+  Description: >-
+                  Favor `fail`, `break`, `return`, etc. over `exit` in
+                  application or library code outside of Rake files to avoid
+                  exits during unit testing or running in production.
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
+# Supports --auto-correct
+Rails/FindBy:
+  Description: Prefer find_by over where.first.
+  Enabled: false
+  Include:
+  - app/models/**/*.rb
+
+# Supports --auto-correct
+Rails/FindEach:
+  Description: Prefer all.find_each over all.find.
+  Enabled: false
+  Include:
+  - app/models/**/*.rb
+
+Rails/HasAndBelongsToMany:
+  Description: Prefer has_many :through to has_and_belongs_to_many.
+  Enabled: false
+  Include:
+  - app/models/**/*.rb
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Rails/HttpPositionalArguments:
+  Enabled: false
+
+Rails/HttpStatus:
+  Enabled: false
+
+Rails/InverseOf:
+  Description: 'Checks for associations where the inverse cannot be determined automatically.'
+  Enabled: false
+
+Rails/LexicallyScopedActionFilter:
+  Description: Checks that methods specified in the filter's `only` or `except` options are
+    explicitly defined in the controller.
+  StyleGuide: 'https://github.com/rubocop-hq/rails-style-guide#lexically-scoped-action-filter'
+  Enabled: false
+
+Rails/NotNullColumn:
+  Enabled: false
+
+Rails/Output:
+  Description: Checks for calls to puts, print, etc.
+  Enabled: false
+  Include:
+  - app/**/*.rb
+  - config/**/*.rb
+  - db/**/*.rb
+  - lib/**/*.rb
+
+Rails/OutputSafety:
+  Description: 'The use of `html_safe` or `raw` may be a security risk.'
+  Enabled: false
+
+# Supports --auto-correct
+Rails/PluralizationGrammar:
+  Description: Checks for incorrect grammar when using methods like `3.day.ago`.
+  Enabled: false
+
+Rails/Presence:
+  Description: Checks code that can be written more easily using `Object#presence` defined by
+    Active Support.
+  Enabled: false
+
+Rails/Present:
+  Description: 'Enforce using `blank?` and `present?`.'
+  Enabled: true
+  NotNilAndNotEmpty: true
+  # Convert checks for not `nil` and not `empty?` to `present?`
+  NotBlank: true
+  # Convert usages of not `blank?` to `present?`
+  UnlessBlank: true
+  # Convert usages of `unless` `blank?` to `if` `present?`
+
+# Supports --auto-correct
+Rails/ReadWriteAttribute:
+  Description: Checks for read_attribute(:attr) and write_attribute(:attr, val).
+  Enabled: false
+  Include:
+  - app/models/**/*.rb
+
+Rails/RedundantReceiverInWithOptions:
+  Description: 'Checks for redundant receiver in `with_options`.'
+  Enabled: true
+
+Rails/RefuteMethods:
+  Enabled: false
+
+Rails/RelativeDateConstant:
+  Enabled: false
+
+Rails/RequestReferer:
+  Description: 'Use consistent syntax for request.referer.'
+  Enabled: false
+
+Rails/ReversibleMigration:
+  Enabled: false
+
+Rails/SafeNavigation:
+  Enabled: false
+
+Rails/SaveBang:
+  Enabled: false
+
+Rails/ScopeArgs:
+  Description: Checks the arguments of ActiveRecord scopes.
+  Enabled: true
+  Include:
+  - app/models/**/*.rb
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/TimeZone:
+  Description: Checks the correct usage of time zone aware methods.
+  StyleGuide: https://github.com/rubocop-hq/rails-style-guide#time
+  Reference: http://danilenko.org/2012/7/6/rails_timezones
+  Enabled: false
+  EnforcedStyle: flexible
+  SupportedStyles:
+  - strict
+  - flexible
+
+Rails/UniqBeforePluck:
+  Enabled: false
+
+Rails/UnknownEnv:
+  Enabled: false
+
+Rails/Validation:
+  Description: Use validates :attribute, hash of validations.
+  Enabled: false
+  Include:
+  - app/models/**/*.rb

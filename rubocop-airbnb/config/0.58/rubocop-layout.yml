@@ -1,0 +1,560 @@
+# Type 'Style' (166):
+# Supports --auto-correct
+Layout/AccessModifierIndentation:
+  Description: Check indentation of private/protected visibility modifiers.
+  # Airbnb: https://github.com/airbnb/ruby#access-modifiers
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#indent-public-private-protected
+  Enabled: true
+  EnforcedStyle: indent
+  SupportedStyles:
+  - outdent
+  - indent
+
+# Supports --auto-correct
+Layout/AlignArray:
+  Description: Align the elements of an array literal if they span more than one line.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#align-multiline-arrays
+  Enabled: true
+
+# Supports --auto-correct
+Layout/AlignHash:
+  Description: Align the elements of a hash literal if they span more than one line.
+  Enabled: true
+  EnforcedHashRocketStyle: key
+  EnforcedColonStyle: key
+  EnforcedLastArgumentHashStyle: always_inspect
+  SupportedLastArgumentHashStyles:
+  - always_inspect
+  - always_ignore
+  - ignore_implicit
+  - ignore_explicit
+
+# Supports --auto-correct
+Layout/AlignParameters:
+  Description: Align the parameters of a method call if they span more than one line.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-double-indent
+  Enabled: true
+  EnforcedStyle: with_first_parameter
+  SupportedStyles:
+  - with_first_parameter
+  - with_fixed_indentation
+
+# Supports --auto-correct
+Layout/BlockAlignment:
+  Description: Align block ends correctly.
+  Enabled: true
+
+# Supports --auto-correct
+Layout/BlockEndNewline:
+  Description: Put end statement of multiline block on its own line.
+  Enabled: true
+
+# Supports --auto-correct
+Layout/CaseIndentation:
+  Description: Indentation of when in a case/when/[else/]end.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#indent-when-to-case
+  Enabled: true
+  EnforcedStyle: case
+  IndentOneStep: false
+
+Layout/ClassStructure:
+  Enabled: false
+  Categories:
+    module_inclusion:
+      - include
+      - prepend
+      - extend
+  ExpectedOrder:
+      - module_inclusion
+      - constants
+      - public_class_methods
+      - initializer
+      - instance_methods
+      - protected_methods
+      - private_methods
+
+Layout/ClosingHeredocIndentation:
+  Enabled: false
+
+# Supports --auto-correct
+Layout/ClosingParenthesisIndentation:
+  Description: Checks the indentation of hanging closing parentheses.
+  Enabled: true
+
+# Supports --auto-correct
+Layout/CommentIndentation:
+  Description: Indentation of comments.
+  Enabled: true
+
+Layout/ConditionPosition:
+  Description: Checks for condition placed in a confusing position relative to the keyword.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#same-line-condition
+  Enabled: true
+
+# Supports --auto-correct
+Layout/DefEndAlignment:
+  Description: Align ends corresponding to defs correctly.
+  Enabled: true
+  EnforcedStyleAlignWith: start_of_line
+  AutoCorrect: false
+
+# Use trailing commas, because there are safer in ruby.
+Layout/DotPosition:
+  Enabled: true
+  EnforcedStyle: trailing
+
+# Supports --auto-correct
+Layout/ElseAlignment:
+  Description: Align elses and elsifs correctly.
+  Enabled: true
+
+Layout/EmptyComment:
+  Description: 'Checks empty comment.'
+  Enabled: true
+
+Layout/EmptyLineAfterMagicComment:
+  Enabled: true
+
+# Supports --auto-correct
+Layout/EmptyLineBetweenDefs:
+  Description: Use empty lines between defs.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#empty-lines-between-methods
+  Enabled: true
+  AllowAdjacentOneLineDefs: false
+
+# Supports --auto-correct
+Layout/EmptyLines:
+  Description: Don't use several empty lines in a row.
+  Enabled: true
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+# Supports --auto-correct
+Layout/EmptyLinesAroundAccessModifier:
+  Description: Keep blank lines around access modifiers.
+  Enabled: true
+
+Layout/EmptyLinesAroundArguments:
+  Description: "Keeps track of empty lines around method arguments."
+  Enabled: false
+
+Layout/EmptyLinesAroundBeginBody:
+  Enabled: true
+
+# Supports --auto-correct
+Layout/EmptyLinesAroundBlockBody:
+  Description: Keeps track of empty lines around block bodies.
+  Enabled: true
+  EnforcedStyle: no_empty_lines
+  SupportedStyles:
+  - empty_lines
+  - no_empty_lines
+
+# Supports --auto-correct
+Layout/EmptyLinesAroundClassBody:
+  Description: Keeps track of empty lines around class bodies.
+  Enabled: true
+  EnforcedStyle: no_empty_lines
+  SupportedStyles:
+  - beginning_only
+  - empty_lines
+  - end_only
+  - no_empty_lines
+
+Layout/EmptyLinesAroundExceptionHandlingKeywords:
+  Enabled: false
+
+# Supports --auto-correct
+Layout/EmptyLinesAroundMethodBody:
+  Description: Keeps track of empty lines around method bodies.
+  Enabled: true
+
+# Supports --auto-correct
+Layout/EmptyLinesAroundModuleBody:
+  Description: Keeps track of empty lines around module bodies.
+  Enabled: true
+  EnforcedStyle: no_empty_lines
+  SupportedStyles:
+  - empty_lines
+  - no_empty_lines
+
+# Supports --auto-correct
+Layout/EndAlignment:
+  Description: Align ends correctly.
+  # The value `keyword` means that `end` should be aligned with the matching
+  # keyword (if, while, etc.).
+  # The value `variable` means that in assignments, `end` should be aligned
+  # with the start of the variable on the left hand side of `=`. In all other
+  # situations, `end` should still be aligned with the keyword.
+  # The value `start_of_line` means that `end` should be aligned with the start
+  # of the line which the matching keyword appears on.
+  Enabled: true
+  EnforcedStyleAlignWith: keyword
+  AutoCorrect: false
+
+Layout/EndOfLine:
+  Description: Use Unix-style line endings.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#crlf
+  Enabled: false
+
+# Supports --auto-correct
+Layout/ExtraSpacing:
+  Description: Do not use unnecessary spacing.
+  Enabled: true
+  AllowForAlignment: true
+
+# Supports --auto-correct
+Layout/FirstArrayElementLineBreak:
+  Description: Checks for a line break before the first element in a multi-line array.
+  Enabled: true
+
+# Supports --auto-correct
+Layout/FirstHashElementLineBreak:
+  Description: Checks for a line break before the first element in a multi-line hash.
+  Enabled: true
+
+# Supports --auto-correct
+Layout/FirstMethodArgumentLineBreak:
+  Description: Checks for a line break before the first argument in a multi-line method
+    call.
+  Enabled: false
+
+# Supports --auto-correct
+Layout/FirstMethodParameterLineBreak:
+  Description: Checks for a line break before the first parameter in a multi-line method
+    parameter definition.
+  Enabled: false
+
+# Supports --auto-correct
+Layout/FirstParameterIndentation:
+  Description: Checks the indentation of the first parameter in a method call.
+  Enabled: true
+  EnforcedStyle: consistent
+  SupportedStyles:
+  - consistent
+  - consistent_relative_to_receiver
+  - special_for_inner_method_call
+  - special_for_inner_method_call_in_parentheses
+
+# Supports --auto-correct
+Layout/IndentArray:
+  Description: Checks the indentation of the first element in an array literal.
+  Enabled: true
+  EnforcedStyle: consistent
+
+# Supports --auto-correct
+Layout/IndentAssignment:
+  Description: Checks the indentation of the first line of the right-hand-side of a
+    multi-line assignment.
+  Enabled: true
+  IndentationWidth:
+
+# Supports --auto-correct
+Layout/IndentHash:
+  Description: Checks the indentation of the first key in a hash literal.
+  Enabled: true
+  EnforcedStyle: consistent
+  SupportedStyles:
+  - special_inside_parentheses
+  - consistent
+
+Layout/IndentHeredoc:
+  Enabled: false
+
+# Supports --auto-correct
+Layout/IndentationConsistency:
+  Description: Keep indentation straight.
+  Enabled: true
+  EnforcedStyle: normal
+  SupportedStyles:
+  - normal
+  - rails
+
+# Supports --auto-correct
+Layout/IndentationWidth:
+  Description: Use 2 spaces for indentation.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-indentation
+  Enabled: true
+  Width: 2
+
+# Supports --auto-correct
+Layout/InitialIndentation:
+  Description: Checks the indentation of the first non-blank non-comment line in a file.
+  Enabled: true
+
+Layout/LeadingBlankLines:
+  Enabled: true
+
+# Supports --auto-correct
+Layout/LeadingCommentSpace:
+  Description: Comments should start with a space.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#hash-space
+  Enabled: true
+
+# Supports --auto-correct
+Layout/MultilineArrayBraceLayout:
+  Description: Checks that the closing brace in an array literal is symmetrical with
+    respect to the opening brace and the array elements.
+  Enabled: true
+
+# Supports --auto-correct
+Layout/MultilineAssignmentLayout:
+  Description: Check for a newline after the assignment operator in multi-line assignments.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#indent-conditional-assignment
+  Enabled: false
+  SupportedTypes:
+  - block
+  - case
+  - class
+  - if
+  - kwbegin
+  - module
+  EnforcedStyle: new_line
+  SupportedStyles:
+  - same_line
+  - new_line
+
+# Supports --auto-correct
+Layout/MultilineBlockLayout:
+  Description: Ensures newlines after multiline block do statements.
+  Enabled: true
+
+Layout/MultilineHashBraceLayout:
+  Description: >-
+                 Checks that the closing brace in a hash literal is
+                 symmetrical with respect to the opening brace and the
+                 hash elements.
+  Enabled: true
+
+Layout/MultilineMethodCallBraceLayout:
+  Description: >-
+                 Checks that the closing brace in a method call is
+                 symmetrical with respect to the opening brace and the
+                 method arguments.
+  Enabled: true
+  EnforcedStyle: symmetrical
+
+# Supports --auto-correct
+Layout/MultilineMethodCallIndentation:
+  Description: Checks indentation of method calls with the dot operator that span more
+    than one line.
+  Enabled: true
+  EnforcedStyle: indented
+  SupportedStyles:
+  - aligned
+  - indented
+  IndentationWidth:
+
+Layout/MultilineMethodDefinitionBraceLayout:
+  Description: >-
+                 Checks that the closing brace in a method definition is
+                 symmetrical with respect to the opening brace and the
+                 method parametters.
+  Enabled: true
+
+# The default (aligned) would force multi line operations to look like this
+# balance = Balance.
+#           where(cond).
+#           where(cond).
+#           first
+Layout/MultilineOperationIndentation:
+  Enabled: false
+  EnforcedStyle: indented
+
+# Supports --auto-correct
+Layout/RescueEnsureAlignment:
+  Description: Align rescues and ensures correctly.
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceAfterColon:
+  Description: Use spaces after colons.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-operators
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceAfterComma:
+  Description: Use spaces after commas.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-operators
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceAfterMethodName:
+  Description: Do not put a space between a method name and the opening parenthesis
+    in a method definition.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#parens-no-spaces
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceAfterNot:
+  Description: Tracks redundant space after the ! operator.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-space-bang
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceAfterSemicolon:
+  Description: Use spaces after semicolons.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-operators
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceAroundBlockParameters:
+  Description: Checks the spacing inside and after block parameters pipes.
+  Enabled: true
+  EnforcedStyleInsidePipes: no_space
+
+# Supports --auto-correct
+Layout/SpaceAroundEqualsInParameterDefault:
+  Description: Checks that the equals signs in parameter default assignments have or
+    don't have surrounding space depending on configuration.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-around-equals
+  Enabled: true
+  EnforcedStyle: space
+  SupportedStyles:
+  - space
+  - no_space
+
+Layout/SpaceAroundKeyword:
+  Description: 'Use a space around keywords if appropriate.'
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceAroundOperators:
+  Description: Use a single space around operators.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-operators
+  Enabled: true
+  AllowForAlignment: true
+
+# Supports --auto-correct
+Layout/SpaceBeforeBlockBraces:
+  Description: Checks that the left block brace has or doesn't have space before it.
+  Enabled: true
+  EnforcedStyle: space
+  SupportedStyles:
+  - space
+  - no_space
+
+# Supports --auto-correct
+Layout/SpaceBeforeComma:
+  Description: No spaces before commas.
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceBeforeComment:
+  Description: Checks for missing space between code and a comment on the same line.
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceBeforeFirstArg:
+  Description: Put a space between a method name and the first argument in a method
+    call without parentheses.
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceBeforeSemicolon:
+  Description: No spaces before semicolons.
+  Enabled: true
+
+Layout/SpaceInLambdaLiteral:
+  Enabled: false
+
+Layout/SpaceInsideArrayPercentLiteral:
+  Enabled: false
+
+# Supports --auto-correct
+Layout/SpaceInsideBlockBraces:
+  Description: Checks that block braces have or don't have surrounding space. For blocks
+    taking parameters, checks that the left brace has or doesn't have trailing space.
+  Enabled: true
+  EnforcedStyle: space
+  SupportedStyles:
+  - space
+  - no_space
+  EnforcedStyleForEmptyBraces: no_space
+  SpaceBeforeBlockParameters: true
+
+Layout/SpaceInsideParens:
+  Description: 'No spaces after ( or before ).'
+  StyleGuide: '#spaces-braces'
+  Enabled: true
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  EnforcedStyle: no_space
+  SupportedStyles:
+    - space
+    - no_space
+    # 'compact' normally requires a space inside the brackets, with the exception
+    # that successive left brackets or right brackets are collapsed together
+    - compact
+  EnforcedStyleForEmptyBrackets: no_space
+  SupportedStylesForEmptyBrackets:
+    - space
+    - no_space
+  Enabled: true
+
+Layout/SpaceInsideReferenceBrackets:
+  EnforcedStyleForEmptyBrackets: no_space
+  SupportedStyles:
+    - space
+    - no_space
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceInsideHashLiteralBraces:
+  Description: Use spaces inside hash literal braces - or don't.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-operators
+  Enabled: true
+  EnforcedStyle: space
+  EnforcedStyleForEmptyBraces: no_space
+  SupportedStyles:
+  - space
+  - no_space
+
+# Supports --auto-correct
+Layout/SpaceInsideParens:
+  Description: No spaces after ( or before ).
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-spaces-braces
+  Enabled: true
+
+Layout/SpaceInsidePercentLiteralDelimiters:
+  Description: 'No unnecessary spaces inside delimiters of %i/%w/%x literals.'
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceInsideRangeLiteral:
+  Description: No spaces inside range literals.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-space-inside-range-literals
+  Enabled: true
+
+# Supports --auto-correct
+Layout/SpaceInsideStringInterpolation:
+  Description: Checks for padding/surrounding spaces inside string interpolation.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#string-interpolation
+  Enabled: true
+  EnforcedStyle: no_space
+  SupportedStyles:
+  - space
+  - no_space
+
+# Supports --auto-correct
+Layout/Tab:
+  Description: No hard tabs.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-indentation
+  Enabled: true
+
+# Supports --auto-correct
+Layout/TrailingBlankLines:
+  Description: Checks trailing blank lines and final newline.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#newline-eof
+  Enabled: true
+  EnforcedStyle: final_newline
+  SupportedStyles:
+  - final_newline
+  - final_blank_line
+
+# Supports --auto-correct
+Layout/TrailingWhitespace:
+  Description: Avoid trailing whitespace.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-trailing-whitespace
+  Enabled: true

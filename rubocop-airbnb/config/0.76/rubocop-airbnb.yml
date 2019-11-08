@@ -1,0 +1,100 @@
+# All of these rules are implemented in this gem.
+# They are custom built for use inside Airbnb and address issues that we have experienced in
+# testing and production.
+
+Airbnb/ClassName:
+  Description: Use :class_name => "Model" instead of :class_name => Model.name
+    to avoid a long cascade of autoloading.
+  Enabled: true
+
+Airbnb/ClassOrModuleDeclaredInWrongFile:
+  Description: Declare a class or module in the file that matches its namespace and name.
+  Enabled: true
+  Include:
+    - 'app/**/*'
+    - 'lib/**/*'
+
+Airbnb/ConstAssignedInWrongFile:
+  Description: Assign a const in a file that matches the namespace in which it is scoped.
+  Enabled: true
+  Include:
+    - 'app/**/*'
+    - 'lib/**/*'
+
+Airbnb/ContinuationSlash:
+  Description: Slash continuation should be reserved for string continatuion. Many times it is
+    used to get around other existing rules.
+  Enabled: true
+
+Airbnb/DefaultScope:
+  Description: Avoid `default_scope`.  Default scopes make it difficult to
+    refactor data access patterns since the scope becomes part of every query unless
+    explicitly excluded, even when it is unnecessary or incidental to the desired logic.
+  Enabled: true
+
+Airbnb/FactoryAttrReferencesClass:
+  Description: Cop to enforce "attr { CONST }" instead of "attr CONST" in factories,
+      because the latter forces autoload, which slows down spec startup time and
+      Zeus reload time after touching a model.
+  Enabled: true
+
+Airbnb/FactoryClassUseString:
+  Description: Cop to tell developers to use :class => "MyClass" instead of :class => MyClass,
+    because the latter slows down reloading zeus.
+  Enabled: true
+
+Airbnb/MassAssignmentAccessibleModifier:
+  Description: Do no override and objects mass assignment restrictions.
+  Enabled: true
+
+Airbnb/ModuleMethodInWrongFile:
+  Description: Define a module method in the file that defines the module, not a file that
+    happens to use the module as a namespace.
+  Enabled: true
+  Include:
+    - 'app/**/*'
+    - 'lib/**/*'
+
+Airbnb/NoTimeout:
+  Description: Do not use Timeout.timeout. In combination with Rails autoloading,
+    timeout can cause Segmentation Faults in version of Ruby we use.
+    It can also cause logic errors since it can raise in
+    any callee scope. Use client library timeouts and monitoring to
+    ensure proper timing behavior for web requests.
+  Enabled: true
+
+Airbnb/OptArgParameters:
+  Description: Do not use default arguments. Use an options hash instead.
+  Enabled: true
+  StyleGuide: https://github.com/airbnb/ruby#no-default-args
+
+Airbnb/PhraseBundleKeys:
+  Description: Checks for phrase bundle keys that do not match their respective translation keys.
+  Enabled: true
+
+Airbnb/RiskyActiverecordInvocation:
+  Description: Disallow ActiveRecord calls that use interpolated or added strings as arguments.
+  Enabled: true
+
+Airbnb/RspecEnvironmentModification:
+  Description: Disallow Rails.env from being stubbed in half measure ways or from being reassigned
+    Use `stub_env` instead.
+  Enabled: true
+
+Airbnb/SimpleModifierConditional:
+  Enabled: true
+  StyleGuide: https://github.com/airbnb/ruby#only-simple-if-unless
+
+Airbnb/SimpleUnless:
+  Enabled: true
+  StyleGuide: https://github.com/airbnb/ruby#unless-with-multiple-conditions
+
+Airbnb/SpecConstantAssignment:
+  Description: Constant assignment in specs polute global namespace and are a cause of spurious
+    specs. They should be avoided. Also modifing existing constants is bad too, use stub_const
+    instead
+  Enabled: true
+
+Airbnb/UnsafeYamlMarshal:
+  Description: Avoid use of YAML/Marshal methods that can trigger RCE on untrusted input.
+  Enabled: true

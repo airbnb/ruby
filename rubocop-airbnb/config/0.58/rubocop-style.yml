@@ -1,0 +1,983 @@
+Style/AccessModifierDeclarations:
+  Enabled: false
+
+# Supports --auto-correct
+Style/Alias:
+  Description: Use alias_method instead of alias.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#alias-method
+  Enabled: false
+
+# Supports --auto-correct
+Style/AndOr:
+  Description: Use &&/|| instead of and/or.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-and-or-or
+  Enabled: true
+  EnforcedStyle: always
+  SupportedStyles:
+  - always
+  - conditionals
+
+# Supports --auto-correct
+Style/ArrayJoin:
+  Description: Use Array#join instead of Array#*.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#array-join
+  Enabled: true
+
+Style/AsciiComments:
+  Description: Use only ascii symbols in comments.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#english-comments
+  Enabled: false
+
+# Supports --auto-correct
+Style/Attr:
+  Description: Checks for uses of Module#attr.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#attr
+  Enabled: false
+
+Style/AutoResourceCleanup:
+  Description: Suggests the usage of an auto resource cleanup version of a method (if
+    available).
+  Enabled: false
+
+# Supports --auto-correct
+Style/BarePercentLiterals:
+  Description: Checks if usage of %() or %Q() matches configuration.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#percent-q-shorthand
+  Enabled: false
+  EnforcedStyle: bare_percent
+  SupportedStyles:
+  - percent_q
+  - bare_percent
+
+Style/BeginBlock:
+  Description: Avoid the use of BEGIN blocks.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-BEGIN-blocks
+  Enabled: false
+
+# Supports --auto-correct
+Style/BlockComments:
+  Description: Do not use block comments.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-block-comments
+  Enabled: true
+
+# Supports --auto-correct
+Style/BlockDelimiters:
+  Description: Check for uses of braces or do/end around single line or multi-line blocks.
+  Enabled: true
+  EnforcedStyle: line_count_based
+  SupportedStyles:
+    # The `line_count_based` style enforces braces around single line blocks and
+    # do..end around multi-line blocks.
+    - line_count_based
+    # The `semantic` style enforces braces around functional blocks, where the
+    # primary purpose of the block is to return a value and do..end for
+    # procedural blocks, where the primary purpose of the block is its
+    # side-effects.
+    #
+    # This looks at the usage of a block's method to determine its type (e.g. is
+    # the result of a `map` assigned to a variable or passed to another
+    # method) but exceptions are permitted in the `ProceduralMethods`,
+    # `FunctionalMethods` and `IgnoredMethods` sections below.
+    - semantic
+    # The `braces_for_chaining` style enforces braces around single line blocks
+    # and do..end around multi-line blocks, except for multi-line blocks whose
+    # return value is being chained with another method (in which case braces
+    # are enforced).
+    - braces_for_chaining
+  ProceduralMethods:
+    # Methods that are known to be procedural in nature but look functional from
+    # their usage, e.g.
+    #
+    #   time = Benchmark.realtime do
+    #     foo.bar
+    #   end
+    #
+    # Here, the return value of the block is discarded but the return value of
+    # `Benchmark.realtime` is used.
+    - benchmark
+    - bm
+    - bmbm
+    - create
+    - each_with_object
+    - measure
+    - new
+    - realtime
+    - tap
+    - with_object
+  FunctionalMethods:
+    # Methods that are known to be functional in nature but look procedural from
+    # their usage, e.g.
+    #
+    #   let(:foo) { Foo.new }
+    #
+    # Here, the return value of `Foo.new` is used to define a `foo` helper but
+    # doesn't appear to be used from the return value of `let`.
+    - let
+    - let!
+    - subject
+    - watch
+  IgnoredMethods:
+    # Methods that can be either procedural or functional and cannot be
+    # categorised from their usage alone, e.g.
+    #
+    #   foo = lambda do |x|
+    #     puts "Hello, #{x}"
+    #   end
+    #
+    #   foo = lambda do |x|
+    #     x * 100
+    #   end
+    #
+    # Here, it is impossible to tell from the return value of `lambda` whether
+    # the inner block's return value is significant.
+    - lambda
+    - proc
+    - it
+
+# Supports --auto-correct
+Style/BracesAroundHashParameters:
+  Description: Enforce braces style around hash parameters.
+  Enabled: false
+  EnforcedStyle: no_braces
+  SupportedStyles:
+  - braces
+  - no_braces
+  - context_dependent
+
+Style/CaseEquality:
+  Description: Avoid explicit use of the case equality operator(===).
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-case-equality
+  Enabled: false
+
+# Supports --auto-correct
+Style/CharacterLiteral:
+  Description: Checks for uses of character literals.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-character-literals
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Description: Checks style of children classes and modules.
+  Enabled: false
+  EnforcedStyle: nested
+
+# Supports --auto-correct
+Style/ClassCheck:
+  Description: Enforces consistent use of `Object#is_a?` or `Object#kind_of?`.
+  Enabled: true
+  EnforcedStyle: is_a?
+
+# Supports --auto-correct
+Style/ClassMethods:
+  Description: Use self when defining module/class methods.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#def-self-class-methods
+  Enabled: false
+
+Style/ClassVars:
+  Description: Avoid the use of class variables.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-class-vars
+  Enabled: true
+
+# Supports --auto-correct
+Style/CollectionMethods:
+  Description: Preferred collection methods.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#map-find-select-reduce-size
+  Enabled: false
+  PreferredMethods:
+    collect: map
+    collect!: map!
+    inject: reduce
+    detect: detect
+    find: detect
+    find_all: select
+
+# Supports --auto-correct
+Style/ColonMethodCall:
+  Description: ! 'Do not use :: for method call.'
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#double-colons
+  Enabled: true
+
+Style/ColonMethodDefinition:
+  Description: 'Do not use :: for defining class methods.'
+  StyleGuide: '#colon-method-definition'
+  Enabled: true
+
+# Supports --auto-correct
+Style/CommandLiteral:
+  Description: Use `` or %x around command literals.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#percent-x
+  Enabled: true
+  EnforcedStyle: backticks
+  AllowInnerBackticks: false
+
+# Supports --auto-correct
+Style/CommentAnnotation:
+  Description: Checks formatting of special comments (TODO, FIXME, OPTIMIZE, HACK, REVIEW).
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#annotate-keywords
+  Enabled: false
+  Keywords:
+  - TODO
+  - FIXME
+  - OPTIMIZE
+  - HACK
+  - REVIEW
+
+Style/CommentedKeyword:
+  Enabled: false
+
+# Supports --auto-correct
+Style/ConditionalAssignment:
+  Description: Use the return value of `if` and `case` statements for assignment to
+    a variable and variable comparison instead of assigning that variable inside of
+    each branch.
+  Enabled: false
+  SingleLineConditionsOnly: true
+
+# Supports --auto-correct
+Style/Copyright:
+  Description: Include a copyright notice in each file before any code.
+  Enabled: false
+  Notice: ^Copyright (\(c\) )?2[0-9]{3} .+
+  AutocorrectNotice: ''
+
+Style/DateTime:
+  Enabled: false
+
+# Supports --auto-correct
+Style/DefWithParentheses:
+  Description: Use def with parentheses when there are arguments.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#method-parens
+  Enabled: false
+
+Style/Dir:
+  Enabled: false
+
+# Don't force documentation
+Style/Documentation:
+  Enabled: false
+
+Style/DocumentationMethod:
+  Enabled: false
+
+Style/DoubleNegation:
+  Description: Checks for uses of double negation (!!).
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-bang-bang
+  Enabled: false
+
+Style/EachForSimpleLoop:
+  Description: >-
+                 Use `Integer#times` for a simple loop which iterates a fixed
+                 number of times.
+  Enabled: true
+
+Style/EachWithObject:
+  Description: Prefer `each_with_object` over `inject` or `reduce`.
+  Enabled: false
+
+Style/EmptyBlockParameter:
+  Description: 'Omit pipes for empty block parameters.'
+  Enabled: true
+
+Style/EmptyCaseCondition:
+  Enabled: false
+
+# Supports --auto-correct
+Style/EmptyElse:
+  Description: Avoid empty else-clauses.
+  Enabled: false
+  EnforcedStyle: both
+  SupportedStyles:
+  - empty
+  - nil
+  - both
+
+Style/EmptyLambdaParameter:
+  Description: 'Omit parens for empty lambda parameters.'
+  Enabled: true
+
+# Supports --auto-correct
+Style/EmptyLiteral:
+  Description: Prefer literals to Array.new/Hash.new/String.new.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#literal-array-hash
+  Enabled: true
+
+Style/EmptyMethod:
+  Enabled: false
+
+# Supports --auto-correct
+Style/Encoding:
+  Description: Use UTF-8 as the source file encoding.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#utf-8
+  Enabled: false
+
+Style/EndBlock:
+  Description: Avoid the use of END blocks.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-END-blocks
+  Enabled: false
+
+Style/EvalWithLocation:
+  Description: 'Pass `__FILE__` and `__LINE__` to `eval` method, as they are used by backtraces.'
+  Enabled: false
+
+# Supports --auto-correct
+Style/EvenOdd:
+  Description: Favor the use of Fixnum#even? && Fixnum#odd?
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#predicate-methods
+  Enabled: false
+
+Style/ExpandPathArguments:
+  Description: "Use `expand_path(__dir__)` instead of `expand_path('..', __FILE__)`."
+  Enabled: false
+
+Style/FlipFlop:
+  Description: Checks for flip flops
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-flip-flops
+  Enabled: false
+
+Style/For:
+  Description: Checks use of for or each in multiline loops.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-for-loops
+  Enabled: false
+  EnforcedStyle: each
+  SupportedStyles:
+  - for
+  - each
+
+Style/FormatString:
+  Description: Enforce the use of Kernel#sprintf, Kernel#format or String#%.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#sprintf
+  Enabled: false
+  EnforcedStyle: format
+  SupportedStyles:
+  - format
+  - sprintf
+  - percent
+
+Style/FormatStringToken:
+  Enabled: false
+
+# Supports --auto-correct
+Style/FrozenStringLiteralComment:
+  Description: Add the frozen_string_literal comment to the top of files to help transition
+    from Ruby 2.3.0 to Ruby 3.0.
+  Enabled: false
+  EnforcedStyle: when_needed
+  SupportedStyles:
+  - when_needed
+  - always
+
+Style/GlobalVars:
+  Description: Do not introduce global variables.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#instance-vars
+  Reference: http://www.zenspider.com/Languages/Ruby/QuickRef.html
+  Enabled: false
+  AllowedVariables: []
+
+# This thing seems a little error prone, and is kind of annoying. Let's
+# leave this up to the individual.
+Style/GuardClause:
+  Enabled: false
+
+# Don't force colon-style hash pairs. Sometimes ya just don't want 'em.
+# (Allen approved!)
+Style/HashSyntax:
+  Enabled: false
+
+Style/IdenticalConditionalBranches:
+  Description: Checks that conditional statements do not have an identical line at the
+    end of each branch, which can validly be moved out of the conditional.
+  Enabled: false
+
+Style/IfInsideElse:
+  Description: Finds if nodes inside else, which can be converted to elsif.
+  Enabled: false
+
+# Don't force trailing if/unless for single-line conditionals
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/IfUnlessModifierOfIfUnless:
+  Description: >-
+    Checks for if and unless statements used as modifers of other if or unless statements.
+  Enabled: true
+
+Style/IfWithSemicolon:
+  Description: Do not use if x; .... Use the ternary operator instead.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-semicolon-ifs
+  Enabled: true
+
+# Supports --auto-correct
+Style/InfiniteLoop:
+  Description: Use Kernel#loop for infinite loops.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#infinite-loop
+  Enabled: false
+
+Style/InlineComment:
+  Description: Avoid inline comments.
+  Enabled: false
+
+Style/InverseMethods:
+  Enabled: false
+
+# Supports --auto-correct
+Style/Lambda:
+  Description: Use the new lambda literal syntax for single-line blocks.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#lambda-multi-line
+  Enabled: false
+
+# Supports --auto-correct
+Style/LambdaCall:
+  Description: Use lambda.call(...) instead of lambda.(...).
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#proc-call
+  Enabled: true
+  EnforcedStyle: call
+  SupportedStyles:
+  - call
+  - braces
+
+# Supports --auto-correct
+Style/LineEndConcatenation:
+  Description: Use \ instead of + or << to concatenate two string literals at line end.
+  Enabled: true
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: false
+
+# Supports --auto-correct
+Style/MethodCallWithoutArgsParentheses:
+  Description: Do not use parentheses for method calls with no arguments.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-args-no-parens
+  Enabled: true
+
+Style/MethodCalledOnDoEndBlock:
+  Description: Avoid chaining a method call on a do...end block.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#single-line-blocks
+  Enabled: false
+
+# Supports --auto-correct
+Style/MethodDefParentheses:
+  Description: Checks if the method definitions have or don't have parentheses.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#method-parens
+  Enabled: true
+  EnforcedStyle: require_parentheses
+  SupportedStyles:
+  - require_parentheses
+  - require_no_parentheses
+
+Style/MethodMissingSuper:
+  Enabled: false
+
+Style/MissingRespondToMissing:
+  Enabled: false
+
+Style/MinMax:
+  Enabled: false
+
+Style/MissingElse:
+  Description: Require if/case expressions to have an else branches. If enabled, it
+    is recommended that Style/UnlessElse and Style/EmptyElse be enabled. This will conflict
+    with Style/EmptyElse if Style/EmptyElse is configured to style "both"
+  Enabled: false
+  EnforcedStyle: both
+  SupportedStyles:
+  - if
+  - case
+  - both
+
+Style/MixinGrouping:
+  Description: This cop checks for grouping of mixins in `class` and `module` bodies. By default
+    it enforces mixins to be placed in separate declarations, but it can be configured to enforce
+    grouping them in one declaration.
+  Enabled: true
+
+Style/MixinUsage:
+  Description: This cop checks that `include`, `extend` and `prepend` exists at the top level.
+    Using these at the top level affects the behavior of `Object`. There will not be using
+    `include`, `extend` and `prepend` at the top level. Let's use it inside `class` or `module`.
+  Enabled: true
+
+# Supports --auto-correct
+Style/ModuleFunction:
+  Description: Checks for usage of `extend self` in modules.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#module-function
+  Enabled: false
+
+Style/MultilineBlockChain:
+  Description: Avoid multi-line chains of blocks.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#single-line-blocks
+  Enabled: false
+
+Style/MultilineIfModifier:
+  Enabled: true
+
+# Supports --auto-correct
+Style/MultilineIfThen:
+  Description: Do not use then for multi-line if/unless.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-then
+  Enabled: true
+
+Style/MultilineMemoization:
+  Enabled: false
+
+Style/MultilineTernaryOperator:
+  Description: ! 'Avoid multi-line ?: (the ternary operator); use if/unless instead.'
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-multiline-ternary
+  Enabled: true
+
+Style/MultipleComparison:
+  Enabled: false
+
+# Supports --auto-correct
+Style/MutableConstant:
+  Description: Do not assign mutable objects to constants.
+  Enabled: true
+
+# Supports --auto-correct
+Style/NegatedIf:
+  Description: Favor unless over if for negative conditions (or control flow or).
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#unless-for-negatives
+  Enabled: false
+
+# Supports --auto-correct
+Style/NegatedWhile:
+  Description: Favor until over while for negative conditions.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#until-for-negatives
+  Enabled: false
+
+Style/NestedModifier:
+  Enabled: true
+
+Style/NestedParenthesizedCalls:
+  Description: Parenthesize method calls which are nested inside the argument list of
+    another parenthesized method call.
+  Enabled: true
+
+Style/NestedTernaryOperator:
+  Description: Use one expression per branch in a ternary operator.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-nested-ternary
+  Enabled: true
+
+Style/Next:
+  Description: Use `next` to skip iteration instead of a condition at the end.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-nested-conditionals
+  Enabled: false
+  EnforcedStyle: skip_modifier_ifs
+  MinBodyLength: 3
+  SupportedStyles:
+  - skip_modifier_ifs
+  - always
+
+# Supports --auto-correct
+Style/NilComparison:
+  Description: Prefer x.nil? to x == nil.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#predicate-methods
+  Enabled: true
+
+# Supports --auto-correct
+Style/NonNilCheck:
+  Description: Checks for redundant nil checks.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-non-nil-checks
+  Enabled: true
+  IncludeSemanticChanges: false
+
+# Supports --auto-correct
+Style/Not:
+  Description: Use ! instead of not.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#bang-not-not
+  Enabled: true
+
+Style/NumericLiteralPrefix:
+  EnforcedOctalStyle: zero_with_o
+  SupportedOctalStyles:
+    - zero_with_o
+    - zero_only
+  Enabled: true
+
+# We just don't like this style.
+Style/NumericLiterals:
+  Description: Add underscores to large numeric literals to improve their readability.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#underscores-in-numerics
+  Enabled: false
+
+Style/NumericPredicate:
+  Enabled: false
+
+Style/OneLineConditional:
+  Description: Favor the ternary operator(?:) over if/then/else/end constructs.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#ternary-operator
+  Enabled: true
+
+Style/OptionHash:
+  Description: Don't use option hashes when you can use keyword arguments.
+  Enabled: false
+  SuspiciousParamNames:
+  - options
+  - opts
+  - args
+  - params
+  - parameters
+
+Style/OptionalArguments:
+  Description: Checks for optional arguments that do not appear at the end of the argument
+    list
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#optional-arguments
+  Enabled: true
+
+Style/OrAssignment:
+  Enabled: true
+
+# Supports --auto-correct
+Style/ParallelAssignment:
+  Description: Check for simple usages of parallel assignment. It will only warn when
+    the number of variables matches on both sides of the assignment.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#parallel-assignment
+  Enabled: false
+
+# Supports --auto-correct
+Style/ParenthesesAroundCondition:
+  Description: Don't use parentheses around the condition of an if/unless/while.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-parens-if
+  Enabled: true
+  AllowSafeAssignment: true
+
+# Supports --auto-correct
+Style/PercentLiteralDelimiters:
+  Description: Use `%`-literal delimiters consistently
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#percent-literal-braces
+  Enabled: true
+  PreferredDelimiters:
+    ! '%': ()
+    ! '%i': ()
+    ! '%q': ()
+    ! '%Q': ()
+    ! '%r': ! '{}'
+    ! '%s': ()
+    ! '%w': ()
+    ! '%W': ()
+    ! '%x': ()
+
+# Supports --auto-correct
+Style/PercentQLiterals:
+  Description: Checks if uses of %Q/%q match the configured preference.
+  Enabled: false
+  EnforcedStyle: lower_case_q
+  SupportedStyles:
+  - lower_case_q
+  - upper_case_q
+
+# Supports --auto-correct
+Style/PerlBackrefs:
+  Description: Avoid Perl-style regex back references.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-perl-regexp-last-matchers
+  Enabled: true
+
+# Supports --auto-correct
+Style/PreferredHashMethods:
+  Description: Checks for use of deprecated Hash methods.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#hash-key
+  Enabled: true
+
+# Supports --auto-correct
+Style/Proc:
+  Description: Use proc instead of Proc.new.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#proc
+  Enabled: false
+
+Style/RaiseArgs:
+  Description: Checks the arguments passed to raise/fail.
+  # Also https://github.com/airbnb/ruby#exception-class-messages
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#exception-class-messages
+  Enabled: true
+  EnforcedStyle: exploded
+  SupportedStyles:
+  - compact
+  - exploded
+
+Style/RandomWithOffset:
+  Description: Prefer to use ranges when generating random numbers instead of integers with offsets.
+  StyleGuide: '#random-numbers'
+  Enabled: false
+
+# Supports --auto-correct
+Style/RedundantBegin:
+  Description: Don't use begin blocks when they are not needed.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#begin-implicit
+  Enabled: true
+
+Style/RedundantConditional:
+  Enabled: true
+
+# Supports --auto-correct
+Style/RedundantException:
+  Description: Checks for an obsolete RuntimeException argument in raise/fail.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-explicit-runtimeerror
+  Enabled: true
+
+# Supports --auto-correct
+Style/RedundantFreeze:
+  Description: Checks usages of Object#freeze on immutable objects.
+  Enabled: true
+
+# Supports --auto-correct
+Style/RedundantParentheses:
+  Description: Checks for parentheses that seem not to serve any purpose.
+  Enabled: true
+
+# Supports --auto-correct
+Style/RedundantReturn:
+  Description: Don't use return where it's not required.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-explicit-return
+  Enabled: true
+  AllowMultipleReturnValues: false
+
+# Supports --auto-correct
+Style/RedundantSelf:
+  Description: Don't use self where it's not needed.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-self-unless-required
+  Enabled: true
+
+# Supports --auto-correct
+Style/RegexpLiteral:
+  Description: Use / or %r around regular expressions.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#percent-r
+  Enabled: false
+  EnforcedStyle: slashes
+  SupportedStyles:
+  - slashes
+  - percent_r
+  - mixed
+  AllowInnerSlashes: false
+
+# Supports --auto-correct
+Style/RescueModifier:
+  Description: Avoid using rescue in its modifier form.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-rescue-modifiers
+  Enabled: true
+
+Style/RescueStandardError:
+  Description: 'Avoid rescuing without specifying an error class.'
+  Enabled: false
+
+Style/ReturnNil:
+  Enabled: false
+
+Style/SafeNavigation:
+  Enabled: false
+
+# Supports --auto-correct
+Style/SelfAssignment:
+  Description: Checks for places where self-assignment shorthand should have been used.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#self-assignment
+  Enabled: true
+
+# Supports --auto-correct
+Style/Semicolon:
+  Description: Don't use semicolons to terminate expressions.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-semicolon
+  Enabled: true
+  AllowAsExpressionSeparator: false
+
+Style/Send:
+  Description: Prefer `Object#__send__` or `Object#public_send` to `send`, as `send`
+    may overlap with existing methods.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#prefer-public-send
+  Enabled: false
+
+# Supports --auto-correct
+Style/SignalException:
+  Description: Checks for proper usage of fail and raise.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#fail-method
+  Enabled: false
+  EnforcedStyle: semantic
+  SupportedStyles:
+  - only_raise
+  - only_fail
+  - semantic
+
+Style/SingleLineBlockParams:
+  Description: Enforces the names of some block params.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#reduce-blocks
+  Enabled: false
+  Methods:
+  - reduce:
+    - a
+    - e
+  - inject:
+    - a
+    - e
+
+# Supports --auto-correct
+Style/SingleLineMethods:
+  Description: Avoid single-line methods.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-single-line-methods
+  Enabled: true
+  AllowIfMethodIsEmpty: true
+
+# Supports --auto-correct
+Style/SpecialGlobalVars:
+  Description: Avoid Perl-style global variables.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-cryptic-perlisms
+  Enabled: true
+
+Style/StabbyLambdaParentheses:
+  Description: Check for the usage of parentheses around stabby lambda arguments.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#stabby-lambda-with-args
+  Enabled: false
+  EnforcedStyle: require_parentheses
+  SupportedStyles:
+  - require_parentheses
+  - require_no_parentheses
+
+Style/StderrPuts:
+  Enabled: true
+
+Style/StringHashKeys:
+  Description: 'Prefer symbols instead of strings as hash keys.'
+  StyleGuide: '#symbols-as-keys'
+  Enabled: false
+
+# Allow double-quoted strings without interpolation. The customer is always right.
+Style/StringLiterals:
+  Enabled: false
+
+# Supports --auto-correct
+Style/StringLiteralsInInterpolation:
+  Description: Checks if uses of quotes inside expressions in interpolated strings match
+    the configured preference.
+  Enabled: false
+  EnforcedStyle: single_quotes
+  SupportedStyles:
+  - single_quotes
+  - double_quotes
+
+# Supports --auto-correct
+Style/StringMethods:
+  Description: Checks if configured preferred methods are used over non-preferred.
+  Enabled: false
+  PreferredMethods:
+    intern: to_sym
+
+Style/StructInheritance:
+  Description: Checks for inheritance from Struct.new.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-extend-struct-new
+  Enabled: false
+
+Style/SymbolArray:
+  Description: Use %i or %I for arrays of symbols.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#percent-i
+  Enabled: false
+
+# Supports --auto-correct
+Style/SymbolLiteral:
+  Description: Use plain symbols instead of string symbols when possible.
+  Enabled: true
+
+# Supports --auto-correct
+Style/SymbolProc:
+  Description: Use symbols as procs instead of blocks when possible.
+  Enabled: false
+  IgnoredMethods:
+  - respond_to
+
+Style/TernaryParentheses:
+  Enabled: false
+
+Style/TrailingBodyOnClass:
+  Description: 'Class body goes below class statement.'
+  Enabled: true
+
+Style/TrailingBodyOnMethodDefinition:
+  Description: 'Method body goes below definition.'
+  Enabled: true
+
+Style/TrailingBodyOnModule:
+  Description: 'Module body goes below module statement.'
+  Enabled: true
+
+Style/TrailingCommaInArguments:
+  Enabled: false
+
+# Enforce trailing commas (we like 'em!)
+Style/TrailingCommaInArrayLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma
+
+# Enforce trailing commas (we like 'em!)
+Style/TrailingCommaInHashLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma
+
+# Supports --auto-correct
+Style/TrailingUnderscoreVariable:
+  Description: Checks for the usage of unneeded trailing underscores at the end of parallel
+    variable assignment.
+  Enabled: false
+
+# Allow question mark accessor methods
+Style/TrivialAccessors:
+  AllowPredicates: true
+
+Style/UnlessElse:
+  Description: Do not use unless with else. Rewrite these with the positive case first.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-else-with-unless
+  Enabled: true
+
+# Supports --auto-correct
+Style/UnneededCapitalW:
+  Description: Checks for %W when interpolation is not needed.
+  Enabled: false
+
+Style/UnneededCondition:
+  Enabled: false
+
+# Supports --auto-correct
+Style/UnneededInterpolation:
+  Description: Checks for strings that are just an interpolated expression.
+  Enabled: false
+
+# Supports --auto-correct
+Style/UnneededPercentQ:
+  Description: Checks for %q/%Q when single quotes or double quotes would do.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#percent-q
+  Enabled: false
+
+Style/UnpackFirst:
+  Enabled: false
+
+# Supports --auto-correct
+Style/VariableInterpolation:
+  Description: Don't interpolate global, instance and class variables directly in strings.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#curlies-interpolate
+  Enabled: false
+
+# Supports --auto-correct
+Style/WhenThen:
+  Description: Use when x then ... for one-line cases.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#one-line-cases
+  Enabled: false
+
+# Supports --auto-correct
+Style/WhileUntilDo:
+  Description: Checks for redundant do after while or until.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-multiline-while-do
+  Enabled: true
+
+# Supports --auto-correct
+Style/WhileUntilModifier:
+  Description: Favor modifier while/until usage when you have a single-line body.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#while-as-a-modifier
+  Enabled: false
+
+# Supports --auto-correct
+Style/WordArray:
+  Description: Use %w or %W for arrays of words.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#percent-w
+  Enabled: false
+  MinSize: 0
+  WordRegex: !ruby/regexp /\A[\p{Word}]+\z/
+
+Style/YodaCondition:
+  Enabled: false
+
+Style/ZeroLengthPredicate:
+  Description: 'Use #empty? when testing for objects of length 0.'
+  Enabled: false

@@ -1,0 +1,85 @@
+Naming/AccessorMethodName:
+  Description: Check the naming of accessor methods for get_/set_.
+  Enabled: false
+
+Naming/AsciiIdentifiers:
+  Description: Use only ascii symbols in identifiers.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#english-identifiers
+  Enabled: true
+
+Naming/BinaryOperatorParameterName:
+  Description: When defining binary operators, name the argument other.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#other-arg
+  Enabled: false
+
+Naming/ClassAndModuleCamelCase:
+  Description: Use CamelCase for classes and modules.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#camelcase-classes
+  Enabled: true
+
+Naming/ConstantName:
+  Description: Constants should use SCREAMING_SNAKE_CASE.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#screaming-snake-case
+  Enabled: false
+
+Naming/FileName:
+  Description: Use snake_case for source file names.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#snake-case-files
+  Enabled: false
+
+Naming/HeredocDelimiterCase:
+  Enabled: false
+
+Naming/HeredocDelimiterNaming:
+  Enabled: false
+
+Naming/MemoizedInstanceVariableName:
+  Description: >-
+    Memoized method name should match memo instance variable name.
+  Enabled: false
+
+Naming/MethodName:
+  Description: Use the configured style when naming methods.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#snake-case-symbols-methods-vars
+  Enabled: false
+  EnforcedStyle: snake_case
+  SupportedStyles:
+  - snake_case
+  - camelCase
+
+Naming/PredicateName:
+  Description: Check the names of predicate methods.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#bool-methods-qmark
+  Enabled: false
+  NamePrefix:
+  - is_
+  - has_
+  - have_
+  NamePrefixBlacklist:
+  - is_
+  - has_
+  - have_
+
+Naming/UncommunicativeBlockParamName:
+  Description: >-
+              Checks for block parameter names that contain capital letters,
+              end in numbers, or do not meet a minimal length.
+  Enabled: false
+
+Naming/UncommunicativeMethodParamName:
+  Description: >-
+              Checks for method parameter names that contain capital letters,
+              end in numbers, or do not meet a minimal length.
+  Enabled: false
+
+Naming/VariableName:
+  Description: Use the configured style when naming variables.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#snake-case-symbols-methods-vars
+  Enabled: true
+  EnforcedStyle: snake_case
+  SupportedStyles:
+    - snake_case
+    - camelCase
+
+Naming/VariableNumber:
+  Enabled: false

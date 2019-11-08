@@ -1,0 +1,331 @@
+require:
+  - rubocop-rspec
+
+RSpec/AlignLeftLetBrace:
+  Description: Checks that left braces for adjacent single line lets are aligned.
+  Enabled: false
+
+RSpec/AlignRightLetBrace:
+  Description: Checks that right braces for adjacent single line lets are aligned.
+  Enabled: false
+
+RSpec/AnyInstance:
+  Description: 'Prefer instance doubles over stubbing any instance of a class'
+  Enabled: false
+
+RSpec/AroundBlock:
+  Description: Checks that around blocks actually run the test.
+  Enabled: true
+
+RSpec/Be:
+  Description: Check for expectations where `be` is used without argument.
+  Enabled: true
+
+RSpec/BeEql:
+  Description: Check for expectations where `be(...)` can replace `eql(...)`.
+  Enabled: false
+
+RSpec/BeforeAfterAll:
+  Description: Check that before/after(:all) isn't being used.
+  Enabled: true
+  Exclude:
+  - spec/spec_helper.rb
+  - spec/rails_helper.rb
+  - spec/support/**/*.rb
+
+RSpec/ContextWording:
+  Description: "`context` block descriptions should start with 'when', or 'with'."
+  Enabled: false
+
+RSpec/DescribeClass:
+  Description: 'Check that the first argument to the top level describe is the tested class or module.'
+  Enabled: false
+
+RSpec/DescribeMethod:
+  Description: 'Checks that the second argument to top level describe is the tested method name.'
+  Enabled: false
+
+RSpec/DescribeSymbol:
+  Description: Avoid describing symbols.
+  Enabled: true
+
+RSpec/DescribedClass:
+  Description: 'Use `described_class` for tested class / module'
+  Enabled: false
+
+RSpec/EmptyExampleGroup:
+  Description: Checks if an example group does not include any tests.
+  Enabled: true
+  CustomIncludeMethods: []
+
+RSpec/EmptyLineAfterExampleGroup:
+  Description: Checks if there is an empty line after example group blocks.
+  Enabled: true
+
+RSpec/EmptyLineAfterFinalLet:
+  Description: Checks if there is an empty line after the last let block.
+  Enabled: true
+
+RSpec/EmptyLineAfterHook:
+  Description: Checks if there is an empty line after hook blocks.
+  Enabled: true
+
+RSpec/EmptyLineAfterSubject:
+  Description: Checks if there is an empty line after subject block.
+  Enabled: true
+
+RSpec/ExampleLength:
+  Description: >-
+    A long example is usually more difficult to understand.
+    Consider extracting out some behaviour, e.g. with a `let` block, or a helper method.
+  Enabled: false
+
+RSpec/ExampleWording:
+  Description: 'Do not use should when describing your tests.'
+  Enabled: true
+  CustomTransform:
+    be: is
+    have: has
+    not: does not
+    NOT: does not
+    automatically: automatically
+    correctly: correctly
+    successfully: successfully
+    only: only
+    properly: properly
+    response: responds
+    be redirect: redirects
+  IgnoredWords: []
+
+RSpec/ExpectActual:
+  Description: Checks for `expect(...)` calls containing literal values.
+  Enabled: true
+  Exclude:
+  - spec/routing/**/*
+
+RSpec/ExpectInHook:
+  Enabled: true
+  Description: Do not use `expect` in hooks such as `before`.
+
+RSpec/ExpectOutput:
+  Description: Checks for opportunities to use `expect { ... }.to output`.
+  Enabled: false
+
+RSpec/FilePath:
+  Description: 'Checks the file and folder naming of the spec file.'
+  Enabled: false
+  CustomTransform:
+    RuboCop: rubocop
+    RSpec: rspec
+
+RSpec/Focus:
+  Description: Checks if examples are focused.
+  Enabled: false
+
+RSpec/HookArgument:
+  Description: Checks the arguments passed to `before`, `around`, and `after`.
+  Enabled: false
+  EnforcedStyle: implicit
+  SupportedStyles:
+  - implicit
+  - each
+  - example
+
+RSpec/HooksBeforeExamples:
+  Description: Checks for before/around/after hooks that come after an example.
+  Enabled: true
+
+RSpec/ImplicitExpect:
+  Description: Check that a consistent implicit expectation style is used.
+  Enabled: false
+  EnforcedStyle: is_expected
+  SupportedStyles:
+  - is_expected
+  - should
+
+RSpec/ImplicitSubject:
+  Description: 'Checks for usage of implicit subject (`is_expected` / `should`).'
+  Enabled: false
+
+RSpec/InstanceSpy:
+  Description: Checks for `instance_double` used with `have_received`.
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Description: 'Checks for the usage of instance variables.'
+  Enabled: false
+
+RSpec/InvalidPredicateMatcher:
+  Description: Checks invalid usage for predicate matcher.
+  Enabled: false
+
+RSpec/ItBehavesLike:
+  Description: Checks that only one `it_behaves_like` style is used.
+  Enabled: false
+  EnforcedStyle: it_behaves_like
+  SupportedStyles:
+  - it_behaves_like
+  - it_should_behave_like
+
+RSpec/IteratedExpectation:
+  Description: Check that `all` matcher is used instead of iterating over an array.
+  Enabled: false
+
+RSpec/LeadingSubject:
+  Description: Checks for `subject` definitions that come after `let` definitions.
+  Enabled: true
+
+RSpec/LetBeforeExamples:
+  Description: Checks for `let` definitions that come after an example.
+  Enabled: true
+
+RSpec/LetSetup:
+  Description: Checks unreferenced `let!` calls being used for test setup.
+  Enabled: false
+
+RSpec/MessageChain:
+  Description: Check that chains of messages are not being stubbed.
+  Enabled: false
+
+RSpec/MessageExpectation:
+  Description: Checks for consistent message expectation style.
+  Enabled: false
+  EnforcedStyle: allow
+  SupportedStyles:
+  - allow
+  - expect
+
+RSpec/MessageSpies:
+  Description: Checks that message expectations are set using spies.
+  Enabled: false
+  EnforcedStyle: have_received
+  SupportedStyles:
+  - have_received
+  - receive
+
+RSpec/MissingExampleGroupArgument:
+  Description: Checks that the first argument to an example group is not empty.
+  Enabled: true
+
+RSpec/MultipleDescribes:
+  Description: 'Checks for multiple top level describes.'
+  Enabled: true
+
+RSpec/MultipleExpectations:
+  Description: Checks if examples contain too many `expect` calls.
+  Enabled: false
+  Max: 1
+
+RSpec/MultipleSubjects:
+  Description: Checks if an example group defines `subject` multiple times.
+  Enabled: true
+
+RSpec/NamedSubject:
+  Description: Checks for explicitly referenced test subjects.
+  Enabled: false
+
+RSpec/NestedGroups:
+  Description: Checks for nested example groups.
+  Enabled: false
+  Max: 3
+
+RSpec/ReceiveNever:
+  Description: 'Prefer `not_to receive(…)` over `receive(…).never`.'
+  Enabled: true
+
+RSpec/NotToNot:
+  Description: 'Enforces the usage of the same method on all negative message expectations.'
+  Enabled: true
+  EnforcedStyle: not_to
+  SupportedStyles:
+    - not_to
+    - to_not
+
+RSpec/OverwritingSetup:
+  Enabled: false
+  Description: Checks if there is a let/subject that overwrites an existing one.
+
+RSpec/Pending:
+  Description: Checks for any pending or skipped examples.
+  Enabled: false
+
+RSpec/PredicateMatcher:
+  Description: Prefer using predicate matcher over using predicate method directly.
+  Enabled: false
+  Strict: true
+  EnforcedStyle: inflected
+  SupportedStyles:
+  - inflected
+  - explicit
+
+RSpec/ReceiveCounts:
+  Description: Check for `once` and `twice` receive counts matchers usage.
+  Enabled: false
+
+RSpec/RepeatedDescription:
+  Description: Check for repeated description strings in example groups.
+  Enabled: true
+
+RSpec/RepeatedExample:
+  Enabled: true
+  Description: Check for repeated examples within example groups.
+
+RSpec/ReturnFromStub:
+  Enabled: true
+  Description: Checks for consistent style of stub's return setting.
+  EnforcedStyle: and_return
+  SupportedStyles:
+  - and_return
+  - block
+
+RSpec/ScatteredLet:
+  Description: Checks for let scattered across the example group.
+  Enabled: true
+
+RSpec/ScatteredSetup:
+  Description: Checks for setup scattered across multiple hooks in an example group.
+  Enabled: true
+
+RSpec/SharedContext:
+  Description: Checks for proper shared_context and shared_examples usage.
+  Enabled: false
+
+RSpec/SharedExamples:
+  Description: Enforces use of string to titleize shared examples.
+  Enabled: true
+
+RSpec/SingleArgumentMessageChain:
+  Description: Checks that chains of messages contain more than one element.
+  Enabled: true
+
+RSpec/SubjectStub:
+  Description: Checks for stubbed test subjects.
+  Enabled: false
+
+RSpec/UnspecifiedException:
+  Description: Checks for a specified error in checking raised errors.
+  Enabled: false
+
+RSpec/VerifiedDoubles:
+  Description: 'Prefer using verifying doubles over normal doubles.'
+  Enabled: false
+
+RSpec/VoidExpect:
+  Description: This cop checks void `expect()`.
+  Enabled: false
+
+Capybara/CurrentPathExpectation:
+  Description: Checks that no expectations are set on Capybara's `current_path`.
+  Enabled: false
+
+Capybara/FeatureMethods:
+  Description: Checks for consistent method usage in feature specs.
+  Enabled: false
+
+FactoryBot/AttributeDefinedStatically:
+  Description: Always declare attribute values as blocks.
+  Enabled: false
+
+FactoryBot/CreateList:
+  Description: Checks for create_list usage.
+  Enabled: true

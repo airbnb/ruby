@@ -1,0 +1,8 @@
+Bundler/DuplicatedGem:
+  Enabled: true
+
+Bundler/InsecureProtocolSource:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false

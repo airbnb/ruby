@@ -1,0 +1,47 @@
+# We're using cane for ABC complexity checks
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/BlockNesting:
+  Description: Avoid excessive block nesting
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#three-is-the-number-thou-shalt-count
+  Enabled: false
+  Max: 3
+
+# We are not perfect robot-humans
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Description: A complexity metric that is strongly correlated to the number of test
+    cases needed to validate a method.
+  Enabled: false
+  Max: 6
+
+Metrics/LineLength:
+  Max: 100
+  AllowURI: true
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Description: Avoid modules longer than 100 lines of code.
+  Enabled: false
+  CountComments: false
+  Max: 100
+
+Metrics/ParameterLists:
+  Description: Avoid parameter lists longer than three or four parameters.
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#too-many-params
+  Enabled: false
+  Max: 5
+  CountKeywordArgs: true
+
+Metrics/PerceivedComplexity:
+  Description: A complexity metric geared towards measuring complexity for a human reader.
+  Enabled: false
+  Max: 7
