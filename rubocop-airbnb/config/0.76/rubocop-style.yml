@@ -710,7 +710,7 @@ Style/RedundantException:
 # Supports --auto-correct
 Style/RedundantFreeze:
   Description: Checks usages of Object#freeze on immutable objects.
-  Enabled: false
+  Enabled: true
 
 # Supports --auto-correct
 Style/RedundantParentheses:
