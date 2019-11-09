@@ -360,10 +360,7 @@ Style/FrozenStringLiteralComment:
   Description: Add the frozen_string_literal comment to the top of files to help transition
     from Ruby 2.3.0 to Ruby 3.0.
   Enabled: false
-  EnforcedStyle: when_needed
-  SupportedStyles:
-  - when_needed
-  - always
+  EnforcedStyle: always
 
 Style/GlobalVars:
   Description: Do not introduce global variables.
@@ -922,20 +919,20 @@ Style/UnlessElse:
   Enabled: true
 
 # Supports --auto-correct
-Style/UnneededCapitalW:
+Style/RedundantCapitalW:
   Description: Checks for %W when interpolation is not needed.
   Enabled: false
 
-Style/UnneededCondition:
+Style/RedundantCondition:
   Enabled: false
 
 # Supports --auto-correct
-Style/UnneededInterpolation:
+Style/RedundantInterpolation:
   Description: Checks for strings that are just an interpolated expression.
   Enabled: false
 
 # Supports --auto-correct
-Style/UnneededPercentQ:
+Style/RedundantPercentQ:
   Description: Checks for %q/%Q when single quotes or double quotes would do.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#percent-q
   Enabled: false
