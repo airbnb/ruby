@@ -209,3 +209,6 @@ Rails/Validation:
 
 Rails/IgnoredSkipActionFilterOption:
   Enabled: true
+
+Rails/ReflectionClassName:
+  Enabled: true

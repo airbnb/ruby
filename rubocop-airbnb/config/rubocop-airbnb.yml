@@ -2,11 +2,6 @@
 # They are custom built for use inside Airbnb and address issues that we have experienced in
 # testing and production.
 
-Airbnb/ClassName:
-  Description: Use :class_name => "Model" instead of :class_name => Model.name
-    to avoid a long cascade of autoloading.
-  Enabled: true
-
 Airbnb/ClassOrModuleDeclaredInWrongFile:
   Description: Declare a class or module in the file that matches its namespace and name.
   Enabled: true
