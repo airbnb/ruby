@@ -551,3 +551,6 @@ Layout/TrailingWhitespace:
   Description: Avoid trailing whitespace.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-trailing-whitespace
   Enabled: true
+
+Layout/IndentFirstParameter:
+  Enabled: true
