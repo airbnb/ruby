@@ -472,11 +472,6 @@ Layout/SpaceInsideBlockBraces:
   EnforcedStyleForEmptyBraces: no_space
   SpaceBeforeBlockParameters: true
 
-Layout/SpaceInsideParens:
-  Description: 'No spaces after ( or before ).'
-  StyleGuide: '#spaces-braces'
-  Enabled: true
-
 Layout/SpaceInsideArrayLiteralBrackets:
   EnforcedStyle: no_space
   SupportedStyles:
