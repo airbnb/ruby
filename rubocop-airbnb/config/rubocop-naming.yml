@@ -83,3 +83,6 @@ Naming/VariableName:
 
 Naming/VariableNumber:
   Enabled: false
+
+Naming/RescuedExceptionsVariableName:
+  Enabled: false
