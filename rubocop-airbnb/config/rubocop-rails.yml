@@ -206,3 +206,6 @@ Rails/Validation:
   Enabled: false
   Include:
   - app/models/**/*.rb
+
+Rails/IgnoredSkipActionFilterOption:
+  Enabled: true
