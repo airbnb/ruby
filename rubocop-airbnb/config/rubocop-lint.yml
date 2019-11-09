@@ -80,6 +80,11 @@ Lint/EnsureReturn:
 Lint/ErbNewArguments:
   Enabled: false
 
+Lint/FlipFlop:
+  Description: Checks for flip flops
+  StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-flip-flops
+  Enabled: false
+
 Lint/FloatOutOfRange:
   Description: Catches floating-point literals too large or small for Ruby to represent.
   Enabled: false
