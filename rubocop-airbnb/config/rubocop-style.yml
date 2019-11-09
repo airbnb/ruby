@@ -728,6 +728,11 @@ Style/RedundantSelf:
   Enabled: true
 
 # Supports --auto-correct
+Style/RedundantSortBy:
+  Description: Use `sort` instead of `sort_by { |x| x }`.
+  Enabled: false
+
+# Supports --auto-correct
 Style/RegexpLiteral:
   Description: Use / or %r around regular expressions.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#percent-r
@@ -753,6 +758,12 @@ Style/ReturnNil:
   Enabled: false
 
 Style/SafeNavigation:
+  Enabled: false
+
+# Supports --auto-correct
+Style/Sample:
+  Description: Use `sample` instead of `shuffle.first`, `shuffle.last`, and `shuffle[Fixnum]`.
+  Reference: https://github.com/JuanitoFatas/fast-ruby#arrayshufflefirst-vs-arraysample-code
   Enabled: false
 
 # Supports --auto-correct
@@ -848,6 +859,11 @@ Style/StringMethods:
   PreferredMethods:
     intern: to_sym
 
+# Supports --auto-correct
+Style/Strip:
+  Description: Use `strip` instead of `lstrip.rstrip`.
+  Enabled: false
+
 Style/StructInheritance:
   Description: Checks for inheritance from Struct.new.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-extend-struct-new
@@ -930,6 +946,9 @@ Style/RedundantInterpolation:
 Style/RedundantPercentQ:
   Description: Checks for %q/%Q when single quotes or double quotes would do.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#percent-q
+  Enabled: false
+
+Style/RedundantSort:
   Enabled: false
 
 Style/UnpackFirst:

@@ -57,11 +57,6 @@ Performance/InefficientHashSearch:
   Enabled: false
 
 # Supports --auto-correct
-Performance/LstripRstrip:
-  Description: Use `strip` instead of `lstrip.rstrip`.
-  Enabled: false
-
-# Supports --auto-correct
 Performance/RangeInclude:
   Description: Use `Range#cover?` instead of `Range#include?`.
   Reference: https://github.com/JuanitoFatas/fast-ruby#cover-vs-include-code
@@ -85,11 +80,6 @@ Performance/RedundantMerge:
   Reference: https://github.com/JuanitoFatas/fast-ruby#hashmerge-vs-hash-code
   Enabled: false
 
-# Supports --auto-correct
-Performance/RedundantSortBy:
-  Description: Use `sort` instead of `sort_by { |x| x }`.
-  Enabled: false
-
 Performance/RegexpMatch:
   Enabled: false
 
@@ -97,12 +87,6 @@ Performance/RegexpMatch:
 Performance/ReverseEach:
   Description: Use `reverse_each` instead of `reverse.each`.
   Reference: https://github.com/JuanitoFatas/fast-ruby#enumerablereverseeach-vs-enumerablereverse_each-code
-  Enabled: false
-
-# Supports --auto-correct
-Performance/Sample:
-  Description: Use `sample` instead of `shuffle.first`, `shuffle.last`, and `shuffle[Fixnum]`.
-  Reference: https://github.com/JuanitoFatas/fast-ruby#arrayshufflefirst-vs-arraysample-code
   Enabled: false
 
 # Supports --auto-correct
@@ -131,9 +115,6 @@ Performance/TimesMap:
   Enabled: false
 
 Performance/UnfreezeString:
-  Enabled: false
-
-Performance/UnneededSort:
   Enabled: false
 
 Performance/UriDefaultParser:
