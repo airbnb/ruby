@@ -17,7 +17,7 @@ gem 'rubocop-airbnb'
 
 Note: If you want to run with Ruby 2.2 you will need to set your version to 2
 ```
-gem 'rubocop-airbnb' '~> 2'
+gem 'rubocop-airbnb', '~> 2'
 ```
 
 ## Usage
