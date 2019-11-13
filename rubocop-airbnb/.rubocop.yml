@@ -1,3 +1,6 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
 inherit_from:
   - .rubocop_airbnb.yml
   - ./config/default.yml

@@ -7,3 +7,6 @@ Gemspec/RequiredRubyVersion:
   Enabled: false
   Include:
     - '**/*.gemspec'
+
+Gemspec/RubyVersionGlobalsUsage:
+  Enabled: true
