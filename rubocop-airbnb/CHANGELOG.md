@@ -1,3 +1,6 @@
+# 3.0.1
+* Update supported ruby versions in gemspec
+
 # 3.0.0
 * Update to rubocop 0.76
 * Enable Rails/IgnoredSkipActionFilterOption
