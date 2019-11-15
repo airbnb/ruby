@@ -1,3 +1,6 @@
+# 3.02
+* Moves `require`s for `rubocop-performance` and `rubocop-rails` to library code for better transitivity.
+
 # 3.0.1
 * Update supported ruby versions in gemspec
 
