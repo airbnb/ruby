@@ -1,4 +1,4 @@
-# 3.02
+# 3.0.2
 * Moves `require`s for `rubocop-performance` and `rubocop-rails` to library code for better transitivity.
 
 # 3.0.1
