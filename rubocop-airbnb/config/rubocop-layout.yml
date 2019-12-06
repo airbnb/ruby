@@ -363,7 +363,7 @@ Layout/MultilineOperationIndentation:
 # Supports --auto-correct
 Layout/RescueEnsureAlignment:
   Description: Align rescues and ensures correctly.
-  Enabled: true
+  Enabled: false
 
 # Supports --auto-correct
 Layout/SpaceAfterColon:
