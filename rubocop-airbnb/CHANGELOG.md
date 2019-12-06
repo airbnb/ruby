@@ -1,3 +1,6 @@
+# 3.1.0
+* Disable Layout/RescueEnsureAlignment
+
 # 3.0.2
 * Moves `require`s for `rubocop-performance` and `rubocop-rails` to library code for better transitivity.
 
