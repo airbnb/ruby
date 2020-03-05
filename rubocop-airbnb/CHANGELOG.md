@@ -1,4 +1,4 @@
-# 3.0.3
+# Unreleased
 * Update to rubocop 0.80
 * Disable Style/BracesAroundHashParameters
 
