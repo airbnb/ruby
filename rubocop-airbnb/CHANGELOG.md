@@ -1,3 +1,7 @@
+# 3.0.3
+* Update to rubocop 0.80
+* Disable Style/BracesAroundHashParameters
+
 # 3.0.2
 * Moves `require`s for `rubocop-performance` and `rubocop-rails` to library code for better transitivity.
 
