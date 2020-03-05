@@ -21,7 +21,7 @@ Metrics/CyclomaticComplexity:
   Enabled: false
   Max: 6
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 100
   AllowURI: true
 
