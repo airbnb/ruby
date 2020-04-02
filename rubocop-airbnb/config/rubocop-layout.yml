@@ -268,7 +268,7 @@ Layout/IndentationConsistency:
   EnforcedStyle: normal
   SupportedStyles:
   - normal
-  - rails
+  - indented_internal_methods
 
 # Supports --auto-correct
 Layout/IndentationWidth:
