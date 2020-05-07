@@ -45,7 +45,7 @@ Lint/DuplicateMethods:
   Description: Check for duplicate methods calls.
   Enabled: true
 
-Lint/DuplicatedKey:
+Lint/DuplicateHashKey:
   Description: Check for duplicate keys in hash literals.
   Enabled: true
 
@@ -93,7 +93,7 @@ Lint/FormatParameterMismatch:
   Description: The number of parameters to format/sprint must match the fields.
   Enabled: true
 
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Description: Don't suppress exception.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#dont-hide-exceptions
   Enabled: false
@@ -144,7 +144,7 @@ Lint/MissingCopEnableDirective:
   Description: 'Checks for a `# rubocop:enable` after `# rubocop:disable`'
   Enabled: true
 
-Lint/MultipleCompare:
+Lint/MultipleComparison:
   Enabled: false
 
 Lint/NestedMethodDefinition:
@@ -230,7 +230,7 @@ Lint/ShadowingOuterLocalVariable:
   Enabled: true
 
 # Supports --auto-correct
-Lint/StringConversionInInterpolation:
+Lint/RedundantStringCoercion:
   Description: Checks for Object#to_s usage in string interpolation.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-to-s
   Enabled: true

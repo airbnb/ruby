@@ -134,16 +134,6 @@ Style/BlockDelimiters:
     - proc
     - it
 
-# Supports --auto-correct
-Style/BracesAroundHashParameters:
-  Description: Enforce braces style around hash parameters.
-  Enabled: false
-  EnforcedStyle: no_braces
-  SupportedStyles:
-  - braces
-  - no_braces
-  - context_dependent
-
 Style/CaseEquality:
   Description: Avoid explicit use of the case equality operator(===).
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-case-equality
