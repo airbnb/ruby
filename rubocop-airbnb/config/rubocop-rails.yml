@@ -212,3 +212,7 @@ Rails/IgnoredSkipActionFilterOption:
 
 Rails/ReflectionClassName:
   Enabled: true
+
+Rails/RakeEnvironment:
+  Description: Ensures that rake tasks depend on :environment
+  Enabled: false
