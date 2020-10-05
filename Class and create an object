@@ -1,0 +1,12 @@
+class Greeter
+     def initialize(name = "AI")
+     @name = name
+     end
+          def hello
+          puts "Hey #{@name}!"
+          end
+               def goodbye
+               puts "Bye #{@name}, have a good day! Come back and talk soon."
+               end
+end
+=> nil
