@@ -3,7 +3,7 @@ module RuboCop
     module Airbnb
       # Cop to tell developers to use :class => "MyClass" instead of :class => MyClass,
       # because the latter slows down reloading zeus.
-      class FactoryClassUseString < Cop
+      class FactoryClassUseString < Base
         MSG = 'Instead of :class => MyClass, use :class => "MyClass". ' \
           "This enables faster spec startup time and faster Zeus reload time.".freeze
 

@@ -3,7 +3,7 @@ module RuboCop
     module Airbnb
       # Cop to help prevent the scorge of Default Scopes from ActiveRecord.
       # Once in place they are almost impossible to remove.
-      class DefaultScope < Cop
+      class DefaultScope < Base
         MSG = 'Avoid `default_scope`.  Default scopes make it difficult to '\
               'refactor data access patterns since the scope becomes part '\
               'of every query unless explicitly excluded, even when it is '\

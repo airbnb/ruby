@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::ClassOrModuleDeclaredInWrongFile do
-  subject(:cop) { described_class.new(config) }
-
+describe RuboCop::Cop::Airbnb::ClassOrModuleDeclaredInWrongFile, :config do
   let(:config) do
     RuboCop::Config.new(
       {
@@ -25,150 +23,121 @@ describe RuboCop::Cop::Airbnb::ClassOrModuleDeclaredInWrongFile do
   end
 
   it 'rejects if class declaration is in a file with non-matching name' do
-    source = [
-      'module Foo',
-      '  module Bar',
-      '    class Baz',
-      '    end',
-      '  end',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/qux.rb", "w" do |file|
-      inspect_source(source, file)
-    end
+      expect_offense(<<~RUBY, file)
+        module Foo
+        ^^^^^^^^^^ In order for Rails autoloading to be able to find and load this file when someone references this class/module, move its definition to a file that matches its name. Module Foo should be defined in foo.rb.
+          module Bar
+          ^^^^^^^^^^ In order for Rails autoloading [...]
+            class Baz
+            ^^^^^^^^^ In order for Rails autoloading [...]
+            end
+          end
+        end
+      RUBY
 
-    expect(cop.offenses.size).to eq(3)
-    expect(cop.offenses.map(&:line).sort).to eq([1, 2, 3])
-    expect(cop.offenses.first.message).to include('Module Foo should be defined in foo.rb.')
+    end
   end
 
   it 'rejects if class declaration is in a file with matching name but wrong parent dir' do
-    source = [
-      'module Foo',
-      '  module Bar',
-      '    class Baz',
-      '    end',
-      '  end',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/baz.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_offense(<<~RUBY, file)
+        module Foo
+        ^^^^^^^^^^ In order for Rails autoloading [...]
+          module Bar
+          ^^^^^^^^^^ In order for Rails autoloading [...]
+            class Baz
+            ^^^^^^^^^ In order for Rails autoloading to be able to find and load this file when someone references this class/module, move its definition to a file that matches its name. Class Baz should be defined in foo/bar/baz.rb.
+            end
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses.size).to eq(3)
-    expect(cop.offenses.map(&:line).sort).to eq([1, 2, 3])
-    expect(cop.offenses.last.message).to include('Class Baz should be defined in foo/bar/baz.rb.')
   end
 
   it 'accepts if class declaration is in a file with matching name and right parent dir' do
-    source = [
-      'module Foo',
-      '  module Bar',
-      '    class Baz',
-      '    end',
-      '  end',
-      'end',
-    ].join("\n")
 
     FileUtils.mkdir_p "#{models_dir}/foo/bar"
     File.open "#{models_dir}/foo/bar/baz.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_no_offenses(<<~RUBY, file)
+        module Foo
+          module Bar
+            class Baz
+            end
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses).to be_empty
   end
 
   it 'rejects if class declaration is in wrong dir and parent module uses ::' do
-    source = [
-      'module Foo::Bar',
-      '  class Baz',
-      '  end',
-      'end',
-    ].join("\n")
-
     FileUtils.mkdir_p "#{models_dir}/bar"
     File.open "#{models_dir}/bar/baz.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_offense(<<~RUBY, file)
+        module Foo::Bar
+        ^^^^^^^^^^^^^^^ In order for Rails autoloading [...]
+          class Baz
+          ^^^^^^^^^ In order for Rails autoloading to be able to find and load this file when someone references this class/module, move its definition to a file that matches its name. Class Baz should be defined in foo/bar/baz.rb.
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses.map(&:line).sort).to eq([1, 2])
-    expect(cop.offenses.last.message).to include('Class Baz should be defined in foo/bar/baz.rb.')
   end
 
   it 'accepts if class declaration is in a file with matching name and parent module uses ::' do
-    source = [
-      'module Foo::Bar',
-      '  class Baz',
-      '  end',
-      'end',
-    ].join("\n")
-
     FileUtils.mkdir_p "#{models_dir}/foo/bar"
     File.open "#{models_dir}/foo/bar/baz.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_no_offenses(<<~RUBY, file)
+        module Foo::Bar
+          class Baz
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses).to be_empty
   end
 
   it 'accepts class declaration where the containing class uses an acronym' do
-    source = [
-      'module CSVFoo',
-      '  class Baz',
-      '  end',
-      'end',
-    ].join("\n")
-
     FileUtils.mkdir_p "#{models_dir}/csv_foo"
     File.open "#{models_dir}/csv_foo/baz.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_no_offenses(<<~RUBY)
+        module CSVFoo
+          class Baz
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses).to be_empty
   end
 
   it 'ignores class/module declaration in a rake task' do
-    source = [
-      'class Baz',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/foo.rake", "w" do |file|
-      inspect_source(source, file)
+      expect_no_offenses(<<~RUBY, file)
+        class Baz
+        end
+      RUBY
     end
-
-    expect(cop.offenses).to be_empty
   end
 
   it 'suggests moving error classes into the file that defines the owning scope' do
-    source = [
-      'module Foo',
-      '  class BarError < StandardError; end',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/bar.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_offense(<<~RUBY, file)
+        module Foo
+        ^^^^^^^^^^ In order for Rails autoloading [...]
+          class BarError < StandardError; end
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ In order for Rails autoloading to be able to find and load this file when someone references this class, move its definition to a file that defines the owning module. Class BarError should be defined in foo.rb.
+        end
+      RUBY
     end
-
-    expect(cop.offenses.map(&:line)).to include(2)
-    expect(cop.offenses.map(&:message)).to include(%r{Class BarError should be defined in foo\.rb.})
   end
 
   it 'recognizes error class based on the superclass name' do
-    source = [
-      'module Foo',
-      '  class Bar < StandardError; end',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/bar.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_offense(<<~RUBY, file)
+        module Foo
+        ^^^^^^^^^^ In order for Rails autoloading [...]
+          class Bar < StandardError; end
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ In order for Rails autoloading to be able to find and load this file when someone references this class, move its definition to a file that defines the owning module. Class Bar should be defined in foo.rb.
+        end
+      RUBY
     end
-
-    expect(cop.offenses.map(&:line)).to include(2)
-    expect(cop.offenses.map(&:message)).to include(%r{Class Bar should be defined in foo\.rb.})
   end
 end

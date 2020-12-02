@@ -1,33 +1,33 @@
-$LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
-require 'rubocop/airbnb/version'
+$LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
+require "rubocop/airbnb/version"
 
 Gem::Specification.new do |spec|
-  spec.name = 'rubocop-airbnb'
-  spec.summary = 'Custom code style checking for Airbnb.'
+  spec.name = "rubocop-airbnb"
+  spec.summary = "Custom code style checking for Airbnb."
   spec.description = <<-EOF
     A plugin for RuboCop code style enforcing & linting tool. It includes Rubocop configuration
     used at Airbnb and a few custom rules that have cause internal issues at Airbnb but are not
     supported by core Rubocop.
   EOF
-  spec.authors = ['Airbnb Engineering']
-  spec.email = ['rubocop@airbnb.com']
-  spec.homepage = 'https://github.com/airbnb/ruby'
-  spec.license = 'MIT'
+  spec.authors = ["Airbnb Engineering"]
+  spec.email = ["rubocop@airbnb.com"]
+  spec.homepage = "https://github.com/airbnb/ruby"
+  spec.license = "MIT"
   spec.version = RuboCop::Airbnb::VERSION
   spec.platform = Gem::Platform::RUBY
-  spec.required_ruby_version = '>= 2.3'
+  spec.required_ruby_version = ">= 2.4"
 
-  spec.require_paths = ['lib']
+  spec.require_paths = ["lib"]
   spec.files = Dir[
-    '{config,lib,spec}/**/*',
-    '*.md',
-    '*.gemspec',
-    'Gemfile',
+    "{config,lib,spec}/**/*",
+    "*.md",
+    "*.gemspec",
+    "Gemfile",
   ]
 
-  spec.add_dependency('rubocop', '~> 0.80.0')
-  spec.add_dependency('rubocop-performance', '~> 1.5.0')
-  spec.add_dependency('rubocop-rails', '~> 2.4.2')
-  spec.add_dependency('rubocop-rspec', '~> 1.38.1')
-  spec.add_development_dependency('rspec', '~> 3.5')
+  spec.add_dependency("rubocop", "< 2")
+  spec.add_dependency("rubocop-performance", "< 3")
+  spec.add_dependency("rubocop-rails", "< 3")
+  spec.add_dependency("rubocop-rspec", "< 3")
+  spec.add_development_dependency("rspec", "< 4")
 end

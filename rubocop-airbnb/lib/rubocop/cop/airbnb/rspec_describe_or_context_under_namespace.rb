@@ -20,7 +20,7 @@ module RuboCop
       #
       #   describe Foo::Bar
       #   end
-      class RspecDescribeOrContextUnderNamespace < Cop
+      class RspecDescribeOrContextUnderNamespace < Base
         DESCRIBE_OR_CONTEXT_UNDER_NAMESPACE_MSG =
           'Declaring a `module` in a spec can break autoloading because subsequent references ' \
           'to it will not cause it to be loaded from the app. This could cause flaky tests.'.freeze
