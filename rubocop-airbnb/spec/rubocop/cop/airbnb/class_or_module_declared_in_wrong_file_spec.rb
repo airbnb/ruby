@@ -35,7 +35,6 @@ describe RuboCop::Cop::Airbnb::ClassOrModuleDeclaredInWrongFile, :config do
           end
         end
       RUBY
-
     end
   end
 
@@ -56,7 +55,6 @@ describe RuboCop::Cop::Airbnb::ClassOrModuleDeclaredInWrongFile, :config do
   end
 
   it 'accepts if class declaration is in a file with matching name and right parent dir' do
-
     FileUtils.mkdir_p "#{models_dir}/foo/bar"
     File.open "#{models_dir}/foo/bar/baz.rb", "w" do |file|
       expect_no_offenses(<<~RUBY, file)

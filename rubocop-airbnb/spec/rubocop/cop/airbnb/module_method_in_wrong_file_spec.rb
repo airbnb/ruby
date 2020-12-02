@@ -50,7 +50,6 @@ describe RuboCop::Cop::Airbnb::ModuleMethodInWrongFile, :config do
   end
 
   it 'rejects with "self." static methods and a non-matching name' do
-
     File.open "#{models_dir}/bar.rb", "w" do |file|
       expect_offense(<<~RUBY, file)
         module Foo
