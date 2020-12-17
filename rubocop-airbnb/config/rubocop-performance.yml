@@ -1,3 +1,6 @@
+require:
+    - rubocop-performance
+
 Performance/Caller:
   Enabled: false
 
