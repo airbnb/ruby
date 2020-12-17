@@ -531,7 +531,7 @@ Layout/SpaceInsideStringInterpolation:
   - no_space
 
 # Supports --auto-correct
-Layout/Tab:
+Layout/IndentationStyle:
   Description: No hard tabs.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-indentation
   Enabled: true

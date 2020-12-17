@@ -1,7 +1,7 @@
 module RuboCop
   module Cop
     module Airbnb
-      class ContinuationSlash < Cop
+      class ContinuationSlash < Base
         MSG = 'Slash continuation should be reserved for closed string continuation. ' \
               'Many times it is used to get around other existing rules.'.freeze
 

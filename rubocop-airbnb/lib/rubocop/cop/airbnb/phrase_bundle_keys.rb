@@ -24,7 +24,7 @@ module RuboCop
       #       ),
       #     }
       #   end
-      class PhraseBundleKeys < Cop
+      class PhraseBundleKeys < Base
         MESSAGE =
           'Phrase bundle keys should match their translation keys.'.freeze
 

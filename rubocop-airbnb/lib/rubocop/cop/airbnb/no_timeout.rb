@@ -1,7 +1,7 @@
 module RuboCop
   module Cop
     module Airbnb
-      class NoTimeout < Cop
+      class NoTimeout < Base
         MSG =
           'Do not use Timeout.timeout. In combination with Rails autoloading, ' \
           'timeout can cause Segmentation Faults in version of Ruby we use. ' \

@@ -59,7 +59,7 @@ module RuboCop
       #       end
       #     end
       #   end
-      class ModuleMethodInWrongFile < Cop
+      class ModuleMethodInWrongFile < Base
         include Inflections
         include RailsAutoloading
 

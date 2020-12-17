@@ -22,7 +22,7 @@ module RuboCop
       #   module Foo
       #     BAZ = 42
       #   end
-      class ConstAssignedInWrongFile < Cop
+      class ConstAssignedInWrongFile < Base
         include Inflections
         include RailsAutoloading
 

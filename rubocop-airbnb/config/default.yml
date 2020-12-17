@@ -15,14 +15,15 @@ AllCops:
     - 'vendor/**/*'
     - Vagrantfile
     - Guardfile
-  RSpec:
-    Patterns:
-    - _spec.rb
-    - "(?:^|/)spec/"
-  RSpec/FactoryBot:
-    Patterns:
-    - spec/factories/**/*.rb
-    - features/support/factories/**/*.rb
+
+RSpec:
+  Include:
+  - _spec.rb
+  - "(?:^|/)spec/"
+RSpec/FactoryBot:
+  Include:
+  - spec/factories/**/*.rb
+  - features/support/factories/**/*.rb
 
 inherit_from:
   - './rubocop-airbnb.yml'

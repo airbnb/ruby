@@ -68,10 +68,6 @@ Lint/EmptyInterpolation:
 Lint/EmptyWhen:
   Enabled: false
 
-Lint/EndInMethod:
-  Description: END blocks should not be placed inside method definitions.
-  Enabled: false
-
 Lint/EnsureReturn:
   Description: Do not use return in an ensure block.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-return-ensure
@@ -289,8 +285,8 @@ Lint/UselessAssignment:
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#underscore-unused-vars
   Enabled: true
 
-Lint/UselessComparison:
-  Description: Checks for comparison of something with itself.
+Lint/BinaryOperatorWithIdenticalOperands:
+  Description: Checks for places where binary operator has identical operands
   Enabled: true
 
 Lint/UselessElseWithoutRescue:

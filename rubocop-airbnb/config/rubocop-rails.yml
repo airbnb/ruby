@@ -1,3 +1,6 @@
+require:
+  - rubocop-rails
+
 # before_action doesn't seem to exist, so this doesn't make sense.
 Rails/ActionFilter:
   Enabled: false

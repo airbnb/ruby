@@ -1,6 +1,10 @@
 # Unreleased
-* Update to rubocop 0.80
+* Update to rubocop 1.x
+* Update to rubocop-performance 2.x
+* Update to rubocop-rails 2.x
+* Update to rubocop-rspec 2.x
 * Disable Style/BracesAroundHashParameters
+* Drop support for ruby 2.3
 
 # 3.0.2
 * Moves `require`s for `rubocop-performance` and `rubocop-rails` to library code for better transitivity.

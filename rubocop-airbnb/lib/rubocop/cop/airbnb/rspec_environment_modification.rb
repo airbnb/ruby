@@ -28,7 +28,7 @@ module RuboCop
       #   before(:each) do
       #     stub_env(:production)
       #   end
-      class RspecEnvironmentModification < Cop
+      class RspecEnvironmentModification < Base
         def_node_matcher :allow_or_expect_rails_env, <<-PATTERN
           (send (send nil? {:expect :allow} (send (const nil? :Rails) :env)) :to ...)
         PATTERN

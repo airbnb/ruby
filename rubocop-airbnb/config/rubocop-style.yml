@@ -448,7 +448,7 @@ Style/MethodDefParentheses:
   - require_parentheses
   - require_no_parentheses
 
-Style/MethodMissingSuper:
+Lint/MissingSuper:
   Enabled: false
 
 Style/MissingRespondToMissing:

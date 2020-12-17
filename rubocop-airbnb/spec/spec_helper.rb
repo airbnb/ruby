@@ -13,6 +13,8 @@ spec_helper_glob = File.expand_path('{support,shared}/*.rb', SpecHelper::ROOT)
 Dir.glob(spec_helper_glob).map(&method(:require))
 
 RSpec.configure do |config|
+  config.include RuboCop::RSpec::ExpectOffense
+
   config.order = :random
 
   # Define spec metadata for all rspec cop spec files

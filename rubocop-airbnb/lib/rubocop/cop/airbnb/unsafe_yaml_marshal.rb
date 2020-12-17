@@ -2,7 +2,7 @@ module RuboCop
   module Cop
     module Airbnb
       # Disallow use of YAML/Marshal methods that can trigger RCE on untrusted input
-      class UnsafeYamlMarshal < Cop
+      class UnsafeYamlMarshal < Base
         MSG = 'Using unsafe YAML parsing methods on untrusted input can lead ' \
               'to remote code execution. Use `safe_load`, `parse`, `parse_file`, or ' \
               '`parse_stream` instead'.freeze
