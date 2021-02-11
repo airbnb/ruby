@@ -56,7 +56,7 @@ module RuboCop
       #     class Bar # nested class
       #     end
       #   end
-      class ClassOrModuleDeclaredInWrongFile < Cop
+      class ClassOrModuleDeclaredInWrongFile < Base
         include Inflections
         include RailsAutoloading
 

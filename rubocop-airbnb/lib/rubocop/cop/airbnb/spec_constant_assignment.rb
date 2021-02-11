@@ -1,4 +1,4 @@
-require 'rubocop-rspec'
+require "rubocop-rspec"
 
 module RuboCop
   module Cop
@@ -25,16 +25,15 @@ module RuboCop
       #   describe Something do
       #     before { stub_const('MyClass::PAYLOAD', [1, 2, 3])
       #   end
-      class SpecConstantAssignment < Cop
-        include RuboCop::RSpec::TopLevelDescribe
+      class SpecConstantAssignment < Base
         MESSAGE = "Defining constants inside of specs can cause spurious behavior. " \
-                  "It is almost always preferable to use `let` statements, "\
+                  "It is almost always preferable to use `let` statements, " \
                   "anonymous class/module definitions, or stub_const".freeze
 
         def on_casgn(node)
           return unless in_spec_file?(node)
           parent_module_name = node.parent_module_name
-          if node.parent_module_name && parent_module_name != 'Object'
+          if node.parent_module_name && parent_module_name != "Object"
             return
           end
           add_offense(node, message: MESSAGE)

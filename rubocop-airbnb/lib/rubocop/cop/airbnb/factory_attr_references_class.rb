@@ -4,7 +4,7 @@ module RuboCop
       # Cop to enforce "attr { CONST }" instead of "attr CONST" in factories,
       # because the latter forces autoload, which slows down spec startup time and
       # Zeus reload time after touching a model.
-      class FactoryAttrReferencesClass < Cop
+      class FactoryAttrReferencesClass < Base
         MSG = "Instead of attr_name MyClass::MY_CONST, use attr_name { MyClass::MY_CONST }. " \
           "This enables faster spec startup time and Zeus reload time.".freeze
 

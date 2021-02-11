@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::ModuleMethodInWrongFile do
-  subject(:cop) { described_class.new(config) }
-
+describe RuboCop::Cop::Airbnb::ModuleMethodInWrongFile, :config do
   let(:config) do
     RuboCop::Config.new(
       {
@@ -25,157 +23,120 @@ describe RuboCop::Cop::Airbnb::ModuleMethodInWrongFile do
   end
 
   it 'rejects if module method is in file with non-matching name' do
-    source = [
-      'module Hello',
-      '  module Foo',
-      '    def baz', # error is here if this file is named bar.rb
-      '      42',
-      '    end',
-      '  end',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/bar.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_offense(<<~RUBY, file)
+        module Hello
+          module Foo
+            def baz
+            ^^^^^^^ In order for Rails autoloading to be able to find and load this file when someone calls this method, move the method definition to a file that defines the module. This file just uses the module as a namespace for another class or module. Method baz should be defined in hello/foo.rb.
+              42
+            end
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses.size).to eq(1)
-    expect(cop.offenses.map(&:line).sort).to eq([3])
-    expect(cop.offenses.first.message).to include("Method baz should be defined in hello/foo.rb.")
   end
 
   it 'accepts if module method is in file with matching name' do
-    source = [
-      'module Foo',
-      '  def baz',
-      '    42',
-      '  end',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/foo.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_no_offenses(<<~RUBY, file)
+        module Foo
+          def baz
+            42
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses).to be_empty
   end
 
   it 'rejects with "self." static methods and a non-matching name' do
-    source = [
-      'module Foo',
-      '  def self.baz',
-      '    42',
-      '  end',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/bar.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_offense(<<~RUBY, file)
+        module Foo
+          def self.baz
+          ^^^^^^^^^^^^ In order for Rails autoloading to be able to find and load this file when someone calls this method, move the method definition to a file that defines the module. This file just uses the module as a namespace for another class or module. Method (self) should be defined in foo.rb.
+            42
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses.size).to eq(1)
-    expect(cop.offenses.map(&:line).sort).to eq([2])
   end
 
   it 'accepts with "self." static methods and a matching name' do
-    source = [
-      'module Foo',
-      '  def self.baz',
-      '    42',
-      '  end',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/foo.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_no_offenses(<<~RUBY, file)
+        module Foo
+          def self.baz
+            42
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses).to be_empty
   end
 
   it 'rejects with "<<" static methods and a non-matching name' do
-    source = [
-      'module Foo',
-      '  class << self',
-      '    def baz',
-      '      42',
-      '    end',
-      '  end',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/bar.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_offense(<<~RUBY, file)
+        module Foo
+          class << self
+            def baz
+            ^^^^^^^ In order for Rails autoloading to be able to find and load this file when someone calls this method, move the method definition to a file that defines the module. This file just uses the module as a namespace for another class or module. Method baz should be defined in foo.rb.
+              42
+            end
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses.size).to eq(1)
-    expect(cop.offenses.map(&:line).sort).to eq([3])
   end
 
   it 'accepts with "<<" static methods and a matching name' do
-    source = [
-      'module Foo',
-      '  class << self',
-      '    def baz',
-      '      42',
-      '    end',
-      '  end',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/foo.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_no_offenses(<<~RUBY, file)
+        module Foo
+          class << self
+            def baz
+              42
+            end
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses).to be_empty
   end
 
   it 'accepts methods defined in a nested class' do
-    source = [
-      'module Foo',
-      '  class Bar',
-      '    def qux',
-      '    end',
-      '  end',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/foo.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_no_offenses(<<~RUBY, file)
+        module Foo
+          class Bar
+            def qux
+            end
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses).to be_empty
   end
 
   it 'accepts methods where the containing class uses an acronym' do
-    source = [
-      'module CSVFoo',
-      '  def baz',
-      '    42',
-      '  end',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/csv_foo.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_no_offenses(<<~RUBY, file)
+        module CSVFoo
+          def baz
+            42
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses).to be_empty
   end
 
   it 'ignores rake tasks' do
-    source = [
-      'module Hello',
-      '  def baz', # error is here if this file is named bar.rb
-      '    42',
-      '  end',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/bar.rake", "w" do |file|
-      inspect_source(source, file)
+      expect_no_offenses(<<~RUBY, file)
+        module Hello
+          def baz
+            42
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses).to be_empty
   end
 end
