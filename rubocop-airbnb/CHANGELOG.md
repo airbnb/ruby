@@ -1,5 +1,8 @@
-# Unreleased
-* Update to rubocop 0.80
+# 4.0.0
+* Add support for Ruby 3.0
+* Run CI against Ruby 2.7
+* Drop support for Ruby 2.3
+* Update rubocop to 0.93.1
 * Disable Style/BracesAroundHashParameters
 
 # 3.0.2
