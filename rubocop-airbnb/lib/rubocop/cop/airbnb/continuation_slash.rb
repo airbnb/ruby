@@ -14,7 +14,7 @@ module RuboCop
         alias on_send enforce_violation
         alias on_if enforce_violation
 
-        RuboCop::AST::Node::ASSIGNMENTS.each do |type|
+        ::RuboCop::AST::Node::ASSIGNMENTS.each do |type|
           define_method("on_#{type}") do |node|
             enforce_violation(node)
           end

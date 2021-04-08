@@ -347,8 +347,9 @@ Style/FrozenStringLiteralComment:
   Enabled: false
   SupportedStyles:
   - always
+  - always_true
   - never
-  EnforcedStyle: always
+  EnforcedStyle: always_true
 
 Style/GlobalVars:
   Description: Do not introduce global variables.
@@ -447,9 +448,6 @@ Style/MethodDefParentheses:
   SupportedStyles:
   - require_parentheses
   - require_no_parentheses
-
-Style/MethodMissingSuper:
-  Enabled: false
 
 Style/MissingRespondToMissing:
   Enabled: false
@@ -821,7 +819,7 @@ Style/HashEachMethods:
 
 Style/HashTransformKeys:
   Description: Enforce use of transform_keys Hash methods. Not suggested for use below ruby 2.5
-  StyleGuide: https://docs.rubocop.org/en/latest/cops_style/#stylehashtransformkeys 
+  StyleGuide: https://docs.rubocop.org/en/latest/cops_style/#stylehashtransformkeys
   Enabled: false
 
 Style/HashTransformValues:
