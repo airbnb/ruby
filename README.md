@@ -292,7 +292,7 @@ Airbnb also maintains a [JavaScript Style Guide][airbnb-javascript].
 ## Line Length
 
 * Keep each line of code to a readable length. Unless
-  you have a reason to, keep lines to fewer than 100 characters.
+  you have a reason not to, keep lines to fewer than 100 characters.
   ([rationale](./rationales.md#line-length))<sup>
   [[link](#line-length)]</sup>
 
