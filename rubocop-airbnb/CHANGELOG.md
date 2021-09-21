@@ -1,6 +1,13 @@
-# Unreleased
-* Update to rubocop 0.80
+# 4.0.0
+* Add support for Ruby 3.0
+* Run CI against Ruby 2.7
+* Drop support for Ruby 2.3
+* Update rubocop to 0.93.1
+* Update rubocop-performance to 1.10.2
+* Update rubocop-rails to 2.9.1
+* Update rubocop-rspec to 1.44.1
 * Disable Style/BracesAroundHashParameters
+* Set `DisabledByDefault: true` to disable any new rubocop cops that have not yet been evaluated for this style guide
 
 # 3.0.2
 * Moves `require`s for `rubocop-performance` and `rubocop-rails` to library code for better transitivity.
