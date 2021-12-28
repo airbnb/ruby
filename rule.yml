@@ -1,0 +1,24 @@
+rules:
+  - fix-regex:
+      regex: (autoescape.*?)False
+      replacement: \1True
+    id: context-autoescape-off
+    languages:
+      - python
+    message: |
+      Detected a Context with autoescape diabled. If you are
+      rendering any web pages, this exposes your application to cross-site
+      scripting (XSS) vulnerabilities. Remove 'autoescape: False' or set it
+      to 'True'.
+    metadata:
+      cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation
+        ('Cross-site Scripting')"
+      owasp: "A7: Cross-site Scripting (XSS)"
+      references:
+        - https://docs.djangoproject.com/en/3.1/ref/settings/#templates
+        - https://docs.djangoproject.com/en/3.1/topics/templates/#django.template.backends.django.DjangoTemplates
+    patterns:
+      - pattern-either:
+          - pattern: '{..., "autoescape": False, ...}'
+          - pattern: $D["autoescape"] = False
+    severity: WARNING
