@@ -11,13 +11,13 @@ Layout/AccessModifierIndentation:
   - indent
 
 # Supports --auto-correct
-Layout/AlignArray:
+Layout/ArrayAlignment:
   Description: Align the elements of an array literal if they span more than one line.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#align-multiline-arrays
   Enabled: true
 
 # Supports --auto-correct
-Layout/AlignHash:
+Layout/HashAlignment:
   Description: Align the elements of a hash literal if they span more than one line.
   Enabled: true
   EnforcedHashRocketStyle: key
@@ -30,7 +30,7 @@ Layout/AlignHash:
   - ignore_explicit
 
 # Supports --auto-correct
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   Description: Align the parameters of a method call if they span more than one line.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-double-indent
   Enabled: true
@@ -227,7 +227,7 @@ Layout/FirstMethodParameterLineBreak:
   Enabled: false
 
 # Supports --auto-correct
-Layout/IndentFirstArgument:
+Layout/FirstArgumentIndentation:
   Description: Checks the indentation of the first parameter in a method call.
   Enabled: true
   EnforcedStyle: consistent
@@ -238,20 +238,19 @@ Layout/IndentFirstArgument:
   - special_for_inner_method_call_in_parentheses
 
 # Supports --auto-correct
-Layout/IndentFirstArrayElement:
+Layout/FirstArrayElementIndentation:
   Description: Checks the indentation of the first element in an array literal.
   Enabled: true
   EnforcedStyle: consistent
 
 # Supports --auto-correct
-Layout/IndentAssignment:
+Layout/AssignmentIndentation:
   Description: Checks the indentation of the first line of the right-hand-side of a
     multi-line assignment.
   Enabled: true
-  IndentationWidth:
 
 # Supports --auto-correct
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   Description: Checks the indentation of the first key in a hash literal.
   Enabled: true
   EnforcedStyle: consistent
@@ -259,7 +258,7 @@ Layout/IndentFirstHashElement:
   - special_inside_parentheses
   - consistent
 
-Layout/IndentHeredoc:
+Layout/HeredocIndentation:
   Enabled: false
 
 # Supports --auto-correct
@@ -269,7 +268,7 @@ Layout/IndentationConsistency:
   EnforcedStyle: normal
   SupportedStyles:
   - normal
-  - rails
+  - indented_internal_methods
 
 # Supports --auto-correct
 Layout/IndentationWidth:
@@ -283,7 +282,7 @@ Layout/InitialIndentation:
   Description: Checks the indentation of the first non-blank non-comment line in a file.
   Enabled: true
 
-Layout/LeadingBlankLines:
+Layout/LeadingEmptyLines:
   Enabled: true
 
 # Supports --auto-correct
@@ -344,7 +343,6 @@ Layout/MultilineMethodCallIndentation:
   SupportedStyles:
   - aligned
   - indented
-  IndentationWidth:
 
 Layout/MultilineMethodDefinitionBraceLayout:
   Description: >-
@@ -533,13 +531,13 @@ Layout/SpaceInsideStringInterpolation:
   - no_space
 
 # Supports --auto-correct
-Layout/Tab:
+Layout/IndentationStyle:
   Description: No hard tabs.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#spaces-indentation
   Enabled: true
 
 # Supports --auto-correct
-Layout/TrailingBlankLines:
+Layout/TrailingEmptyLines:
   Description: Checks trailing blank lines and final newline.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#newline-eof
   Enabled: true
@@ -553,3 +551,11 @@ Layout/TrailingWhitespace:
   Description: Avoid trailing whitespace.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-trailing-whitespace
   Enabled: true
+
+Layout/FirstParameterIndentation:
+  Enabled: true
+
+# Supports --auto-correct
+Layout/LineLength:
+  Max: 100
+  AllowURI: true

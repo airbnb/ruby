@@ -45,7 +45,7 @@ Lint/DuplicateMethods:
   Description: Check for duplicate methods calls.
   Enabled: true
 
-Lint/DuplicatedKey:
+Lint/DuplicateHashKey:
   Description: Check for duplicate keys in hash literals.
   Enabled: true
 
@@ -68,10 +68,6 @@ Lint/EmptyInterpolation:
 Lint/EmptyWhen:
   Enabled: false
 
-Lint/EndInMethod:
-  Description: END blocks should not be placed inside method definitions.
-  Enabled: false
-
 Lint/EnsureReturn:
   Description: Do not use return in an ensure block.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-return-ensure
@@ -80,20 +76,20 @@ Lint/EnsureReturn:
 Lint/ErbNewArguments:
   Enabled: false
 
-Lint/FloatOutOfRange:
-  Description: Catches floating-point literals too large or small for Ruby to represent.
-  Enabled: false
-
 Lint/FlipFlop:
   Description: Checks for flip flops
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-flip-flops
+  Enabled: false
+
+Lint/FloatOutOfRange:
+  Description: Catches floating-point literals too large or small for Ruby to represent.
   Enabled: false
 
 Lint/FormatParameterMismatch:
   Description: The number of parameters to format/sprint must match the fields.
   Enabled: true
 
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Description: Don't suppress exception.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#dont-hide-exceptions
   Enabled: false
@@ -144,7 +140,10 @@ Lint/MissingCopEnableDirective:
   Description: 'Checks for a `# rubocop:enable` after `# rubocop:disable`'
   Enabled: true
 
-Lint/MultipleCompare:
+Lint/MissingSuper:
+  Enabled: false
+
+Lint/MultipleComparison:
   Enabled: false
 
 Lint/NestedMethodDefinition:
@@ -230,7 +229,7 @@ Lint/ShadowingOuterLocalVariable:
   Enabled: true
 
 # Supports --auto-correct
-Lint/StringConversionInInterpolation:
+Lint/RedundantStringCoercion:
   Description: Checks for Object#to_s usage in string interpolation.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-to-s
   Enabled: true
@@ -242,20 +241,20 @@ Lint/UnderscorePrefixedVariableName:
 Lint/UnifiedInteger:
   Enabled: false
 
-Lint/UnneededCopDisableDirective:
+Lint/RedundantCopDisableDirective:
   Description: >-
     Checks for rubocop:disable comments that can be removed.
     Note: this cop is not disabled when disabling all cops. It must be explicitly disabled.
   Enabled: true
 
-Lint/UnneededCopEnableDirective:
+Lint/RedundantCopEnableDirective:
   Description: Checks for rubocop:enable comments that can be removed.
   Enabled: true
 
-Lint/UnneededRequireStatement:
+Lint/RedundantRequireStatement:
   Enabled: false
 
-Lint/UnneededSplatExpansion:
+Lint/RedundantSplatExpansion:
   Enabled: false
 
 Lint/UnreachableCode:
@@ -289,7 +288,7 @@ Lint/UselessAssignment:
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#underscore-unused-vars
   Enabled: true
 
-Lint/UselessComparison:
+Lint/BinaryOperatorWithIdenticalOperands:
   Description: Checks for comparison of something with itself.
   Enabled: true
 

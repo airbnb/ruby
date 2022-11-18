@@ -15,14 +15,23 @@ AllCops:
     - 'vendor/**/*'
     - Vagrantfile
     - Guardfile
-  RSpec:
-    Patterns:
-    - _spec.rb
-    - "(?:^|/)spec/"
-  RSpec/FactoryBot:
-    Patterns:
-    - spec/factories/**/*.rb
-    - features/support/factories/**/*.rb
+  # RSpec:
+  #   Patterns:
+  #   - _spec.rb
+  #   - "(?:^|/)spec/"
+  # RSpec/FactoryBot:
+  #   Patterns:
+  #   - spec/factories/**/*.rb
+  #   - features/support/factories/**/*.rb
+
+  # While Rubocop has released a bunch of new cops, not all of these cops have been evaluated as
+  # part of this styleguide. To prevent new, unevaluated cops from imposing on this styleguide, we
+  # are marking these new cops as disabled. Note that as a consumer of this styleguide, you can
+  # always override any choices here by setting `Enabled: true` on any cops that you would like to
+  # have be enabled, even if we have explicitly disabled them (or if they are new and we have yet
+  # to evaluate them). For more on this configuration parameter, see
+  # https://github.com/rubocop/rubocop/blob/1e55b1aa5e4c5eaeccad5d61f08b7930ed6bc341/config/default.yml#L89-L101
+  DisabledByDefault: true
 
 inherit_from:
   - './rubocop-airbnb.yml'

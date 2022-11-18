@@ -56,7 +56,6 @@ RSpec/DescribedClass:
 RSpec/EmptyExampleGroup:
   Description: Checks if an example group does not include any tests.
   Enabled: true
-  CustomIncludeMethods: []
 
 RSpec/EmptyLineAfterExampleGroup:
   Description: Checks if there is an empty line after example group blocks.
@@ -155,9 +154,9 @@ RSpec/InstanceVariable:
   Description: 'Checks for the usage of instance variables.'
   Enabled: false
 
-RSpec/InvalidPredicateMatcher:
-  Description: Checks invalid usage for predicate matcher.
-  Enabled: false
+# RSpec/InvalidPredicateMatcher:
+#   Description: Checks invalid usage for predicate matcher.
+#   Enabled: false
 
 RSpec/ItBehavesLike:
   Description: Checks that only one `it_behaves_like` style is used.
@@ -314,18 +313,18 @@ RSpec/VoidExpect:
   Description: This cop checks void `expect()`.
   Enabled: false
 
-Capybara/CurrentPathExpectation:
+RSpec/Capybara/CurrentPathExpectation:
   Description: Checks that no expectations are set on Capybara's `current_path`.
   Enabled: false
 
-Capybara/FeatureMethods:
+RSpec/Capybara/FeatureMethods:
   Description: Checks for consistent method usage in feature specs.
   Enabled: false
 
-FactoryBot/AttributeDefinedStatically:
+RSpec/FactoryBot/AttributeDefinedStatically:
   Description: Always declare attribute values as blocks.
   Enabled: false
 
-FactoryBot/CreateList:
+RSpec/FactoryBot/CreateList:
   Description: Checks for create_list usage.
   Enabled: true

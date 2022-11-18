@@ -15,6 +15,11 @@ Just put this in your `Gemfile` it depends on the appropriate version of rubocop
 gem 'rubocop-airbnb'
 ```
 
+Note: If you want to run with Ruby 2.2 you will need to set your version to 2
+```
+gem 'rubocop-airbnb', '~> 2'
+```
+
 ## Usage
 
 You need to tell RuboCop to load the Airbnb extension. There are three

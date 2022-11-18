@@ -55,18 +55,18 @@ Naming/PredicateName:
   - is_
   - has_
   - have_
-  NamePrefixBlacklist:
+  ForbiddenPrefixes:
   - is_
   - has_
   - have_
 
-Naming/UncommunicativeBlockParamName:
+Naming/BlockParameterName:
   Description: >-
               Checks for block parameter names that contain capital letters,
               end in numbers, or do not meet a minimal length.
   Enabled: false
 
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   Description: >-
               Checks for method parameter names that contain capital letters,
               end in numbers, or do not meet a minimal length.
@@ -82,4 +82,7 @@ Naming/VariableName:
     - camelCase
 
 Naming/VariableNumber:
+  Enabled: false
+
+Naming/RescuedExceptionsVariableName:
   Enabled: false

@@ -116,7 +116,7 @@ Style/BlockDelimiters:
     - let!
     - subject
     - watch
-  IgnoredMethods:
+  AllowedMethods:
     # Methods that can be either procedural or functional and cannot be
     # categorised from their usage alone, e.g.
     #
@@ -133,16 +133,6 @@ Style/BlockDelimiters:
     - lambda
     - proc
     - it
-
-# Supports --auto-correct
-Style/BracesAroundHashParameters:
-  Description: Enforce braces style around hash parameters.
-  Enabled: false
-  EnforcedStyle: no_braces
-  SupportedStyles:
-  - braces
-  - no_braces
-  - context_dependent
 
 Style/CaseEquality:
   Description: Avoid explicit use of the case equality operator(===).
@@ -355,10 +345,11 @@ Style/FrozenStringLiteralComment:
   Description: Add the frozen_string_literal comment to the top of files to help transition
     from Ruby 2.3.0 to Ruby 3.0.
   Enabled: false
-  EnforcedStyle: always
   SupportedStyles:
-  - when_needed
   - always
+  - always_true
+  - never
+  EnforcedStyle: always_true
 
 Style/GlobalVars:
   Description: Do not introduce global variables.
@@ -457,9 +448,6 @@ Style/MethodDefParentheses:
   SupportedStyles:
   - require_parentheses
   - require_no_parentheses
-
-Style/MethodMissingSuper:
-  Enabled: false
 
 Style/MissingRespondToMissing:
   Enabled: false
@@ -824,6 +812,21 @@ Style/SpecialGlobalVars:
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#no-cryptic-perlisms
   Enabled: true
 
+Style/HashEachMethods:
+  Description: Enforce use of each_key and each_value Hash methods.
+  StyleGuide: https://docs.rubocop.org/en/latest/cops_style/#stylehasheachmethods
+  Enabled: false
+
+Style/HashTransformKeys:
+  Description: Enforce use of transform_keys Hash methods. Not suggested for use below ruby 2.5
+  StyleGuide: https://docs.rubocop.org/en/latest/cops_style/#stylehashtransformkeys
+  Enabled: false
+
+Style/HashTransformValues:
+  Description: Enforce use of transform_values Hash methods. Not suggested for use below ruby 2.5
+  StyleGuide: https://docs.rubocop.org/en/latest/cops_style/#stylehashtransformvalues
+  Enabled: false
+
 Style/StabbyLambdaParentheses:
   Description: Check for the usage of parentheses around stabby lambda arguments.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#stabby-lambda-with-args
@@ -861,6 +864,11 @@ Style/StringMethods:
   Enabled: false
   PreferredMethods:
     intern: to_sym
+
+# Supports --auto-correct
+Style/Strip:
+  Description: Use `strip` instead of `lstrip.rstrip`.
+  Enabled: false
 
 Style/StructInheritance:
   Description: Checks for inheritance from Struct.new.
@@ -928,25 +936,25 @@ Style/UnlessElse:
   Enabled: true
 
 # Supports --auto-correct
-Style/UnneededCapitalW:
+Style/RedundantCapitalW:
   Description: Checks for %W when interpolation is not needed.
   Enabled: false
 
-Style/UnneededCondition:
+Style/RedundantCondition:
   Enabled: false
 
 # Supports --auto-correct
-Style/UnneededInterpolation:
+Style/RedundantInterpolation:
   Description: Checks for strings that are just an interpolated expression.
   Enabled: false
 
 # Supports --auto-correct
-Style/UnneededPercentQ:
+Style/RedundantPercentQ:
   Description: Checks for %q/%Q when single quotes or double quotes would do.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#percent-q
   Enabled: false
 
-Style/UnneededSort:
+Style/RedundantSort:
   Enabled: false
 
 Style/UnpackFirst:
@@ -990,4 +998,3 @@ Style/YodaCondition:
 Style/ZeroLengthPredicate:
   Description: 'Use #empty? when testing for objects of length 0.'
   Enabled: false
-

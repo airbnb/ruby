@@ -68,6 +68,9 @@ Rails/Exit:
                   exits during unit testing or running in production.
   Enabled: false
 
+Rails/FilePath:
+  Enabled: false
+
 # Supports --auto-correct
 Rails/FindBy:
   Description: Prefer find_by over where.first.
@@ -167,6 +170,9 @@ Rails/RequestReferer:
 Rails/ReversibleMigration:
   Enabled: false
 
+Rails/SafeNavigation:
+  Enabled: false
+
 Rails/SaveBang:
   Enabled: false
 
@@ -200,3 +206,13 @@ Rails/Validation:
   Enabled: false
   Include:
   - app/models/**/*.rb
+
+Rails/IgnoredSkipActionFilterOption:
+  Enabled: true
+
+Rails/ReflectionClassName:
+  Enabled: true
+
+Rails/RakeEnvironment:
+  Description: Ensures that rake tasks depend on :environment
+  Enabled: false

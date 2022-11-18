@@ -56,11 +56,6 @@ Performance/FlatMap:
 Performance/InefficientHashSearch:
   Enabled: false
 
-# # Supports --auto-correct
-# Performance/LstripRstrip:
-#   Description: Use `strip` instead of `lstrip.rstrip`.
-#   Enabled: false
-
 # Supports --auto-correct
 Performance/RangeInclude:
   Description: Use `Range#cover?` instead of `Range#include?`.

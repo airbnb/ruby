@@ -26,7 +26,7 @@ module RuboCop
       #     before { stub_const('MyClass::PAYLOAD', [1, 2, 3])
       #   end
       class SpecConstantAssignment < Cop
-        include RuboCop::RSpec::TopLevelDescribe
+        # include RuboCop::RSpec::TopLevelDescribe
         MESSAGE = "Defining constants inside of specs can cause spurious behavior. " \
                   "It is almost always preferable to use `let` statements, "\
                   "anonymous class/module definitions, or stub_const".freeze
