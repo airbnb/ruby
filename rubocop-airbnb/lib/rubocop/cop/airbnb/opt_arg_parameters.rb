@@ -3,7 +3,7 @@ module RuboCop
     module Airbnb
       # Cop to enforce use of options hash over default arguments
       # https://github.com/airbnb/ruby#no-default-args
-      class OptArgParameters < Cop
+      class OptArgParameters < Base
         MSG =
           'Do not use default positional arguments. '\
           'Use keyword arguments or an options hash instead.'.freeze
