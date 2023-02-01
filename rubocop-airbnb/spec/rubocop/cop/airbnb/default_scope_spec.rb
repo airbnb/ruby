@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::DefaultScope do
-  subject(:cop) { described_class.new }
-
+describe RuboCop::Cop::Airbnb::DefaultScope, :config do
   it 'rejects with default_scopes' do
     source = [
       '# encoding: UTF-8',

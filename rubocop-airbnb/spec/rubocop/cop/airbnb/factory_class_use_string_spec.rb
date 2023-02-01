@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::FactoryClassUseString do
-  subject(:cop) { described_class.new }
-
+describe RuboCop::Cop::Airbnb::FactoryClassUseString, :config do
   it 'rejects with :class => Model' do
     source = [
       'factory :help_answer, :class => Help::Answer do',

@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::NoTimeout do
-  subject(:cop) { described_class.new }
-
+describe RuboCop::Cop::Airbnb::NoTimeout, :config do
   context 'send' do
     it 'rejects Timeout.timeout' do
       source = [

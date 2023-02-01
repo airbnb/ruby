@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::ConstAssignedInWrongFile do
-  subject(:cop) { described_class.new(config) }
-
+describe RuboCop::Cop::Airbnb::ConstAssignedInWrongFile, :config do
   let(:config) do
     RuboCop::Config.new(
       {

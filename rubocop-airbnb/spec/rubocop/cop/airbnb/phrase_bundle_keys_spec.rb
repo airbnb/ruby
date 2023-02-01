@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::PhraseBundleKeys do
-  subject(:cop) { described_class.new }
-
+describe RuboCop::Cop::Airbnb::PhraseBundleKeys, :config do
   it 'generates offenses for mismatched keys in PhraseBundle classes' do
     source = <<EOS
 # encoding: UTF-8

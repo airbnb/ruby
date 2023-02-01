@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::RspecDescribeOrContextUnderNamespace do
-  subject(:cop) { described_class.new }
-
+describe RuboCop::Cop::Airbnb::RspecDescribeOrContextUnderNamespace, :config do
   let(:tmpdir) { Dir.mktmpdir }
   let(:models_spec_dir) do
     FileUtils.mkdir_p("#{tmpdir}/spec/models").first

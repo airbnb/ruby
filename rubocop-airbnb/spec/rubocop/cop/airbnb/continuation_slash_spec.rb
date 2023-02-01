@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::ContinuationSlash do
-  subject(:cop) { described_class.new }
-
+describe RuboCop::Cop::Airbnb::ContinuationSlash, :config do
   it 'rejects continuations used to continue a method call with trailing dot' do
     source = [
       'User. \\',

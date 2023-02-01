@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::FactoryAttrReferencesClass do
-  subject(:cop) { described_class.new }
-
+describe RuboCop::Cop::Airbnb::FactoryAttrReferencesClass, :config do
   it 'rejects with `attr_name CONST_NAME` in a factory' do
     source = [
       'factory :reservation2 do',

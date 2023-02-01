@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::RspecEnvironmentModification do
-  subject(:cop) { described_class.new }
-
+describe RuboCop::Cop::Airbnb::RspecEnvironmentModification, :config do
   before(:each) do
     allow(cop).to receive(:is_spec_file?).and_return(true)
   end

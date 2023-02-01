@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::OptArgParameters do
-  subject(:cop) { described_class.new }
-
+describe RuboCop::Cop::Airbnb::OptArgParameters, :config do
   it 'allows method with no parameters' do
     source = [
       'def my_method',

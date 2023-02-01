@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::SimpleUnless do
-  subject(:cop) { described_class.new }
-
+describe RuboCop::Cop::Airbnb::SimpleUnless, :config do
   it 'rejects unless with multiple conditionals' do
     source = [
       'unless boolean_condition || another_method',

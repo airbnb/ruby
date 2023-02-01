@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::SpecConstantAssignment do
-  subject(:cop) { described_class.new }
-
+describe RuboCop::Cop::Airbnb::SpecConstantAssignment, :config do
   it 'rejects constant definition inside of a describe block' do
     source = [
       'describe Someclass do',

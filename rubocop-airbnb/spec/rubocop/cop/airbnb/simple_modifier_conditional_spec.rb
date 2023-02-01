@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::SimpleModifierConditional do
-  subject(:cop) { described_class.new }
-
+describe RuboCop::Cop::Airbnb::SimpleModifierConditional, :config do
   context 'multiple conditionals' do
     it 'rejects with modifier if with multiple conditionals' do
       source = [

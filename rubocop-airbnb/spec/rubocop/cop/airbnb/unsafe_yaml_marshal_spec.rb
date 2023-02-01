@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::UnsafeYamlMarshal do
-  subject(:cop) { described_class.new }
-
+describe RuboCop::Cop::Airbnb::UnsafeYamlMarshal, :config do
   context 'send' do
     it 'rejects YAML.load' do
       source = [

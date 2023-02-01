@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::MassAssignmentAccessibleModifier do
-  subject(:cop) { described_class.new }
-
+describe RuboCop::Cop::Airbnb::MassAssignmentAccessibleModifier, :config do
   it 'rejects when accessible= is called' do
     source = [
       'def some_method',

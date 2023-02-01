@@ -1,6 +1,4 @@
-describe RuboCop::Cop::Airbnb::RiskyActiverecordInvocation do
-  subject(:cop) { described_class.new }
-
+describe RuboCop::Cop::Airbnb::RiskyActiverecordInvocation, :config do
   it "allows where statement that's a hash" do
     source = [
       'Users.where({:name => "Bob"})',
