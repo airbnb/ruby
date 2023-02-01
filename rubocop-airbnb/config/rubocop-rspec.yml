@@ -56,7 +56,6 @@ RSpec/DescribedClass:
 RSpec/EmptyExampleGroup:
   Description: Checks if an example group does not include any tests.
   Enabled: true
-  CustomIncludeMethods: []
 
 RSpec/EmptyLineAfterExampleGroup:
   Description: Checks if there is an empty line after example group blocks.
@@ -153,10 +152,6 @@ RSpec/InstanceSpy:
 
 RSpec/InstanceVariable:
   Description: 'Checks for the usage of instance variables.'
-  Enabled: false
-
-RSpec/InvalidPredicateMatcher:
-  Description: Checks invalid usage for predicate matcher.
   Enabled: false
 
 RSpec/ItBehavesLike:
