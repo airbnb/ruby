@@ -16,7 +16,7 @@ describe RuboCop::Cop::Airbnb::SpecConstantAssignment, :config do
     RUBY
   end
 
-  it 'allows constant defined in global space' do
+  it 'rejects constant defined in global space' do
     expect_offense(<<~RUBY)
       CONSTANT = 5
       ^^^^^^^^^^^^ Defining constants inside of specs can cause spurious behavior. [...]
