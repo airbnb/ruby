@@ -1,48 +1,38 @@
 describe RuboCop::Cop::Airbnb::UnsafeYamlMarshal, :config do
   context 'send' do
     it 'rejects YAML.load' do
-      source = [
-        'def some_method(a)',
-        '  YAML.load(a)',
-        'end',
-      ].join("\n")
-      inspect_source(source)
-      expect(cop.offenses.size).to eql(1)
-      expect(cop.offenses.first.message).to match(/`safe_load`, `parse`, `parse_file`/)
+      expect_offense(<<~RUBY)
+        def some_method(a)
+          YAML.load(a)
+          ^^^^^^^^^^^^ Using `YAML.load` on untrusted input [...]
+        end
+      RUBY
     end
 
     it 'rejects Psych.load' do
-      source = [
-        'def some_method(a)',
-        '  Psych.load(a)',
-        'end',
-      ].join("\n")
-      inspect_source(source)
-      expect(cop.offenses.size).to eql(1)
-      expect(cop.offenses.first.message).to match(/`safe_load`, `parse`, `parse_file`/)
+      expect_offense(<<~RUBY)
+        def some_method(a)
+          Psych.load(a)
+          ^^^^^^^^^^^^^ Using `Psych.load` on untrusted input [...]
+        end
+      RUBY
     end
 
     it 'accepts YAML.safe_load' do
-      source = [
-        'def some_method(a)',
-        '  YAML.safe_load(a)',
-        'end',
-      ].join("\n")
-      inspect_source(source)
-      expect(cop.offenses.size).to eql(0)
+      expect_no_offenses(<<~RUBY)
+        def some_method(a)
+          YAML.safe_load(a)
+        end
+      RUBY
     end
 
     it 'rejects on Marshal.load' do
-      source = [
-        'def some_method(a)',
-        '  Marshal.load(a)',
-        'end',
-      ].join("\n")
-      inspect_source(source)
-      expect(cop.offenses.size).to eql(1)
-      expect(cop.offenses.first.message).to match(
-        /`Marshal.load` on untrusted input can lead to remote code execution/
-      )
+      expect_offense(<<~RUBY)
+        def some_method(a)
+          Marshal.load(a)
+          ^^^^^^^^^^^^^^^ Using `Marshal.load` on untrusted input can lead to remote code execution. [...]
+        end
+      RUBY
     end
   end
 end

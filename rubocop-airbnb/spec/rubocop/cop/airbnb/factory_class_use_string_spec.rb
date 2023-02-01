@@ -1,24 +1,18 @@
 describe RuboCop::Cop::Airbnb::FactoryClassUseString, :config do
   it 'rejects with :class => Model' do
-    source = [
-      'factory :help_answer, :class => Help::Answer do',
-      '  text { Faker::Company.name }',
-      'end',
-    ].join("\n")
-    inspect_source(source)
-
-    expect(cop.offenses.size).to eq(1)
-    expect(cop.offenses.map(&:line)).to eq([1])
+    expect_offense(<<~RUBY)
+      factory :help_answer, :class => Help::Answer do
+                            ^^^^^^^^^^^^^^^^^^^^^^ Instead of :class => MyClass, use :class => "MyClass". [...]
+        text { Faker::Company.name }
+      end
+    RUBY
   end
 
   it 'passes with :class => "Model"' do
-    source = [
-      'factory :help_answer, :class => "Help::Answer" do',
-      '  text { Faker::Company.name }',
-      'end',
-    ].join("\n")
-    inspect_source(source)
-
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<~RUBY)
+      factory :help_answer, :class => "Help::Answer" do
+        text { Faker::Company.name }
+      end
+    RUBY
   end
 end

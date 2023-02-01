@@ -1,28 +1,24 @@
 describe RuboCop::Cop::Airbnb::NoTimeout, :config do
   context 'send' do
     it 'rejects Timeout.timeout' do
-      source = [
-        'def some_method(a)',
-        '  Timeout.timeout(5) do',
-        '    some_other_method(a)',
-        '  end',
-        'end',
-      ].join("\n")
-      inspect_source(source)
-      expect(cop.offenses.size).to eql(1)
-      expect(cop.offenses.first.message).to start_with('Do not use Timeout.timeout')
+      expect_offense(<<~RUBY)
+        def some_method(a)
+          Timeout.timeout(5) do
+          ^^^^^^^^^^^^^^^^^^ Do not use Timeout.timeout. [...]
+            some_other_method(a)
+          end
+        end
+      RUBY
     end
 
     it 'accepts foo.timeout' do
-      source = [
-        'def some_method(a)',
-        '  foo.timeout do',
-        '    some_other_method(a)',
-        '  end',
-        'end',
-      ].join("\n")
-      inspect_source(source)
-      expect(cop.offenses).to be_empty
+      expect_no_offenses(<<~RUBY)
+        def some_method(a)
+          foo.timeout do
+            some_other_method(a)
+          end
+        end
+      RUBY
     end
   end
 end

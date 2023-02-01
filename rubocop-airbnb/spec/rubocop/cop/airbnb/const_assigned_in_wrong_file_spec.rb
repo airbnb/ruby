@@ -23,154 +23,113 @@ describe RuboCop::Cop::Airbnb::ConstAssignedInWrongFile, :config do
   end
 
   it 'rejects if const assignment is in a file with non-matching name' do
-    source = [
-      'module Foo',
-      '  module Bar',
-      '    BAZ = 42',
-      '  end',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/qux.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_offense(<<~RUBY, file)
+        module Foo
+          module Bar
+            BAZ = 42
+            ^^^^^^^^ In order for Rails autoloading to be able to find and load this file when someone references this const, move the const assignment to a file that defines the owning module. Const BAZ should be defined in foo/bar.rb.
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses.map(&:line)).to include(3)
-    expect(cop.offenses.map(&:message)).to include(%r{Const BAZ should be defined in foo/bar\.rb.})
   end
 
   it 'rejects if const assignment is in a file with matching name but wrong parent dir' do
-    source = [
-      'module Foo',
-      '  module Bar',
-      '    BAZ = 42',
-      '  end',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/bar.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_offense(<<~RUBY, file)
+        module Foo
+          module Bar
+            BAZ = 42
+            ^^^^^^^^ In order for Rails autoloading to be able to find and load this file when someone references this const, move the const assignment to a file that defines the owning module. Const BAZ should be defined in foo/bar.rb.
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses.map(&:line)).to include(3)
-    expect(cop.offenses.map(&:message)).to include(%r{Const BAZ should be defined in foo/bar\.rb.})
   end
 
   it 'accepts if const assignment is in a file with matching name and right parent dir' do
-    source = [
-      'module Foo',
-      '  module Bar',
-      '    BAZ = 42',
-      '  end',
-      'end',
-    ].join("\n")
-
     FileUtils.mkdir "#{models_dir}/foo"
     File.open "#{models_dir}/foo/bar.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_no_offenses(<<~RUBY, file)
+        module Foo
+          module Bar
+            BAZ = 42
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses).to be_empty
   end
 
   it 'accepts if const assignment is in a file with matching name and right parent dir' \
     'and parent modules were defined on a single line' do
-    source = [
-      'module Foo::Bar',
-      '  BAZ = 42',
-      'end',
-    ].join("\n")
-
     FileUtils.mkdir "#{models_dir}/foo"
     File.open "#{models_dir}/foo/bar.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_no_offenses(<<~RUBY, file)
+        module Foo::Bar
+          BAZ = 42
+        end
+      RUBY
     end
-
-    expect(cop.offenses).to be_empty
   end
 
   it 'accepts if const assignment is in a file whose name matches the const and right parent dir' do
-    source = [
-      'module Foo',
-      '  module Bar',
-      '    BAZ = 42',
-      '  end',
-      'end',
-    ].join("\n")
-
     FileUtils.mkdir_p "#{models_dir}/foo/bar"
     File.open "#{models_dir}/foo/bar/baz.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_no_offenses(<<~RUBY, file)
+        module Foo
+          module Bar
+            BAZ = 42
+          end
+        end
+      RUBY
     end
-
-    expect(cop.offenses).to be_empty
   end
 
   it 'ignores if const assignment is assigning something in another scope' do
-    source = [
-      'module Foo',
-      '  Bar::BAZ = 42',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/foo.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_no_offenses(<<~RUBY, file)
+        module Foo
+          Bar::BAZ = 42
+        end
+      RUBY
     end
-
-    expect(cop.offenses).to be_empty
   end
 
   it 'accepts const assignment where the containing class uses an acronym' do
-    source = [
-      'module CSVFoo',
-      '  BAZ = 42',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/csv_foo.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_no_offenses(<<~RUBY, file)
+        module CSVFoo
+          BAZ = 42
+        end
+      RUBY
     end
-
-    expect(cop.offenses).to be_empty
   end
 
   it 'suggests moving a global const into a namespace' do
-    source = [
-      'FOO = 42',
-    ].join("\n")
-
     File.open "#{models_dir}/bar.rb", "w" do |file|
-      inspect_source(source, file)
+      expect_offense(<<~RUBY, file)
+        FOO = 42
+        ^^^^^^^^ In order for Rails autoloading to be able to find and load this file when someone references this const, move the const assignment to a file that defines the owning module. Const FOO should be moved into a namespace or defined in foo.rb.
+      RUBY
     end
-
-    expect(cop.offenses.map(&:line)).to eq([1])
-    expect(cop.offenses.first.message).
-      to include('Const FOO should be moved into a namespace or defined in foo.rb.')
   end
 
   it 'ignores const assignment in global namespace in a rake task' do
-    source = [
-      'FOO = 42',
-    ].join("\n")
-
     File.open "#{models_dir}/foo.rake", "w" do |file|
-      inspect_source(source, file)
+      expect_no_offenses(<<~RUBY, file)
+        FOO = 42
+      RUBY
     end
-
-    expect(cop.offenses).to be_empty
   end
 
   it 'ignores const assignment in a class in a rake task' do
-    source = [
-      'class Baz',
-      '  FOO = 42',
-      'end',
-    ].join("\n")
-
     File.open "#{models_dir}/foo.rake", "w" do |file|
-      inspect_source(source, file)
+      expect_no_offenses(<<~RUBY, file)
+        class Baz
+          FOO = 42
+        end
+      RUBY
     end
-
-    expect(cop.offenses).to be_empty
   end
 end
