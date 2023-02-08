@@ -21,14 +21,24 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['2.4', '2.5', '2.6', '2.7', '3.0']
+        include: # use bundler 2.3 for ruby versions < 2.6 (https://bundler.io/compatibility.html)
+        - ruby-version: 2.4
+          bundler-version: 2.3
+        - ruby-version: 2.5
+          bundler-version: 2.3
+        - ruby-version: 2.6
+          bundler-version: latest
+        - ruby-version: 2.7
+          bundler-version: latest
+        - ruby-version: 2.8
+          bundler-version: latest
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
       uses: ruby/setup-ruby@ee2113536afb7f793eed4ce60e8d3b26db912da4 # v1.127.0
       with:
         ruby-version: ${{ matrix.ruby-version }}
-        bundler: latest
+        bundler: ${{ matrix.bundler-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
         working-directory: rubocop-airbnb
     - name: Run rspec
