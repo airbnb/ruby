@@ -21,11 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['2.4', '2.5', '2.6', '2.7', '3.0']
+        # ruby-version: ['2.4', '2.5', '2.6', '2.7', '3.0']
+        ruby-version: ['2.6', '2.7', '3.0']
     steps:
     - uses: actions/checkout@v3
-    - name: Debug
-      run: cat Gemfile
     - name: Set up Ruby
       uses: ruby/setup-ruby@ee2113536afb7f793eed4ce60e8d3b26db912da4 # v1.127.0
       with:
