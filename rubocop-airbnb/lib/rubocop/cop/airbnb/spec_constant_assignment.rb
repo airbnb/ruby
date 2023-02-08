@@ -33,7 +33,7 @@ module RuboCop
         def on_casgn(node)
           return unless in_spec_file?(node)
           parent_module_name = node.parent_module_name
-          if node.parent_module_name && parent_module_name != "Object"
+          if parent_module_name && parent_module_name != "Object"
             return
           end
           add_offense(node, message: MESSAGE)
