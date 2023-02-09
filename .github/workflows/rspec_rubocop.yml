@@ -43,5 +43,7 @@ jobs:
         working-directory: rubocop-airbnb
     - name: Run rspec
       run: bundle exec rspec
+    - name: Rubocop version
+      run: bundle exec rubocop --version
     - name: Run rubocop
-      run: bundle exec rubocop --config .rubocop.yml
+      run: bundle exec rubocop --config .rubocop.yml --fail-fast -d
