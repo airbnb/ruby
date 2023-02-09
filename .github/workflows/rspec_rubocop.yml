@@ -1,0 +1,46 @@
+# This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
+# For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
+
+name: Ruby
+
+on: [pull_request, push]
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: rubocop-airbnb
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include: # use bundler 2.3 for ruby versions < 2.6 (https://bundler.io/compatibility.html)
+        - ruby-version: 2.4
+          bundler-version: 2.3
+        - ruby-version: 2.5
+          bundler-version: 2.3
+        - ruby-version: 2.6
+          bundler-version: latest
+        - ruby-version: 2.7
+          bundler-version: latest
+        # TODO: reenable tests against ruby 3.0 after upgrading base Rubocop version above 1.22.0,
+        # thus correcting the syntax errors when running the Layout/BlockAlignment cop
+        # https://github.com/airbnb/ruby/pull/189#discussion_r1101793307
+        # - ruby-version: 3.0
+        #   bundler-version: latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@ee2113536afb7f793eed4ce60e8d3b26db912da4 # v1.127.0
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler: ${{ matrix.bundler-version }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+        working-directory: rubocop-airbnb
+    - name: Run rspec
+      run: bundle exec rspec
+    - name: Run rubocop
+      run: bundle exec rubocop --config .rubocop.yml --fail-fast -d
