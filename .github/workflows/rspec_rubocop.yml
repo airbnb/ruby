@@ -26,11 +26,10 @@ jobs:
           bundler-version: latest
         - ruby-version: 2.7
           bundler-version: latest
-        # TODO: reenable tests against ruby 3.0 after upgrading base Rubocop version above 1.22.0,
-        # thus correcting the syntax errors when running the Layout/BlockAlignment cop
-        # https://github.com/airbnb/ruby/pull/189#discussion_r1101793307
-        # - ruby-version: 3.0
-        #   bundler-version: latest
+        - ruby-version: 3.0
+          bundler-version: latest
+        - ruby-version: 3.1
+          bundler-version: latest
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
