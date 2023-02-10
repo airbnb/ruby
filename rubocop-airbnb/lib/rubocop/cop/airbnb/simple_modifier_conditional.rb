@@ -3,7 +3,7 @@ module RuboCop
     module Airbnb
       # Cop to tackle prevent more complicated modifier if/unless statements
       # https://github.com/airbnb/ruby#only-simple-if-unless
-      class SimpleModifierConditional < Cop
+      class SimpleModifierConditional < Base
         MSG = 'Modifier if/unless usage is okay when the body is simple, ' \
           'the condition is simple, and the whole thing fits on one line. ' \
           'Otherwise, avoid modifier if/unless.'.freeze

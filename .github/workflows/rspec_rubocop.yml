@@ -18,19 +18,16 @@ jobs:
     strategy:
       matrix:
         include: # use bundler 2.3 for ruby versions < 2.6 (https://bundler.io/compatibility.html)
-        - ruby-version: 2.4
-          bundler-version: 2.3
         - ruby-version: 2.5
           bundler-version: 2.3
         - ruby-version: 2.6
           bundler-version: latest
         - ruby-version: 2.7
           bundler-version: latest
-        # TODO: reenable tests against ruby 3.0 after upgrading base Rubocop version above 1.22.0,
-        # thus correcting the syntax errors when running the Layout/BlockAlignment cop
-        # https://github.com/airbnb/ruby/pull/189#discussion_r1101793307
-        # - ruby-version: 3.0
-        #   bundler-version: latest
+        - ruby-version: 3.0
+          bundler-version: latest
+        - ruby-version: 3.1
+          bundler-version: latest
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby

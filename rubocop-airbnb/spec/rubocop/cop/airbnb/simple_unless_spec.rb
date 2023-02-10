@@ -1,36 +1,26 @@
-describe RuboCop::Cop::Airbnb::SimpleUnless do
-  subject(:cop) { described_class.new }
-
+describe RuboCop::Cop::Airbnb::SimpleUnless, :config do
   it 'rejects unless with multiple conditionals' do
-    source = [
-      'unless boolean_condition || another_method',
-      '  return true',
-      'end',
-    ].join("\n")
-
-    inspect_source(source)
-    expect(cop.offenses.size).to eq(1)
+    expect_offense(<<~RUBY)
+      unless boolean_condition || another_method
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Unless usage is okay when there is only one conditional
+        return true
+      end
+    RUBY
   end
 
   it 'allows if with multiple conditionals' do
-    source = [
-      'if boolean_condition || another_method',
-      '  return true',
-      'end',
-    ].join("\n")
-
-    inspect_source(source)
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<~RUBY)
+      if boolean_condition || another_method
+        return true
+      end
+    RUBY
   end
 
   it 'allows with modifier if operator conditional' do
-    source = [
-      'unless boolean_condition',
-      '  return true',
-      'end',
-    ].join("\n")
-
-    inspect_source(source)
-    expect(cop.offenses).to be_empty
+    expect_no_offenses(<<~RUBY)
+      unless boolean_condition
+        return true
+      end
+    RUBY
   end
 end

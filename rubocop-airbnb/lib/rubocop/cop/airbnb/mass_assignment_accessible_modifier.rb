@@ -3,7 +3,7 @@ module RuboCop
     module Airbnb
       # Modifying Mass assignment restrictions eliminates the entire point of disabling
       # mass assignment. It's a lazy, potentially dangerous approach that should be discouraged.
-      class MassAssignmentAccessibleModifier < Cop
+      class MassAssignmentAccessibleModifier < Base
         MSG = 'Do no override and objects mass assignment restrictions.'.freeze
 
         def on_send(node)
