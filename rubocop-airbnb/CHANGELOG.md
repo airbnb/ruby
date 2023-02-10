@@ -1,3 +1,10 @@
+# 5.0.0
+* Add support for Ruby 3.1
+* Drop support for Ruby 2.4
+* Update rubocop to 1.22.0
+* Update rubocop-rspec to 2.0.0
+* Remove deprecated cops InvalidPredicateMatcher and CustomIncludeMethods
+
 # 4.0.0
 * Add support for Ruby 3.0
 * Run CI against Ruby 2.7
