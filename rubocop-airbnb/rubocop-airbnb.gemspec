@@ -25,7 +25,10 @@ Gem::Specification.new do |spec|
     'Gemfile',
   ]
 
-  spec.add_dependency('rubocop', '~> 1.22.0')
+  # rubocop:disable Layout/LineLength
+  spec.add_dependency('rubocop', '>= 1.22.0', '< 1.32', '!= 1.29.0', '!= 1.29.1', '!= 1.30.0', '!= 1.30.1')
+  # rubocop:enable Layout/LineLength
+
   spec.add_dependency('rubocop-performance', '~> 1.10.2')
   spec.add_dependency('rubocop-rails', '~> 2.9.1')
   spec.add_dependency('rubocop-rspec', '~> 2.0.0')
