@@ -1,3 +1,8 @@
+# 6.0.0
+* Recover code analysis using `TargetRubyVersion` from Ruby 2.0 to 2.4
+* Drop support for Ruby 2.5
+* Update rubocop to 1.32.0
+
 # 5.0.0
 * Add support for Ruby 3.1
 * Drop support for Ruby 2.4
