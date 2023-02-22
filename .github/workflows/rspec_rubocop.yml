@@ -18,8 +18,6 @@ jobs:
     strategy:
       matrix:
         include: # use bundler 2.3 for ruby versions < 2.6 (https://bundler.io/compatibility.html)
-        - ruby-version: 2.5
-          bundler-version: 2.3
         - ruby-version: 2.6
           bundler-version: latest
         - ruby-version: 2.7
