@@ -3,7 +3,14 @@ module RuboCop
     module Airbnb
       # Disallow ActiveRecord calls that pass interpolated or added strings as an argument.
       class RiskyActiverecordInvocation < Base
-        VULNERABLE_AR_METHODS = [
+        MSG = 'Passing a string computed by interpolation or addition to an ActiveRecord ' \
+              'method is likely to lead to SQL injection. Use hash or parameterized syntax. For ' \
+              'more information, see ' \
+              'http://guides.rubyonrails.org/security.html#sql-injection-countermeasures and ' \
+              'https://rails-sqli.org/rails3. If you have confirmed with Security that this is a ' \
+              'safe usage of this style, disable this alert with ' \
+              '`# rubocop:disable Airbnb/RiskyActiverecordInvocation`.'.freeze
+        RESTRICT_ON_SEND = [
           :delete_all,
           :destroy_all,
           :exists?,
@@ -22,27 +29,13 @@ module RuboCop
           :update_all,
           :where,
         ].freeze
-        MSG = 'Passing a string computed by interpolation or addition to an ActiveRecord ' \
-              'method is likely to lead to SQL injection. Use hash or parameterized syntax. For ' \
-              'more information, see ' \
-              'http://guides.rubyonrails.org/security.html#sql-injection-countermeasures and ' \
-              'https://rails-sqli.org/rails3. If you have confirmed with Security that this is a ' \
-              'safe usage of this style, disable this alert with ' \
-              '`# rubocop:disable Airbnb/RiskyActiverecordInvocation`.'.freeze
         def on_send(node)
-          receiver, method_name, *_args = *node
-
-          return if receiver.nil?
-          return unless vulnerable_ar_method?(method_name)
-          if !includes_interpolation?(_args) && !includes_sum?(_args)
+          return if node.receiver.nil?
+          if !includes_interpolation?(node.arguments) && !includes_sum?(node.arguments)
             return
           end
 
           add_offense(node)
-        end
-
-        def vulnerable_ar_method?(method)
-          VULNERABLE_AR_METHODS.include?(method)
         end
 
         # Return true if the first arg is a :dstr that has non-:str components

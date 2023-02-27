@@ -6,9 +6,10 @@ module RuboCop
       class FactoryClassUseString < Base
         MSG = 'Instead of :class => MyClass, use :class => "MyClass". ' \
           "This enables faster spec startup time and faster Zeus reload time.".freeze
+        RESTRICT_ON_SEND = %i(factory).freeze
 
         def on_send(node)
-          return unless node.command?(:factory)
+          return if node.receiver
 
           class_pair = class_node(node)
 
