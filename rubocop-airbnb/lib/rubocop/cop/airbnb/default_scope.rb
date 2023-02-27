@@ -8,9 +8,10 @@ module RuboCop
               'refactor data access patterns since the scope becomes part '\
               'of every query unless explicitly excluded, even when it is '\
               'unnecessary or incidental to the desired logic.'.freeze
+        RESTRICT_ON_SEND = %i(default_scope).freeze
 
         def on_send(node)
-          return unless node.command?(:default_scope)
+          return if node.receiver
 
           add_offense(node)
         end

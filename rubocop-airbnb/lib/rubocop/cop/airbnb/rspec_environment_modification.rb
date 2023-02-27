@@ -40,6 +40,7 @@ module RuboCop
         def_node_matcher :rails_env_assignment, '(send (const nil? :Rails) :env= ...)'
 
         MESSAGE = "Do not stub or set Rails.env in specs. Use the `stub_env` method instead".freeze
+        RESTRICT_ON_SEND = %i(to stub env=).freeze
 
         def on_send(node)
           path = node.source_range.source_buffer.name

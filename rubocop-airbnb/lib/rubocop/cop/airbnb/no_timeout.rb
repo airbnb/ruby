@@ -8,9 +8,14 @@ module RuboCop
           'It can also cause logic errors since it can raise in ' \
           'any callee scope. Use client library timeouts and monitoring to ' \
           'ensure proper timing behavior for web requests.'.freeze
+        RESTRICT_ON_SEND = %i(timeout).freeze
+
+        def_node_matcher :timeout_const?, <<~PATTERN
+          (const {cbase nil?} :Timeout)
+        PATTERN
 
         def on_send(node)
-          return unless node.source.start_with?('Timeout.timeout')
+          return unless timeout_const?(node.receiver)
           add_offense(node, message: MSG)
         end
       end

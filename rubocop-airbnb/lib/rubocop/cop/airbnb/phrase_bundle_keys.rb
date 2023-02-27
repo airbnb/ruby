@@ -27,10 +27,11 @@ module RuboCop
       class PhraseBundleKeys < Base
         MESSAGE =
           'Phrase bundle keys should match their translation keys.'.freeze
+        RESTRICT_ON_SEND = %i(t).freeze
 
         def on_send(node)
           parent = node.parent
-          if t_call?(node) && in_phrase_bundle_class?(node) && parent.pair_type?
+          if in_phrase_bundle_class?(node) && parent.pair_type?
             hash_key = parent.children[0]
             unless hash_key.children[0] == node.children[2].children[0]
               add_offense(hash_key, message: MESSAGE)
@@ -56,10 +57,6 @@ module RuboCop
               e.const_type? &&
               e.children[1] == :PhraseBundle
           end
-        end
-
-        def t_call?(node)
-          node.children[1] == :t
         end
       end
     end
