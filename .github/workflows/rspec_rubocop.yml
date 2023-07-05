@@ -18,13 +18,13 @@ jobs:
     strategy:
       matrix:
         include: # use bundler 2.3 for ruby versions < 2.6 (https://bundler.io/compatibility.html)
-        - ruby-version: 2.6
+        - ruby-version: '2.6'
           bundler-version: latest
-        - ruby-version: 2.7
+        - ruby-version: '2.7'
           bundler-version: latest
-        - ruby-version: 3.0
+        - ruby-version: '3.0'
           bundler-version: latest
-        - ruby-version: 3.1
+        - ruby-version: '3.1'
           bundler-version: latest
     steps:
     - uses: actions/checkout@v3
