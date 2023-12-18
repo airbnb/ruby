@@ -31,6 +31,11 @@ jobs:
           bundler-version: latest
     steps:
     - uses: actions/checkout@v3
+    - name: Install dependencies
+      run: |
+        apt-get update
+        apt-get install -y \
+          libyaml-dev
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1.143.0
       with:
