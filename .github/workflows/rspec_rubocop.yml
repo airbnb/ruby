@@ -35,6 +35,7 @@ jobs:
       run: |
         apt-get update
         apt-get install -y \
+          libssl-dev \
           libyaml-dev
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1.143.0
