@@ -18,9 +18,9 @@ jobs:
     container: ubuntu:focal
     strategy:
       matrix:
-        include: # use bundler 2.3 for ruby versions < 2.6 (https://bundler.io/compatibility.html)
+        include: # https://bundler.io/compatibility.html
         - ruby-version: '2.6'
-          bundler-version: latest
+          bundler-version: '2.4'
         - ruby-version: '2.7'
           bundler-version: latest
         - ruby-version: '3.0'
