@@ -35,6 +35,13 @@ jobs:
       run: |
         apt-get update
         apt-get install -y \
+          automake \
+          g++ \
+          libtool \
+          make \
+          pkg-config \
+          cmake \
+          ccache \
           libssl-dev \
           libyaml-dev
     - name: Set up Ruby
