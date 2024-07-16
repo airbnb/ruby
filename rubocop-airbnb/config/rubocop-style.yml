@@ -116,7 +116,7 @@ Style/BlockDelimiters:
     - let!
     - subject
     - watch
-  IgnoredMethods:
+  AllowedMethods:
     # Methods that can be either procedural or functional and cannot be
     # categorised from their usage alone, e.g.
     #
@@ -889,7 +889,7 @@ Style/SymbolLiteral:
 Style/SymbolProc:
   Description: Use symbols as procs instead of blocks when possible.
   Enabled: false
-  IgnoredMethods:
+  AllowedMethods:
   - respond_to
 
 Style/TernaryParentheses:
