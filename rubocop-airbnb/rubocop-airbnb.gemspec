@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.license = 'MIT'
   spec.version = RuboCop::Airbnb::VERSION
   spec.platform = Gem::Platform::RUBY
-  spec.required_ruby_version = '>= 2.5'
+  spec.required_ruby_version = '>= 2.7'
 
   spec.require_paths = ['lib']
   spec.files = Dir[
