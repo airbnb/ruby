@@ -18,18 +18,18 @@ jobs:
     strategy:
       matrix:
         include: # use bundler 2.3 for ruby versions < 2.6 (https://bundler.io/compatibility.html)
-        - ruby-version: '2.6'
-          bundler-version: latest
         - ruby-version: '2.7'
           bundler-version: latest
         - ruby-version: '3.0'
           bundler-version: latest
         - ruby-version: '3.1'
           bundler-version: latest
+        - ruby-version: '3.3'
+          bundler-version: latest
     steps:
     - uses: actions/checkout@v3
     - name: Set up Ruby
-      uses: ruby/setup-ruby@ee2113536afb7f793eed4ce60e8d3b26db912da4 # v1.127.0
+      uses: ruby/setup-ruby@2a9a743e19810b9f3c38060637daf594dbd7b37f # 1.186.0
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler: ${{ matrix.bundler-version }}
