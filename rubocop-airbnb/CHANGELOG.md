@@ -1,3 +1,6 @@
+# Unreleased changes
+- Fix cops with the wrong namespace
+
 # 7.0.0
 * Add support for Ruby 3.3
 * Drop support for Ruby 2.6
