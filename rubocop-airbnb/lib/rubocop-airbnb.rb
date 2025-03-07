@@ -7,8 +7,6 @@ require 'rubocop'
 require 'rubocop-performance'
 require 'rubocop-rails'
 
-require 'rubocop/airbnb'
-require 'rubocop/airbnb/inject'
-require 'rubocop/airbnb/version'
-
-RuboCop::Airbnb::Inject.defaults!
+require_relative 'rubocop/airbnb'
+require_relative 'rubocop/airbnb/plugin'
+require_relative 'rubocop/airbnb/version'

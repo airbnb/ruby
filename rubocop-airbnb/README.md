@@ -29,7 +29,7 @@ ways to do this:
 First Create a new file `.rubocop_airbnb.yml` in the same directory as your `.rubocop.yml`
 this file should contain
 ```
-require:
+plugins:
   - rubocop-airbnb
 ```
 
@@ -50,10 +50,13 @@ you could potentially experience a bunch of warnings from `.rubocop_todo.yml` fo
 Now you can run `rubocop` and it will automatically load the RuboCop Airbnb
 cops together with the standard cops.
 
+> [!NOTE]
+> The plugin system is supported in RuboCop 1.72+. In earlier versions, use `require` instead of `plugins`.
+
 ### Command line
 
 ```bash
-rubocop --require rubocop-airbnb
+rubocop --plugin rubocop-airbnb
 ```
 
 ## The Cops
@@ -70,4 +73,3 @@ Airbnb/PhraseBundleKeys:
   Exclude:
     - spec/my_poorly_named_spec_file.rb
 ```
-

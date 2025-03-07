@@ -1,0 +1,10 @@
+plugins:
+  - rubocop-factory_bot
+
+FactoryBot/AttributeDefinedStatically:
+  Description: Always declare attribute values as blocks.
+  Enabled: false
+
+FactoryBot/CreateList:
+  Description: Checks for create_list usage.
+  Enabled: true

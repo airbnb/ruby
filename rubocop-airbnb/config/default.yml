@@ -29,7 +29,7 @@ RSpec:
   Include:
   - _spec.rb
   - "(?:^|/)spec/"
-RSpec/FactoryBot:
+FactoryBot:
   Include:
   - spec/factories/**/*.rb
   - features/support/factories/**/*.rb
@@ -37,6 +37,8 @@ RSpec/FactoryBot:
 inherit_from:
   - './rubocop-airbnb.yml'
   - './rubocop-bundler.yml'
+  - './rubocop-capybara.yml'
+  - './rubocop-factory_bot.yml'
   - './rubocop-gemspec.yml'
   - './rubocop-layout.yml'
   - './rubocop-lint.yml'
