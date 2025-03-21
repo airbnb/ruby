@@ -1,4 +1,4 @@
-require:
+plugins:
   - rubocop-rspec
 
 RSpec/AlignLeftLetBrace:
@@ -51,6 +51,10 @@ RSpec/DescribeSymbol:
 
 RSpec/DescribedClass:
   Description: 'Use `described_class` for tested class / module'
+  Enabled: false
+
+RSpec/Dialect:
+  Description: Enforces custom RSpec dialects.
   Enabled: false
 
 RSpec/EmptyExampleGroup:
@@ -109,13 +113,6 @@ RSpec/ExpectInHook:
 RSpec/ExpectOutput:
   Description: Checks for opportunities to use `expect { ... }.to output`.
   Enabled: false
-
-RSpec/FilePath:
-  Description: 'Checks the file and folder naming of the spec file.'
-  Enabled: false
-  CustomTransform:
-    RuboCop: rubocop
-    RSpec: rspec
 
 RSpec/Focus:
   Description: Checks if examples are focused.
@@ -293,6 +290,17 @@ RSpec/SingleArgumentMessageChain:
   Description: Checks that chains of messages contain more than one element.
   Enabled: true
 
+RSpec/SpecFilePathFormat:
+  Description: Checks that spec file paths are consistent and well-formed.
+  Enabled: false
+  CustomTransform:
+    RuboCop: rubocop
+    RSpec: rspec
+
+RSpec/SpecFilePathSuffix:
+  Description: Checks that spec file paths suffix are consistent and well-formed.
+  Enabled: false
+
 RSpec/SubjectStub:
   Description: Checks for stubbed test subjects.
   Enabled: false
@@ -308,19 +316,3 @@ RSpec/VerifiedDoubles:
 RSpec/VoidExpect:
   Description: This cop checks void `expect()`.
   Enabled: false
-
-RSpec/Capybara/CurrentPathExpectation:
-  Description: Checks that no expectations are set on Capybara's `current_path`.
-  Enabled: false
-
-RSpec/Capybara/FeatureMethods:
-  Description: Checks for consistent method usage in feature specs.
-  Enabled: false
-
-RSpec/FactoryBot/AttributeDefinedStatically:
-  Description: Always declare attribute values as blocks.
-  Enabled: false
-
-RSpec/FactoryBot/CreateList:
-  Description: Checks for create_list usage.
-  Enabled: true

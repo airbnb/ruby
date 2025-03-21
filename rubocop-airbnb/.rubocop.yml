@@ -1,6 +1,8 @@
 inherit_from:
   - .rubocop_airbnb.yml
-  - ./config/default.yml
+
+plugins:
+  - rubocop-airbnb
 
 AllCops:
   CacheRootDirectory: tmp/rubocop

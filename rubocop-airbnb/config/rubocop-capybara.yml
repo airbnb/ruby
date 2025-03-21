@@ -1,0 +1,6 @@
+plugins:
+  - rubocop-capybara
+
+Capybara/CurrentPathExpectation:
+  Description: Checks that no expectations are set on Capybara's `current_path`.
+  Enabled: false
