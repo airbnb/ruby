@@ -1,3 +1,14 @@
+# 8.0.0
+* [#72](https://github.com/airbnb/ruby/pull/212) Adopt Rubocop's plugin system (thanks @koic!)
+* Bump minimum gem versions:
+  * `rubocop` from `'~> 1.61'` to `'~> 1.72'`
+  * `rubocop-performance` from `'~> 1.20'` to `'~> 1.24'`
+  * `rubocop-rails` from `'~> 2.24'` to `'~> 2.30'`
+  * `rubocop-rspec` from `'~> 2.26'` to `'~> 3.5'`
+* Add explicit `rubocop-*` gem dependencies which have been extracted
+  * `rubocop-capybara` with min version `'~> 2.22'`
+  * `rubocop-factory_bot` with min version `'~> 2.27'`
+
 # 7.0.0
 * Add support for Ruby 3.3
 * Drop support for Ruby 2.6
