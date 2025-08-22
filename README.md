@@ -1744,7 +1744,7 @@ In either case:
 [google-c++]: https://google.github.io/styleguide/cppguide.html
 [google-c++-comments]: https://google.github.io/styleguide/cppguide.html#Comments
 [google-python-comments]: https://google.github.io/styleguide/pyguide.html#Comments
-[ruby-naming-bang]: http://dablog.rubypal.com/2007/8/15/bang-methods-or-danger-will-rubyist
+[ruby-naming-bang]: https://davidablack.net/dablog.html#2007/8/15/bang-methods-or-danger-will-rubyist
 [ruby-freeze]: https://blog.honeybadger.io/when-to-use-freeze-and-frozen-in-ruby/
 [avoid-else-return-early]: http://blog.timoxley.com/post/47041269194/avoid-else-return-early
 
