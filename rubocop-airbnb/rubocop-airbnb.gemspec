@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.metadata['default_lint_roller_plugin'] = 'RuboCop::Airbnb::Plugin'
 
   spec.add_dependency('lint_roller', '~> 1.1')
-  spec.add_dependency('rubocop', '~> 1.72')
+  spec.add_dependency('rubocop', '~> 1.76')
   spec.add_dependency('rubocop-capybara', '~> 2.22')
   spec.add_dependency('rubocop-factory_bot', '~> 2.27')
   spec.add_dependency('rubocop-performance', '~> 1.24')

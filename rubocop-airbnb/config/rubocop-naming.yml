@@ -47,7 +47,7 @@ Naming/MethodName:
   - snake_case
   - camelCase
 
-Naming/PredicateName:
+Naming/PredicatePrefix:
   Description: Check the names of predicate methods.
   StyleGuide: https://github.com/rubocop-hq/ruby-style-guide#bool-methods-qmark
   Enabled: false
