@@ -3,6 +3,6 @@
 module RuboCop
   module Airbnb
     # Version information for the the Airbnb RuboCop plugin.
-    VERSION = '8.0.0'
+    VERSION = '8.1.0'
   end
 end
