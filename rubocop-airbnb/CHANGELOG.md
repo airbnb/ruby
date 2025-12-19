@@ -1,6 +1,9 @@
 # Unreleased
-* Fix warnings after `Naming/PredicateName` was renamed to `Naming/PredicatePrefix` in `rubocop` `v1.76.0`
-* Bump `rubocop` minimum required version from `~> 1.72` to `~> 1.76`
+
+# 8.1.0
+* [#216](https://github.com/airbnb/ruby/pull/216) handle renamed cop (thanks @santiagorodriguez96!)
+  * Fix warnings after `Naming/PredicateName` was renamed to `Naming/PredicatePrefix` in `rubocop` `v1.76.0`
+  * Bump `rubocop` minimum required version from `~> 1.72` to `~> 1.76`
 
 # 8.0.0
 * [#72](https://github.com/airbnb/ruby/pull/212) Adopt Rubocop's plugin system (thanks @koic!)
