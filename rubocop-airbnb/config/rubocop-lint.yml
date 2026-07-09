@@ -136,7 +136,7 @@ Lint/MissingCopEnableDirective:
   #   a = 1
   #   # rubocop:enable SomeCop
   # .inf for any size
-  MaximumRangeSize: .inf
+  MaxRangeSize: .inf
   Description: 'Checks for a `# rubocop:enable` after `# rubocop:disable`'
   Enabled: true
 
